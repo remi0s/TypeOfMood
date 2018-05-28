@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_Home"
+            android:icon="@drawable/ic_home"
+            android:title="Home"
+            />
+        <item
+            android:id="@+id/nav_Mood"
+            android:icon="@drawable/ic_mood"
+            android:title="Current Mood" />
+        <item
+            android:id="@+id/nav_Mood2"
+            android:icon="@drawable/ic_mood"
+            android:title="Current Mood with layout" />
+        <item
+            android:id="@+id/nav_Calendar"
+            android:icon="@drawable/ic_calendar"
+            android:title="Calendar" />
+        <item
+            android:id="@+id/nav_Statistics"
+            android:icon="@drawable/ic_statistics"
+            android:title="Statistics" />
+
+        <item
+            android:id="@+id/nav_dbDebug"
+            android:icon="@drawable/ic_database"
+            android:title="DB DEBUG" />
+
+        <item
+            android:id="@+id/nav_Setup"
+            android:icon="@drawable/ic_settings"
+            android:title="Setup" />
+
+        <item
+            android:id="@+id/nav_Settings"
+            android:icon="@drawable/ic_settings"
+            android:title="Settings"
+            />
+
+    </group>
+</menu>

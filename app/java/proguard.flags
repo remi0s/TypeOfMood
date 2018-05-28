@@ -1,0 +1,28 @@
+# Keep classes and methods that have the @UsedForTesting annotation
+-keep @com.android.annotations.UsedForTesting class *
+-keepclassmembers class * {
+    @com.android.annotations.UsedForTesting *;
+}
+
+# Keep classes and methods that have the @ExternallyReferenced annotation
+-keep @com.android.annotations.ExternallyReferenced class *
+-keepclassmembers class * {
+    @com.android.annotations.ExternallyReferenced *;
+}
+
+# Keep native methods
+-keepclassmembers class * {
+    native <methods>;
+}
+
+# Keep classes that are used as a parameter type of methods that are also marked as keep
+# to preserve changing those methods' signature.
+-keep class typeofmood.ime.latin.AssetFileAddress
+-keep class typeofmood.ime.latin.Dictionary
+-keep class typeofmood.ime.latin.NgramContext
+-keep class typeofmood.ime.latin.makedict.ProbabilityInfo
+-keep class typeofmood.ime.latin.utils.LanguageModelParam
+
+# TODO: remove once used in code.
+-keep class com.android.keyboard.KeyboardLayout { *; }
+

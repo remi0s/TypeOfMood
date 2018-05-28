@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="50dp"
+    android:background="@android:color/transparent"
+    android:orientation="horizontal"
+
+    >
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:background="@drawable/rectangle"
+        android:clipToPadding="true"
+        android:orientation="horizontal"
+        android:layout_alignParentLeft="true">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="25dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:background="@drawable/rectangle_title"
+            android:orientation="horizontal"
+            android:layout_alignParentLeft="true">
+
+            <ImageView
+                android:id="@+id/smallIcon"
+                android:layout_width="20dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                app:srcCompat="@mipmap/ic_typeofmood" />
+
+            <TextView
+                android:id="@+id/notif_title"
+                style="@android:style/TextAppearance.StatusBar.EventContent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="15dp"
+                android:layout_marginStart="15dp"
+                android:paddingTop="1dp"
+                android:singleLine="true"
+                android:text="@string/notification_message"
+                 />
+
+            <TextView
+                android:id="@+id/timestamp"
+                style="@android:style/TextAppearance.StatusBar.EventContent"
+                android:layout_width="match_parent"
+                android:paddingTop="1dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="20dp"
+                android:layout_marginRight="20dp"
+                android:gravity="end"
+                android:text="timer" />
+
+        </LinearLayout>
+        <TextView
+            android:id="@+id/notif_message"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="30dp"
+            android:paddingTop="5dp"
+            android:singleLine="true"
+            android:text="@string/notification_message"
+            android:visibility="invisible"
+            android:textAppearance="@android:style/TextAppearance.StatusBar.EventContent" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true">
+
+
+            <Button
+                android:id="@+id/buttonHappy"
+                style="@style/Widget.AppCompat.Button.ButtonBar.AlertDialog"
+                android:layout_width="70dp"
+                android:layout_height="36dp"
+                android:background="@android:color/transparent"
+                android:text="@string/btn_happy"
+                android:textColor="@android:color/holo_blue_light"
+                android:textSize="12sp" />
+
+            <Button
+                android:id="@+id/buttonSad"
+                style="@style/Widget.AppCompat.Button.ButtonBar.AlertDialog"
+                android:layout_width="60dp"
+                android:layout_height="36dp"
+                android:background="@android:color/transparent"
+                android:text="@string/btn_sad"
+                android:textColor="@android:color/holo_blue_light"
+                android:textSize="12sp" />
+
+            <Button
+                android:id="@+id/buttonRelaxed"
+                style="@style/Widget.AppCompat.Button.ButtonBar.AlertDialog"
+                android:layout_width="80dp"
+                android:layout_height="36dp"
+                android:background="@android:color/transparent"
+                android:text="@string/btn_relaxed"
+                android:textColor="@android:color/holo_blue_light"
+                android:textSize="12sp" />
+
+            <Button
+                android:id="@+id/buttonStressed"
+                style="@style/Widget.AppCompat.Button.ButtonBar.AlertDialog"
+                android:layout_width="80dp"
+                android:layout_height="36dp"
+                android:background="@android:color/transparent"
+                android:text="@string/btn_stressed"
+                android:textColor="@android:color/holo_blue_light"
+                android:textSize="12sp" />
+
+            <Button
+                android:id="@+id/buttonLater"
+                style="@style/Widget.AppCompat.Button.ButtonBar.AlertDialog"
+                android:layout_width="fill_parent"
+                android:layout_height="36dp"
+                android:background="@android:color/transparent"
+                android:text="@string/btn_later"
+                android:textColor="@android:color/holo_blue_dark"
+                android:textSize="12sp" />
+        </LinearLayout>
+
+    </RelativeLayout>
+
+
+
+</RelativeLayout>
