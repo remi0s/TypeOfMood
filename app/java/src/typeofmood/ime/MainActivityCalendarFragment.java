@@ -35,7 +35,16 @@ public class MainActivityCalendarFragment extends Fragment {
             calendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
                 @Override
                 public void onSelectedDayChange(@NonNull CalendarView view, int year, int month, int dayOfMonth) {
-                    String date=Integer.toString(dayOfMonth)+"-"+Integer.toString((month+1))+"-"+Integer.toString(year);
+                    String mDay=Integer.toString(dayOfMonth);
+                    String mMonth=Integer.toString((month+1));
+                    String mYear=Integer.toString(year);
+                    if(mDay.length()==1){ //solving the problem of 1-6-2018 not resolving to 01-06-2018
+                        mDay="0"+mDay;
+                    }
+                    if(mMonth.length()==1){
+                        mMonth="0"+mMonth;
+                    }
+                    String date=mDay+"-"+mMonth+"-"+mYear;
                     if(listView != null) {
                         MoodDatabaseHelper myDB;
                         myDB=new MoodDatabaseHelper(getActivity().getApplicationContext());
