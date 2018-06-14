@@ -857,8 +857,7 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
         if (sessionData != null) {
             sessionData.StopDateTime = new Date(System.currentTimeMillis());
             sessionData.CurrentMood = currentMood;
-            Log.d("sessionData", "CurrentMood: " + sessionData.CurrentMood);
-            Log.d("sessionData", "Session Ended: " + sessionData.StopDateTime);
+
 
 
             int notificationFlag = 0;
@@ -876,7 +875,7 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
                 notificationFlag = 1;
             }
 
-            if (notificationFlag == 1) {
+            if (notificationFlag == 1 && sessionData.DownTime.size() > 5) {
                 String title = "TypeOfMood";
                 String message = "Please Expand to describe your mood!";
                 mNotificationHelper = new NotificationHelper(this);
@@ -885,12 +884,8 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
 //                CreateAlertDialogWithRadioButtonGroup();
 
                 if(isConnected()){
-                    new HttpAsyncTask().execute("YOUR SERVER HERE");
+                    #new HttpAsyncTask().execute("server here");
                 }
-
-//                 if(isConnected()){
-//                    new HttpAsyncTask().execute("http://hmkcode.appspot.com/jsonservlet");
-//                }
 
                  
 
@@ -898,7 +893,7 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
             }
 
 
-            if (sessionData.DownTime.size() > 4){
+            if (sessionData.DownTime.size() > 5){
                 Gson gson = new Gson();
                 String sessionDataString = gson.toJson(sessionData, KeyboardDynamics.class);
                 Log.d("Json", "Json string: " + sessionDataString);
@@ -1357,13 +1352,7 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
             sessionData.IsSoundOn=settingsValues.mSoundOn;
             sessionData.IsVibrationOn=settingsValues.mVibrateOn;
             sessionData.IsShowPopupOn=settingsValues.mKeyPreviewPopupOn;
-            Log.d("sessionData", "Session Data"
-            +"\nSession Started: "+sessionData.StartDateTime
-            +"\nParent app: "+sessionData.CurrentAppName
-            +"\nIsSoundOn: "+sessionData.IsSoundOn
-            +"\nIsVibrationOn: "+sessionData.IsVibrationOn
-            +"\nIsShowPopupOn: "+sessionData.IsShowPopupOn
-            );
+
         }
 
         if (isImeSuppressedByHardwareKeyboard()) {
@@ -1831,7 +1820,6 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
 
         if(primaryCode==Constants.CODE_DELETE){
             sessionData.NumDels+=1;
-            Log.d("sessionData", "Backspace pressed: "+sessionData.NumDels); //remi0s
         }
         mKeyboardSwitcher.onPressKey(primaryCode, isSinglePointer, getCurrentAutoCapsState(),
                 getCurrentRecapitalizeState());

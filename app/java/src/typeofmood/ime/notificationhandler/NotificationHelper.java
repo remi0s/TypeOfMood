@@ -113,7 +113,7 @@ public class NotificationHelper extends ContextWrapper {
 
         return new NotificationCompat.Builder(getApplicationContext(),ChannelID)
                 .setSmallIcon(R.drawable.typeofmood_notification_icon)
-                .setPriority(Notification.PRIORITY_HIGH)
+                .setPriority(Notification.PRIORITY_MAX)
                 .setVisibility(Notification.VISIBILITY_PUBLIC)
                 .setCustomContentView(smallremoteViews)
                 .setCustomBigContentView(remoteViews)

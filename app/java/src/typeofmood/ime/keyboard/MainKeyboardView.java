@@ -700,7 +700,7 @@ public final class MainKeyboardView extends KeyboardView implements DrawingProxy
             case MotionEvent.ACTION_DOWN:
             case MotionEvent.ACTION_POINTER_DOWN:
                 mLatinIme.sessionData.DownTime.add(eventTime);
-                Log.d("sessionData", "Key pressed: "+"("+mLatinIme.sessionData.DownTime.size()+")"+mLatinIme.sessionData.DownTime.get((mLatinIme.sessionData.DownTime.size()-1)));
+
                 break;
             case MotionEvent.ACTION_UP:
             case MotionEvent.ACTION_POINTER_UP:
@@ -713,9 +713,6 @@ public final class MainKeyboardView extends KeyboardView implements DrawingProxy
                     mLatinIme.sessionData.IsLongPress.add(0);
 
                 }
-                Log.d("sessionData", "Long key pressed: "+"("+mLatinIme.sessionData.IsLongPress.size()+")"+mLatinIme.sessionData.IsLongPress.get((mLatinIme.sessionData.IsLongPress.size()-1)));//remi0s
-                Log.d("sessionData", "Key released: "+"("+mLatinIme.sessionData.UpTime.size()+")"+mLatinIme.sessionData.UpTime.get((mLatinIme.sessionData.UpTime.size()-1)));
-                Log.d("sessionData", "Key Pressure: "+"("+mLatinIme.sessionData.PressureValue.size()+")"+mLatinIme.sessionData.PressureValue.get((mLatinIme.sessionData.PressureValue.size()-1)));
                 break;
             case MotionEvent.ACTION_MOVE:
                 break;

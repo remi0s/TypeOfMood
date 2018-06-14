@@ -78,7 +78,7 @@ public class MoodDatabaseHelper extends SQLiteOpenHelper {
 
     private String getCurrentDate() {
         return new SimpleDateFormat("dd-MM-yyyy").format(new Date());
-    }
+    } //"dd-MM-yyyy" might need fix to "d-M-yyyy"
 
     private String getCurrentTime() {
         return new SimpleDateFormat("HH:mm:ss").format(new Date());
