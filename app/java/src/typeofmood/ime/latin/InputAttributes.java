@@ -100,9 +100,9 @@ public final class InputAttributes {
         // Make sure that passwords are not displayed in {@link SuggestionStripView}.
         final boolean shouldSuppressSuggestions = mIsPasswordField
                 || InputTypeUtils.isEmailVariation(variation)
-                || InputType.TYPE_TEXT_VARIATION_URI == variation
+//                || InputType.TYPE_TEXT_VARIATION_URI == variation //remi0s with this it was hidden in browser
                 || InputType.TYPE_TEXT_VARIATION_FILTER == variation
-                || flagNoSuggestions
+//                || flagNoSuggestions //remi0s with this it was hidden in google search
                 || flagAutoComplete;
         mShouldShowSuggestions = !shouldSuppressSuggestions;
 
@@ -110,7 +110,7 @@ public final class InputAttributes {
 
         final boolean noMicrophone = mIsPasswordField
                 || InputTypeUtils.isEmailVariation(variation)
-                || InputType.TYPE_TEXT_VARIATION_URI == variation
+//                || InputType.TYPE_TEXT_VARIATION_URI == variation //remi0s with this it was hidden in chrome
                 || hasNoMicrophoneKeyOption();
         mShouldShowVoiceInputKey = !noMicrophone;
 

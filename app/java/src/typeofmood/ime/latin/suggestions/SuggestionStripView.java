@@ -21,6 +21,7 @@ import android.content.res.Resources;
 import android.content.res.TypedArray;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
+import android.support.v4.app.NotificationCompat;
 import android.support.v4.view.ViewCompat;
 import android.text.TextUtils;
 import android.util.AttributeSet;
@@ -53,6 +54,7 @@ import typeofmood.ime.latin.settings.Settings;
 import typeofmood.ime.latin.settings.SettingsValues;
 import typeofmood.ime.latin.suggestions.MoreSuggestionsView.MoreSuggestionsListener;
 import typeofmood.ime.latin.utils.ImportantNoticeUtils;
+import typeofmood.ime.notificationhandler.NotificationHelper;
 
 public final class SuggestionStripView extends RelativeLayout implements OnClickListener,
         OnLongClickListener {
@@ -173,9 +175,10 @@ public final class SuggestionStripView extends RelativeLayout implements OnClick
 
         final TypedArray keyboardAttr = context.obtainStyledAttributes(attrs,
                 R.styleable.Keyboard, defStyle, R.style.SuggestionStripView);
-        final Drawable iconVoice = keyboardAttr.getDrawable(R.styleable.Keyboard_iconShortcutKey);
-        keyboardAttr.recycle();
-        mVoiceKey.setImageDrawable(iconVoice);
+//        final Drawable iconVoice = keyboardAttr.getDrawable(R.styleable.Keyboard_iconShortcutKey); //
+//        keyboardAttr.recycle();
+        //mVoiceKey.setImageDrawable(iconVoice); //remi0s iconVoice was default
+        mVoiceKey.setImageResource(R.drawable.ic_tree);
         mVoiceKey.setOnClickListener(this);
     }
 
@@ -450,9 +453,15 @@ public final class SuggestionStripView extends RelativeLayout implements OnClick
             return;
         }
         if (view == mVoiceKey) {
-            mListener.onCodeInput(Constants.CODE_SHORTCUT,
-                    Constants.SUGGESTION_STRIP_COORDINATE, Constants.SUGGESTION_STRIP_COORDINATE,
-                    false /* isKeyRepeat */);
+//            mListener.onCodeInput(Constants.CODE_SHORTCUT,
+//                    Constants.SUGGESTION_STRIP_COORDINATE, Constants.SUGGESTION_STRIP_COORDINATE,
+//                    false /* isKeyRepeat */);
+            String title = "TypeOfMood";
+            String message = "Please Expand to describe your mood!";
+            NotificationHelper mNotificationHelper;
+            mNotificationHelper = new NotificationHelper(getContext());
+            NotificationCompat.Builder nb = mNotificationHelper.getTypeOfMoodNotification(title, message);
+            mNotificationHelper.getManager().notify(mNotificationHelper.notification_id, nb.build());
             return;
         }
 

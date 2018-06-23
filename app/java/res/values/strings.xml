@@ -587,6 +587,7 @@ Tip: You can download and remove dictionaries by going to &lt;b>Languages&#160;&
     <string name="user_dict_fast_scroll_alphabet">\u0020ABCDEFGHIJKLMNOPQRSTUVWXYZ</string>
 
     <string name="notification_message">How would you describe your mood?</string>
+    <string name="timer"> </string>
     <string name="btn_happy">Happy</string>
     <string name="btn_sad">Sad</string>
     <string name="btn_relaxed">Relaxed</string>

@@ -208,9 +208,13 @@
                         </option>
                         <option name="values">
                           <map>
+                            <entry key="assetSourceType" value="FILE" />
                             <entry key="color" value="8ee1fa" />
-                            <entry key="outputName" value="unbundled_user_02" />
-                            <entry key="sourceFile" value="C:\Users\remio" />
+                            <entry key="height" value="42" />
+                            <entry key="outputName" value="ic_tree" />
+                            <entry key="overrideSize" value="true" />
+                            <entry key="sourceFile" value="C:\Users\remio\Desktop\tree.svg" />
+                            <entry key="width" value="42" />
                           </map>
                         </option>
                       </PersistentState>

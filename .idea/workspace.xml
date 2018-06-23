@@ -40,43 +40,62 @@
       </state>
     </system>
   </component>
+  <component name="FavoritesManager">
+    <favorites_list name="TypeOfMood" />
+  </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="LatinIME.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/java/src/typeofmood/ime/latin/LatinIME.java">
+      <file leaf-file-name="ic_tree.xml" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/java/res/drawable/ic_tree.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="12325">
-              <caret line="871" column="39" lean-forward="false" selection-start-line="871" selection-start-column="39" selection-end-line="871" selection-end-column="39" />
+            <state relative-caret-position="85">
+              <caret line="5" column="0" lean-forward="true" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="build.gradle" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/build.gradle">
+      <file leaf-file-name="home_fragment.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/java/res/layout/home_fragment.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="17">
-              <caret line="9" column="3" lean-forward="false" selection-start-line="9" selection-start-column="3" selection-end-line="9" selection-end-column="3" />
+            <state relative-caret-position="4">
+              <caret line="17" column="48" lean-forward="false" selection-start-line="17" selection-start-column="33" selection-end-line="17" selection-end-column="48" />
               <folding />
             </state>
           </provider>
+          <provider editor-type-id="android-designer2">
+            <state />
+          </provider>
         </entry>
       </file>
-      <file leaf-file-name="NotificationHelper.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="activity_main.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/java/res/layout/activity_main.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="340">
+              <caret line="20" column="58" lean-forward="false" selection-start-line="20" selection-start-column="28" selection-end-line="20" selection-end-column="58" />
+              <folding />
+            </state>
+          </provider>
+          <provider editor-type-id="android-designer2">
+            <state />
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="NotificationHelper.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/java/src/typeofmood/ime/notificationhandler/NotificationHelper.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1666">
-              <caret line="115" column="55" lean-forward="false" selection-start-line="115" selection-start-column="55" selection-end-line="115" selection-end-column="55" />
+            <state relative-caret-position="167">
+              <caret line="97" column="45" lean-forward="false" selection-start-line="97" selection-start-column="44" selection-end-line="97" selection-end-column="45" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="build.gradle" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/build.gradle">
+      <file leaf-file-name="SuggestionStripView.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/java/src/typeofmood/ime/latin/suggestions/SuggestionStripView.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="170">
-              <caret line="10" column="25" lean-forward="false" selection-start-line="10" selection-start-column="25" selection-end-line="10" selection-end-column="25" />
+            <state relative-caret-position="78">
+              <caret line="177" column="98" lean-forward="false" selection-start-line="177" selection-start-column="74" selection-end-line="177" selection-end-column="98" />
               <folding />
             </state>
           </provider>
@@ -95,40 +114,39 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>greek</find>
-      <find>getContentVersion</find>
-      <find>0x7f0f0002</find>
-      <find>Timeout waiting for dictionary load</find>
-      <find>subtypeLocale</find>
-      <find>im_is_default</find>
-      <find>AR</find>
-      <find>minutes</find>
-      <find>IME</find>
-      <find>pref_include_other_imes_in_language_switch_list</find>
-      <find>Settings.PREF_INCLUDE_OTHER_IMES_IN_LANGUAGE_SWITCH_LIST</find>
-      <find>PREF_INCLUDE_OTHER_IMES_IN_LANGUAGE_SWITCH_LIST</find>
-      <find>shouldof</find>
-      <find>shouldOfferSwitchingToNextInputMethod</find>
-      <find>shouldoffer</find>
-      <find>setComponentEnabledSetting</find>
-      <find>PREF_SHOW_SETUP_WIZARD_ICON</find>
-      <find>isClicked</find>
-      <find>isUserInfoFinishedPressed</find>
-      <find>toggleAppIcon</find>
-      <find>icon</find>
-      <find>reinitializeClientRecordInDictionaryContentProvider</find>
-      <find>.dict</find>
-      <find>Sig</find>
-      <find>.mp3</find>
-      <find>Add-on</find>
-      <find>getUserDictionaryLocalesSet</find>
-      <find>sessionData</find>
-      <find>Log.d</find>
-      <find>Onfinish</find>
+      <find>drawable</find>
+      <find>mVoiceKey</find>
+      <find>mSuggestionsStrip</find>
+      <find>updateVisibility</find>
+      <find>mSuggestionStripView</find>
+      <find>shouldShowSuggestionsStrip</find>
+      <find>auto</find>
+      <find>toString</find>
+      <find>toFlagsString</find>
+      <find>mApplicationSpecifiedCompletionOn</find>
+      <find>flagAutoComplete</find>
+      <find>currentSettingsValues</find>
+      <find>mNotificationHelper</find>
+      <find>flagNoSuggestions</find>
+      <find>mSuggestionsEnabledPerUserSettings</find>
+      <find>shouldShowSuggestionCandidates</find>
+      <find>TYPE_TEXT_FLAG_NO_SUGGESTIONS</find>
+      <find>notification_message</find>
+      <find>suggestions_strip_voice_key</find>
+      <find>shortcut_key</find>
+      <find>iconShortcutKey</find>
+      <find>voice</find>
+      <find>holo</find>
+      <find>stylable</find>
+      <find>mShouldShowSuggestions</find>
+      <find>dark</find>
+      <find>styleable</find>
+      <find>Keyboard_iconShortcutKey</find>
+      <find>keyboardAttr</find>
+      <find>typeofmood_logo</find>
     </findStrings>
     <replaceStrings>
       <replace>MainActivityCalendar</replace>
-      <replace />
       <replace>SESSION_DATA</replace>
       <replace>ID</replace>
       <replace>Happy</replace>
@@ -136,6 +154,7 @@
       <replace>USER_ID</replace>
       <replace>.mp3</replace>
       <replace>.dict</replace>
+      <replace />
     </replaceStrings>
   </component>
   <component name="GradleLocalSettings">
@@ -2170,9 +2189,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/app/java/res/xml/prefs_screen_advanced.xml" />
-        <option value="$PROJECT_DIR$/app/java/src/typeofmood/ime/latin/utils/DictionaryHeaderUtils.java" />
-        <option value="$PROJECT_DIR$/app/java/src/typeofmood/ime/latin/BinaryDictionary.java" />
         <option value="$PROJECT_DIR$/app/java/src/typeofmood/ime/latin/ExpandableBinaryDictionary.java" />
         <option value="$PROJECT_DIR$/app/java/src/typeofmood/ime/notificationhandler/ChooseMood.java" />
         <option value="$PROJECT_DIR$/app/java/src/typeofmood/ime/FloatingWindow.java" />
@@ -2181,10 +2197,7 @@
         <option value="$PROJECT_DIR$/app/java/src/typeofmood/ime/keyboard/MainKeyboardView.java" />
         <option value="$PROJECT_DIR$/app/java/src/typeofmood/ime/datahandler/DataContract.java" />
         <option value="$PROJECT_DIR$/app/java/src/typeofmood/ime/datahandler/KeyboardPayload.java" />
-        <option value="$PROJECT_DIR$/app/java/res/layout/typeofmood_notification.xml" />
-        <option value="$PROJECT_DIR$/app/java/res/layout/typeofmood_notification_small.xml" />
         <option value="$PROJECT_DIR$/app/java/src/typeofmood/ime/notificationhandler/ActionReceiver.java" />
-        <option value="$PROJECT_DIR$/app/java/res/layout/calendar_fragment.xml" />
         <option value="$PROJECT_DIR$/app/java/src/typeofmood/ime/ChooseMood.java" />
         <option value="$PROJECT_DIR$/app/java/res/layout/nav_header.xml" />
         <option value="$PROJECT_DIR$/app/java/res/layout/home_fragment.xml" />
@@ -2193,7 +2206,6 @@
         <option value="$PROJECT_DIR$/app/java/src/typeofmood/ime/latin/setup/SetupStartIndicatorView.java" />
         <option value="$PROJECT_DIR$/app/java/res/layout/setup_steps_cards.xml" />
         <option value="$PROJECT_DIR$/app/java/res/drawable/ic_setup_step4.xml" />
-        <option value="$PROJECT_DIR$/app/java/res/values/strings.xml" />
         <option value="$PROJECT_DIR$/app/java/res/values/strings-appname.xml" />
         <option value="$PROJECT_DIR$/app/java/res/values/config-per-form-factor.xml" />
         <option value="$PROJECT_DIR$/app/java/res/drawable/background_box.xml" />
@@ -2217,14 +2229,21 @@
         <option value="$PROJECT_DIR$/app/build.gradle" />
         <option value="$PROJECT_DIR$/app/java/src/typeofmood/ime/datahandler/MoodDatabaseHelper.java" />
         <option value="$PROJECT_DIR$/app/java/src/typeofmood/ime/MainActivityCalendarFragment.java" />
-        <option value="$PROJECT_DIR$/app/java/src/typeofmood/ime/latin/LatinIME.java" />
         <option value="$PROJECT_DIR$/app/java/src/typeofmood/ime/MainActivityDBDebugFragment.java" />
         <option value="$PROJECT_DIR$/build.gradle" />
+        <option value="$PROJECT_DIR$/app/java/src/typeofmood/ime/latin/LatinIME.java" />
+        <option value="$PROJECT_DIR$/app/java/src/typeofmood/ime/latin/InputAttributes.java" />
         <option value="$PROJECT_DIR$/app/java/src/typeofmood/ime/notificationhandler/NotificationHelper.java" />
+        <option value="$PROJECT_DIR$/app/java/res/values/strings.xml" />
+        <option value="$PROJECT_DIR$/app/java/res/layout/calendar_fragment.xml" />
+        <option value="$PROJECT_DIR$/app/java/res/layout/typeofmood_notification_small.xml" />
+        <option value="$PROJECT_DIR$/app/java/res/layout/typeofmood_notification.xml" />
+        <option value="$PROJECT_DIR$/app/java/src/typeofmood/ime/latin/suggestions/SuggestionStripView.java" />
+        <option value="$PROJECT_DIR$/app/java/res/drawable/ic_tree.xml" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="9" />
     <option name="y" value="6" />
     <option name="width" value="1346" />
@@ -2245,6 +2264,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scratches" />
+      <pane id="ProjectPane" />
       <pane id="AndroidView">
         <subPane>
           <expand>
@@ -2260,15 +2281,13 @@
             <path>
               <item name="TypeOfMood" type="1abcf292:AndroidViewProjectNode" />
               <item name="app" type="feadf853:AndroidModuleNode" />
-              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
-              <item name="typeofmood" type="cbb59c9e:AndroidPsiDirectoryNode" />
+              <item name="res" type="d4f16f75:AndroidResFolderNode" />
             </path>
             <path>
               <item name="TypeOfMood" type="1abcf292:AndroidViewProjectNode" />
               <item name="app" type="feadf853:AndroidModuleNode" />
-              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
-              <item name="typeofmood" type="cbb59c9e:AndroidPsiDirectoryNode" />
-              <item name="ime" type="462c0819:PsiDirectoryNode" />
+              <item name="res" type="d4f16f75:AndroidResFolderNode" />
+              <item name="layout" type="ddeffd01:AndroidResFolderTypeNode" />
             </path>
             <path>
               <item name="TypeOfMood" type="1abcf292:AndroidViewProjectNode" />
@@ -2278,17 +2297,15 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
-      <pane id="ProjectPane" />
-      <pane id="Scratches" />
       <pane id="PackagesPane" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="android.sdk.path" value="$USER_HOME$/AppData/Local/Android/Sdk" />
-    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.project.gradle" />
+    <property name="settings.editor.selected.configurable" value="instant.run" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/.." />
-    <property name="device.picker.selection" value="Nexus_5_API_27" />
+    <property name="device.picker.selection" value="0c80d8de0704" />
     <property name="android.profiler.active" value="true" />
     <property name="android.project.structure.last.selected" value="app" />
     <property name="android.project.structure.proportion" value="0.15" />
@@ -2486,38 +2503,39 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="7" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info id="Android Profiler" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.32894737" sideWeight="0.4969743" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Android Profiler" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32894737" sideWeight="0.4969743" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32894737" sideWeight="0.49394855" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.295764" sideWeight="0.51960784" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2473525" sideWeight="0.54950494" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.33552632" sideWeight="0.39334342" order="8" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33552632" sideWeight="0.6248109" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2598684" sideWeight="0.44704992" order="8" side_tool="true" content_ui="tabs" />
+      <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32980332" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33552632" sideWeight="0.6210287" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32894737" sideWeight="0.48487142" order="12" side_tool="false" content_ui="tabs" />
-      <window_info id="Logcat" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.33552632" sideWeight="0.60665655" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Logcat" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33552632" sideWeight="0.790469" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Captures" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2473525" sideWeight="0.48039216" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Build" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2598684" sideWeight="0.5620272" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2473525" sideWeight="0.45049506" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Build" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2598684" sideWeight="0.5529501" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32980332" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Device File Explorer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.28971255" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2473525" sideWeight="0.54950494" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32980332" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
       <window_info id="Android Profiler" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32894737" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -2562,173 +2580,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/java/src/typeofmood/ime/latin/utils/DictionaryInfoUtils.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="118">
-          <caret line="428" column="0" lean-forward="false" selection-start-line="428" selection-start-column="0" selection-end-line="428" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/java/src/typeofmood/ime/latin/BinaryDictionaryGetter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="118">
-          <caret line="250" column="0" lean-forward="false" selection-start-line="250" selection-start-column="0" selection-end-line="250" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/java/res/xml/kbd_arabic.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-188">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/java/res/values/bools.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="243">
-          <caret line="22" column="16" lean-forward="false" selection-start-line="22" selection-start-column="16" selection-end-line="22" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/java/res/xml/method.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="143">
-          <caret line="119" column="58" lean-forward="true" selection-start-line="119" selection-start-column="58" selection-end-line="119" selection-end-column="58" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/java/res/xml/dictionary_settings.xml">
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-217">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/Documents/AndroidStudio/DeviceExplorer/emulator-5554/data/data/typeofmood.ime/shared_prefs/important_notice_pref.xml" />
-    <entry file="file://$USER_HOME$/Documents/AndroidStudio/DeviceExplorer/emulator-5554/data/data/typeofmood.ime/shared_prefs/typeofmood.ime_preferences.xml" />
-    <entry file="file://$USER_HOME$/Documents/AndroidStudio/DeviceExplorer/emulator-5554/data/data/typeofmood.ime/shared_prefs/user_info.xml" />
-    <entry file="file://$USER_HOME$/Documents/AndroidStudio/DeviceExplorer/emulator-5554/data/data/typeofmood.ime/shared_prefs/user_info_finished_clicked.xml" />
-    <entry file="file://$USER_HOME$/Documents/AndroidStudio/DeviceExplorer/emulator-5554/system/app/UserDictionaryProvider/UserDictionaryProvider.apk" />
-    <entry file="file://$USER_HOME$/Documents/AndroidStudio/DeviceExplorer/emulator-5554/system/app/LatinIMEGooglePrebuilt/LatinIMEGooglePrebuilt.apk" />
-    <entry file="file://$USER_HOME$/Documents/AndroidStudio/DeviceExplorer/emulator-5556/data/data/com.android.providers.userdictionary/databases/user_dict.db" />
-    <entry file="file://$PROJECT_DIR$/app/java/res/xml/prefs.xml">
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-302">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/Documents/AndroidStudio/DeviceExplorer/emulator-5558/system/app/LatinIMEGooglePrebuilt/LatinIMEGooglePrebuilt.apk" />
-    <entry file="file://$PROJECT_DIR$/app/java/res/xml/prefs_screen_advanced.xml">
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-409">
-          <caret line="8" column="0" lean-forward="true" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/java/src/typeofmood/ime/latin/RichInputMethodManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="277">
-          <caret line="503" column="8" lean-forward="false" selection-start-line="503" selection-start-column="8" selection-end-line="503" selection-end-column="73" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/java/src/typeofmood/ime/latin/settings/SettingsActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="279">
-          <caret line="53" column="0" lean-forward="false" selection-start-line="53" selection-start-column="0" selection-end-line="53" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/java/src/typeofmood/ime/latin/SystemBroadcastReceiver.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="50">
-          <caret line="146" column="33" lean-forward="false" selection-start-line="146" selection-start-column="22" selection-end-line="146" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/java/AndroidManifest.xml">
-      <provider editor-type-id="android-manifest">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="986">
-          <caret line="91" column="47" lean-forward="false" selection-start-line="91" selection-start-column="47" selection-end-line="91" selection-end-column="47" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/java/src/typeofmood/ime/latin/settings/SettingsValues.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2346">
-          <caret line="174" column="96" lean-forward="false" selection-start-line="174" selection-start-column="69" selection-end-line="174" selection-end-column="96" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/java/src/typeofmood/ime/latin/setup/SetupWizardActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="5202">
-          <caret line="359" column="49" lean-forward="false" selection-start-line="359" selection-start-column="49" selection-end-line="359" selection-end-column="49" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/java/res/menu/drawer_view.xml">
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="663">
-          <caret line="39" column="14" lean-forward="false" selection-start-line="39" selection-start-column="14" selection-end-line="39" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/java/src/typeofmood/ime/UserInfoConfiguration.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1107">
-          <caret line="108" column="83" lean-forward="false" selection-start-line="108" selection-start-column="83" selection-end-line="108" selection-end-column="83" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/java/src/typeofmood/ime/MainActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="566">
-          <caret line="103" column="0" lean-forward="false" selection-start-line="103" selection-start-column="0" selection-end-line="108" selection-end-column="55" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/java/src/typeofmood/ime/latin/settings/Settings.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="5270">
-          <caret line="359" column="0" lean-forward="false" selection-start-line="359" selection-start-column="0" selection-end-line="359" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/java/res/layout/activity_main.xml">
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="13" column="40" lean-forward="false" selection-start-line="13" selection-start-column="40" selection-end-line="13" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/java/src/typeofmood/ime/latin/BinaryDictionaryFileDumper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1072">
-          <caret line="491" column="95" lean-forward="true" selection-start-line="491" selection-start-column="95" selection-end-line="491" selection-end-column="95" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/java/src/typeofmood/ime/latin/setup/SetupActivity.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -2856,14 +2707,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/java/src/typeofmood/ime/latin/LatinIME.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="12325">
-          <caret line="871" column="39" lean-forward="false" selection-start-line="871" selection-start-column="39" selection-end-line="871" selection-end-column="39" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/build.gradle">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="170">
@@ -2872,23 +2715,268 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/build/outputs/apk/debug/app-debug.apk">
-      <provider selected="true" editor-type-id="apk-viewer">
-        <state />
+    <entry file="file://$PROJECT_DIR$/app/build/outputs/apk/debug/app-debug.apk" />
+    <entry file="file://$PROJECT_DIR$/app/java/res/xml/rowkeys_symbols3.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="186">
+          <caret line="54" column="8" lean-forward="false" selection-start-line="54" selection-start-column="8" selection-end-line="54" selection-end-column="8" />
+        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/build.gradle">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="9" column="3" lean-forward="false" selection-start-line="9" selection-start-column="3" selection-end-line="9" selection-end-column="3" />
+        <state relative-caret-position="0">
+          <caret line="14" column="17" lean-forward="false" selection-start-line="14" selection-start-column="17" selection-end-line="14" selection-end-column="17" />
           <folding />
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/java/src/typeofmood/ime/latin/suggestions/MoreSuggestionsView.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="126">
+          <caret line="34" column="19" lean-forward="false" selection-start-line="34" selection-start-column="19" selection-end-line="34" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/java/res/drawable-mdpi/typeofmood_notification_icon.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/java/res/drawable/ic_emoji_emoticons_lxx_light.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-319">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/java/res/drawable-hdpi/ic_notify_dictionary.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/java/res/drawable-xhdpi/ic_happy.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/java/res/drawable-mdpi/ic_happy.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/java/res/drawable-hdpi/ic_happy.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/java/src/typeofmood/ime/latin/LatinIME.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="126">
+          <caret line="1656" column="49" lean-forward="false" selection-start-line="1656" selection-start-column="49" selection-end-line="1656" selection-end-column="49" />
+          <folding>
+            <element signature="e#10924#11021#0" expanded="false" />
+            <element signature="e#11076#11173#0" expanded="false" />
+            <element signature="e#41250#41282#1" expanded="false" />
+            <element signature="e#85629#85989#0" expanded="false" />
+            <element signature="e#85988#85989#0" expanded="false" />
+            <element signature="e#86887#86932#0" expanded="false" />
+            <element signature="e#87054#87098#0" expanded="false" />
+            <element signature="e#87413#88967#0" expanded="false" />
+            <element signature="e#88966#88967#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/java/res/values/strings.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="241">
+          <caret line="591" column="39" lean-forward="false" selection-start-line="591" selection-start-column="39" selection-end-line="591" selection-end-column="39" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/java/res/layout/calendar_fragment.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="15" column="38" lean-forward="false" selection-start-line="15" selection-start-column="38" selection-end-line="15" selection-end-column="38" />
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/java/res/layout/suggestions_strip.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="169">
+          <caret line="55" column="52" lean-forward="false" selection-start-line="55" selection-start-column="25" selection-end-line="55" selection-end-column="52" />
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/java/src/typeofmood/ime/notificationhandler/NotificationHelper.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1666">
-          <caret line="115" column="55" lean-forward="false" selection-start-line="115" selection-start-column="55" selection-end-line="115" selection-end-column="55" />
+        <state relative-caret-position="167">
+          <caret line="97" column="45" lean-forward="false" selection-start-line="97" selection-start-column="44" selection-end-line="97" selection-end-column="45" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/java/res/drawable/btn_keyboard_key_functional_ics.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-103">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/java/res/layout/typeofmood_notification_small.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="55" column="76" lean-forward="false" selection-start-line="55" selection-start-column="76" selection-end-line="55" selection-end-column="76" />
+          <folding>
+            <element signature="e#2081#2111#0" expanded="false" />
+            <element signature="e#2624#2639#0" expanded="false" />
+            <element signature="e#3408#3427#0" expanded="false" />
+            <element signature="e#3999#4016#0" expanded="false" />
+            <element signature="e#4592#4613#0" expanded="false" />
+            <element signature="e#5190#5212#0" expanded="false" />
+            <element signature="e#5786#5805#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/java/res/layout/typeofmood_notification.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1122">
+          <caret line="66" column="0" lean-forward="false" selection-start-line="66" selection-start-column="0" selection-end-line="66" selection-end-column="0" />
+          <folding>
+            <element signature="e#1914#1943#0" expanded="false" />
+            <element signature="e#2330#2345#0" expanded="false" />
+            <element signature="e#3086#3116#0" expanded="false" />
+            <element signature="e#3907#3926#0" expanded="false" />
+            <element signature="e#4498#4515#0" expanded="false" />
+            <element signature="e#5091#5112#0" expanded="false" />
+            <element signature="e#5689#5711#0" expanded="false" />
+            <element signature="e#6285#6304#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/java/res/drawable-xxxhdpi/sym_keyboard_voice_lxx_dark.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/java/res/drawable-mdpi/sym_keyboard_voice_holo_dark.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/java/res/drawable-hdpi/sym_keyboard_voice_holo_dark.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/java/res/drawable-mdpi/sym_keyboard_voice_off_lxx_light.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/java/res/values/keyboard-icons-holo.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="188">
+          <caret line="30" column="50" lean-forward="true" selection-start-line="30" selection-start-column="50" selection-end-line="30" selection-end-column="50" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/java/res/values/keyboard-icons-lxx-dark.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-407">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/java/src/typeofmood/ime/latin/InputAttributes.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="653">
+          <caret line="104" column="88" lean-forward="false" selection-start-line="104" selection-start-column="88" selection-end-line="104" selection-end-column="88" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/java/res/values/colors.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="277">
+          <caret line="54" column="69" lean-forward="false" selection-start-line="54" selection-start-column="61" selection-end-line="54" selection-end-column="69" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/java/src/typeofmood/ime/latin/suggestions/SuggestionStripView.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="78">
+          <caret line="177" column="98" lean-forward="false" selection-start-line="177" selection-start-column="74" selection-end-line="177" selection-end-column="98" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/java/res/drawable-hdpi/typeofmood_notification_icon.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/java/res/drawable/typeofmood_logo.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/java/res/layout/home_fragment.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4">
+          <caret line="17" column="48" lean-forward="false" selection-start-line="17" selection-start-column="33" selection-end-line="17" selection-end-column="48" />
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/java/res/layout/activity_main.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="20" column="58" lean-forward="false" selection-start-line="20" selection-start-column="28" selection-end-line="20" selection-end-column="58" />
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/java/res/drawable/ic_tree.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="0" lean-forward="true" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
           <folding />
         </state>
       </provider>

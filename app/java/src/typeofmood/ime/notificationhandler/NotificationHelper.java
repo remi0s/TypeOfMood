@@ -109,30 +109,24 @@ public class NotificationHelper extends ContextWrapper {
         smallremoteViews.setOnClickPendingIntent(R.id.buttonLater,pIntentLater);
 
 
-
-
-        return new NotificationCompat.Builder(getApplicationContext(),ChannelID)
-                .setSmallIcon(R.drawable.typeofmood_notification_icon)
-                .setPriority(Notification.PRIORITY_MAX)
-                .setVisibility(Notification.VISIBILITY_PUBLIC)
+        NotificationCompat.Builder builder=new NotificationCompat.Builder(getApplicationContext(),ChannelID);
+        builder.setSmallIcon(R.mipmap.ic_typeofmood)
+                .setPriority(NotificationCompat.PRIORITY_MAX)
+                .setVisibility(NotificationCompat.VISIBILITY_PUBLIC)
                 .setCustomContentView(smallremoteViews)
                 .setCustomBigContentView(remoteViews)
                 .setOnlyAlertOnce(true)
                 .setWhen(System.currentTimeMillis())
-                .setDefaults(Notification.DEFAULT_SOUND | Notification.DEFAULT_VIBRATE)
+                .setDefaults(Notification.DEFAULT_ALL)
                 .setColor(Color.GREEN)
                 .setOngoing(true)
-
-//                .setContentText(message)
-//                .setContentTitle(title)
-
-//                .setStyle(new NotificationCompat.DecoratedCustomViewStyle())
-
-//                .setTicker("How would you describe your mood?")
-//                .setVisibility(Notification.VISIBILITY_PUBLIC)
-
-//                .setContentInfo("How would you describe your mood?")
                 .setAutoCancel(true);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+            builder.setPriority(NotificationManager.IMPORTANCE_HIGH);
+        }
+
+
+        return builder;
 
 
 
