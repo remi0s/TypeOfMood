@@ -705,7 +705,7 @@ public final class MainKeyboardView extends KeyboardView implements DrawingProxy
             case MotionEvent.ACTION_UP:
             case MotionEvent.ACTION_POINTER_UP:
                 mLatinIme.sessionData.UpTime.add(eventTime);
-                mLatinIme.sessionData.PressureValue.add(event.getPressure()); //(event.getPointerId(0)
+                mLatinIme.sessionData.PressureValue.add(event.getPressure()); //alternative could be getSize()
                 if(mLatinIme.isLongPressedFlag==true){
                     mLatinIme.sessionData.IsLongPress.add(1);
                     mLatinIme.isLongPressedFlag=false;

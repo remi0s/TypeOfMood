@@ -114,13 +114,13 @@
                 android:padding="0dp"/>
 
             <Button
-                android:id="@+id/buttonRelaxed"
+                android:id="@+id/buttonNeutral"
                 style="@style/Widget.AppCompat.Button.ButtonBar.AlertDialog"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:background="@android:color/transparent"
-                android:text="@string/btn_relaxed"
+                android:text="@string/btn_neutral"
                 android:textColor="@android:color/holo_blue_light"
                 android:textSize="12sp"
                 android:includeFontPadding="false"
@@ -145,7 +145,7 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="@android:color/transparent"
+                android:background="@android:color/background_light"
                 android:text="@string/btn_later"
                 android:textColor="@android:color/holo_blue_dark"
                 android:textSize="12sp"

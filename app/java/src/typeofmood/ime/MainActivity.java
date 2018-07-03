@@ -2,9 +2,11 @@ package typeofmood.ime;
 
 import android.content.Intent;
 import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.NotificationCompat;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
@@ -14,9 +16,14 @@ import android.view.MenuItem;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
+import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
+
 import typeofmood.ime.latin.settings.SettingsActivity;
 import typeofmood.ime.latin.setup.SetupWizardActivity;
 import typeofmood.ime.notificationhandler.NotificationHelper;
+import typeofmood.ime.notificationhandler.NotificationHelperPhysical;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -27,6 +34,21 @@ public class MainActivity extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        if(Build.VERSION.SDK_INT >= 21) { // set status bar color
+            Window window = getWindow();
+
+            // clear FLAG_TRANSLUCENT_STATUS flag:
+            window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+
+            // add FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS flag to the window
+            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+
+            // finally change the color
+            window.setStatusBarColor(ContextCompat.getColor(getApplication(),R.color.my_statusbar_color));
+        }
+
+
 
 
         Fragment fr = new MainActivityHomeFragment();
@@ -39,7 +61,7 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         ActionBar actionbar = getSupportActionBar();
         actionbar.setDisplayHomeAsUpEnabled(true);
-        actionbar.setHomeAsUpIndicator(R.drawable.ic_menu_white);
+        actionbar.setHomeAsUpIndicator(R.drawable.ic_menu);
 
         mDrawerLayout = findViewById(R.id.drawer_layout);
 
@@ -85,8 +107,9 @@ public class MainActivity extends AppCompatActivity {
                                 break;
                             case R.id.nav_Mood2:
                                 menuItem.setChecked(false);
-                                Intent intent2 = new Intent(getApplicationContext(), ChooseMood.class);
-                                startActivity(intent2);
+                                NotificationHelperPhysical mNotificationHelperPhysical = new NotificationHelperPhysical(getApplicationContext());
+                                NotificationCompat.Builder nbPhysical = mNotificationHelperPhysical.getTypeOfMoodNotification("TypeOfMood", "Please Expand to describe your mood!");
+                                mNotificationHelperPhysical.getManager().notify(mNotificationHelperPhysical.notification_id, nbPhysical.build());
                                 break;
                             case R.id.nav_Statistics:
                                 fr=new MainActivityStatisticsFragment();

@@ -135,6 +135,7 @@ import org.apache.http.impl.client.DefaultHttpClient;
 import org.json.JSONObject;
 
 import typeofmood.ime.R;
+import typeofmood.ime.notificationhandler.NotificationHelperPhysical;
 
 import static android.content.Intent.FLAG_ACTIVITY_NEW_TASK;
 
@@ -149,7 +150,9 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
 
     public static KeyboardDynamics sessionData=null; //remi0s
     private static NotificationHelper mNotificationHelper;
+    private static NotificationHelperPhysical mNotificationHelperPhysical ;
     public static String currentMood="undefined";
+    public static String currentPhysicalState="undefined";
     public static Date latestNotificationTime;
     public static Boolean laterPressed=false;
     public static Boolean isLongPressedFlag=false;
@@ -160,6 +163,7 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
     public static String pref_ID="";
     public static String pref_gender="";
     public static String pref_health="";
+    public int sessionsCounter=0;
 
 
 
@@ -857,6 +861,7 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
         if (sessionData != null) {
             sessionData.StopDateTime = new Date(System.currentTimeMillis());
             sessionData.CurrentMood = currentMood;
+            sessionData.CurrentPhysicalState=currentPhysicalState;
 
 
 
@@ -865,7 +870,7 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
             if (latestNotificationTime != null) {
                 long minutesPassed = TimeUnit.MINUTES.convert(sessionData.StopDateTime.getTime() - latestNotificationTime.getTime(), TimeUnit.MILLISECONDS);
                 Log.d("minutesPassed", "minutesPassed: " + minutesPassed);
-                if (minutesPassed >= 60) {
+                if (minutesPassed >= 60 || (sessionsCounter>=6 && minutesPassed>=30)) {
                     notificationFlag = 1;
                 }else if(laterPressed && minutesPassed>=30){
                     notificationFlag = 1;
@@ -873,23 +878,26 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
                 }
             } else {
                 notificationFlag = 1;
+                sessionsCounter=0;
             }
 
             if (notificationFlag == 1 && sessionData.DownTime.size() > 5) {
                 String title = "TypeOfMood";
                 String message = "Please Expand to describe your mood!";
+
+
+                mNotificationHelperPhysical = new NotificationHelperPhysical(this);
+                NotificationCompat.Builder nbPhysical = mNotificationHelperPhysical.getTypeOfMoodNotification(title, message);
+                mNotificationHelperPhysical.getManager().notify(mNotificationHelperPhysical.notification_id, nbPhysical.build());
+
                 mNotificationHelper = new NotificationHelper(this);
                 NotificationCompat.Builder nb = mNotificationHelper.getTypeOfMoodNotification(title, message);
                 mNotificationHelper.getManager().notify(mNotificationHelper.notification_id, nb.build());
 //                CreateAlertDialogWithRadioButtonGroup();
 
-//                if(isConnected()){
-//                    new HttpAsyncTask().execute("server here");
-//                }
-
-
-                 
-
+                if(isConnected()){
+                    new HttpAsyncTask().execute("server link here");
+                }
 
             }
 
@@ -899,6 +907,7 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
                 String sessionDataString = gson.toJson(sessionData, KeyboardDynamics.class);
                 Log.d("Json", "Json string: " + sessionDataString);
                 AddData(sessionDataString);
+                sessionsCounter=sessionsCounter+1;
             }
 
             sessionData= null;
@@ -2132,7 +2141,7 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
                 jsonObject.accumulate("USER_ID",pref_ID);
                 jsonObject.accumulate("USER_AGE", pref_age);
                 jsonObject.accumulate("USER_GENDER", pref_gender);
-                jsonObject.accumulate("USER_HEALTH", pref_health);
+                jsonObject.accumulate("USER_PHQ9", pref_health);
                 jsonObject.accumulate("DATE_DATA", payload.get(i).DateData);
                 jsonObject.accumulate("SESSION_DATA", payload.get(i).SessionData);
 
@@ -2209,7 +2218,7 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
 
     }
 
-    private class HttpAsyncTask extends AsyncTask<String, Void, String> {
+    public class HttpAsyncTask extends AsyncTask<String, Void, String> {
         @Override
         protected String doInBackground(String... urls) {
             ArrayList<KeyboardPayload> notSendData = new ArrayList<>();
@@ -2219,8 +2228,8 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
                     KeyboardPayload payload=new KeyboardPayload();
                     payload.DocID=data.getString(0);//DocID
                     payload.DateData=data.getString(1); //DateTime
-                    payload.UserID=data.getString(2); //UserID
-                    payload.SessionData= data.getString(3); //SessionData
+//                    payload.UserID=data.getString(2); //UserID
+                    payload.SessionData= data.getString(2); //SessionData
                     notSendData.add(payload);
                 }
             }else{
@@ -2253,6 +2262,7 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
     public static SharedPreferences getSharedPreferences (Context context,String pref) {
         return context.getSharedPreferences("FILE", MODE_PRIVATE);
     }
+
 
 
 

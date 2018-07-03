@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:theme="@style/ThemeOverlay.AppCompat"
-    android:background="@android:color/holo_green_dark"
+    android:background="#ffd3d3d3"
     android:padding="16dp"
     android:orientation="vertical"
     android:gravity="bottom">
@@ -25,7 +25,7 @@
         android:textSize="25sp"
         android:gravity="center"
         android:padding="5dp"
-        android:textColor="@android:color/white"
+        android:textColor="@android:color/black"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 
 

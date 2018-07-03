@@ -19,7 +19,7 @@
     coreApp="true"
     package="typeofmood.ime">
 
-    <uses-sdk android:minSdkVersion="14" android:targetSdkVersion="27" />
+    <uses-sdk android:minSdkVersion="16" android:targetSdkVersion="27" />
 
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.DOWNLOAD_WITHOUT_NOTIFICATION" />
@@ -90,7 +90,7 @@
         <activity android:name="typeofmood.ime.MainActivity"
             android:label="@string/my_english_ime_name"
             android:launchMode="singleInstance"
-            android:theme="@style/Theme.AppCompat.NoActionBar"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
             android:icon="@mipmap/ic_typeofmood"
             >
             <intent-filter>
@@ -203,6 +203,13 @@
 
         </receiver>
 
+        <receiver android:name="typeofmood.ime.notificationhandler.ActionReceiverPhysical">
+            <intent-filter>
+                <action android:name="actionPhysical"/>
+            </intent-filter>
+
+        </receiver>
+
         <activity android:name="typeofmood.ime.ChooseMood"
             android:label="Select your Mood"
             android:theme="@style/Theme.AppCompat.NoActionBar"
@@ -214,6 +221,15 @@
         </activity>
 
         <activity android:name="typeofmood.ime.UserInfoConfiguration"
+            android:theme="@style/Theme.AppCompat.Light"
+            android:label="@string/my_english_ime_name_user_info"
+            android:icon="@drawable/ic_launcher_keyboard">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name="typeofmood.ime.Phq9questionnaire"
             android:theme="@style/Theme.AppCompat.Light"
             android:label="@string/my_english_ime_name_user_info"
             android:icon="@drawable/ic_launcher_keyboard">

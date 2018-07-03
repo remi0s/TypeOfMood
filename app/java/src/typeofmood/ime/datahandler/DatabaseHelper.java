@@ -77,6 +77,19 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             return true;
         }
     }
+
+    public boolean updateToNullForResend() {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues cv = new ContentValues();
+        cv.putNull("SEND_TIME");
+        long result =db.update(TABLE_NAME, cv, "SEND_TIME IS NOT NULL",null);
+        if (result == -1) {
+            return false;
+        } else {
+            return true;
+        }
+
+    }
     public Cursor getListContents(){
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor data = db.rawQuery("SELECT * FROM " + TABLE_NAME, null);

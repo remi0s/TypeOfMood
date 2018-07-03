@@ -1,16 +1,25 @@
 package typeofmood.ime;
 
 import android.app.Activity;
+import android.app.DatePickerDialog;
+import android.app.Dialog;
+import android.app.DialogFragment;
 import android.app.Fragment;
+import android.content.Context;
 import android.database.Cursor;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.DatePicker;
+import android.widget.EditText;
 import android.widget.ListAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.jjoe64.graphview.DefaultLabelFormatter;
@@ -21,117 +30,244 @@ import com.jjoe64.graphview.helper.StaticLabelsFormatter;
 import com.jjoe64.graphview.series.BarGraphSeries;
 import com.jjoe64.graphview.series.DataPoint;
 
+import java.text.DecimalFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
+import java.util.Locale;
 
 import typeofmood.ime.datahandler.DatabaseHelper;
 import typeofmood.ime.datahandler.MoodDatabaseHelper;
 
 public class MainActivityStatisticsFragment extends Fragment {
-    @Override
+    private static EditText mStartDate;
+    private static EditText mEndDate;
+    private static String dbStartDate="";
+    private static String dbEndDate="";
+    private static ListView listView;
+    private static SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd-MM-yyyy",Locale.US);
+    private static DatePickerDialogFragment mDatePickerDialogFragment;
+    private static Button btnBeginning;
+    private static GraphView graph;
+    private static MoodDatabaseHelper myDB;
 
+    @Override
+    public void onCreate(Bundle savedInstanceState){
+        super.onCreate(savedInstanceState);
+
+
+
+    }
+
+    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         View rootView = inflater.inflate(
                 R.layout.statistics_fragment, container, false);
-
-        final ListView listView = rootView.findViewById(R.id.statisticsListView);
-        GraphView graph = rootView.findViewById(R.id.graph);
-        if(listView != null) {
-
-            MoodDatabaseHelper myDB;
-            myDB=new MoodDatabaseHelper(getActivity().getApplicationContext());
-            ArrayList<String> theList = new ArrayList<>();
-            int countHappy=myDB.getListMoodContents("Happy").getCount(),
-                    countSad=myDB.getListMoodContents("Sad").getCount(),
-                    countRelaxed=myDB.getListMoodContents("Relaxed").getCount(),
-                    countStressed=myDB.getListMoodContents("Stressed").getCount();
-            int totalCount=countHappy+countSad+countRelaxed+countStressed;
-
-            if (totalCount==0) {
-                Toast.makeText(getActivity(), "Database was empty", Toast.LENGTH_SHORT).show();
-                theList.clear();
-                ListAdapter listAdapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_list_item_1, theList);
-                listView.setAdapter(listAdapter);
-            } else {
-
-                float percentHappy=(float)((countHappy*100)/totalCount);
-                float percentSad=(float)((countSad*100)/totalCount);
-                float percentRelaxed=(float)((countRelaxed*100)/totalCount);
-                float percentStressed=(float)((countStressed*100)/totalCount);
-                theList.add("Happy\n"+Float.toString(percentHappy)+"%");
-                theList.add("Sad\n"+Float.toString(percentSad)+"%");
-                theList.add("Relaxed\n"+Float.toString(percentRelaxed)+"%");
-                theList.add("Stressed\n"+Float.toString(percentStressed)+"%");
-                ListAdapter listAdapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_list_item_1, theList);
-                listView.setAdapter(listAdapter);
-                if(graph != null) {
+        mStartDate = rootView.findViewById(R.id.editTextStart);
+        mEndDate =  rootView.findViewById(R.id.editTextEnd);
+        btnBeginning = rootView.findViewById(R.id.buttonFromBeginning);
+        mDatePickerDialogFragment = new DatePickerDialogFragment();
+        graph = rootView.findViewById(R.id.graph);
+        myDB=new MoodDatabaseHelper(getActivity().getApplicationContext());
 
 
-
-                    BarGraphSeries<DataPoint> series = new BarGraphSeries<>(new DataPoint[]{
-                            new DataPoint(1, percentHappy),
-                            new DataPoint(2, percentSad),
-                            new DataPoint(3, percentRelaxed),
-                            new DataPoint(4, percentStressed),
-
-                    });
-                    graph.addSeries(series);
-
-                    graph.getViewport().setMinX(0);
-                    graph.getViewport().setMaxX(5);
-                    graph.getViewport().setMinY(0.0);
-                    graph.getViewport().setMaxY(100.0);
-                    graph.getViewport().setYAxisBoundsManual(true);
-                    graph.getViewport().setXAxisBoundsManual(true);
-
-                    series.setSpacing(10);
-
-                    GridLabelRenderer gridLabel = graph.getGridLabelRenderer();
-                    StaticLabelsFormatter staticLabelsFormatter = new StaticLabelsFormatter(graph);
-                    staticLabelsFormatter.setHorizontalLabels(new String[] {" ","Happy", "Sad", "Relaxed", "Stressed"," "});
-                    graph.getGridLabelRenderer().setLabelFormatter(staticLabelsFormatter);
-                    graph.getGridLabelRenderer().setNumHorizontalLabels(6);
-
-                    series.setValueDependentColor(new ValueDependentColor<DataPoint>() {
-                        @Override
-                        public int get(DataPoint data) {
-                            switch((int)data.getX()){
-                                case 1:
-                                    return Color.rgb(102,153,0); //happy
-                                case 2:
-                                    return Color.rgb(0,0,0);  //sad
-                                case 3:
-                                    return Color.rgb(0,0,255);  //relaxed
-                                case 4:
-                                    return Color.rgb(255,69,0);  //stressed
-                                default :
-                                    return Color.rgb((int) data.getX()*255/4, (int) Math.abs(data.getY()*255/6), 100);
-
-
-                            }
-                        }
-                    });
-
-
-// draw values on top
-                    series.setDrawValuesOnTop(true);
-                    series.setValuesOnTopColor(Color.WHITE);
-
-
-                }
-
-
-            }
-        }
         return rootView;
+    }
+
+    @Override
+    public void onViewCreated(View view, Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        final Context context=getActivity();
+        listView = view.findViewById(R.id.statisticsListView);
+        if(listView != null) {
+            updateStatistic(view.getRootView(), listView, dbStartDate, dbEndDate,true,context);
+        }
+
+        mStartDate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mDatePickerDialogFragment.setFlag(DatePickerDialogFragment.FLAG_START_DATE);
+                mDatePickerDialogFragment.show(getFragmentManager(), "datePicker");
+            }
+
+        });
+
+        mEndDate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mDatePickerDialogFragment.setFlag(DatePickerDialogFragment.FLAG_END_DATE);
+                mDatePickerDialogFragment.show(getFragmentManager(), "datePicker");
+            }
+
+        });
+        btnBeginning.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                updateStatistic(v.getRootView(), listView, dbStartDate, dbEndDate,true,context);
+            }
+
+        });
 
     }
+
+
 
     @Override
     public void onAttach(Activity activity) {
         super.onAttach(activity);
 
     }
+
+    public static void updateStatistic(View rootView,ListView listView,String StartDate,String EndDate,boolean FromTheBeginning, Context context){
+
+        ArrayList<String> theList = new ArrayList<>();
+        int countHappy , countSad, countNeutral, countStressed;
+        if(FromTheBeginning) {
+            countHappy = myDB.getListMoodContents("Happy").getCount();
+            countSad = myDB.getListMoodContents("Sad").getCount();
+            countNeutral = myDB.getListMoodContents("Neutral").getCount();
+            countStressed = myDB.getListMoodContents("Stressed").getCount();
+        }else{
+            countHappy=myDB.getPeriodContentsMood(StartDate,EndDate,"Happy");
+            countSad=myDB.getPeriodContentsMood(StartDate,EndDate,"Sad");
+            countNeutral=myDB.getPeriodContentsMood(StartDate,EndDate,"Neutral");
+            countStressed=myDB.getPeriodContentsMood(StartDate,EndDate,"Stressed");
+        }
+//
+        int totalCount=countHappy+countSad+countNeutral+countStressed;
+
+        if (totalCount==0) {
+            Toast.makeText(context, "Didn't find any registered data", Toast.LENGTH_SHORT).show();
+            graph.removeAllSeries();
+            theList.clear();
+            ListAdapter listAdapter = new ArrayAdapter<>(context, android.R.layout.simple_list_item_1, theList);
+            listView.setAdapter(listAdapter);
+        } else {
+            DecimalFormat df = new DecimalFormat("#0.00");
+            float percentHappy=((float)countHappy*100)/totalCount;
+            float percentSad=((float)countSad*100)/totalCount;
+            float percentNeutral=((float)countNeutral*100)/totalCount;
+            float percentStressed=((float)countStressed*100)/totalCount;
+            theList.add("Happy\n"+df.format(percentHappy)+"%");
+            theList.add("Sad\n"+df.format(percentSad)+"%");
+            theList.add("Neutral\n"+df.format(percentNeutral)+"%");
+            theList.add("Stressed\n"+df.format(percentStressed)+"%");
+            ListAdapter listAdapter = new ArrayAdapter<>(context, android.R.layout.simple_list_item_1, theList);
+            listView.setAdapter(listAdapter);
+            if(graph != null) {
+
+
+
+
+                BarGraphSeries<DataPoint> series = new BarGraphSeries<>(new DataPoint[]{
+                        new DataPoint(1, percentHappy),
+                        new DataPoint(2, percentSad),
+                        new DataPoint(3, percentNeutral),
+                        new DataPoint(4, percentStressed),
+
+                });
+                graph.removeAllSeries();
+                graph.addSeries(series);
+
+                graph.getViewport().setMinX(0);
+                graph.getViewport().setMaxX(5);
+                graph.getViewport().setMinY(0.0);
+                graph.getViewport().setMaxY(100.0);
+                graph.getViewport().setYAxisBoundsManual(true);
+                graph.getViewport().setXAxisBoundsManual(true);
+
+                series.setSpacing(10);
+
+                GridLabelRenderer gridLabel = graph.getGridLabelRenderer();
+                StaticLabelsFormatter staticLabelsFormatter = new StaticLabelsFormatter(graph);
+                staticLabelsFormatter.setHorizontalLabels(new String[] {" ","Happy", "Sad", "Neutral", "Stressed"," "});
+                graph.getGridLabelRenderer().setLabelFormatter(staticLabelsFormatter);
+                graph.getGridLabelRenderer().setNumHorizontalLabels(6);
+
+                series.setValueDependentColor(new ValueDependentColor<DataPoint>() {
+                    @Override
+                    public int get(DataPoint data) {
+                        switch((int)data.getX()){
+                            case 1:
+                                return Color.rgb(102,153,0); //happy
+                            case 2:
+                                return Color.rgb(0,0,0);  //sad
+                            case 3:
+                                return Color.rgb(0,0,255);  //Neutral
+                            case 4:
+                                return Color.rgb(255,69,0);  //stressed
+                            default :
+                                return Color.rgb((int) data.getX()*255/4, (int) Math.abs(data.getY()*255/6), 100);
+
+
+                        }
+                    }
+                });
+
+
+// draw values on top
+                series.setDrawValuesOnTop(true);
+                series.setValuesOnTopColor(Color.WHITE);
+
+
+            }
+
+
+        }
+    }
+
+    public static class DatePickerDialogFragment extends DialogFragment implements
+            DatePickerDialog.OnDateSetListener {
+        public static final int FLAG_START_DATE = 0;
+        public static final int FLAG_END_DATE = 1;
+
+        private int flag = 0;
+
+        @Override
+        public Dialog onCreateDialog(Bundle savedInstanceState) {
+            Calendar calendar = Calendar.getInstance();
+            int year = calendar.get(Calendar.YEAR);
+            int month = calendar.get(Calendar.MONTH);
+            int day = calendar.get(Calendar.DAY_OF_MONTH);
+
+            return new DatePickerDialog(getActivity(), this, year, month, day);
+        }
+
+        public void setFlag(int i) {
+            flag = i;
+        }
+
+        @Override
+        public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+            Calendar calendar = Calendar.getInstance();
+            Calendar dbCalendar = Calendar.getInstance();
+            calendar.set(year, monthOfYear, dayOfMonth);
+            dbCalendar.set(year, monthOfYear, dayOfMonth);
+            SimpleDateFormat textFormat = new SimpleDateFormat("dd-MM-yyyy",Locale.US);
+            SimpleDateFormat dbFormat = new SimpleDateFormat("yyyy-MM-dd",Locale.US);
+
+
+            if (flag == FLAG_START_DATE) {
+                mStartDate.setText(textFormat.format(calendar.getTime()));
+                dbStartDate=dbFormat.format(calendar.getTime());
+            } else if (flag == FLAG_END_DATE) {
+                mEndDate.setText(textFormat.format(calendar.getTime()));
+                dbEndDate=dbFormat.format(calendar.getTime());
+            }
+
+            if(!mStartDate.getText().toString().isEmpty() && !mEndDate.getText().toString().isEmpty()){
+                Log.d("qq",dbStartDate+"   "+dbEndDate);
+                if(listView != null) {
+                    Context context=getActivity();
+                    updateStatistic(view.getRootView(), listView, dbStartDate, dbEndDate, false,context);
+                }
+            }
+        }
+    }
+
+
 
 
 }

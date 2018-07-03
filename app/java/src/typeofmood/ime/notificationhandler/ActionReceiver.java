@@ -25,9 +25,9 @@ public class ActionReceiver extends BroadcastReceiver {
         }else if(action.equals("Sad")){
             performSad(context);
             mydb.addData("Sad");
-        }else if(action.equals("Relaxed")){
+        }else if(action.equals("Neutral")){
             performRelaxed(context);
-            mydb.addData("Relaxed");
+            mydb.addData("Neutral");
         }else if(action.equals("Stressed")){
             performStressed(context);
             mydb.addData("Stressed");
@@ -47,8 +47,9 @@ public class ActionReceiver extends BroadcastReceiver {
     }
 
     public void performLater(Context context){
-        Toast.makeText(context,"Later", Toast.LENGTH_SHORT).show();
+        Toast.makeText(context,"Not Now", Toast.LENGTH_SHORT).show();
         LatinIME.laterPressed=true;
+//        LatinIME.currentMood="Postponing";
 
     }
 
@@ -65,8 +66,8 @@ public class ActionReceiver extends BroadcastReceiver {
     }
 
     public void performRelaxed(Context context){
-        Toast.makeText(context,"Relaxed", Toast.LENGTH_SHORT).show();
-        LatinIME.currentMood="Relaxed";
+        Toast.makeText(context,"Neutral", Toast.LENGTH_SHORT).show();
+        LatinIME.currentMood="Neutral";
 
     }
 

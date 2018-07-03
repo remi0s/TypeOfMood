@@ -152,7 +152,7 @@ public final class SystemBroadcastReceiver extends BroadcastReceiver {
         context.getPackageManager().setComponentEnabledSetting(
                 new ComponentName(context, SetupActivity.class),
                 Settings.readShowSetupWizardIcon(prefs, context)
-                        ? PackageManager.COMPONENT_ENABLED_STATE_DISABLED //COMPONENT_ENABLED_STATE_ENABLED //remi0s always disabled
+                        ? PackageManager.COMPONENT_ENABLED_STATE_ENABLED //COMPONENT_ENABLED_STATE_ENABLED //remi0s always disabled
                         : PackageManager.COMPONENT_ENABLED_STATE_DISABLED,
                 PackageManager.DONT_KILL_APP);
     }

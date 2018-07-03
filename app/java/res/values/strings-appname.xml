@@ -25,6 +25,7 @@
 
     <string name="my_english_ime_name">TypeOfMood</string>
     <string name="my_english_ime_name_user_info">TypeOfMood User Info</string>
+    <string name="my_english_ime_name_phq9">TypeOfMood PHQ-9 Questionnaire</string>
     <string name="my_english_ime_name_keyboard">Settings TypeOfMood</string>
 
     <!-- Name of Android spell checker service. AOSP(Android Open Source Project) should not be translated.

@@ -19,6 +19,7 @@ public class KeyboardDynamics {
     public Date StopDateTime;
     public String CurrentAppName;
     public String CurrentMood;
+    public String CurrentPhysicalState;
 
     public KeyboardDynamics()
     {
@@ -34,5 +35,6 @@ public class KeyboardDynamics {
         StopDateTime = new Date();                  //done
         CurrentAppName="undefined";
         CurrentMood="undefined";
+        CurrentPhysicalState="undefined";
     }
 }

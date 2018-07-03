@@ -44,20 +44,32 @@ public class MainActivityCalendarFragment extends Fragment {
                     if(mMonth.length()==1){
                         mMonth="0"+mMonth;
                     }
-                    String date=mDay+"-"+mMonth+"-"+mYear;
+                    String date=mYear+"-"+mMonth+"-"+mDay;
                     if(listView != null) {
                         MoodDatabaseHelper myDB;
                         myDB=new MoodDatabaseHelper(getActivity().getApplicationContext());
                         ArrayList<String> theList = new ArrayList<>();
-                        Cursor data = myDB.getListDateContents(date);
-                        if (data.getCount() == 0) {
-                            Toast.makeText(getActivity(), "There are no recorded emotion states at "+date, Toast.LENGTH_SHORT).show();
+                        Cursor data = myDB.getListDateContentsMood(date);
+                        Cursor data2 = myDB.getListDateContentsPhysical(date);
+                        if (data.getCount() == 0 && data2.getCount()==0) {
+                            Toast.makeText(getActivity(), "There are no recorded emotion states at "+mDay+"-"+mMonth+"-"+mYear, Toast.LENGTH_SHORT).show();
                             theList.clear();
                             ListAdapter listAdapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_list_item_1, theList);
                             listView.setAdapter(listAdapter);
                         } else {
                             while (data.moveToNext()) {
-                                theList.add("At "+data.getString(3)+"\n"+"You were feeling "+data.getString(1));
+                                String strData2="";
+                                if(data2.moveToNext()){
+                                    String state=data2.getString(2);
+                                    if(state.equals("Relaxation")){
+                                        strData2=" and "+"Relaxed";
+                                    }else if(state.equals("Tiredness")){
+                                        strData2=" and "+"Tired";
+                                    }else if(state.equals("Sickness")){
+                                        strData2=" and "+"Sick";
+                                    }
+                                }
+                                theList.add("At "+data.getString(4)+"\n"+"You were feeling "+data.getString(1)+strData2);
                                 ListAdapter listAdapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_list_item_1, theList);
                                 listView.setAdapter(listAdapter);
                             }

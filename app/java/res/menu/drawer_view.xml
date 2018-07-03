@@ -12,8 +12,8 @@
             android:title="Current Mood" />
         <item
             android:id="@+id/nav_Mood2"
-            android:icon="@drawable/ic_mood"
-            android:title="Current Mood with layout" />
+            android:icon="@drawable/ic_stethoscope"
+            android:title="Current Physical State" />
         <item
             android:id="@+id/nav_Calendar"
             android:icon="@drawable/ic_calendar"

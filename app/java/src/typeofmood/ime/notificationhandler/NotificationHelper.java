@@ -64,7 +64,7 @@ public class NotificationHelper extends ContextWrapper {
         sadAction.putExtra("action","Sad");
 
         Intent relaxedAction = new Intent(this,ActionReceiver.class);
-        relaxedAction.putExtra("action","Relaxed");
+        relaxedAction.putExtra("action","Neutral");
 
         Intent stressedAction = new Intent(this,ActionReceiver.class);
         stressedAction.putExtra("action","Stressed");
@@ -93,9 +93,10 @@ public class NotificationHelper extends ContextWrapper {
         remoteViews.setImageViewResource(R.id.smallIcon,R.mipmap.ic_typeofmood);
         remoteViews.setOnClickPendingIntent(R.id.buttonHappy,pIntentHappy);
         remoteViews.setOnClickPendingIntent(R.id.buttonSad,pIntentSad);
-        remoteViews.setOnClickPendingIntent(R.id.buttonRelaxed,pIntentRelaxed);
+        remoteViews.setOnClickPendingIntent(R.id.buttonNeutral,pIntentRelaxed);
         remoteViews.setOnClickPendingIntent(R.id.buttonStressed,pIntentStressed);
         remoteViews.setOnClickPendingIntent(R.id.buttonLater,pIntentLater);
+
 
 
         RemoteViews smallremoteViews = new RemoteViews(getPackageName(), R.layout.typeofmood_notification_small);
@@ -104,7 +105,7 @@ public class NotificationHelper extends ContextWrapper {
         smallremoteViews.setImageViewResource(R.id.smallIcon,R.mipmap.ic_typeofmood);
         smallremoteViews.setOnClickPendingIntent(R.id.buttonHappy,pIntentHappy);
         smallremoteViews.setOnClickPendingIntent(R.id.buttonSad,pIntentSad);
-        smallremoteViews.setOnClickPendingIntent(R.id.buttonRelaxed,pIntentRelaxed);
+        smallremoteViews.setOnClickPendingIntent(R.id.buttonNeutral,pIntentRelaxed);
         smallremoteViews.setOnClickPendingIntent(R.id.buttonStressed,pIntentStressed);
         smallremoteViews.setOnClickPendingIntent(R.id.buttonLater,pIntentLater);
 

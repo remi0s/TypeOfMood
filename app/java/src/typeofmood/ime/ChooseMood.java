@@ -22,7 +22,7 @@ import typeofmood.ime.latin.LatinIME;
 
 public class ChooseMood extends AppCompatActivity {
     private RadioGroup radioGroup;
-    private RadioButton Happy, Sad, Relaxed, Stressed, Later;
+    private RadioButton Happy, Sad, Neutral, Stressed, Later;
     private Button button;
     MoodDatabaseHelper mydb;
 
@@ -51,7 +51,7 @@ public class ChooseMood extends AppCompatActivity {
 //                    Toast.makeText(getApplicationContext(), "choice: Sad",
 //                            Toast.LENGTH_SHORT).show();
 //                }else if(checkedId == R.id.radioRelaxed) {
-//                    Toast.makeText(getApplicationContext(), "choice: Relaxed",
+//                    Toast.makeText(getApplicationContext(), "choice: Neutral",
 //                            Toast.LENGTH_SHORT).show();
 //                }else if(checkedId == R.id.radioStressed) {
 //                    Toast.makeText(getApplicationContext(), "choice: Stressed",
@@ -66,7 +66,7 @@ public class ChooseMood extends AppCompatActivity {
 
         Happy = findViewById(R.id.radioHappy);
         Sad =  findViewById(R.id.radioSad);
-        Relaxed =  findViewById(R.id.radioRelaxed);
+        Neutral =  findViewById(R.id.radioRelaxed);
         Stressed =  findViewById(R.id.radioStressed);
         Later = findViewById(R.id.radioLater);
 
@@ -87,10 +87,10 @@ public class ChooseMood extends AppCompatActivity {
                     LatinIME.currentMood="Sad";
                     mydb.addData("Sad");
                     Toast.makeText(getApplicationContext(),"Sad", Toast.LENGTH_SHORT).show();
-                }else if(selectedId == Relaxed.getId()) {
-                    LatinIME.currentMood="Relaxed";
-                    mydb.addData("Relaxed");
-                    Toast.makeText(getApplicationContext(),"Relaxed", Toast.LENGTH_SHORT).show();
+                }else if(selectedId == Neutral.getId()) {
+                    LatinIME.currentMood="Neutral";
+                    mydb.addData("Neutral");
+                    Toast.makeText(getApplicationContext(),"Neutral", Toast.LENGTH_SHORT).show();
                 }else if(selectedId == Stressed.getId()) {
                     LatinIME.currentMood="Stressed";
                     mydb.addData("Stressed");

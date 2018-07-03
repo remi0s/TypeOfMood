@@ -1,14 +1,49 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
+    android:background="#ffdbdbdb"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     >
+
+    <EditText
+        android:id="@+id/editTextStart"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:clickable="false"
+        android:cursorVisible="false"
+        android:focusable="false"
+        android:focusableInTouchMode="false"
+        android:hint="Starting Date"
+        android:inputType="number"
+        android:gravity="center"
+        android:textAlignment="center" />
+
+
+    <EditText
+        android:id="@+id/editTextEnd"
+        android:layout_width="112dp"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/editTextStart"
+        android:layout_below="@+id/editTextStart"
+        android:clickable="false"
+        android:cursorVisible="false"
+        android:focusable="false"
+        android:focusableInTouchMode="false"
+        android:gravity="center"
+        android:hint="Ending Date"
+        android:inputType="number"
+        android:textAlignment="center" />
+
+
     <com.jjoe64.graphview.GraphView
+        android:id="@+id/graph"
         android:layout_width="match_parent"
         android:layout_height="200dip"
-        android:layout_marginTop="30dp"
-        android:id="@+id/graph" />
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/editTextEnd" />
 
     <ListView
         android:id="@+id/statisticsListView"
@@ -16,5 +51,14 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/graph"
         android:layout_marginTop="30dp"/>
+
+    <Button
+        android:id="@+id/buttonFromBeginning"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentTop="true"
+        android:text="From the beginning" />
+
 
 </RelativeLayout>
