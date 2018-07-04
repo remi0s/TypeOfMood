@@ -69,6 +69,12 @@
         style="@style/setupStepActionLabelStyleCommon"
         android:layout_marginTop="@dimen/setup_step_horizontal_line_height" />
     <TextView
+        android:id="@+id/setup_Settings"
+        android:text="@string/setup_settings_action"
+        style="@style/setupStepActionLabelStyle"
+        android:visibility="gone"
+        android:layout_marginTop="@dimen/setup_step_horizontal_line_height" />
+    <TextView
         android:id="@+id/setup_finish"
         android:text="@string/setup_finish_action"
         style="@style/setupStepActionLabelStyle"

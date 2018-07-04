@@ -439,6 +439,7 @@ mobile devices. [CHAR LIMIT=25] -->
     <string name="setup_step4_action" translatable="false">Configure user related info</string>
     <!-- The label of the button that finishes the setup wizard. [CHAR_LIMIT=64] -->
     <string name="setup_finish_action">Finished</string>
+    <string name="setup_settings_action">Settings</string>
     <!-- Option to show setup wizard icon. [CHAR LIMIT=30]-->
     <string name="show_setup_wizard_icon">Show app icon</string>
     <!-- Description for the option to show setup wizard application icon of this IME in the laucher. [CHAR_LIMIT=65] -->

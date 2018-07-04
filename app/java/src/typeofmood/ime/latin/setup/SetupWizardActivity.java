@@ -69,6 +69,7 @@ public final class SetupWizardActivity extends Activity implements View.OnClickL
     private View mActionNext;
     private TextView mStep1Bullet;
     private TextView mActionFinish;
+    private TextView mActionSettings; //remi0s
     private SetupStepGroup mSetupStepGroup;
     private static final String STATE_STEP = "step";
     private int mStepNumber;
@@ -246,6 +247,11 @@ public final class SetupWizardActivity extends Activity implements View.OnClickL
         TextViewCompatUtils.setCompoundDrawablesRelativeWithIntrinsicBounds(mActionFinish,
                 getResources().getDrawable(R.drawable.ic_setup_finish), null, null, null);
         mActionFinish.setOnClickListener(this);
+
+        mActionSettings = (TextView)findViewById(R.id.setup_Settings);
+        TextViewCompatUtils.setCompoundDrawablesRelativeWithIntrinsicBounds(mActionSettings,
+                getResources().getDrawable(R.drawable.ic_setup_settings_icon), null, null, null);
+        mActionSettings.setOnClickListener(this); //remi0s
     }
 
     @Override
@@ -258,6 +264,10 @@ public final class SetupWizardActivity extends Activity implements View.OnClickL
                     | Intent.FLAG_ACTIVITY_NO_ANIMATION
                     | Intent.FLAG_ACTIVITY_EXCLUDE_FROM_RECENTS);
             startActivity(intent);
+            return;
+        }
+        if (v == mActionSettings) { //remi0s
+            invokeSettingsOfThisIme();
             return;
         }
         final int currentStep = determineSetupStepNumber();
@@ -472,6 +482,7 @@ public final class SetupWizardActivity extends Activity implements View.OnClickL
         mSetupStepGroup.enableStep(mStepNumber, isStepActionAlreadyDone);
         mActionNext.setVisibility(isStepActionAlreadyDone || (mStepNumber == STEP_3) ? View.VISIBLE : View.GONE);
         mActionFinish.setVisibility(isUserInfoFinishedPressed() &&(mStepNumber == STEP_4) ? View.VISIBLE : View.GONE); //remi0s VISIBLE
+        mActionSettings.setVisibility(isUserInfoFinishedPressed() &&(mStepNumber == STEP_4) ? View.VISIBLE : View.GONE); //remi0s VISIBLE
     }
 
     static final class SetupStep implements View.OnClickListener {

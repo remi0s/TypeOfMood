@@ -8,6 +8,7 @@ import android.app.Fragment;
 import android.content.Context;
 import android.database.Cursor;
 import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -31,9 +32,11 @@ import com.jjoe64.graphview.series.BarGraphSeries;
 import com.jjoe64.graphview.series.DataPoint;
 
 import java.text.DecimalFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.Locale;
 
@@ -54,6 +57,7 @@ public class MainActivityStatisticsFragment extends Fragment {
     private static GraphView graph;
     private static MoodDatabaseHelper myDB;
     private static String selectedStatistic="mood";
+
 
     @Override
     public void onCreate(Bundle savedInstanceState){
@@ -77,6 +81,9 @@ public class MainActivityStatisticsFragment extends Fragment {
         graph = rootView.findViewById(R.id.graph);
         myDB=new MoodDatabaseHelper(getActivity().getApplicationContext());
 
+        btnBeginning.setBackgroundColor(Color.GRAY);
+        btnMood.setBackgroundColor(Color.GRAY);
+        btnPhysical.setBackgroundColor(Color.LTGRAY);
 
         return rootView;
     }
@@ -110,11 +117,35 @@ public class MainActivityStatisticsFragment extends Fragment {
         btnBeginning.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                if(selectedStatistic.equals("mood")){
-                    updateStatisticMood(v.getRootView(), listView, dbStartDate, dbEndDate,true,context);
-                }else{
-                    updateStatisticPhysical(v.getRootView(), listView, dbStartDate, dbEndDate,true,context);
+                if(listView != null) {
+                    if(((ColorDrawable)btnBeginning.getBackground()).getColor()==Color.GRAY){
+                        if (((ColorDrawable)btnMood.getBackground()).getColor()==Color.GRAY) {
+                            updateStatisticMood(v.getRootView(), listView, dbStartDate, dbEndDate, false, context);
+                        } else {
+                            updateStatisticPhysical(v.getRootView(), listView, dbStartDate, dbEndDate, false, context);
+                        }
+
+                        if (mStartDate.getText().toString().isEmpty() && mEndDate.getText().toString().isEmpty()) {
+                            Toast.makeText(context, "You haven't chose any dates", Toast.LENGTH_SHORT).show();
+                        }
+                        btnBeginning.setBackgroundColor(Color.LTGRAY);
+                        mStartDate.setText("");
+                        mEndDate.setText("");
+
+                    }else{
+
+                            if (((ColorDrawable) btnMood.getBackground()).getColor() == Color.GRAY) {
+                                updateStatisticMood(v.getRootView(), listView, dbStartDate, dbEndDate, true, context);
+                            } else {
+                                updateStatisticPhysical(v.getRootView(), listView, dbStartDate, dbEndDate, true, context);
+                            }
+
+                        btnBeginning.setBackgroundColor(Color.GRAY);
+
+                    }
+
                 }
+
 
             }
 
@@ -123,8 +154,36 @@ public class MainActivityStatisticsFragment extends Fragment {
         btnMood.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                updateStatisticMood(v.getRootView(), listView, dbStartDate, dbEndDate,true,context);
-                selectedStatistic="mood";
+                if(listView != null) {
+                    if(((ColorDrawable)btnBeginning.getBackground()).getColor()==Color.GRAY){
+                        if (((ColorDrawable)btnMood.getBackground()).getColor()==Color.GRAY) {
+                            updateStatisticPhysical(v.getRootView(), listView, dbStartDate, dbEndDate, true, context);
+                            btnMood.setBackgroundColor(Color.LTGRAY);
+                            btnPhysical.setBackgroundColor(Color.GRAY);
+                        } else {
+                            updateStatisticMood(v.getRootView(), listView, dbStartDate, dbEndDate, true, context);
+                            btnMood.setBackgroundColor(Color.GRAY);
+                            btnPhysical.setBackgroundColor(Color.LTGRAY);
+                        }
+                    }else {
+                        if (((ColorDrawable) btnMood.getBackground()).getColor() == Color.LTGRAY) {
+                            if (mStartDate.getText().toString().isEmpty() && mEndDate.getText().toString().isEmpty()) {
+                                Toast.makeText(context, "You haven't chose any dates", Toast.LENGTH_SHORT).show();
+                            }
+                            updateStatisticMood(v.getRootView(), listView, dbStartDate, dbEndDate, false, context);
+                            btnMood.setBackgroundColor(Color.GRAY);
+                            btnPhysical.setBackgroundColor(Color.LTGRAY);
+                        } else {
+                            if (mStartDate.getText().toString().isEmpty() && mEndDate.getText().toString().isEmpty()) {
+                                Toast.makeText(context, "You haven't chose any dates", Toast.LENGTH_SHORT).show();
+                            }
+                            updateStatisticPhysical(v.getRootView(), listView, dbStartDate, dbEndDate, false, context);
+                            btnMood.setBackgroundColor(Color.LTGRAY);
+                            btnPhysical.setBackgroundColor(Color.GRAY);
+                        }
+
+                    }
+                }
             }
 
         });
@@ -132,9 +191,40 @@ public class MainActivityStatisticsFragment extends Fragment {
         btnPhysical.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                updateStatisticPhysical(v.getRootView(), listView, dbStartDate, dbEndDate,true,context);
-                selectedStatistic="physical";
+                if (listView != null) {
+                    if(((ColorDrawable)btnBeginning.getBackground()).getColor()==Color.GRAY){
+                        if (((ColorDrawable)btnPhysical.getBackground()).getColor()==Color.GRAY) {
+                            updateStatisticMood(v.getRootView(), listView, dbStartDate, dbEndDate, true, context);
+                            btnPhysical.setBackgroundColor(Color.LTGRAY);
+                            btnMood.setBackgroundColor(Color.GRAY);
+                        } else {
+                            updateStatisticPhysical(v.getRootView(), listView, dbStartDate, dbEndDate, true, context);
+                            btnPhysical.setBackgroundColor(Color.GRAY);
+                            btnMood.setBackgroundColor(Color.LTGRAY);
+                        }
+
+                    }else{
+                        if (((ColorDrawable) btnPhysical.getBackground()).getColor() == Color.LTGRAY) {
+                            if (mStartDate.getText().toString().isEmpty() && mEndDate.getText().toString().isEmpty()) {
+                                Toast.makeText(context, "You haven't chose any dates", Toast.LENGTH_SHORT).show();
+                            }
+                            updateStatisticPhysical(v.getRootView(), listView, dbStartDate, dbEndDate, false, context);
+                            btnPhysical.setBackgroundColor(Color.GRAY);
+                            btnMood.setBackgroundColor(Color.LTGRAY);
+                        } else {
+                            if (mStartDate.getText().toString().isEmpty() && mEndDate.getText().toString().isEmpty()) {
+                                Toast.makeText(context, "You haven't chose any dates", Toast.LENGTH_SHORT).show();
+                            }
+                            updateStatisticMood(v.getRootView(), listView, dbStartDate, dbEndDate, false, context);
+                            btnPhysical.setBackgroundColor(Color.LTGRAY);
+                            btnMood.setBackgroundColor(Color.GRAY);
+                        }
+
+
+                    }
+                }
             }
+
 
         });
 
@@ -152,7 +242,18 @@ public class MainActivityStatisticsFragment extends Fragment {
 
         ArrayList<String> theList = new ArrayList<>();
         int countHappy , countSad, countNeutral, countStressed;
+        String dbStartDate1,dbEndDate1;
         if(FromTheBeginning) {
+            Cursor data =myDB.getListContents();
+            if(data.getCount()!=0) {
+                data.moveToFirst();
+                dbStartDate1 = data.getString(3);
+                data.moveToLast();
+                dbEndDate1 = data.getString(3);
+                mStartDate.setText(parseDate(dbStartDate1));
+                mEndDate.setText(parseDate(dbEndDate1));
+            }
+
             countHappy = myDB.getListMoodContents("Happy").getCount();
             countSad = myDB.getListMoodContents("Sad").getCount();
             countNeutral = myDB.getListMoodContents("Neutral").getCount();
@@ -250,7 +351,18 @@ public class MainActivityStatisticsFragment extends Fragment {
 
         ArrayList<String> theList = new ArrayList<>();
         int countRelaxation , countTiredness, countSickness;
+        String dbStartDate1,dbEndDate1;
         if(FromTheBeginning) {
+            Cursor data =myDB.getListContents();
+            if(data.getCount()!=0){
+                data.moveToFirst();
+                dbStartDate1=data.getString(3);
+                data.moveToLast();
+                dbEndDate1=data.getString(3);
+                mStartDate.setText(parseDate(dbStartDate1));
+                mEndDate.setText(parseDate(dbEndDate1));
+            }
+
             countRelaxation = myDB.getListPhysicalContents("Relaxation").getCount();
             countTiredness = myDB.getListPhysicalContents("Tiredness").getCount();
             countSickness = myDB.getListPhysicalContents("Sickness").getCount();
@@ -380,7 +492,6 @@ public class MainActivityStatisticsFragment extends Fragment {
             }
 
             if(!mStartDate.getText().toString().isEmpty() && !mEndDate.getText().toString().isEmpty()){
-                Log.d("qq",dbStartDate+"   "+dbEndDate);
                 if(listView != null) {
                     Context context=getActivity();
                     if(selectedStatistic.equals("mood")){
@@ -390,10 +501,24 @@ public class MainActivityStatisticsFragment extends Fragment {
                     }
 //                    updateStatisticMood(view.getRootView(), listView, dbStartDate, dbEndDate, false,context);
                 }
+                btnBeginning.setBackgroundColor(Color.LTGRAY);
             }
         }
     }
 
+    public static String parseDate(String date){
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+        Date newDate = null;
+        try {
+            newDate = format.parse(date);
+        } catch (ParseException e) {
+            return "";
+        }
+
+        format = new SimpleDateFormat("dd-MM-yyyy");
+        date = format.format(newDate);
+        return date;
+    }
 
 
 
