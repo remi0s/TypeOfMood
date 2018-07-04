@@ -49,8 +49,11 @@ public class MainActivityStatisticsFragment extends Fragment {
     private static SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd-MM-yyyy",Locale.US);
     private static DatePickerDialogFragment mDatePickerDialogFragment;
     private static Button btnBeginning;
+    private static Button btnMood;
+    private static Button btnPhysical;
     private static GraphView graph;
     private static MoodDatabaseHelper myDB;
+    private static String selectedStatistic="mood";
 
     @Override
     public void onCreate(Bundle savedInstanceState){
@@ -68,6 +71,8 @@ public class MainActivityStatisticsFragment extends Fragment {
         mStartDate = rootView.findViewById(R.id.editTextStart);
         mEndDate =  rootView.findViewById(R.id.editTextEnd);
         btnBeginning = rootView.findViewById(R.id.buttonFromBeginning);
+        btnMood = rootView.findViewById(R.id.buttonMood);
+        btnPhysical = rootView.findViewById(R.id.buttonPhysical);
         mDatePickerDialogFragment = new DatePickerDialogFragment();
         graph = rootView.findViewById(R.id.graph);
         myDB=new MoodDatabaseHelper(getActivity().getApplicationContext());
@@ -82,7 +87,7 @@ public class MainActivityStatisticsFragment extends Fragment {
         final Context context=getActivity();
         listView = view.findViewById(R.id.statisticsListView);
         if(listView != null) {
-            updateStatistic(view.getRootView(), listView, dbStartDate, dbEndDate,true,context);
+            updateStatisticMood(view.getRootView(), listView, dbStartDate, dbEndDate,true,context);
         }
 
         mStartDate.setOnClickListener(new View.OnClickListener() {
@@ -105,7 +110,30 @@ public class MainActivityStatisticsFragment extends Fragment {
         btnBeginning.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                updateStatistic(v.getRootView(), listView, dbStartDate, dbEndDate,true,context);
+                if(selectedStatistic.equals("mood")){
+                    updateStatisticMood(v.getRootView(), listView, dbStartDate, dbEndDate,true,context);
+                }else{
+                    updateStatisticPhysical(v.getRootView(), listView, dbStartDate, dbEndDate,true,context);
+                }
+
+            }
+
+        });
+
+        btnMood.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                updateStatisticMood(v.getRootView(), listView, dbStartDate, dbEndDate,true,context);
+                selectedStatistic="mood";
+            }
+
+        });
+
+        btnPhysical.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                updateStatisticPhysical(v.getRootView(), listView, dbStartDate, dbEndDate,true,context);
+                selectedStatistic="physical";
             }
 
         });
@@ -120,7 +148,7 @@ public class MainActivityStatisticsFragment extends Fragment {
 
     }
 
-    public static void updateStatistic(View rootView,ListView listView,String StartDate,String EndDate,boolean FromTheBeginning, Context context){
+    public static void updateStatisticMood(View rootView,ListView listView,String StartDate,String EndDate,boolean FromTheBeginning, Context context){
 
         ArrayList<String> theList = new ArrayList<>();
         int countHappy , countSad, countNeutral, countStressed;
@@ -218,6 +246,100 @@ public class MainActivityStatisticsFragment extends Fragment {
         }
     }
 
+    public static void updateStatisticPhysical(View rootView,ListView listView,String StartDate,String EndDate,boolean FromTheBeginning, Context context){
+
+        ArrayList<String> theList = new ArrayList<>();
+        int countRelaxation , countTiredness, countSickness;
+        if(FromTheBeginning) {
+            countRelaxation = myDB.getListPhysicalContents("Relaxation").getCount();
+            countTiredness = myDB.getListPhysicalContents("Tiredness").getCount();
+            countSickness = myDB.getListPhysicalContents("Sickness").getCount();
+
+        }else{
+            countRelaxation=myDB.getPeriodContentsPhysical(StartDate,EndDate,"Relaxation");
+            countTiredness=myDB.getPeriodContentsPhysical(StartDate,EndDate,"Tiredness");
+            countSickness=myDB.getPeriodContentsPhysical(StartDate,EndDate,"Sickness");
+
+        }
+//
+        int totalCount=countRelaxation+countTiredness+countSickness;
+
+        if (totalCount==0) {
+            Toast.makeText(context, "Didn't find any registered data", Toast.LENGTH_SHORT).show();
+            graph.removeAllSeries();
+            theList.clear();
+            ListAdapter listAdapter = new ArrayAdapter<>(context, android.R.layout.simple_list_item_1, theList);
+            listView.setAdapter(listAdapter);
+        } else {
+            DecimalFormat df = new DecimalFormat("#0.00");
+            float percentRelaxation=((float)countRelaxation*100)/totalCount;
+            float percentTiredness=((float)countTiredness*100)/totalCount;
+            float percentSickness=((float)countSickness*100)/totalCount;
+            theList.add("Relaxation\n"+df.format(percentRelaxation)+"%");
+            theList.add("Tiredness\n"+df.format(percentTiredness)+"%");
+            theList.add("Sickness\n"+df.format(percentSickness)+"%");
+
+            ListAdapter listAdapter = new ArrayAdapter<>(context, android.R.layout.simple_list_item_1, theList);
+            listView.setAdapter(listAdapter);
+            if(graph != null) {
+
+
+
+
+                BarGraphSeries<DataPoint> series = new BarGraphSeries<>(new DataPoint[]{
+                        new DataPoint(1, percentRelaxation),
+                        new DataPoint(2, percentTiredness),
+                        new DataPoint(3, percentSickness),
+
+                });
+                graph.removeAllSeries();
+                graph.addSeries(series);
+
+                graph.getViewport().setMinX(0);
+                graph.getViewport().setMaxX(4);
+                graph.getViewport().setMinY(0.0);
+                graph.getViewport().setMaxY(100.0);
+                graph.getViewport().setYAxisBoundsManual(true);
+                graph.getViewport().setXAxisBoundsManual(true);
+
+                series.setSpacing(10);
+
+                GridLabelRenderer gridLabel = graph.getGridLabelRenderer();
+                StaticLabelsFormatter staticLabelsFormatter = new StaticLabelsFormatter(graph);
+                staticLabelsFormatter.setHorizontalLabels(new String[] {" ","Relaxation", "Tiredness", "Sickness"," "});
+                graph.getGridLabelRenderer().setLabelFormatter(staticLabelsFormatter);
+                graph.getGridLabelRenderer().setNumHorizontalLabels(5);
+
+                series.setValueDependentColor(new ValueDependentColor<DataPoint>() {
+                    @Override
+                    public int get(DataPoint data) {
+                        switch((int)data.getX()){
+                            case 1:
+                                return Color.rgb(102,153,0); //Relaxation
+                            case 2:
+                                return Color.rgb(0,0,0);  //Tiredness
+                            case 3:
+                                return Color.rgb(255,69,0);  //Sickness
+                            default :
+                                return Color.rgb((int) data.getX()*255/3, (int) Math.abs(data.getY()*255/5), 100);
+
+
+                        }
+                    }
+                });
+
+
+// draw values on top
+                series.setDrawValuesOnTop(true);
+                series.setValuesOnTopColor(Color.WHITE);
+
+
+            }
+
+
+        }
+    }
+
     public static class DatePickerDialogFragment extends DialogFragment implements
             DatePickerDialog.OnDateSetListener {
         public static final int FLAG_START_DATE = 0;
@@ -261,7 +383,12 @@ public class MainActivityStatisticsFragment extends Fragment {
                 Log.d("qq",dbStartDate+"   "+dbEndDate);
                 if(listView != null) {
                     Context context=getActivity();
-                    updateStatistic(view.getRootView(), listView, dbStartDate, dbEndDate, false,context);
+                    if(selectedStatistic.equals("mood")){
+                        updateStatisticMood(view.getRootView(), listView, dbStartDate, dbEndDate,false,context);
+                    }else{
+                        updateStatisticPhysical(view.getRootView(), listView, dbStartDate, dbEndDate,false,context);
+                    }
+//                    updateStatisticMood(view.getRootView(), listView, dbStartDate, dbEndDate, false,context);
                 }
             }
         }

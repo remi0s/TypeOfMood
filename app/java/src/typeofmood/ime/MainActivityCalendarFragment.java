@@ -29,6 +29,7 @@ public class MainActivityCalendarFragment extends Fragment {
                 R.layout.calendar_fragment, container, false);
 
         final ListView listView = rootView.findViewById(R.id.moodListView);
+        final ListView listView2 = rootView.findViewById(R.id.physicalStateListView);
         CalendarView calendarView= rootView.findViewById(R.id.calendarView);
         if(calendarView!=null){
             calendarView.dispatchSetSelected(true);
@@ -49,29 +50,39 @@ public class MainActivityCalendarFragment extends Fragment {
                         MoodDatabaseHelper myDB;
                         myDB=new MoodDatabaseHelper(getActivity().getApplicationContext());
                         ArrayList<String> theList = new ArrayList<>();
+                        ArrayList<String> theList2 = new ArrayList<>();
                         Cursor data = myDB.getListDateContentsMood(date);
                         Cursor data2 = myDB.getListDateContentsPhysical(date);
                         if (data.getCount() == 0 && data2.getCount()==0) {
                             Toast.makeText(getActivity(), "There are no recorded emotion states at "+mDay+"-"+mMonth+"-"+mYear, Toast.LENGTH_SHORT).show();
                             theList.clear();
+                            theList2.clear();
                             ListAdapter listAdapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_list_item_1, theList);
+                            ListAdapter listAdapter2 = new ArrayAdapter<>(getActivity(), android.R.layout.simple_list_item_1, theList2);
                             listView.setAdapter(listAdapter);
+                            listView2.setAdapter(listAdapter2);
                         } else {
                             while (data.moveToNext()) {
-                                String strData2="";
-                                if(data2.moveToNext()){
-                                    String state=data2.getString(2);
-                                    if(state.equals("Relaxation")){
-                                        strData2=" and "+"Relaxed";
-                                    }else if(state.equals("Tiredness")){
-                                        strData2=" and "+"Tired";
-                                    }else if(state.equals("Sickness")){
-                                        strData2=" and "+"Sick";
-                                    }
-                                }
-                                theList.add("At "+data.getString(4)+"\n"+"You were feeling "+data.getString(1)+strData2);
+//                                String strData2="";
+//                                if(data2.moveToNext()){
+//                                    String state=data2.getString(2);
+//                                    if(state.equals("Relaxation")){
+//                                        strData2=" and "+"Relaxed";
+//                                    }else if(state.equals("Tiredness")){
+//                                        strData2=" and "+"Tired";
+//                                    }else if(state.equals("Sickness")){
+//                                        strData2=" and "+"Sick";
+//                                    }
+//                                }
+                                theList.add("At "+data.getString(4)+"\n"+"You were feeling "+data.getString(1));//+strData2
                                 ListAdapter listAdapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_list_item_1, theList);
                                 listView.setAdapter(listAdapter);
+                            }
+
+                            while (data2.moveToNext()) {
+                                theList2.add("At "+data2.getString(4)+"\n"+"Your physical state was "+data2.getString(2));//+strData2
+                                ListAdapter listAdapter2 = new ArrayAdapter<>(getActivity(), android.R.layout.simple_list_item_1, theList2);
+                                listView2.setAdapter(listAdapter2);
                             }
 
                         }

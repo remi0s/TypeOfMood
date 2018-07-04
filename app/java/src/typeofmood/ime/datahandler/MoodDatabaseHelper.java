@@ -124,6 +124,12 @@ public class MoodDatabaseHelper extends SQLiteOpenHelper {
         return data;
     }
 
+    public Cursor getListPhysicalContents(String physical){
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor data = db.rawQuery("SELECT * FROM " + TABLE_NAME +" WHERE PHYSICAL_STATE_DATA = ?", new String[] { physical});
+        return data;
+    }
+
     public Cursor getNotSendContents(){
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor data = db.rawQuery("SELECT * FROM " + TABLE_NAME +" WHERE SEND_TIME IS NULL", null);

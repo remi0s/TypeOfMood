@@ -872,19 +872,21 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
                 Log.d("minutesPassed", "minutesPassed: " + minutesPassed);
                 if (minutesPassed >= 60 || (sessionsCounter>=6 && minutesPassed>=30)) {
                     notificationFlag = 1;
+
                 }else if(laterPressed && minutesPassed>=30){
                     notificationFlag = 1;
+
                     laterPressed=false;
                 }
             } else {
                 notificationFlag = 1;
-                sessionsCounter=0;
+
             }
 
             if (notificationFlag == 1 && sessionData.DownTime.size() > 5) {
                 String title = "TypeOfMood";
                 String message = "Please Expand to describe your mood!";
-
+                sessionsCounter=0;
 
                 mNotificationHelperPhysical = new NotificationHelperPhysical(this);
                 NotificationCompat.Builder nbPhysical = mNotificationHelperPhysical.getTypeOfMoodNotification(title, message);
@@ -896,7 +898,7 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
 //                CreateAlertDialogWithRadioButtonGroup();
 
                 if(isConnected()){
-                    new HttpAsyncTask().execute("server http link here");
+                    new HttpAsyncTask().execute("server link here");
                 }
 
             }
