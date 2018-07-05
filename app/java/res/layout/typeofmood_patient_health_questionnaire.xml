@@ -70,7 +70,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/question1answer4"
-                android:text="Several days" />
+                android:text="Nearly every day" />
             </RadioGroup>
 
         </LinearLayout>
@@ -117,7 +117,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/question2answer4"
-                    android:text="Several days" />
+                    android:text="Nearly every day" />
             </RadioGroup>
 
 
@@ -165,7 +165,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/question3answer4"
-                    android:text="Several days" />
+                    android:text="Nearly every day" />
             </RadioGroup>
 
 
@@ -213,7 +213,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/question4answer4"
-                    android:text="Several days" />
+                    android:text="Nearly every day" />
             </RadioGroup>
 
 
@@ -261,7 +261,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/question5answer4"
-                    android:text="Several days" />
+                    android:text="Nearly every day" />
             </RadioGroup>
 
 
@@ -309,7 +309,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/question6answer4"
-                    android:text="Several days" />
+                    android:text="Nearly every day" />
             </RadioGroup>
 
         </LinearLayout>
@@ -356,7 +356,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/question7answer4"
-                    android:text="Several days" />
+                    android:text="Nearly every day" />
             </RadioGroup>
 
         </LinearLayout>
@@ -403,7 +403,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/question8answer4"
-                    android:text="Several days" />
+                    android:text="Nearly every day" />
             </RadioGroup>
 
         </LinearLayout>
@@ -451,7 +451,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/question9answer4"
-                    android:text="Several days" />
+                    android:text="Nearly every day" />
             </RadioGroup>
 
         </LinearLayout>
