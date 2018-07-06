@@ -79,7 +79,7 @@
     <CheckBoxPreference
         android:key="pref_resize_keyboard"
         android:title="@string/prefs_resize_keyboard"
-        android:defaultValue="false"
+        android:defaultValue="true"
         android:persistent="true" />
     <typeofmood.ime.latin.settings.SeekBarDialogPreference
         android:dependency="pref_resize_keyboard"

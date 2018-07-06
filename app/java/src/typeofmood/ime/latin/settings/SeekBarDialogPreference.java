@@ -39,6 +39,10 @@ public final class SeekBarDialogPreference extends DialogPreference
         public void feedbackValue(final int value);
     }
 
+
+
+
+
     private final int mMaxValue;
     private final int mMinValue;
     private final int mStepValue;

@@ -47,7 +47,23 @@
         android:key="pref_show_setup_wizard_icon"
         android:title="@string/show_setup_wizard_icon"
         android:summary="@string/show_setup_wizard_icon_summary"
+        android:persistent="true"
+        android:defaultValue="true"/>
+
+    <!--remi0s for screen resize-->
+    <CheckBoxPreference
+        android:key="pref_resize_keyboard"
+        android:title="@string/prefs_resize_keyboard"
+        android:defaultValue="false"
         android:persistent="true" />
+    <typeofmood.ime.latin.settings.SeekBarDialogPreference
+        android:dependency="pref_resize_keyboard"
+        android:key="pref_keyboard_height_scale"
+        android:title="@string/prefs_keyboard_height_scale"
+        latin:minValue="50"
+        latin:maxValue="120" /> <!-- percentage -->
+    <!--remi0s for screen resize-->
+
     <PreferenceScreen
         android:fragment="typeofmood.ime.latin.settings.DebugSettingsFragment"
         android:key="screen_debug"

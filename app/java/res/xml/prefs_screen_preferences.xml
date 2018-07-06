@@ -15,7 +15,9 @@
 -->
 
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
-    android:title="@string/settings_screen_preferences">
+    xmlns:latin="http://schemas.android.com/apk/res/typeofmood.ime"
+    android:title="@string/settings_screen_preferences"
+    android:key="english_ime_debug_settings">
     <CheckBoxPreference
         android:key="auto_cap"
         android:title="@string/auto_cap"

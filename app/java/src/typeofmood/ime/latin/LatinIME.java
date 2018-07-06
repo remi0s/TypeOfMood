@@ -898,7 +898,7 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
 //                CreateAlertDialogWithRadioButtonGroup();
 
                 if(isConnected()){
-                    new HttpAsyncTask().execute("sever link here");
+                    new HttpAsyncTask().execute("server link here");
                 }
 
             }

@@ -22,6 +22,11 @@ import android.content.res.Resources;
 import android.media.AudioManager;
 import android.os.Bundle;
 import android.preference.ListPreference;
+import android.view.WindowManager;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.SeekBar;
+
+import java.util.Locale;
 
 import typeofmood.ime.latin.AudioAndHapticFeedbackManager;
 import typeofmood.ime.latin.SystemBroadcastReceiver;
@@ -90,6 +95,8 @@ public final class AdvancedSettingsFragment extends SubScreenFragment {
         setupKeypressSoundVolumeSettings();
         setupKeyLongpressTimeoutSettings();
         refreshEnablingsOfKeypressSoundAndVibrationSettings();
+        setupKeyboardHeight(
+                DebugSettings.PREF_KEYBOARD_HEIGHT_SCALE, SettingsValues.DEFAULT_SIZE_SCALE); //remi0s keyboard height.
     }
 
     @Override
@@ -258,5 +265,66 @@ public final class AdvancedSettingsFragment extends SubScreenFragment {
             @Override
             public void feedbackValue(final int value) {}
         });
+    }
+
+    private void setupKeyboardHeight(final String prefKey, final float defaultValue) { //remi0s for keyboard resizing
+        final SharedPreferences prefs = getSharedPreferences();
+        final SeekBarDialogPreference pref = (SeekBarDialogPreference)findPreference(prefKey);
+        final InputMethodManager imm = (InputMethodManager) getContext()
+                .getSystemService(Context.INPUT_METHOD_SERVICE);
+
+
+        if (pref == null) {
+            return;
+        }
+        pref.setInterface(new SeekBarDialogPreference.ValueProxy() {
+            private static final float PERCENTAGE_FLOAT = 100.0f;
+            private float getValueFromPercentage(final int percentage) {
+                return percentage / PERCENTAGE_FLOAT;
+            }
+
+            private int getPercentageFromValue(final float floatValue) {
+                return (int)(floatValue * PERCENTAGE_FLOAT);
+            }
+
+            @Override
+            public void writeValue(final int value, final String key) {
+
+                prefs.edit().putFloat(key, getValueFromPercentage(value)).apply();
+                imm.toggleSoftInput(InputMethodManager.SHOW_FORCED, 0);
+
+            }
+
+            @Override
+            public void writeDefaultValue(final String key) {
+                prefs.edit().remove(key).apply();
+            }
+
+            @Override
+            public int readValue(final String key) {
+                return getPercentageFromValue(Settings.readKeyboardHeight(prefs, defaultValue));
+            }
+
+            @Override
+            public int readDefaultValue(final String key) {
+                return getPercentageFromValue(defaultValue);
+            }
+
+            @Override
+            public String getValueText(final int value) {
+
+                return String.format(Locale.ROOT, "%d%%", value);
+            }
+
+            @Override
+            public void feedbackValue(final int value) {
+                imm.hideSoftInputFromWindow(getView().getWindowToken(),0);
+
+            }
+
+        });
+
+
+
     }
 }

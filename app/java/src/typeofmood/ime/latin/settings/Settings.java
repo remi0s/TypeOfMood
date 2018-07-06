@@ -148,6 +148,7 @@ public final class Settings implements SharedPreferences.OnSharedPreferenceChang
         mPrefs = PreferenceManager.getDefaultSharedPreferences(context);
         mPrefs.registerOnSharedPreferenceChangeListener(this);
         upgradeAutocorrectionSettings(mPrefs, mRes);
+
     }
 
     public void onDestroy() {
