@@ -56,7 +56,6 @@ public class MainActivityStatisticsFragment extends Fragment {
     private static Button btnPhysical;
     private static GraphView graph;
     private static MoodDatabaseHelper myDB;
-    private static String selectedStatistic="mood";
 
 
     @Override
@@ -494,7 +493,7 @@ public class MainActivityStatisticsFragment extends Fragment {
             if(!mStartDate.getText().toString().isEmpty() && !mEndDate.getText().toString().isEmpty()){
                 if(listView != null) {
                     Context context=getActivity();
-                    if(selectedStatistic.equals("mood")){
+                    if(((ColorDrawable)btnMood.getBackground()).getColor()==Color.GRAY){
                         updateStatisticMood(view.getRootView(), listView, dbStartDate, dbEndDate,false,context);
                     }else{
                         updateStatisticPhysical(view.getRootView(), listView, dbStartDate, dbEndDate,false,context);
