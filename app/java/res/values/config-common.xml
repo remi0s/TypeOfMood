@@ -144,4 +144,5 @@
     <!-- Personalization configuration -->
     <!-- -1 means periocical wipe of the personalization dict is disabled. -->
     <integer name="config_personalization_dict_wipe_interval_in_days">-1</integer>
+    <integer name="step_value_seekbar_height">10</integer>
 </resources>

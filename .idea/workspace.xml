@@ -7,7 +7,7 @@
   </component>
   <component name="AndroidLogFilters">
     <option name="TOOL_WINDOW_LOG_LEVEL" value="verbose" />
-    <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
+    <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="No Filters" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ecb82eb4-f140-44d3-8515-ee6035fc7014" name="Default" comment="" />
@@ -45,34 +45,27 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="SettingsActivity.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/java/src/typeofmood/ime/latin/settings/SettingsActivity.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="102">
-              <caret line="29" column="19" lean-forward="false" selection-start-line="29" selection-start-column="19" selection-end-line="29" selection-end-column="19" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Settings.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/java/src/typeofmood/ime/latin/settings/Settings.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-2873">
-              <caret line="44" column="0" lean-forward="false" selection-start-line="44" selection-start-column="0" selection-end-line="44" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="prefs_screen_advanced.xml" pinned="false" current-in-tab="false">
+      <file leaf-file-name="prefs_screen_advanced.xml" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/java/res/xml/prefs_screen_advanced.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="131">
-              <caret line="58" column="58" lean-forward="false" selection-start-line="58" selection-start-column="35" selection-end-line="58" selection-end-column="58" />
+            <state relative-caret-position="157">
+              <caret line="64" column="51" lean-forward="false" selection-start-line="64" selection-start-column="51" selection-end-line="64" selection-end-column="51" />
               <folding>
-                <element signature="e#2699#2730#0" expanded="true" />
-                <element signature="e#2985#3022#0" expanded="true" />
+                <element signature="e#838#872#0" expanded="true" />
+                <element signature="e#1109#1150#0" expanded="true" />
+                <element signature="e#1290#1342#0" expanded="true" />
+                <element signature="e#1366#1406#0" expanded="true" />
+                <element signature="e#1540#1586#0" expanded="true" />
+                <element signature="e#1766#1812#0" expanded="true" />
+                <element signature="e#1836#1875#0" expanded="true" />
+                <element signature="e#1899#1938#0" expanded="true" />
+                <element signature="e#1963#2003#0" expanded="true" />
+                <element signature="e#2110#2155#0" expanded="true" />
+                <element signature="e#2180#2233#0" expanded="true" />
+                <element signature="e#2403#2435#0" expanded="true" />
+                <element signature="e#2460#2500#0" expanded="true" />
+                <element signature="e#2701#2732#0" expanded="true" />
+                <element signature="e#2987#3024#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -81,33 +74,67 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AdvancedSettingsFragment.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/java/src/typeofmood/ime/latin/settings/AdvancedSettingsFragment.java">
+      <file leaf-file-name="SeekBarDialogPreference.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/java/src/typeofmood/ime/latin/settings/SeekBarDialogPreference.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="131">
-              <caret line="294" column="0" lean-forward="true" selection-start-line="294" selection-start-column="0" selection-end-line="294" selection-end-column="0" />
+            <state relative-caret-position="-833">
+              <caret line="65" column="54" lean-forward="false" selection-start-line="65" selection-start-column="54" selection-end-line="65" selection-end-column="54" />
               <folding>
-                <element signature="e#2984#3064#0" expanded="true" />
-                <element signature="e#3153#3211#0" expanded="true" />
-                <element signature="e#3233#3296#0" expanded="true" />
-                <element signature="e#6916#6963#0" expanded="true" />
-                <element signature="e#7006#7067#0" expanded="true" />
-                <element signature="e#8846#8893#0" expanded="true" />
-                <element signature="e#10389#10450#0" expanded="true" />
-                <element signature="e#11815#11816#0" expanded="true" />
-                <element signature="e#11879#11880#0" expanded="true" />
+                <element signature="e#3970#3993#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SeekBarDialogPreference.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/java/src/typeofmood/ime/latin/settings/SeekBarDialogPreference.java">
+      <file leaf-file-name="AdvancedSettingsFragment.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/java/src/typeofmood/ime/latin/settings/AdvancedSettingsFragment.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="136">
-              <caret line="40" column="0" lean-forward="false" selection-start-line="40" selection-start-column="0" selection-end-line="40" selection-end-column="0" />
+            <state relative-caret-position="-92">
+              <caret line="337" column="41" lean-forward="false" selection-start-line="337" selection-start-column="41" selection-end-line="337" selection-end-column="41" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#3010#3090#0" expanded="true" />
+                <element signature="e#3179#3237#0" expanded="true" />
+                <element signature="e#3259#3322#0" expanded="true" />
+                <element signature="e#6942#6989#0" expanded="true" />
+                <element signature="e#7032#7093#0" expanded="true" />
+                <element signature="e#8872#8919#0" expanded="true" />
+                <element signature="e#10415#10476#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SettingsActivity.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/java/src/typeofmood/ime/latin/settings/SettingsActivity.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-51">
+              <caret line="29" column="19" lean-forward="false" selection-start-line="29" selection-start-column="19" selection-end-line="29" selection-end-column="19" />
               <folding />
             </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="LatinIME.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/java/src/typeofmood/ime/latin/LatinIME.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="138">
+              <caret line="1650" column="34" lean-forward="false" selection-start-line="1650" selection-start-column="17" selection-end-line="1650" selection-end-column="34" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="seek_bar_dialog.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/java/res/layout/seek_bar_dialog.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-515">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+          <provider editor-type-id="android-designer2">
+            <state />
           </provider>
         </entry>
       </file>
@@ -125,20 +152,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>mKeyboardHeightScale</find>
-      <find>SharedPreferences</find>
-      <find>PREF_RESIZE_KEYBOARD</find>
-      <find>PREF_KEYBOARD_HEIGHT_SCALE</find>
-      <find>getSharedPreferences</find>
-      <find>mPrefs</find>
-      <find>readGestureInputEnabled</find>
-      <find>SubScreenFragment</find>
-      <find>PreferenceFragment</find>
-      <find>(SeekBarDialogPreference)findPreference</find>
-      <find>prefs</find>
-      <find>DebugSettingsFragment</find>
-      <find>Debug Settings</find>
-      <find>Debug</find>
       <find>findPreference</find>
       <find>pref_keyboard_height_scale</find>
       <find>pref_show_setup_wizard_icon</find>
@@ -154,7 +167,21 @@
       <find>setSoftInputMode</find>
       <find>SeekBarDialogPreference</find>
       <find>mSeekBar</find>
+      <find>swipe_action_values</find>
+      <find>swipe</find>
+      <find>DialogPreference</find>
+      <find>mStepValue</find>
+      <find>SeekBarDialogPreference_stepValue</find>
+      <find>StepValue</find>
+      <find>config_longpress_timeout_step</find>
+      <find>height</find>
+      <find>getValueText</find>
+      <find>requested</find>
+      <find>setNeutralSuggestionStrip</find>
+      <find>setSuggestedWords</find>
+      <find>getActivity().getWindow().getDecorView()</find>
       <find>View</find>
+      <find>step_value_seekbar_height</find>
     </findStrings>
     <replaceStrings>
       <replace>MainActivityCalendar</replace>
@@ -2214,7 +2241,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/app/java/src/typeofmood/ime/keyboard/MainKeyboardView.java" />
         <option value="$PROJECT_DIR$/app/build/intermediates/manifests/full/debug/AndroidManifest.xml" />
         <option value="$PROJECT_DIR$/app/java/res/values-v19/spinner-style.xml" />
         <option value="$PROJECT_DIR$/build.gradle" />
@@ -2247,7 +2273,6 @@
         <option value="$PROJECT_DIR$/app/java/res/layout/statistics_fragment.xml" />
         <option value="$PROJECT_DIR$/app/java/res/layout/calendar_fragment.xml" />
         <option value="$PROJECT_DIR$/app/java/src/typeofmood/ime/MainActivityCalendarFragment.java" />
-        <option value="$PROJECT_DIR$/app/java/src/typeofmood/ime/MainActivityStatisticsFragment.java" />
         <option value="$PROJECT_DIR$/app/java/res/values/strings.xml" />
         <option value="$PROJECT_DIR$/app/java/res/layout/setup_steps_cards.xml" />
         <option value="$PROJECT_DIR$/app/java/res/drawable/unbundled_settings_02.xml" />
@@ -2258,13 +2283,15 @@
         <option value="$PROJECT_DIR$/app/java/src/typeofmood/ime/latin/setup/SetupWizardActivity.java" />
         <option value="$PROJECT_DIR$/app/java/res/layout/typeofmood_patient_health_questionnaire.xml" />
         <option value="$PROJECT_DIR$/app/java/res/xml/prefs_screen_debug.xml" />
-        <option value="$PROJECT_DIR$/app/java/res/xml/prefs_screen_preferences.xml" />
         <option value="$PROJECT_DIR$/app/java/src/typeofmood/ime/latin/settings/Settings.java" />
         <option value="$PROJECT_DIR$/app/java/src/typeofmood/ime/latin/settings/SettingsValues.java" />
-        <option value="$PROJECT_DIR$/app/java/res/xml/prefs_screen_advanced.xml" />
         <option value="$PROJECT_DIR$/app/java/src/typeofmood/ime/latin/settings/DebugSettingsFragment.java" />
+        <option value="$PROJECT_DIR$/app/java/res/xml/prefs_screen_preferences.xml" />
+        <option value="$PROJECT_DIR$/app/java/src/typeofmood/ime/MainActivityStatisticsFragment.java" />
         <option value="$PROJECT_DIR$/app/java/src/typeofmood/ime/latin/settings/SeekBarDialogPreference.java" />
+        <option value="$PROJECT_DIR$/app/java/res/values/config-common.xml" />
         <option value="$PROJECT_DIR$/app/java/src/typeofmood/ime/latin/settings/AdvancedSettingsFragment.java" />
+        <option value="$PROJECT_DIR$/app/java/res/xml/prefs_screen_advanced.xml" />
       </list>
     </option>
   </component>
@@ -2289,9 +2316,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
       <pane id="Scratches" />
+      <pane id="Scope" />
       <pane id="AndroidView">
         <subPane>
           <expand>
@@ -2343,7 +2369,7 @@
               <item name="TypeOfMood" type="1abcf292:AndroidViewProjectNode" />
               <item name="app" type="feadf853:AndroidModuleNode" />
               <item name="res" type="d4f16f75:AndroidResFolderNode" />
-              <item name="layout" type="ddeffd01:AndroidResFolderTypeNode" />
+              <item name="values" type="ddeffd01:AndroidResFolderTypeNode" />
             </path>
             <path>
               <item name="TypeOfMood" type="1abcf292:AndroidViewProjectNode" />
@@ -2353,6 +2379,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
       <pane id="ProjectPane" />
     </panes>
   </component>
@@ -2559,7 +2586,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info id="Android Profiler" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32894737" sideWeight="0.49394855" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32894737" sideWeight="0.49394855" order="6" side_tool="false" content_ui="tabs" />
@@ -2567,18 +2593,18 @@
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2473525" sideWeight="0.54950494" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.35032895" sideWeight="0.3245083" order="8" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26973686" sideWeight="0.5136157" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32980332" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33552632" sideWeight="0.61724657" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33552632" sideWeight="0.6134645" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32894737" sideWeight="0.48487142" order="12" side_tool="false" content_ui="tabs" />
-      <window_info id="Logcat" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.35032895" sideWeight="0.6754917" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Logcat" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.35032895" sideWeight="0.66414523" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Captures" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2526475" sideWeight="0.45049506" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Build" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.26973686" sideWeight="0.49848714" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25189108" sideWeight="0.45049506" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Build" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26973686" sideWeight="0.48638427" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32894737" sideWeight="0.4969743" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32980332" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Device File Explorer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.28971255" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
@@ -2635,58 +2661,10 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/java/src/typeofmood/ime/datahandler/MoodDatabaseHelper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1003">
-          <caret line="78" column="33" lean-forward="false" selection-start-line="78" selection-start-column="18" selection-end-line="78" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/java/src/typeofmood/ime/MainActivityStatisticsFragment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-492">
-          <caret line="211" column="71" lean-forward="false" selection-start-line="211" selection-start-column="71" selection-end-line="211" selection-end-column="71" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/java/res/layout/setup_wizard.xml">
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-      <provider selected="true" editor-type-id="android-designer2">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/java/res/layout/setup_welcome_title.xml">
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-      <provider selected="true" editor-type-id="android-designer2">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/java/res/layout/setup_steps_title.xml">
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-      <provider selected="true" editor-type-id="android-designer2">
-        <state />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/java/res/layout-land/setup_steps_screen.xml">
       <provider editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
       <provider selected="true" editor-type-id="android-designer2">
@@ -2697,7 +2675,6 @@
       <provider editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
       <provider selected="true" editor-type-id="android-designer2">
@@ -2715,7 +2692,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="140">
           <caret line="441" column="49" lean-forward="false" selection-start-line="441" selection-start-column="49" selection-end-line="441" selection-end-column="49" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2723,7 +2699,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
           <caret line="36" column="78" lean-forward="false" selection-start-line="36" selection-start-column="78" selection-end-line="36" selection-end-column="78" />
-          <folding />
         </state>
       </provider>
       <provider editor-type-id="android-designer2">
@@ -2734,7 +2709,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="340">
           <caret line="20" column="0" lean-forward="false" selection-start-line="20" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
       <provider editor-type-id="android-designer2">
@@ -2750,7 +2724,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2758,7 +2731,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="51">
           <caret line="3" column="36" lean-forward="false" selection-start-line="3" selection-start-column="36" selection-end-line="3" selection-end-column="36" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2766,7 +2738,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
           <caret line="4" column="34" lean-forward="false" selection-start-line="4" selection-start-column="34" selection-end-line="4" selection-end-column="34" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2774,7 +2745,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="153">
           <caret line="9" column="57" lean-forward="false" selection-start-line="9" selection-start-column="57" selection-end-line="9" selection-end-column="57" />
-          <folding />
         </state>
       </provider>
       <provider editor-type-id="android-designer2">
@@ -2785,7 +2755,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="51">
           <caret line="3" column="36" lean-forward="false" selection-start-line="3" selection-start-column="36" selection-end-line="3" selection-end-column="36" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2793,7 +2762,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="52" lean-forward="false" selection-start-line="0" selection-start-column="52" selection-end-line="0" selection-end-column="52" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2808,9 +2776,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="146">
           <caret line="69" column="78" lean-forward="false" selection-start-line="69" selection-start-column="78" selection-end-line="69" selection-end-column="78" />
-          <folding>
-            <element signature="e#2933#2975#0" expanded="false" />
-          </folding>
         </state>
       </provider>
       <provider editor-type-id="android-designer2">
@@ -2821,7 +2786,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="283">
           <caret line="22" column="83" lean-forward="false" selection-start-line="22" selection-start-column="52" selection-end-line="22" selection-end-column="83" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2829,7 +2793,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-335">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2837,7 +2800,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-13739">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2845,7 +2807,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="235">
           <caret line="46" column="24" lean-forward="false" selection-start-line="46" selection-start-column="24" selection-end-line="46" selection-end-column="24" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2853,7 +2814,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-974">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2861,7 +2821,6 @@
       <provider editor-type-id="text-editor">
         <state relative-caret-position="7701">
           <caret line="453" column="50" lean-forward="false" selection-start-line="453" selection-start-column="50" selection-end-line="453" selection-end-column="50" />
-          <folding />
         </state>
       </provider>
       <provider selected="true" editor-type-id="android-designer2">
@@ -2872,7 +2831,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-1544">
           <caret line="58" column="19" lean-forward="false" selection-start-line="58" selection-start-column="19" selection-end-line="58" selection-end-column="19" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2880,7 +2838,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-131">
           <caret line="32" column="13" lean-forward="false" selection-start-line="32" selection-start-column="13" selection-end-line="32" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2888,7 +2845,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="283">
           <caret line="20" column="16" lean-forward="false" selection-start-line="20" selection-start-column="16" selection-end-line="20" selection-end-column="16" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2896,10 +2852,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-153">
           <caret line="207" column="14" lean-forward="false" selection-start-line="207" selection-start-column="14" selection-end-line="207" selection-end-column="14" />
-          <folding>
-            <element signature="e#34653#34654#0" expanded="false" />
-            <element signature="e#34683#34684#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -2907,7 +2859,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-1156">
           <caret line="28" column="32" lean-forward="false" selection-start-line="28" selection-start-column="32" selection-end-line="28" selection-end-column="32" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2915,7 +2866,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-2562">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2923,7 +2873,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="73">
           <caret line="24" column="52" lean-forward="false" selection-start-line="24" selection-start-column="35" selection-end-line="24" selection-end-column="52" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2931,7 +2880,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="260">
           <caret line="24" column="46" lean-forward="false" selection-start-line="24" selection-start-column="35" selection-end-line="24" selection-end-column="46" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2939,7 +2887,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="173">
           <caret line="193" column="84" lean-forward="false" selection-start-line="193" selection-start-column="64" selection-end-line="193" selection-end-column="84" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2947,7 +2894,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="181">
           <caret line="23" column="61" lean-forward="false" selection-start-line="23" selection-start-column="33" selection-end-line="23" selection-end-column="61" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2955,15 +2901,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="137">
           <caret line="32" column="57" lean-forward="false" selection-start-line="32" selection-start-column="31" selection-end-line="32" selection-end-column="57" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/java/src/typeofmood/ime/latin/settings/SettingsFragment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-939">
-          <caret line="36" column="19" lean-forward="false" selection-start-line="36" selection-start-column="19" selection-end-line="36" selection-end-column="19" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2971,35 +2908,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="119">
           <caret line="85" column="47" lean-forward="false" selection-start-line="85" selection-start-column="21" selection-end-line="85" selection-end-column="47" />
-          <folding>
-            <element signature="e#838#864#0" expanded="false" />
-            <element signature="e#991#1017#0" expanded="false" />
-            <element signature="e#1190#1235#0" expanded="false" />
-            <element signature="e#1413#1458#0" expanded="false" />
-            <element signature="e#1631#1666#0" expanded="false" />
-            <element signature="e#1691#1734#0" expanded="false" />
-            <element signature="e#1921#1968#0" expanded="false" />
-            <element signature="e#2259#2315#0" expanded="false" />
-            <element signature="e#2581#2637#0" expanded="false" />
-            <element signature="e#2901#2955#0" expanded="false" />
-            <element signature="e#3219#3273#0" expanded="false" />
-            <element signature="e#3534#3585#0" expanded="false" />
-            <element signature="e#3851#3902#0" expanded="false" />
-            <element signature="e#4046#4077#0" expanded="false" />
-            <element signature="e#4331#4368#0" expanded="false" />
-            <element signature="e#4544#4578#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/java/res/xml/prefs_screen_preferences.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="159">
-          <caret line="51" column="36" lean-forward="false" selection-start-line="51" selection-start-column="36" selection-end-line="51" selection-end-column="36" />
-          <folding />
         </state>
       </provider>
       <provider editor-type-id="android-designer2">
@@ -3010,13 +2918,83 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="136">
           <caret line="32" column="58" lean-forward="true" selection-start-line="32" selection-start-column="58" selection-end-line="32" selection-end-column="58" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/java/res/xml/prefs.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-510">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/java/src/typeofmood/ime/latin/settings/SettingsValues.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="106">
+          <caret line="191" column="89" lean-forward="false" selection-start-line="191" selection-start-column="89" selection-end-line="191" selection-end-column="114" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/java/src/typeofmood/ime/latin/settings/DebugSettingsFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="200" column="57" lean-forward="false" selection-start-line="200" selection-start-column="57" selection-end-line="200" selection-end-column="57" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/java/res/xml/prefs_screen_preferences.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="171">
+          <caret line="19" column="23" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="52" selection-end-column="0" />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/java/src/typeofmood/ime/latin/settings/Settings.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2873">
+          <caret line="44" column="0" lean-forward="false" selection-start-line="44" selection-start-column="0" selection-end-line="44" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/java/src/typeofmood/ime/MainActivityCalendarFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-5">
+          <caret line="22" column="13" lean-forward="false" selection-start-line="22" selection-start-column="13" selection-end-line="22" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/java/src/typeofmood/ime/keyboard/PointerTracker.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-19086">
+          <caret line="45" column="19" lean-forward="false" selection-start-line="45" selection-start-column="19" selection-end-line="45" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/java/src/typeofmood/ime/MainActivityStatisticsFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="7616">
+          <caret line="491" column="13" lean-forward="false" selection-start-line="491" selection-start-column="13" selection-end-line="491" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/java/src/typeofmood/ime/keyboard/MainKeyboardView.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="108" column="19" lean-forward="false" selection-start-line="108" selection-start-column="19" selection-end-line="108" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/java/res/layout/seek_bar_dialog.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-515">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
@@ -3027,100 +3005,88 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/java/src/typeofmood/ime/latin/LatinIME.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1748">
-          <caret line="1414" column="29" lean-forward="false" selection-start-line="1414" selection-start-column="8" selection-end-line="1414" selection-end-column="29" />
+        <state relative-caret-position="138">
+          <caret line="1650" column="34" lean-forward="false" selection-start-line="1650" selection-start-column="17" selection-end-line="1650" selection-end-column="34" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/java/src/typeofmood/ime/latin/settings/SettingsValues.java">
+    <entry file="file://$PROJECT_DIR$/app/java/src/typeofmood/ime/latin/settings/SettingsFragment.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="106">
-          <caret line="191" column="89" lean-forward="false" selection-start-line="191" selection-start-column="89" selection-end-line="191" selection-end-column="114" />
+        <state relative-caret-position="-391">
+          <caret line="36" column="19" lean-forward="false" selection-start-line="36" selection-start-column="19" selection-end-line="36" selection-end-column="19" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/java/src/typeofmood/ime/latin/settings/Settings.java">
+    <entry file="file://$PROJECT_DIR$/app/java/res/values/config-common.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2873">
-          <caret line="44" column="0" lean-forward="false" selection-start-line="44" selection-start-column="0" selection-end-line="44" selection-end-column="0" />
+        <state relative-caret-position="220">
+          <caret line="146" column="48" lean-forward="false" selection-start-line="146" selection-start-column="48" selection-end-line="146" selection-end-column="48" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/java/src/typeofmood/ime/latin/settings/SettingsActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
+        <state relative-caret-position="-51">
           <caret line="29" column="19" lean-forward="false" selection-start-line="29" selection-start-column="19" selection-end-line="29" selection-end-column="19" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/java/src/typeofmood/ime/latin/settings/DebugSettingsFragment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="200" column="57" lean-forward="false" selection-start-line="200" selection-start-column="57" selection-end-line="200" selection-end-column="57" />
-          <folding>
-            <element signature="e#2703#2764#0" expanded="false" />
-            <element signature="e#2873#2934#0" expanded="false" />
-            <element signature="e#5963#6060#0" expanded="false" />
-            <element signature="e#6222#6258#0" expanded="false" />
-            <element signature="e#7975#8022#0" expanded="false" />
-            <element signature="e#9385#9446#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/java/src/typeofmood/ime/latin/settings/SeekBarDialogPreference.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="40" column="0" lean-forward="false" selection-start-line="40" selection-start-column="0" selection-end-line="40" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/java/res/layout/seek_bar_dialog.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-408">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/java/res/xml/prefs_screen_advanced.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="131">
-          <caret line="58" column="58" lean-forward="false" selection-start-line="58" selection-start-column="35" selection-end-line="58" selection-end-column="58" />
+        <state relative-caret-position="-833">
+          <caret line="65" column="54" lean-forward="false" selection-start-line="65" selection-start-column="54" selection-end-line="65" selection-end-column="54" />
           <folding>
-            <element signature="e#2699#2730#0" expanded="true" />
-            <element signature="e#2985#3022#0" expanded="true" />
+            <element signature="e#3970#3993#0" expanded="true" />
           </folding>
         </state>
-      </provider>
-      <provider editor-type-id="android-designer2">
-        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/java/src/typeofmood/ime/latin/settings/AdvancedSettingsFragment.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="131">
-          <caret line="294" column="0" lean-forward="true" selection-start-line="294" selection-start-column="0" selection-end-line="294" selection-end-column="0" />
+        <state relative-caret-position="-92">
+          <caret line="337" column="41" lean-forward="false" selection-start-line="337" selection-start-column="41" selection-end-line="337" selection-end-column="41" />
           <folding>
-            <element signature="e#2984#3064#0" expanded="true" />
-            <element signature="e#3153#3211#0" expanded="true" />
-            <element signature="e#3233#3296#0" expanded="true" />
-            <element signature="e#6916#6963#0" expanded="true" />
-            <element signature="e#7006#7067#0" expanded="true" />
-            <element signature="e#8846#8893#0" expanded="true" />
-            <element signature="e#10389#10450#0" expanded="true" />
-            <element signature="e#11815#11816#0" expanded="true" />
-            <element signature="e#11879#11880#0" expanded="true" />
+            <element signature="imports" expanded="true" />
+            <element signature="e#3010#3090#0" expanded="true" />
+            <element signature="e#3179#3237#0" expanded="true" />
+            <element signature="e#3259#3322#0" expanded="true" />
+            <element signature="e#6942#6989#0" expanded="true" />
+            <element signature="e#7032#7093#0" expanded="true" />
+            <element signature="e#8872#8919#0" expanded="true" />
+            <element signature="e#10415#10476#0" expanded="true" />
           </folding>
         </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/java/res/xml/prefs_screen_advanced.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="157">
+          <caret line="64" column="51" lean-forward="false" selection-start-line="64" selection-start-column="51" selection-end-line="64" selection-end-column="51" />
+          <folding>
+            <element signature="e#838#872#0" expanded="true" />
+            <element signature="e#1109#1150#0" expanded="true" />
+            <element signature="e#1290#1342#0" expanded="true" />
+            <element signature="e#1366#1406#0" expanded="true" />
+            <element signature="e#1540#1586#0" expanded="true" />
+            <element signature="e#1766#1812#0" expanded="true" />
+            <element signature="e#1836#1875#0" expanded="true" />
+            <element signature="e#1899#1938#0" expanded="true" />
+            <element signature="e#1963#2003#0" expanded="true" />
+            <element signature="e#2110#2155#0" expanded="true" />
+            <element signature="e#2180#2233#0" expanded="true" />
+            <element signature="e#2403#2435#0" expanded="true" />
+            <element signature="e#2460#2500#0" expanded="true" />
+            <element signature="e#2701#2732#0" expanded="true" />
+            <element signature="e#2987#3024#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer2">
+        <state />
       </provider>
     </entry>
   </component>

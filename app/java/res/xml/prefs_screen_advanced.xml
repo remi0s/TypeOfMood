@@ -50,7 +50,7 @@
         android:persistent="true"
         android:defaultValue="true"/>
 
-    <!--remi0s for screen resize-->
+    <!--remi0s for keyboard resize-->
     <CheckBoxPreference
         android:key="pref_resize_keyboard"
         android:title="@string/prefs_resize_keyboard"
@@ -60,9 +60,10 @@
         android:dependency="pref_resize_keyboard"
         android:key="pref_keyboard_height_scale"
         android:title="@string/prefs_keyboard_height_scale"
-        latin:minValue="50"
+        latin:stepValue="@integer/step_value_seekbar_height"
+        latin:minValue="80"
         latin:maxValue="120" /> <!-- percentage -->
-    <!--remi0s for screen resize-->
+    <!--remi0s for keyboard resize-->
 
     <PreferenceScreen
         android:fragment="typeofmood.ime.latin.settings.DebugSettingsFragment"

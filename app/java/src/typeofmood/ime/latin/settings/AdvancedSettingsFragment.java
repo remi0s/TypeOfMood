@@ -22,6 +22,7 @@ import android.content.res.Resources;
 import android.media.AudioManager;
 import android.os.Bundle;
 import android.preference.ListPreference;
+import android.view.View;
 import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.SeekBar;
@@ -274,6 +275,7 @@ public final class AdvancedSettingsFragment extends SubScreenFragment {
                 .getSystemService(Context.INPUT_METHOD_SERVICE);
 
 
+
         if (pref == null) {
             return;
         }
@@ -291,7 +293,18 @@ public final class AdvancedSettingsFragment extends SubScreenFragment {
             public void writeValue(final int value, final String key) {
 
                 prefs.edit().putFloat(key, getValueFromPercentage(value)).apply();
-                imm.toggleSoftInput(InputMethodManager.SHOW_FORCED, 0);
+
+//                imm.toggleSoftInput(InputMethodManager.SHOW_FORCED, 0);
+                View view = getActivity().getCurrentFocus();
+                if (view == null) {
+                    view = new View(getActivity());
+                }
+
+                if(imm.isActive(view)){
+                    imm.hideSoftInputFromWindow(view.getWindowToken(),0);
+                }
+
+
 
             }
 
@@ -312,13 +325,40 @@ public final class AdvancedSettingsFragment extends SubScreenFragment {
 
             @Override
             public String getValueText(final int value) {
+                switch(value){
+                    case 80:
+                        return "Smallest";
+                    case 90:
+                        return "Small";
+                    case 100:
+                        return "Medium";
+                    case 110:
+                        return "Large";
+                    case 120:
+                        return "Largest";
+                    default :
+                        return String.format(Locale.ROOT, "%d%%", value);
 
-                return String.format(Locale.ROOT, "%d%%", value);
+                }
+
+
+//                return String.format(Locale.ROOT, "%d%%", value);
             }
 
             @Override
             public void feedbackValue(final int value) {
-                imm.hideSoftInputFromWindow(getView().getWindowToken(),0);
+                View view = getActivity().getCurrentFocus();
+                if (view == null) {
+                    view = new View(getActivity());
+                }
+                if(imm.isActive(view)){
+                    imm.hideSoftInputFromWindow(view.getWindowToken(),0);
+                }
+
+                writeValue(value, prefKey);
+                imm.showSoftInput(view,0);
+
+
 
             }
 

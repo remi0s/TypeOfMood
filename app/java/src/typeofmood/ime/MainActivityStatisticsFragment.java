@@ -58,6 +58,7 @@ public class MainActivityStatisticsFragment extends Fragment {
     private static MoodDatabaseHelper myDB;
 
 
+
     @Override
     public void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
