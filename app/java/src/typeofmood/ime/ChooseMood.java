@@ -97,6 +97,7 @@ public class ChooseMood extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(),"Stressed", Toast.LENGTH_SHORT).show();
                 } else {
                     LatinIME.laterPressed=true;
+                    LatinIME.currentMood="Stressed";
                     Toast.makeText(getApplicationContext(),"Later", Toast.LENGTH_SHORT).show();
                 }
                 LatinIME.latestNotificationTime=new Date(System.currentTimeMillis());

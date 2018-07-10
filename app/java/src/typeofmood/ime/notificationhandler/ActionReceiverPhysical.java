@@ -47,6 +47,7 @@ public class ActionReceiverPhysical extends BroadcastReceiver {
     public void performLater(Context context){
         Toast.makeText(context,"Not Now", Toast.LENGTH_SHORT).show();
         LatinIME.laterPressed=true;
+        LatinIME.currentPhysicalState="Postponing";
 
     }
 
