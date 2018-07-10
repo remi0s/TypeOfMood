@@ -22,7 +22,7 @@
     xmlns:latin="http://schemas.android.com/apk/res/typeofmood.ime"
 >
     <switch>
-        <case latin:keyboardTheme="ICS|KLP">
+        <case latin:keyboardTheme="ICS|KLP|TOMDark|TOMLight|TOMGlass">
             <key-style
                 latin:styleName="navigateNextMoreKeysStyle"
                 latin:keyLabelFlags="hasPopupHint|preserveCase"

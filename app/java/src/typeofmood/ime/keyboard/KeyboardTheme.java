@@ -37,28 +37,40 @@ public final class KeyboardTheme implements Comparable<KeyboardTheme> {
 
     // These should be aligned with Keyboard.themeId and Keyboard.Case.keyboardTheme
     // attributes' values in attrs.xml.
-    public static final int THEME_ID_ICS = 0;
-    public static final int THEME_ID_KLP = 2;
-    public static final int THEME_ID_LXX_LIGHT = 3;
-    public static final int THEME_ID_LXX_DARK = 4;
+    public static final int THEME_ID_ICS = 0; //keyboard_theme_holo_blue
+    public static final int THEME_ID_KLP = 2; //keyboard_theme_holo_white
+    public static final int THEME_ID_LXX_LIGHT = 3; //keyboard_theme_material_light
+    public static final int THEME_ID_LXX_DARK = 4; //keyboard_theme_material_dark
+    public static final int THEME_ID_TOMDARK = 5; //remi0s
+    public static final int THEME_ID_TOMLIGHT = 6; //remi0s
+    public static final int THEME_ID_TOMGLASS = 7; //remi0s
     public static final int DEFAULT_THEME_ID = THEME_ID_KLP;
 
     private static KeyboardTheme[] AVAILABLE_KEYBOARD_THEMES;
 
     /* package private for testing */
     static final KeyboardTheme[] KEYBOARD_THEMES = {
-        new KeyboardTheme(THEME_ID_ICS, "ICS", R.style.KeyboardTheme_ICS,
-                // This has never been selected because we support ICS or later.
-                VERSION_CODES.BASE),
-        new KeyboardTheme(THEME_ID_KLP, "KLP", R.style.KeyboardTheme_KLP,
-                // Default theme for ICS, JB, and KLP.
-                VERSION_CODES.ICE_CREAM_SANDWICH),
-        new KeyboardTheme(THEME_ID_LXX_LIGHT, "LXXLight", R.style.KeyboardTheme_LXX_Light,
-                // Default theme for LXX.
-                Build.VERSION_CODES.LOLLIPOP),
-        new KeyboardTheme(THEME_ID_LXX_DARK, "LXXDark", R.style.KeyboardTheme_LXX_Dark,
-                // This has never been selected as default theme.
-                VERSION_CODES.BASE),
+            new KeyboardTheme(THEME_ID_ICS, "ICS", R.style.KeyboardTheme_ICS,
+                    // This has never been selected because we support ICS or later.
+                    VERSION_CODES.BASE),
+            new KeyboardTheme(THEME_ID_KLP, "KLP", R.style.KeyboardTheme_KLP,
+                    // Default theme for ICS, JB, and KLP.
+                    VERSION_CODES.ICE_CREAM_SANDWICH),
+            new KeyboardTheme(THEME_ID_LXX_LIGHT, "LXXLight", R.style.KeyboardTheme_LXX_Light,
+                    // Default theme for LXX.
+                    Build.VERSION_CODES.LOLLIPOP),
+            new KeyboardTheme(THEME_ID_LXX_DARK, "LXXDark", R.style.KeyboardTheme_LXX_Dark,
+                    // This has never been selected as default theme.
+                    VERSION_CODES.BASE),
+            new KeyboardTheme(THEME_ID_TOMDARK, "TOMDark", R.style.KeyboardTheme_TOMDark,
+                    // This has never been selected as default theme.
+                    VERSION_CODES.BASE),
+            new KeyboardTheme(THEME_ID_TOMLIGHT, "TOMLight", R.style.KeyboardTheme_TOMLight,
+                    // This has never been selected as default theme.
+                    VERSION_CODES.BASE),
+            new KeyboardTheme(THEME_ID_TOMGLASS, "TOMGlass", R.style.KeyboardTheme_TOMGlass,
+                    // This has never been selected as default theme.
+                    VERSION_CODES.BASE),
     };
 
     static {

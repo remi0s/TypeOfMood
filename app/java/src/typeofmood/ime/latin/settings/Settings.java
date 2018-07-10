@@ -329,7 +329,7 @@ public final class Settings implements SharedPreferences.OnSharedPreferenceChang
 
     // Default keypress vibration duration for unknown devices.
     // The negative value means system default.
-    private static final String DEFAULT_KEYPRESS_VIBRATION_DURATION = Integer.toString(-1);
+    private static final String DEFAULT_KEYPRESS_VIBRATION_DURATION = Integer.toString(25);
 
     public static int readDefaultKeypressVibrationDuration(final Resources res) {
         return Integer.parseInt(ResourceUtils.getDeviceOverrideValue(res,
