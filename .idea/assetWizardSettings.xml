@@ -19,6 +19,8 @@
                                   <option name="values">
                                     <map>
                                       <entry key="assetType" value="IMAGE" />
+                                      <entry key="imageAsset" value="C:\Users\remio\Desktop\123edit\btn_keyboard_key_normal_holo_light_tomglass.9.png" />
+                                      <entry key="outputName" value="btn_keyboard_key_normal_holo_light_tomglass.9" />
                                     </map>
                                   </option>
                                 </PersistentState>
@@ -173,6 +175,11 @@
                                 </PersistentState>
                               </value>
                             </entry>
+                          </map>
+                        </option>
+                        <option name="values">
+                          <map>
+                            <entry key="outputIconType" value="ACTIONBAR" />
                           </map>
                         </option>
                       </PersistentState>

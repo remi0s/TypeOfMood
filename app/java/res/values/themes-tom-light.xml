@@ -41,7 +41,7 @@
     </style>
     <style
         name="KeyboardView.TOMLight"
-        parent="KeyboardView.LXX_Light"
+        parent="KeyboardView.LXX"
         >
         <item name="android:background">@drawable/keyboard_background_holo_tomlight</item>
         <item name="keyBackground">@drawable/btn_keyboard_key_tomlight</item>
@@ -60,12 +60,11 @@
         name="MainKeyboardView.TOMLight"
         parent="KeyboardView.TOMLight"
         >
-        <item name="keyPreviewBackground">@drawable/keyboard_key_feedback_tomlight</item>
         <item name="keyPreviewBackground">@drawable/keyboard_key_feedback_lxx_light</item>
-        <item name="keyPreviewHeight">@dimen/config_key_preview_height_holo</item>
-        <item name="keyPreviewOffset">@dimen/config_key_preview_offset_holo</item>
-        <item name="keyPreviewShowUpAnimator">@anim/key_preview_show_up_holo</item>
-        <item name="keyPreviewDismissAnimator">@anim/key_preview_dismiss_holo</item>
+        <item name="keyPreviewHeight">@dimen/config_key_preview_height_lxx</item>
+        <item name="keyPreviewOffset">@dimen/config_key_preview_offset_lxx</item>
+        <item name="keyPreviewShowUpAnimator">@anim/key_preview_show_up_lxx</item>
+        <item name="keyPreviewDismissAnimator">@anim/key_preview_dismiss_lxx</item>
         <item name="gestureFloatingPreviewTextColor">@color/auto_correct_color_lxx_light</item>
         <item name="gestureFloatingPreviewColor">@color/gesture_floating_preview_color_lxx_light</item>
         <item name="gestureTrailColor">@color/gesture_trail_color_lxx_light</item>
@@ -132,7 +131,7 @@
         <item name="centerSuggestionPercentile">@fraction/config_center_suggestion_percentile</item>
         <item name="maxMoreSuggestionsRow">@integer/config_max_more_suggestions_row</item>
         <item name="minMoreSuggestionsWidth">@fraction/config_min_more_suggestions_width</item>
-        <item name="android:background">@drawable/keyboard_suggest_strip_lxx_light</item>
+        <item name="android:background">@drawable/keyboard_suggest_strip_holo_tomlight</item>
         <item name="android:src">@drawable/suggestions_strip_divider_lxx_light</item>
         <item name="suggestionStripOptions">autoCorrectBold|validTypedWordBold</item>
         <item name="colorValidTypedWord">@color/typed_word_color_lxx_light</item>

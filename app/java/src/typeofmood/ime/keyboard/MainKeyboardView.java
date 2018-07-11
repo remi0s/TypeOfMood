@@ -699,19 +699,24 @@ public final class MainKeyboardView extends KeyboardView implements DrawingProxy
         switch (action) {
             case MotionEvent.ACTION_DOWN:
             case MotionEvent.ACTION_POINTER_DOWN:
-                mLatinIme.sessionData.DownTime.add(eventTime);
+                if(mLatinIme.sessionData!=null){
+                    mLatinIme.sessionData.DownTime.add(eventTime);
+                }
+
 
                 break;
             case MotionEvent.ACTION_UP:
             case MotionEvent.ACTION_POINTER_UP:
-                mLatinIme.sessionData.UpTime.add(eventTime);
-                mLatinIme.sessionData.PressureValue.add(event.getPressure()); //alternative could be getSize()
-                if(mLatinIme.isLongPressedFlag==true){
-                    mLatinIme.sessionData.IsLongPress.add(1);
-                    mLatinIme.isLongPressedFlag=false;
-                }else{
-                    mLatinIme.sessionData.IsLongPress.add(0);
+                if(mLatinIme.sessionData!=null) {
+                    mLatinIme.sessionData.UpTime.add(eventTime);
+                    mLatinIme.sessionData.PressureValue.add(event.getPressure()); //alternative could be getSize()
+                    if (mLatinIme.isLongPressedFlag == true) {
+                        mLatinIme.sessionData.IsLongPress.add(1);
+                        mLatinIme.isLongPressedFlag = false;
+                    } else {
+                        mLatinIme.sessionData.IsLongPress.add(0);
 
+                    }
                 }
                 break;
             case MotionEvent.ACTION_MOVE:

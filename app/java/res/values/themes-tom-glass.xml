@@ -20,7 +20,7 @@
 
 <resources xmlns:android="http://schemas.android.com/apk/res/android">
     <style name="KeyboardTheme.TOMGlass" parent="KeyboardIcons.Holo">
-        <item name="inputViewStyle">@style/InputView.Holo</item>
+        <item name="inputViewStyle">@style/InputView.LXX</item>
         <item name="keyboardStyle">@style/Keyboard.TOMGlass</item>
         <item name="keyboardViewStyle">@style/KeyboardView.TOMGlass</item>
         <item name="mainKeyboardViewStyle">@style/MainKeyboardView.TOMGlass</item>
@@ -41,7 +41,7 @@
     </style>
     <style
         name="KeyboardView.TOMGlass"
-        parent="KeyboardView.LXX"
+        parent="KeyboardView.Holo"
         >
         <item name="android:background">@drawable/keyboard_background_holo_tomglass</item>
         <item name="keyBackground">@drawable/btn_keyboard_key_tomglass</item>
@@ -131,7 +131,7 @@
         <item name="centerSuggestionPercentile">@fraction/config_center_suggestion_percentile</item>
         <item name="maxMoreSuggestionsRow">@integer/config_max_more_suggestions_row</item>
         <item name="minMoreSuggestionsWidth">@fraction/config_min_more_suggestions_width</item>
-        <item name="android:background">@drawable/keyboard_suggest_strip_holo</item>
+        <item name="android:background">@drawable/keyboard_suggest_strip_holo_tomglass</item>
         <item name="android:src">@drawable/suggestions_strip_divider_holo</item>
         <item name="suggestionStripOptions">autoCorrectBold|validTypedWordBold</item>
         <item name="colorValidTypedWord">@color/typed_word_color_klp</item>

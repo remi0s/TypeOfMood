@@ -20,7 +20,7 @@
 
 <resources xmlns:android="http://schemas.android.com/apk/res/android">
     <style name="KeyboardTheme.TOMDark" parent="KeyboardIcons.Holo">
-        <item name="inputViewStyle">@style/InputView.LXX</item>
+        <item name="inputViewStyle">@style/InputView.Holo</item>
         <item name="keyboardStyle">@style/Keyboard.TOMDark</item>
         <item name="keyboardViewStyle">@style/KeyboardView.TOMDark</item>
         <item name="mainKeyboardViewStyle">@style/MainKeyboardView.TOMDark</item>
@@ -41,7 +41,7 @@
     </style>
     <style
         name="KeyboardView.TOMDark"
-        parent="KeyboardView.LXX"
+        parent="KeyboardView.Holo"
         >
         <item name="android:background">@drawable/keyboard_background_holo_tomdark</item>
         <item name="keyBackground">@drawable/btn_keyboard_key_tomdark</item>
@@ -60,7 +60,7 @@
         name="MainKeyboardView.TOMDark"
         parent="KeyboardView.TOMDark"
         >
-        <item name="keyPreviewBackground">@drawable/keyboard_key_feedback_tomdark</item>
+        <item name="keyPreviewBackground">@drawable/keyboard_key_feedback_klp</item>
         <item name="keyPreviewHeight">@dimen/config_key_preview_height_holo</item>
         <item name="keyPreviewOffset">@dimen/config_key_preview_offset_holo</item>
         <item name="keyPreviewShowUpAnimator">@anim/key_preview_show_up_holo</item>
