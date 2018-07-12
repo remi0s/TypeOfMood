@@ -241,6 +241,7 @@
             <enum name="TOMDark" value="5" />
             <enum name="TOMLight" value="6" />
             <enum name="TOMGlass" value="7" />
+            <enum name="TOMGlassred" value="8" />
         </attr>
         <!-- Touch position correction -->
         <attr name="touchPositionCorrectionData" format="reference" />

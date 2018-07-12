@@ -44,6 +44,7 @@ public final class KeyboardTheme implements Comparable<KeyboardTheme> {
     public static final int THEME_ID_TOMDARK = 5; //remi0s
     public static final int THEME_ID_TOMLIGHT = 6; //remi0s
     public static final int THEME_ID_TOMGLASS = 7; //remi0s
+    public static final int THEME_ID_TOMGLASSRED = 8; //remi0s
     public static final int DEFAULT_THEME_ID = THEME_ID_KLP;
 
     private static KeyboardTheme[] AVAILABLE_KEYBOARD_THEMES;
@@ -69,6 +70,9 @@ public final class KeyboardTheme implements Comparable<KeyboardTheme> {
                     // This has never been selected as default theme.
                     VERSION_CODES.BASE),
             new KeyboardTheme(THEME_ID_TOMGLASS, "TOMGlass", R.style.KeyboardTheme_TOMGlass,
+                    // This has never been selected as default theme.
+                    VERSION_CODES.BASE),
+            new KeyboardTheme(THEME_ID_TOMGLASSRED, "TOMGlassred", R.style.KeyboardTheme_TOMGlassred,
                     // This has never been selected as default theme.
                     VERSION_CODES.BASE),
     };
