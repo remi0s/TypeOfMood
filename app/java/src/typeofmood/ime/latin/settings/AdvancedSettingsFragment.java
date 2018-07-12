@@ -271,7 +271,7 @@ public final class AdvancedSettingsFragment extends SubScreenFragment {
     private void setupKeyboardHeight(final String prefKey, final float defaultValue) { //remi0s for keyboard resizing
         final SharedPreferences prefs = getSharedPreferences();
         final SeekBarDialogPreference pref = (SeekBarDialogPreference)findPreference(prefKey);
-        final InputMethodManager imm = (InputMethodManager) getContext()
+        final InputMethodManager imm = (InputMethodManager) getActivity()
                 .getSystemService(Context.INPUT_METHOD_SERVICE);
 
 
