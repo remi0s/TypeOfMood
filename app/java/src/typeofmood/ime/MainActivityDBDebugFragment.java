@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.Fragment;
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.content.res.Resources;
 import android.database.Cursor;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
@@ -20,6 +21,11 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.microsoft.azure.storage.CloudStorageAccount;
+import com.microsoft.azure.storage.blob.CloudBlobClient;
+import com.microsoft.azure.storage.blob.CloudBlobContainer;
+import com.microsoft.azure.storage.blob.CloudBlockBlob;
+
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpPost;
@@ -31,7 +37,11 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.Locale;
+import java.util.Properties;
 
 import typeofmood.ime.datahandler.DatabaseHelper;
 import typeofmood.ime.datahandler.KeyboardPayload;
@@ -45,6 +55,8 @@ public class MainActivityDBDebugFragment extends Fragment {
     public static String pref_ID="";
     public static String pref_gender="";
     public static String pref_health="";
+    private static String storageContainer = "";
+    private static String storageConnectionString = "";
 
 
     @Override
@@ -55,8 +67,10 @@ public class MainActivityDBDebugFragment extends Fragment {
         final TextView t = rootView.findViewById(R.id.textView4);
         final TextView userInfoText = rootView.findViewById(R.id.textView2);
         final ListView listView = rootView.findViewById(R.id.dataListView);
-        final Button buttonNull = rootView.findViewById(R.id.buttonSend);
+        final Button buttonNull = rootView.findViewById(R.id.buttonNull);
         final Button buttonSend = rootView.findViewById(R.id.buttonSend);
+        storageContainer=getConfigValue(getActivity().getApplicationContext(), "storageContainer");
+        storageConnectionString=getConfigValue(getActivity().getApplicationContext(), "storageConnectionString");
         buttonNull.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 boolean result=myDB.updateToNullForResend();
@@ -72,17 +86,17 @@ public class MainActivityDBDebugFragment extends Fragment {
         buttonSend.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 if(isConnected()){
-                    new HttpAsyncTask().execute("http://155.207.18.93:5000/determine_escalation/");
+                    new HttpAsyncTask().execute("");
                 }
             }
         });
 
         SharedPreferences pref = getActivity().getSharedPreferences("user_info", MODE_PRIVATE);
         SharedPreferences.Editor editor = pref.edit();
-        String pref_age= pref.getString("Age", "");
-        String pref_ID= pref.getString("ID", "");
-        String pref_gender= pref.getString("Gender", "");
-        String pref_health= pref.getString("Health", "");
+        pref_age= pref.getString("Age", "");
+        pref_ID= pref.getString("ID", "");
+        pref_gender= pref.getString("Gender", "");
+        pref_health= pref.getString("Health", "");
         editor.apply();
         String UserInfo="\nUSER_ID = "+pref_ID+"\nUSER_AGE = "+pref_age+"\nUSER_GENDER = "+pref_gender+"\nUSER_PHQ9 = "+pref_health;
         userInfoText.setText(UserInfo);
@@ -111,6 +125,13 @@ public class MainActivityDBDebugFragment extends Fragment {
                 }
 
             }
+
+            listView.post(new Runnable() {
+                @Override
+                public void run() {
+                    listView.scrollTo(0, listView.getBottom());
+                }
+            });
         }
         return rootView;
 
@@ -239,7 +260,7 @@ public class MainActivityDBDebugFragment extends Fragment {
             }else{
                 Log.d("SQL","I'm in do in background 0 data");
             }
-            String result=POST(urls[0],notSendData);
+            String result=upload(notSendData);//POST(urls[0],notSendData);
 
             return result;
         }
@@ -249,6 +270,82 @@ public class MainActivityDBDebugFragment extends Fragment {
             Log.d("SQL","Tried to send data with result: "+result);
 //            Toast.makeText(getBaseContext(), "Data Sent!", Toast.LENGTH_LONG).show();
         }
+    }
+
+    protected String upload(ArrayList<KeyboardPayload> payload){
+        String result = "";
+        try
+        {
+            for(int i = 0; i < payload.size(); i++) { //payload.size()
+
+                // 3. build jsonObject
+
+
+                JSONObject jsonObject = new JSONObject();
+                jsonObject.accumulate("DOC_ID", payload.get(i).DocID);
+                jsonObject.accumulate("USER_ID", pref_ID);
+                jsonObject.accumulate("USER_AGE", pref_age);
+                jsonObject.accumulate("USER_GENDER", pref_gender);
+                jsonObject.accumulate("USER_PHQ9", pref_health);
+//                jsonObject.accumulate("DATE_DATA", payload.get(i).DateData);
+//                jsonObject.accumulate("SESSION_DATA", payload.get(i).SessionData);
+
+
+                // 4. convert JSONObject to JSON to String
+
+
+                // Retrieve storage account from connection-string.
+                CloudStorageAccount storageAccount = CloudStorageAccount.parse(storageConnectionString);
+
+                // Create the blob client.
+                CloudBlobClient blobClient = storageAccount.createCloudBlobClient();
+
+                // Retrieve reference to a previously created container.
+                CloudBlobContainer container = blobClient.getContainerReference(storageContainer);
+
+                // Create or overwrite the blob (with the name "example.jpeg") with contents from a local file.
+
+                String formattedDate=new SimpleDateFormat("yyyy-MM-dd", Locale.US).format(new Date());
+                String formattedDateData="";
+
+                try{
+                    Date date =new SimpleDateFormat("yyyy-MM-dd, hh:mm:ss", Locale.US).parse(payload.get(i).DateData);
+                    jsonObject.accumulate("DATE_DATA", payload.get(i).DateData);
+                    formattedDate = new SimpleDateFormat("yyyy-MM-dd", Locale.US).format(date);
+                }catch (Exception e)
+                {
+                    try {
+                        Date tempDate = new Date(payload.get(i).DateData);
+                        formattedDate = new SimpleDateFormat("yyyy-MM-dd", Locale.US).format(tempDate);
+                        formattedDateData= new SimpleDateFormat("yyyy-MM-dd, hh:mm:ss", Locale.US).format(tempDate);
+                        jsonObject.accumulate("DATE_DATA", formattedDateData);
+                    }catch (Exception a){
+                        Log.d("dateError", "Even that failed");
+                    }
+                }
+                jsonObject.accumulate("DATE_SEND", new SimpleDateFormat("yyyy-MM-dd, hh:mm:ss", Locale.US).format(new Date()));
+                jsonObject.accumulate("SESSION_DATA", payload.get(i).SessionData);
+
+                String blobName=pref_ID+"/"+formattedDate+"/"+payload.get(i).DocID+".json";
+                CloudBlockBlob blob = container.getBlockBlobReference(blobName);
+
+
+
+                blob.uploadText(jsonObject.toString());
+                result="success";
+
+                myDB.setSend(payload.get(i).DocID);
+            }
+
+        }
+        catch (Exception e)
+        {
+            // Output the stack trace.
+            result="failed";
+            e.printStackTrace();
+            Log.d("Upload", e.getLocalizedMessage());
+        }
+        return result;
     }
 
     private static String convertInputStreamToString(InputStream inputStream) throws IOException {
@@ -261,6 +358,23 @@ public class MainActivityDBDebugFragment extends Fragment {
         inputStream.close();
         return result;
 
+    }
+
+    public static String getConfigValue(Context context, String name) {
+        Resources resources = context.getResources();
+
+        try {
+            InputStream rawResource = resources.openRawResource(R.raw.config);
+            Properties properties = new Properties();
+            properties.load(rawResource);
+            return properties.getProperty(name);
+        } catch (Resources.NotFoundException e) {
+            Log.e("getConfig", "Unable to find the config file: " + e.getMessage());
+        } catch (IOException e) {
+            Log.e("getConfig", "Failed to open config file.");
+        }
+
+        return null;
     }
 
 

@@ -7,7 +7,10 @@ import android.widget.Toast;
 
 import typeofmood.ime.datahandler.MoodDatabaseHelper;
 import typeofmood.ime.latin.LatinIME;
+
+import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Locale;
 
 
 public class ActionReceiverPhysical extends BroadcastReceiver {
@@ -20,19 +23,23 @@ public class ActionReceiverPhysical extends BroadcastReceiver {
             performLater(context);
         }
         else if(action.equals("Relaxation")){
-            performHappy(context);
+            performRelaxation(context);
             mydb.addPhysicalStateData("Relaxation");
         }else if(action.equals("Tiredness")){
-            performSad(context);
+            performTiredness(context);
             mydb.addPhysicalStateData("Tiredness");
         }else if(action.equals("Sickness")){
-            performRelaxed(context);
+            performSickness(context);
             mydb.addPhysicalStateData("Sickness");
+        }else if(action.equals("Neutral")){
+            performNeutral(context);
+            mydb.addPhysicalStateData("Neutral");
         }else{
 
         }
 
-        LatinIME.latestNotificationTime=new Date(System.currentTimeMillis());
+        LatinIME.latestNotificationTimeTemp=new Date(System.currentTimeMillis());
+        LatinIME.latestNotificationTime=new SimpleDateFormat("yyyy-MM-dd, hh:mm:ss", Locale.US).format(new Date());
 
         NotificationHelperPhysical mNotificationHelperPhysical;
         mNotificationHelperPhysical= new NotificationHelperPhysical(context);
@@ -51,19 +58,25 @@ public class ActionReceiverPhysical extends BroadcastReceiver {
 
     }
 
-    public void performHappy(Context context){
+    public void performRelaxation(Context context){
         Toast.makeText(context,"Relaxation", Toast.LENGTH_SHORT).show();
         LatinIME.currentPhysicalState="Relaxation";
 
     }
 
-    public void performSad(Context context){
+    public void performNeutral(Context context){
+        Toast.makeText(context,"Neutral", Toast.LENGTH_SHORT).show();
+        LatinIME.currentPhysicalState="Neutral";
+
+    }
+
+    public void performTiredness(Context context){
         Toast.makeText(context,"Tiredness", Toast.LENGTH_SHORT).show();
         LatinIME.currentPhysicalState="Tiredness";
 
     }
 
-    public void performRelaxed(Context context){
+    public void performSickness(Context context){
         Toast.makeText(context,"Sickness", Toast.LENGTH_SHORT).show();
         LatinIME.currentPhysicalState="Sickness";
 

@@ -69,10 +69,13 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
+import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 import javax.annotation.Nonnull;
 
@@ -126,6 +129,7 @@ import typeofmood.ime.datahandler.KeyboardDynamics;
 import typeofmood.ime.notificationhandler.NotificationHelper;
 
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
@@ -138,6 +142,9 @@ import typeofmood.ime.R;
 import typeofmood.ime.notificationhandler.NotificationHelperPhysical;
 
 import static android.content.Intent.FLAG_ACTIVITY_NEW_TASK;
+import com.microsoft.azure.storage.CloudStorageAccount;
+import com.microsoft.azure.storage.blob.*;
+import com.microsoft.azure.storage.file.FileInputStream;
 
 
 /**
@@ -148,12 +155,18 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
         DictionaryFacilitator.DictionaryInitializationListener,
         PermissionsManager.PermissionsResultCallback {
 
+    //azure info
+    private static String storageContainer = "";
+    private static String storageConnectionString = "";
+
     public static KeyboardDynamics sessionData=null; //remi0s
     private static NotificationHelper mNotificationHelper;
     private static NotificationHelperPhysical mNotificationHelperPhysical ;
     public static String currentMood="undefined";
     public static String currentPhysicalState="undefined";
-    public static Date latestNotificationTime;
+    public static String latestNotificationTime;
+    public static Date latestNotificationTimeTemp;
+    public static Date StopDateTimeTemp;
     public static Boolean laterPressed=false;
     public static Boolean isLongPressedFlag=false;
     public static DatabaseHelper myDB;
@@ -261,6 +274,7 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
             if (latinIme == null) {
                 return;
             }
+
 
             final Resources res = latinIme.getResources();
             mDelayInMillisecondsToUpdateSuggestions = res.getInteger(
@@ -629,6 +643,8 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
         pref_gender= pref.getString("Gender", "");
         pref_health= pref.getString("Health", "");
         editor.apply();
+        storageContainer=getConfigValue(this, "storageContainer");
+        storageConnectionString=getConfigValue(this, "storageConnectionString");
 
         myDB = new DatabaseHelper(this); //remi0s
         userID=android.provider.Settings.System.getString(this.getContentResolver(), android.provider.Settings.Secure.ANDROID_ID);//remi0s
@@ -859,27 +875,35 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
     @Override
     public void onFinishInputView(final boolean finishingInput) {
         if (sessionData != null) {
-            sessionData.StopDateTime = new Date(System.currentTimeMillis());
+            sessionData.StopDateTime = new SimpleDateFormat("yyyy-MM-dd, hh:mm:ss", Locale.US).format(new Date());
+            StopDateTimeTemp=new Date(System.currentTimeMillis());
             sessionData.CurrentMood = currentMood;
             sessionData.CurrentPhysicalState=currentPhysicalState;
+            sessionData.LatestNotification=latestNotificationTime;
 
 
 
             int notificationFlag = 0;
 
             if (latestNotificationTime != null) {
-                long minutesPassed = TimeUnit.MINUTES.convert(sessionData.StopDateTime.getTime() - latestNotificationTime.getTime(), TimeUnit.MILLISECONDS);
-                Log.d("minutesPassed", "minutesPassed: " + minutesPassed);
-                if (minutesPassed >= 60 || (sessionsCounter>=6 && minutesPassed>=30)) {
+                long minutesPassed = TimeUnit.MINUTES.convert(StopDateTimeTemp.getTime() - latestNotificationTimeTemp.getTime(), TimeUnit.MILLISECONDS);
+//                Log.d("minutesPassed", "minutesPassed: " + minutesPassed +" with sessions:"+ sessionsCounter);
+                if (minutesPassed >= 120 || (sessionsCounter>=20 && minutesPassed>=60)) {
                     notificationFlag = 1;
+                    sessionData.CurrentMood =currentMood+" TIMEOUT";
+                    sessionData.CurrentPhysicalState=currentPhysicalState+" TIMEOUT";
 
-                }else if(laterPressed && minutesPassed>=30){
+                }else if(laterPressed && minutesPassed>=60){
+                    sessionData.CurrentMood =currentMood+" TIMEOUT";
+                    sessionData.CurrentPhysicalState=currentPhysicalState+" TIMEOUT";
                     notificationFlag = 1;
 
                     laterPressed=false;
                 }
             } else {
                 notificationFlag = 1;
+                sessionData.CurrentMood = "undefined";
+                sessionData.CurrentPhysicalState="undefined";
 
             }
 
@@ -887,6 +911,10 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
                 String title = "TypeOfMood";
                 String message = "Please Expand to describe your mood!";
                 sessionsCounter=0;
+
+                if(isConnected()){
+                    new HttpAsyncTask().execute("");
+                }
 
                 mNotificationHelperPhysical = new NotificationHelperPhysical(this);
                 NotificationCompat.Builder nbPhysical = mNotificationHelperPhysical.getTypeOfMoodNotification(title, message);
@@ -897,19 +925,19 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
                 mNotificationHelper.getManager().notify(mNotificationHelper.notification_id, nb.build());
 //                CreateAlertDialogWithRadioButtonGroup();
 
-                if(isConnected()){
-                    new HttpAsyncTask().execute("server link here");
-                }
+
 
             }
 
 
             if (sessionData.DownTime.size() > 5){
-                Gson gson = new Gson();
+//                Gson gson = new Gson();
+                Gson gson = new GsonBuilder().serializeNulls().create();
                 String sessionDataString = gson.toJson(sessionData, KeyboardDynamics.class);
-                Log.d("Json", "Json string: " + sessionDataString);
+//                Log.d("Json", "Json string: " + sessionDataString);
                 AddData(sessionDataString);
                 sessionsCounter=sessionsCounter+1;
+
             }
 
             sessionData= null;
@@ -1346,7 +1374,7 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
     @Override
     public boolean onShowInputRequested(final int flags, final boolean configChange) {
         //Collect Data remi0s
-        if (sessionData == null)
+        if (sessionData == null && isPasswordGivenCorrect() && userHaveAgreed())
         {
             sessionData = new KeyboardDynamics();
 
@@ -1359,7 +1387,7 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
             }catch (Exception e){
                 appName="undefined";
             }
-            sessionData.StartDateTime = new Date(System.currentTimeMillis());
+            sessionData.StartDateTime = new SimpleDateFormat("yyyy-MM-dd, hh:mm:ss", Locale.US).format(new Date());
             sessionData.CurrentAppName=appName;
             sessionData.IsSoundOn=settingsValues.mSoundOn;
             sessionData.IsVibrationOn=settingsValues.mVibrateOn;
@@ -1830,7 +1858,7 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
     public void onPressKey(final int primaryCode, final int repeatCount,
             final boolean isSinglePointer) {
 
-        if(primaryCode==Constants.CODE_DELETE){
+        if(primaryCode==Constants.CODE_DELETE && sessionData!=null){
             sessionData.NumDels+=1;
         }
         mKeyboardSwitcher.onPressKey(primaryCode, isSinglePointer, getCurrentAutoCapsState(),
@@ -2120,7 +2148,57 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
     }
 
 
-    public static String POST(String url,ArrayList<KeyboardPayload> payload){
+
+
+    public boolean isConnected(){
+        ConnectivityManager connMgr = (ConnectivityManager) getSystemService(Activity.CONNECTIVITY_SERVICE);
+        try {
+            NetworkInfo networkInfo = null;
+            if (connMgr != null) {
+                networkInfo = connMgr.getNetworkInfo(ConnectivityManager.TYPE_WIFI);
+            }
+//        NetworkInfo networkInfo = connMgr.getActiveNetworkInfo();
+            if (networkInfo != null && networkInfo.isConnected())
+                return true;
+            else
+                return false;
+
+        }catch (Exception e){
+            return false;
+        }
+
+    }
+
+    public class HttpAsyncTask extends AsyncTask<String, Void, String> {
+        @Override
+        protected String doInBackground(String... urls) {
+            ArrayList<KeyboardPayload> notSendData = new ArrayList<>();
+            Cursor data = myDB.getNotSendContents();
+            if (data.getCount() != 0) {
+                while (data.moveToNext()) {
+                    KeyboardPayload payload=new KeyboardPayload();
+                    payload.DocID=data.getString(0);//DocID
+                    payload.DateData=data.getString(1); //DateTime
+//                    payload.UserID=data.getString(2); //UserID
+                    payload.SessionData= data.getString(2); //SessionData
+                    notSendData.add(payload);
+                }
+            }else{
+                Log.d("SQL","I'm in do in background 0 data");
+            }
+            String result=upload(notSendData);//POST(urls[0],notSendData);
+
+            return result;
+        }
+        // onPostExecute displays the results of the AsyncTask.
+        @Override
+        protected void onPostExecute(String result) {
+            Log.d("SQL","Tried to send data with result: "+result);
+//            Toast.makeText(getBaseContext(), "Data Sent!", Toast.LENGTH_LONG).show();
+        }
+    }
+
+    public static String oldPOST(String url,ArrayList<KeyboardPayload> payload){
         InputStream inputStream = null;
         String result = "";
 
@@ -2138,6 +2216,7 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
 
                 // 3. build jsonObject
 
+
                 JSONObject jsonObject = new JSONObject();
                 jsonObject.accumulate("DOC_ID", payload.get(i).DocID);
                 jsonObject.accumulate("USER_ID",pref_ID);
@@ -2148,7 +2227,7 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
                 jsonObject.accumulate("SESSION_DATA", payload.get(i).SessionData);
 
 
-                    // 4. convert JSONObject to JSON to String
+                // 4. convert JSONObject to JSON to String
                 json = jsonObject.toString();
 
                 Log.d("server","Json to be sent:\n"+json);
@@ -2201,52 +2280,80 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
         return result;
     }
 
-    public boolean isConnected(){
-        ConnectivityManager connMgr = (ConnectivityManager) getSystemService(Activity.CONNECTIVITY_SERVICE);
-        try {
-            NetworkInfo networkInfo = null;
-            if (connMgr != null) {
-                networkInfo = connMgr.getNetworkInfo(ConnectivityManager.TYPE_WIFI);
-            }
-//        NetworkInfo networkInfo = connMgr.getActiveNetworkInfo();
-            if (networkInfo != null && networkInfo.isConnected())
-                return true;
-            else
-                return false;
+    protected String upload(ArrayList<KeyboardPayload> payload){
+        String result = "";
+        try
+        {
+            for(int i = 0; i < payload.size(); i++) { //payload.size()
 
-        }catch (Exception e){
-            return false;
-        }
+                // 3. build jsonObject
 
-    }
 
-    public class HttpAsyncTask extends AsyncTask<String, Void, String> {
-        @Override
-        protected String doInBackground(String... urls) {
-            ArrayList<KeyboardPayload> notSendData = new ArrayList<>();
-            Cursor data = myDB.getNotSendContents();
-            if (data.getCount() != 0) {
-                while (data.moveToNext()) {
-                    KeyboardPayload payload=new KeyboardPayload();
-                    payload.DocID=data.getString(0);//DocID
-                    payload.DateData=data.getString(1); //DateTime
-//                    payload.UserID=data.getString(2); //UserID
-                    payload.SessionData= data.getString(2); //SessionData
-                    notSendData.add(payload);
+                JSONObject jsonObject = new JSONObject();
+                jsonObject.accumulate("DOC_ID", payload.get(i).DocID);
+                jsonObject.accumulate("USER_ID", pref_ID);
+                jsonObject.accumulate("USER_AGE", pref_age);
+                jsonObject.accumulate("USER_GENDER", pref_gender);
+                jsonObject.accumulate("USER_PHQ9", pref_health);
+//                jsonObject.accumulate("DATE_DATA", payload.get(i).DateData);
+//                jsonObject.accumulate("SESSION_DATA", payload.get(i).SessionData);
+
+
+                // 4. convert JSONObject to JSON to String
+
+
+                // Retrieve storage account from connection-string.
+                CloudStorageAccount storageAccount = CloudStorageAccount.parse(storageConnectionString);
+
+                // Create the blob client.
+                CloudBlobClient blobClient = storageAccount.createCloudBlobClient();
+
+                // Retrieve reference to a previously created container.
+                CloudBlobContainer container = blobClient.getContainerReference(storageContainer);
+
+                // Create or overwrite the blob (with the name "example.jpeg") with contents from a local file.
+
+                String formattedDate=new SimpleDateFormat("yyyy-MM-dd", Locale.US).format(new Date());
+                String formattedDateData="";
+
+                try{
+                    Date date =new SimpleDateFormat("yyyy-MM-dd, hh:mm:ss", Locale.US).parse(payload.get(i).DateData);
+                    jsonObject.accumulate("DATE_DATA", payload.get(i).DateData);
+                    formattedDate = new SimpleDateFormat("yyyy-MM-dd", Locale.US).format(date);
+                }catch (Exception e)
+                {
+                    try {
+                        Date tempDate = new Date(payload.get(i).DateData);
+                        formattedDate = new SimpleDateFormat("yyyy-MM-dd", Locale.US).format(tempDate);
+                        formattedDateData= new SimpleDateFormat("yyyy-MM-dd, hh:mm:ss", Locale.US).format(tempDate);
+                        jsonObject.accumulate("DATE_DATA", formattedDateData);
+                    }catch (Exception a){
+                        Log.d("dateError", "Even that failed");
+                    }
                 }
-            }else{
-                Log.d("SQL","I'm in do in background 0 data");
-            }
-            String result=POST(urls[0],notSendData);
+                jsonObject.accumulate("DATE_SEND", new SimpleDateFormat("yyyy-MM-dd, hh:mm:ss", Locale.US).format(new Date()));
+                jsonObject.accumulate("SESSION_DATA", payload.get(i).SessionData);
 
-            return result;
+                String blobName=pref_ID+"/"+formattedDate+"/"+payload.get(i).DocID+".json";
+                CloudBlockBlob blob = container.getBlockBlobReference(blobName);
+
+
+
+                blob.uploadText(jsonObject.toString());
+                result="success";
+
+                myDB.setSend(payload.get(i).DocID);
+            }
+
         }
-        // onPostExecute displays the results of the AsyncTask.
-        @Override
-        protected void onPostExecute(String result) {
-            Log.d("SQL","Tried to send data with result: "+result);
-//            Toast.makeText(getBaseContext(), "Data Sent!", Toast.LENGTH_LONG).show();
+        catch (Exception e)
+        {
+            // Output the stack trace.
+            result="failed";
+            e.printStackTrace();
+            Log.d("Upload", e.getLocalizedMessage());
         }
+        return result;
     }
 
     private static String convertInputStreamToString(InputStream inputStream) throws IOException {
@@ -2261,9 +2368,40 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
 
     }
 
-    public static SharedPreferences getSharedPreferences (Context context,String pref) {
-        return context.getSharedPreferences("FILE", MODE_PRIVATE);
+    private Boolean isPasswordGivenCorrect () {
+        SharedPreferences pref =getSharedPreferences("user_info", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = pref.edit();
+        String pref_password= pref.getString("Password", "");
+        editor.apply();
+        return (pref_password.equals(getConfigValue(getApplicationContext(), "password")));
     }
+
+    private Boolean userHaveAgreed(){
+        SharedPreferences pref =getSharedPreferences("user_info", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = pref.edit();
+        boolean pref_terms= pref.getBoolean("TermsAgreement", false);
+        editor.apply();
+        return pref_terms;
+    }
+
+    public static String getConfigValue(Context context, String name) {
+        Resources resources = context.getResources();
+
+        try {
+            InputStream rawResource = resources.openRawResource(R.raw.config);
+            Properties properties = new Properties();
+            properties.load(rawResource);
+            return properties.getProperty(name);
+        } catch (Resources.NotFoundException e) {
+            Log.e(TAG, "Unable to find the config file: " + e.getMessage());
+        } catch (IOException e) {
+            Log.e(TAG, "Failed to open config file.");
+        }
+
+        return null;
+    }
+
+
 
 
 

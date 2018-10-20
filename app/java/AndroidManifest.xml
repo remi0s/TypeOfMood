@@ -19,7 +19,7 @@
     coreApp="true"
     package="typeofmood.ime">
 
-    <uses-sdk android:minSdkVersion="16" android:targetSdkVersion="27" />
+    <!--<uses-sdk android:minSdkVersion="16" android:targetSdkVersion="27" />-->
 
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.DOWNLOAD_WITHOUT_NOTIFICATION" />

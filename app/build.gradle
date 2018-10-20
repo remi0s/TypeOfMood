@@ -43,6 +43,7 @@ dependencies {
     implementation 'org.jbundle.util.osgi.wrapped:org.jbundle.util.osgi.wrapped.org.apache.http.client:4.1.2'
     implementation 'com.jjoe64:graphview:4.2.2'
     implementation 'com.github.drawers:SpinnerDatePicker:1.0.6' //remi0s needed for good birthday picker cause latest android have a not very usefull one
+    implementation 'com.microsoft.azure.android:azure-storage-android:2.0.0@aar'
 }
 
 

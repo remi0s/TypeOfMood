@@ -14,7 +14,9 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Locale;
 
 import typeofmood.ime.datahandler.MoodDatabaseHelper;
 import typeofmood.ime.latin.LatinIME;
@@ -97,10 +99,11 @@ public class ChooseMood extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(),"Stressed", Toast.LENGTH_SHORT).show();
                 } else {
                     LatinIME.laterPressed=true;
-                    LatinIME.currentMood="Stressed";
+                    LatinIME.currentMood="Postponing";
                     Toast.makeText(getApplicationContext(),"Later", Toast.LENGTH_SHORT).show();
                 }
-                LatinIME.latestNotificationTime=new Date(System.currentTimeMillis());
+                LatinIME.latestNotificationTimeTemp=new Date(System.currentTimeMillis());
+                LatinIME.latestNotificationTime=new SimpleDateFormat("yyyy-MM-dd, hh:mm:ss", Locale.US).format(new Date());
                 finish();
             }
         });

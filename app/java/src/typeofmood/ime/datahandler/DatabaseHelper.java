@@ -17,7 +17,9 @@ import java.math.BigInteger;
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Locale;
 
 import typeofmood.ime.latin.LatinIME;
 
@@ -55,7 +57,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     public boolean addData(String sessionData) {
         SQLiteDatabase db = this.getWritableDatabase();
-        String date=String.valueOf(new Date(java.lang.System.currentTimeMillis()));
+//        String date=String.valueOf(new Date(java.lang.System.currentTimeMillis()));
+        String date=getCurrentDate();
         String textToHash=sessionData+date;
         String encoded;
         try {
@@ -82,7 +85,15 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
         cv.putNull("SEND_TIME");
-        long result =db.update(TABLE_NAME, cv, "SEND_TIME IS NOT NULL",null);
+        long result=-1;
+        try{
+            result =db.update(TABLE_NAME, cv, "SEND_TIME IS NOT NULL",null);
+
+        }catch (Exception e){
+            Log.d("nullDB","result="+result);
+            e.printStackTrace();
+        }
+
         if (result == -1) {
             return false;
         } else {
@@ -126,5 +137,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         for (byte byt : bytes) result.append(Integer.toString((byt & 0xff) + 0x100, 16).substring(1));
         return result.toString();
     }
+
+    private String getCurrentDate() {
+        return new SimpleDateFormat("yyyy-MM-dd, hh:mm:ss", Locale.US).format(new Date());
+    } //"dd-MM-yyyy" might need fix to "d-M-yyyy"
+
 }
 

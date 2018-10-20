@@ -350,7 +350,7 @@ public class MainActivityStatisticsFragment extends Fragment {
     public static void updateStatisticPhysical(View rootView,ListView listView,String StartDate,String EndDate,boolean FromTheBeginning, Context context){
 
         ArrayList<String> theList = new ArrayList<>();
-        int countRelaxation , countTiredness, countSickness;
+        int countRelaxation , countTiredness, countSickness, countNeutral;
         String dbStartDate1,dbEndDate1;
         if(FromTheBeginning) {
             Cursor data =myDB.getListContents();
@@ -366,15 +366,17 @@ public class MainActivityStatisticsFragment extends Fragment {
             countRelaxation = myDB.getListPhysicalContents("Relaxation").getCount();
             countTiredness = myDB.getListPhysicalContents("Tiredness").getCount();
             countSickness = myDB.getListPhysicalContents("Sickness").getCount();
+            countNeutral = myDB.getListPhysicalContents("Neutral").getCount();
 
         }else{
             countRelaxation=myDB.getPeriodContentsPhysical(StartDate,EndDate,"Relaxation");
             countTiredness=myDB.getPeriodContentsPhysical(StartDate,EndDate,"Tiredness");
             countSickness=myDB.getPeriodContentsPhysical(StartDate,EndDate,"Sickness");
+            countNeutral=myDB.getPeriodContentsPhysical(StartDate,EndDate,"Neutral");
 
         }
 //
-        int totalCount=countRelaxation+countTiredness+countSickness;
+        int totalCount=countRelaxation+countTiredness+countSickness+countNeutral;
 
         if (totalCount==0) {
             Toast.makeText(context, "Didn't find any registered data", Toast.LENGTH_SHORT).show();
@@ -387,9 +389,11 @@ public class MainActivityStatisticsFragment extends Fragment {
             float percentRelaxation=((float)countRelaxation*100)/totalCount;
             float percentTiredness=((float)countTiredness*100)/totalCount;
             float percentSickness=((float)countSickness*100)/totalCount;
+            float percentNeutral=((float)countNeutral*100)/totalCount;
             theList.add("Relaxation\n"+df.format(percentRelaxation)+"%");
             theList.add("Tiredness\n"+df.format(percentTiredness)+"%");
             theList.add("Sickness\n"+df.format(percentSickness)+"%");
+            theList.add("Neutral\n"+df.format(percentNeutral)+"%");
 
             ListAdapter listAdapter = new ArrayAdapter<>(context, android.R.layout.simple_list_item_1, theList);
             listView.setAdapter(listAdapter);
@@ -401,14 +405,15 @@ public class MainActivityStatisticsFragment extends Fragment {
                 BarGraphSeries<DataPoint> series = new BarGraphSeries<>(new DataPoint[]{
                         new DataPoint(1, percentRelaxation),
                         new DataPoint(2, percentTiredness),
-                        new DataPoint(3, percentSickness),
+                        new DataPoint(3, percentNeutral),
+                        new DataPoint(4, percentSickness),
 
                 });
                 graph.removeAllSeries();
                 graph.addSeries(series);
 
                 graph.getViewport().setMinX(0);
-                graph.getViewport().setMaxX(4);
+                graph.getViewport().setMaxX(5);
                 graph.getViewport().setMinY(0.0);
                 graph.getViewport().setMaxY(100.0);
                 graph.getViewport().setYAxisBoundsManual(true);
@@ -418,9 +423,9 @@ public class MainActivityStatisticsFragment extends Fragment {
 
                 GridLabelRenderer gridLabel = graph.getGridLabelRenderer();
                 StaticLabelsFormatter staticLabelsFormatter = new StaticLabelsFormatter(graph);
-                staticLabelsFormatter.setHorizontalLabels(new String[] {" ","Relaxation", "Tiredness", "Sickness"," "});
+                staticLabelsFormatter.setHorizontalLabels(new String[] {" ","Relaxed", "Tired", "Neutral","Sick"," "});
                 graph.getGridLabelRenderer().setLabelFormatter(staticLabelsFormatter);
-                graph.getGridLabelRenderer().setNumHorizontalLabels(5);
+                graph.getGridLabelRenderer().setNumHorizontalLabels(6);
 
                 series.setValueDependentColor(new ValueDependentColor<DataPoint>() {
                     @Override
@@ -431,9 +436,12 @@ public class MainActivityStatisticsFragment extends Fragment {
                             case 2:
                                 return Color.rgb(0,0,0);  //Tiredness
                             case 3:
+                                return Color.rgb(0,0,255);  //Neutral
+                            case 4:
                                 return Color.rgb(255,69,0);  //Sickness
                             default :
-                                return Color.rgb((int) data.getX()*255/3, (int) Math.abs(data.getY()*255/5), 100);
+                                return Color.rgb((int) data.getX()*255/4, (int) Math.abs(data.getY()*255/6), 100);
+
 
 
                         }

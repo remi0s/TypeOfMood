@@ -60,6 +60,9 @@ public class NotificationHelperPhysical extends ContextWrapper {
         Intent relaxationAction = new Intent(this,ActionReceiverPhysical.class);
         relaxationAction.putExtra("actionPhysical","Relaxation");
 
+        Intent neutralAction = new Intent(this,ActionReceiverPhysical.class);
+        neutralAction.putExtra("actionPhysical","Neutral");
+
         Intent tirednessAction = new Intent(this,ActionReceiverPhysical.class);
         tirednessAction.putExtra("actionPhysical","Tiredness");
 
@@ -75,7 +78,7 @@ public class NotificationHelperPhysical extends ContextWrapper {
         PendingIntent pIntentRelaxation = PendingIntent.getBroadcast(this,11,relaxationAction,PendingIntent.FLAG_UPDATE_CURRENT|PendingIntent.FLAG_CANCEL_CURRENT);
         PendingIntent pIntentTiredness = PendingIntent.getBroadcast(this,12,tirednessAction,PendingIntent.FLAG_UPDATE_CURRENT|PendingIntent.FLAG_CANCEL_CURRENT);
         PendingIntent pIntentSickness = PendingIntent.getBroadcast(this,13,sicknessAction,PendingIntent.FLAG_UPDATE_CURRENT|PendingIntent.FLAG_CANCEL_CURRENT);
-
+        PendingIntent pIntentNeutral = PendingIntent.getBroadcast(this,14,neutralAction,PendingIntent.FLAG_UPDATE_CURRENT|PendingIntent.FLAG_CANCEL_CURRENT);
 
         RemoteViews remoteViews = new RemoteViews(getPackageName(), R.layout.typeofmood_notification_physical_state);
 //
@@ -86,6 +89,7 @@ public class NotificationHelperPhysical extends ContextWrapper {
         remoteViews.setOnClickPendingIntent(R.id.buttonTiredness,pIntentTiredness);
         remoteViews.setOnClickPendingIntent(R.id.buttonSickness,pIntentSickness);
         remoteViews.setOnClickPendingIntent(R.id.buttonLater,pIntentLater);
+        remoteViews.setOnClickPendingIntent(R.id.buttonPhysicalNeutral,pIntentNeutral);
 
 
 
@@ -97,6 +101,7 @@ public class NotificationHelperPhysical extends ContextWrapper {
         smallremoteViews.setOnClickPendingIntent(R.id.buttonTiredness,pIntentTiredness);
         smallremoteViews.setOnClickPendingIntent(R.id.buttonSickness,pIntentSickness);
         smallremoteViews.setOnClickPendingIntent(R.id.buttonLater,pIntentLater);
+        smallremoteViews.setOnClickPendingIntent(R.id.buttonPhysicalNeutral,pIntentNeutral);
 
 
         NotificationCompat.Builder builder=new NotificationCompat.Builder(getApplicationContext(),ChannelID);

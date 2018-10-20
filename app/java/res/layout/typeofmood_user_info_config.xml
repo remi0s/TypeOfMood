@@ -1,9 +1,11 @@
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/parentScrollView"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_alignParentStart="true"
     android:layout_alignParentTop="true"
     android:background="@color/setup_background"
+    android:focusableInTouchMode="true"
     android:layout_alignParentLeft="true">
     <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/setup_wizard"
@@ -18,8 +20,105 @@
         android:descendantFocusability="beforeDescendants"
         android:focusableInTouchMode="true">
         <!--android:background=" @drawable/setup_step_action_background"-->
+
         <LinearLayout
             android:id="@+id/layout1"
+            android:layout_width="match_parent"
+            android:background="@drawable/background_box"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/textViewPassword"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:text="Please enter the password provided by your instructor:" />
+
+            <EditText
+                android:id="@+id/editTextPassword"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAlignment="center"
+                android:cursorVisible="false"
+                android:imeOptions="actionDone"
+                android:inputType="textPassword"
+                />
+            <TextView
+                android:id="@+id/textViewPassword2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:textColor="?android:textColorHint"
+                android:text="If you don't enter the password correctly your information won't be recorded and you won't be able to participate in the survey" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/layout2"
+            android:layout_below="@+id/layout1"
+            android:layout_width="match_parent"
+            android:background="@drawable/background_box"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/textViewTerms1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:text="Please read carefully the following Terms &amp; Conditions:" />
+
+            <android.support.v4.widget.NestedScrollView
+                android:layout_height="200dp"
+                android:layout_width="match_parent"
+                android:background="@drawable/background_box"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                >
+
+                <TextView
+                    android:id="@+id/textViewTerms"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/terms_and_conditions">
+                </TextView>
+
+            </android.support.v4.widget.NestedScrollView>
+
+
+
+
+
+            <CheckBox
+                android:id="@+id/checkBoxAgreeTerms"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="I have read and accept the Terms &amp; Conditions" />
+
+
+            <TextView
+                android:id="@+id/textViewTerms2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:textColor="?android:textColorHint"
+                android:text="If you don't agree to those Terms &amp; Conditions your information and data won't be shared with us and you won't be able to participate in this survey " />
+
+
+        </LinearLayout>
+
+
+
+        <LinearLayout
+            android:id="@+id/layout3"
+            android:layout_below="@+id/layout2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
@@ -50,11 +149,11 @@
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/layout2"
+            android:id="@+id/layout4"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/background_box"
-            android:layout_below="@+id/layout1"
+            android:layout_below="@+id/layout3"
             android:layout_marginTop="15dp"
             android:orientation="vertical">
             <TextView
@@ -87,8 +186,8 @@
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/layout3"
-            android:layout_below="@+id/layout2"
+            android:id="@+id/layout5"
+            android:layout_below="@+id/layout4"
             android:layout_width="match_parent"
             android:background="@drawable/background_box"
             android:layout_height="wrap_content"
@@ -122,8 +221,8 @@
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/layout4"
-            android:layout_below="@+id/layout3"
+            android:id="@+id/layout6"
+            android:layout_below="@+id/layout5"
             android:layout_width="match_parent"
             android:background="@drawable/background_box"
             android:layout_height="wrap_content"
@@ -168,9 +267,11 @@
 
         </LinearLayout>
 
+
+
         <LinearLayout
-            android:id="@+id/layout5"
-            android:layout_below="@+id/layout4"
+            android:id="@+id/layout7"
+            android:layout_below="@+id/layout6"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
@@ -188,4 +289,4 @@
         </LinearLayout>
 
     </RelativeLayout>
-</ScrollView>
+</android.support.v4.widget.NestedScrollView>

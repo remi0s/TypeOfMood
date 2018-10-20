@@ -83,7 +83,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/notif_message"
-            android:weightSum="4"
+            android:weightSum="5"
             android:layout_alignParentLeft="true">
 
             <Button
@@ -107,6 +107,19 @@
                 android:layout_weight="1"
                 android:background="@android:color/transparent"
                 android:text="@string/btn_tiredness"
+                android:textColor="@android:color/holo_blue_light"
+                android:textSize="12sp"
+                android:includeFontPadding="false"
+                android:padding="0dp"/>
+
+            <Button
+                android:id="@+id/buttonPhysicalNeutral"
+                style="@style/Widget.AppCompat.Button.ButtonBar.AlertDialog"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@android:color/transparent"
+                android:text="@string/btn_neutral"
                 android:textColor="@android:color/holo_blue_light"
                 android:textSize="12sp"
                 android:includeFontPadding="false"

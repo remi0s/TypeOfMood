@@ -441,6 +441,26 @@ mobile devices. [CHAR LIMIT=25] -->
     <string name="setup_step4_instruction" translatable="false">"Now you should provide some user related info!"</string>
     <!-- The label of the button that triggers the screen for configuaring additional languages of the keyboard. [CHAR_LIMIT=64] -->
     <string name="setup_step4_action" translatable="false">Configure user related info</string>
+    <string name="terms_and_conditions" translatable="false">
+        <b>TypeOfMood Terms &amp; Conditions</b>\n\n
+        TypeOfMood stores and uses the following information given by the User: \n\n
+        "\u2022" An unique User ID that can also be your device unique ID if you are not instructed by a specific one\n
+        "\u2022" User\'s birth date\n
+        "\u2022" User\'s gender\n
+        "\u2022" User\'s Patient Health Questionnaire (PHQ-9) results\n\n
+
+        Also while you are using TypeOfMood keyboard we collect data sessions (a session starts with the opening of the keyboard and ends with it\'s closing) that contain the following information:\n\n
+        "\u2022" Datetime of the keyboard opening and closing\n
+        "\u2022" Parent application name (Messenger, Chrome, etc..)\n
+        "\u2022" User\'s self reports about the current mood and current physical state\n
+        "\u2022" Datetime of each keystroke in milliseconds\n
+        "\u2022" Duration of each keystroke\n
+        "\u2022" Pressure of each keystroke\n
+        "\u2022" Current settings of TypeOfMood keyboard such as sound on keystrokes, popup on/off and vibration on keystrokes\n\n
+
+        Please note that TypeOfMood does not store what the user is typing and none of the above information can result into determining the text input.
+
+    </string>
     <!-- The label of the button that finishes the setup wizard. [CHAR_LIMIT=64] -->
     <string name="setup_finish_action">Finished</string>
     <string name="setup_settings_action">Settings</string>
@@ -599,8 +619,8 @@ Tip: You can download and remove dictionaries by going to &lt;b>Languages&#160;&
     <string name="btn_neutral">Neutral</string>
     <string name="btn_stressed">Stressed</string>
     <string name="btn_later">Not Now</string>
-    <string name="btn_relaxation">Relaxation</string>
-    <string name="btn_tiredness">Tiredness</string>
-    <string name="btn_sickness">Sickness</string>
+    <string name="btn_relaxation">Relaxed</string>
+    <string name="btn_tiredness">Tired</string>
+    <string name="btn_sickness">Sick</string>
 
 </resources>

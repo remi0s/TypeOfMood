@@ -7,7 +7,10 @@ import android.widget.Toast;
 
 import typeofmood.ime.datahandler.MoodDatabaseHelper;
 import typeofmood.ime.latin.LatinIME;
+
+import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Locale;
 
 
 public class ActionReceiver extends BroadcastReceiver {
@@ -18,8 +21,7 @@ public class ActionReceiver extends BroadcastReceiver {
         String action=intent.getStringExtra("action");
         if(action.equals("Later")){
             performLater(context);
-        }
-        else if(action.equals("Happy")){
+        }else if(action.equals("Happy")){
             performHappy(context);
             mydb.addData("Happy");
         }else if(action.equals("Sad")){
@@ -34,7 +36,8 @@ public class ActionReceiver extends BroadcastReceiver {
         }else{
 
         }
-        LatinIME.latestNotificationTime=new Date(System.currentTimeMillis());
+        LatinIME.latestNotificationTimeTemp=new Date(System.currentTimeMillis());
+        LatinIME.latestNotificationTime=new SimpleDateFormat("yyyy-MM-dd, hh:mm:ss", Locale.US).format(new Date());
 
         NotificationHelper mNotificationHelper;
         mNotificationHelper= new NotificationHelper(context);
