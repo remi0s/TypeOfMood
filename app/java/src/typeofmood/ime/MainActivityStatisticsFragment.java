@@ -40,7 +40,6 @@ import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.Locale;
 
-import typeofmood.ime.datahandler.DatabaseHelper;
 import typeofmood.ime.datahandler.MoodDatabaseHelper;
 
 public class MainActivityStatisticsFragment extends Fragment {
@@ -245,14 +244,19 @@ public class MainActivityStatisticsFragment extends Fragment {
         String dbStartDate1,dbEndDate1;
         if(FromTheBeginning) {
             Cursor data =myDB.getListContents();
-            if(data.getCount()!=0) {
-                data.moveToFirst();
-                dbStartDate1 = data.getString(3);
-                data.moveToLast();
-                dbEndDate1 = data.getString(3);
-                mStartDate.setText(parseDate(dbStartDate1));
-                mEndDate.setText(parseDate(dbEndDate1));
+            try {
+                if(data.getCount()!=0) {
+                    data.moveToFirst();
+                    dbStartDate1 = data.getString(3);
+                    data.moveToLast();
+                    dbEndDate1 = data.getString(3);
+                    mStartDate.setText(parseDate(dbStartDate1));
+                    mEndDate.setText(parseDate(dbEndDate1));
+                }
+            } finally {
+                data.close();
             }
+
 
             countHappy = myDB.getListMoodContents("Happy").getCount();
             countSad = myDB.getListMoodContents("Sad").getCount();
@@ -354,14 +358,19 @@ public class MainActivityStatisticsFragment extends Fragment {
         String dbStartDate1,dbEndDate1;
         if(FromTheBeginning) {
             Cursor data =myDB.getListContents();
-            if(data.getCount()!=0){
-                data.moveToFirst();
-                dbStartDate1=data.getString(3);
-                data.moveToLast();
-                dbEndDate1=data.getString(3);
-                mStartDate.setText(parseDate(dbStartDate1));
-                mEndDate.setText(parseDate(dbEndDate1));
+            try {
+                if(data.getCount()!=0){
+                    data.moveToFirst();
+                    dbStartDate1=data.getString(3);
+                    data.moveToLast();
+                    dbEndDate1=data.getString(3);
+                    mStartDate.setText(parseDate(dbStartDate1));
+                    mEndDate.setText(parseDate(dbEndDate1));
+                }
+            } finally {
+                data.close();
             }
+
 
             countRelaxation = myDB.getListPhysicalContents("Relaxation").getCount();
             countTiredness = myDB.getListPhysicalContents("Tiredness").getCount();
@@ -392,8 +401,9 @@ public class MainActivityStatisticsFragment extends Fragment {
             float percentNeutral=((float)countNeutral*100)/totalCount;
             theList.add("Relaxation\n"+df.format(percentRelaxation)+"%");
             theList.add("Tiredness\n"+df.format(percentTiredness)+"%");
-            theList.add("Sickness\n"+df.format(percentSickness)+"%");
             theList.add("Neutral\n"+df.format(percentNeutral)+"%");
+            theList.add("Sickness\n"+df.format(percentSickness)+"%");
+
 
             ListAdapter listAdapter = new ArrayAdapter<>(context, android.R.layout.simple_list_item_1, theList);
             listView.setAdapter(listAdapter);
@@ -526,6 +536,14 @@ public class MainActivityStatisticsFragment extends Fragment {
         format = new SimpleDateFormat("dd-MM-yyyy");
         date = format.format(newDate);
         return date;
+    }
+
+    @Override
+    public void onDestroy(){
+        super.onDestroy();
+        if(myDB!=null){
+            myDB.close();
+        }
     }
 
 

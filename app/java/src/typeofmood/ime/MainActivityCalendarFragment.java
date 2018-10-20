@@ -21,9 +21,12 @@ import java.util.ArrayList;
 import typeofmood.ime.datahandler.MoodDatabaseHelper;
 
 public class MainActivityCalendarFragment extends Fragment {
-    @Override
 
+    MoodDatabaseHelper myDB;
+
+    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        myDB=new MoodDatabaseHelper(getActivity().getApplicationContext());
 
         View rootView = inflater.inflate(
                 R.layout.calendar_fragment, container, false);
@@ -47,8 +50,8 @@ public class MainActivityCalendarFragment extends Fragment {
                     }
                     String date=mYear+"-"+mMonth+"-"+mDay;
                     if(listView != null) {
-                        MoodDatabaseHelper myDB;
-                        myDB=new MoodDatabaseHelper(getActivity().getApplicationContext());
+
+
                         ArrayList<String> theList = new ArrayList<>();
                         ArrayList<String> theList2 = new ArrayList<>();
                         Cursor data = myDB.getListDateContentsMood(date);
@@ -62,7 +65,8 @@ public class MainActivityCalendarFragment extends Fragment {
                             listView.setAdapter(listAdapter);
                             listView2.setAdapter(listAdapter2);
                         } else {
-                            while (data.moveToNext()) {
+                            try {
+                                while (data.moveToNext()) {
 //                                String strData2="";
 //                                if(data2.moveToNext()){
 //                                    String state=data2.getString(2);
@@ -74,16 +78,21 @@ public class MainActivityCalendarFragment extends Fragment {
 //                                        strData2=" and "+"Sick";
 //                                    }
 //                                }
-                                theList.add("At "+data.getString(4)+"\n"+"You were feeling "+data.getString(1));//+strData2
-                                ListAdapter listAdapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_list_item_1, theList);
-                                listView.setAdapter(listAdapter);
+                                    theList.add("At "+data.getString(4)+"\n"+"You were feeling "+data.getString(1));//+strData2
+                                    ListAdapter listAdapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_list_item_1, theList);
+                                    listView.setAdapter(listAdapter);
+                                }
+
+                                while (data2.moveToNext()) {
+                                    theList2.add("At "+data2.getString(4)+"\n"+"Your physical state was "+data2.getString(2));//+strData2
+                                    ListAdapter listAdapter2 = new ArrayAdapter<>(getActivity(), android.R.layout.simple_list_item_1, theList2);
+                                    listView2.setAdapter(listAdapter2);
+                                }
+                            } finally {
+                                data.close();
+                                data2.close();
                             }
 
-                            while (data2.moveToNext()) {
-                                theList2.add("At "+data2.getString(4)+"\n"+"Your physical state was "+data2.getString(2));//+strData2
-                                ListAdapter listAdapter2 = new ArrayAdapter<>(getActivity(), android.R.layout.simple_list_item_1, theList2);
-                                listView2.setAdapter(listAdapter2);
-                            }
 
                         }
                     } else {
@@ -102,6 +111,14 @@ public class MainActivityCalendarFragment extends Fragment {
     public void onAttach(Activity activity) {
         super.onAttach(activity);
 
+    }
+
+    @Override
+    public void onDestroy(){
+        super.onDestroy();
+        if(myDB!=null){
+            myDB.close();
+        }
     }
 
 

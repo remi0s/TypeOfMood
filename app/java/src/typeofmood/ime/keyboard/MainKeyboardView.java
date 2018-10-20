@@ -696,11 +696,24 @@ public final class MainKeyboardView extends KeyboardView implements DrawingProxy
         //remi0s
         final int action = event.getActionMasked();
         final long eventTime = event.getEventTime();
+        int rawX = (int)event.getRawX();
+        int rawY = (int)event.getRawY();
+        final int index = event.getActionIndex();
+        final int id = event.getPointerId(index);
         switch (action) {
             case MotionEvent.ACTION_DOWN:
             case MotionEvent.ACTION_POINTER_DOWN:
                 if(mLatinIme.sessionData!=null){
                     mLatinIme.sessionData.DownTime.add(eventTime);
+//                    Log.d("xy","x: "+rawX+" y: "+rawY);
+
+                    try {
+                        mLatinIme.sessionData.PressureValue.add(event.getPressure(id)); //alternative could be getSize()
+                    }catch (Exception e){
+                        Log.d("preassure","exception");
+                        e.printStackTrace();
+                        mLatinIme.sessionData.PressureValue.add(event.getPressure());
+                    }
                 }
 
 
@@ -709,7 +722,7 @@ public final class MainKeyboardView extends KeyboardView implements DrawingProxy
             case MotionEvent.ACTION_POINTER_UP:
                 if(mLatinIme.sessionData!=null) {
                     mLatinIme.sessionData.UpTime.add(eventTime);
-                    mLatinIme.sessionData.PressureValue.add(event.getPressure()); //alternative could be getSize()
+
                     if (mLatinIme.isLongPressedFlag == true) {
                         mLatinIme.sessionData.IsLongPress.add(1);
                         mLatinIme.isLongPressedFlag = false;

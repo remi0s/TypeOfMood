@@ -44,6 +44,7 @@ public class ActionReceiverPhysical extends BroadcastReceiver {
         NotificationHelperPhysical mNotificationHelperPhysical;
         mNotificationHelperPhysical= new NotificationHelperPhysical(context);
         mNotificationHelperPhysical.getManager().cancel(mNotificationHelperPhysical.notification_id);
+        mydb.close();
 
 //        mNotificationHelper.getManager().cancel(action,intent.getExtras().getInt("action"));
         //This is used to close the notification tray

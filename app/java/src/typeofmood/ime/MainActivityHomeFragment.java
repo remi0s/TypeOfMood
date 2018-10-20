@@ -74,6 +74,14 @@ public class MainActivityHomeFragment extends Fragment {
     }
 
     @Override
+    public void onDestroy(){
+        super.onDestroy();
+        if(myDB!=null){
+            myDB.close();
+        }
+    }
+
+    @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         final Context context = getActivity();
@@ -176,20 +184,22 @@ public class MainActivityHomeFragment extends Fragment {
         countNeutral=myDB.getPeriodContentsMood(StartDate,EndDate,"Neutral");
         countStressed=myDB.getPeriodContentsMood(StartDate,EndDate,"Stressed");
         int totalCount=countHappy+countSad+countNeutral+countStressed;
+        float percentHappy=0;
+        float percentSad=0;
+        float percentNeutral=0;
+        float percentStressed=0;
+        DecimalFormat df = new DecimalFormat("#0.00");
 
-        if (totalCount==0) {
-            Toast.makeText(context, "Didn't find any registered data", Toast.LENGTH_SHORT).show();
-        } else {
-            DecimalFormat df = new DecimalFormat("#0.00");
-            float percentHappy=((float)countHappy*100)/totalCount;
-            float percentSad=((float)countSad*100)/totalCount;
-            float percentNeutral=((float)countNeutral*100)/totalCount;
-            float percentStressed=((float)countStressed*100)/totalCount;
-            mHappyStats.setText(df.format(percentHappy)+"%");
-            mNeutralStats.setText(df.format(percentNeutral)+"%");
-            mSadStats.setText(df.format(percentSad)+"%");
-            mStressedStats.setText(df.format(percentStressed)+"%");
-            }
+        if (totalCount>0){
+            percentHappy=((float)countHappy*100)/totalCount;
+            percentSad=((float)countSad*100)/totalCount;
+            percentNeutral=((float)countNeutral*100)/totalCount;
+            percentStressed=((float)countStressed*100)/totalCount;
+        }
+        mHappyStats.setText(df.format(percentHappy)+"%");
+        mNeutralStats.setText(df.format(percentNeutral)+"%");
+        mSadStats.setText(df.format(percentSad)+"%");
+        mStressedStats.setText(df.format(percentStressed)+"%");
 
 
         }
@@ -204,28 +214,24 @@ public class MainActivityHomeFragment extends Fragment {
         countSickness=myDB.getPeriodContentsPhysical(StartDate,EndDate,"Sickness");
         countNeutral=myDB.getPeriodContentsPhysical(StartDate,EndDate,"Neutral");
 
-
-//
         int totalCount=countRelaxation+countTiredness+countSickness+countNeutral;
+        float percentRelaxation=0;
+        float percentTiredness=0;
+        float percentSickness=0;
+        float percentNeutral=0;
+        DecimalFormat df = new DecimalFormat("#0.00");
 
-        if (totalCount==0) {
-            Toast.makeText(context, "Didn't find any registered data", Toast.LENGTH_SHORT).show();
-
-        } else {
-            DecimalFormat df = new DecimalFormat("#0.00");
-            float percentRelaxation=((float)countRelaxation*100)/totalCount;
-            float percentTiredness=((float)countTiredness*100)/totalCount;
-            float percentSickness=((float)countSickness*100)/totalCount;
-            float percentNeutral=((float)countNeutral*100)/totalCount;
-
-            mRelaxedStats.setText(df.format(percentRelaxation)+"%");
-            mPNeutralStats.setText(df.format(percentNeutral)+"%");
-            mTiredStats.setText(df.format(percentTiredness)+"%");
-            mSickStats.setText(df.format(percentSickness)+"%");
-
-
+        if (totalCount>0) {
+            percentRelaxation=((float)countRelaxation*100)/totalCount;
+            percentTiredness=((float)countTiredness*100)/totalCount;
+            percentSickness=((float)countSickness*100)/totalCount;
+            percentNeutral=((float)countNeutral*100)/totalCount;
 
         }
+        mRelaxedStats.setText(df.format(percentRelaxation)+"%");
+        mPNeutralStats.setText(df.format(percentNeutral)+"%");
+        mTiredStats.setText(df.format(percentTiredness)+"%");
+        mSickStats.setText(df.format(percentSickness)+"%");
     }
 
 

@@ -19,6 +19,7 @@ package typeofmood.ime.latin;
 import android.Manifest.permission;
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.Application;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -69,6 +70,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
+import java.lang.ref.WeakReference;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -176,7 +178,7 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
     public static String pref_ID="";
     public static String pref_gender="";
     public static String pref_health="";
-    public int sessionsCounter=0;
+    public static int sessionsCounter=0;
 
 
 
@@ -794,6 +796,10 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
         unregisterReceiver(mDictionaryPackInstallReceiver);
         unregisterReceiver(mDictionaryDumpBroadcastReceiver);
         mStatsUtilsManager.onDestroy(this /* context */);
+        if(myDB!=null){
+            myDB.close();
+        }
+
         super.onDestroy();
     }
 
@@ -875,71 +881,73 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
     @Override
     public void onFinishInputView(final boolean finishingInput) {
         if (sessionData != null) {
-            sessionData.StopDateTime = new SimpleDateFormat("yyyy-MM-dd, hh:mm:ss", Locale.US).format(new Date());
-            StopDateTimeTemp=new Date(System.currentTimeMillis());
-            sessionData.CurrentMood = currentMood;
-            sessionData.CurrentPhysicalState=currentPhysicalState;
-            sessionData.LatestNotification=latestNotificationTime;
+//            sessionData.StopDateTime = new SimpleDateFormat("yyyy-MM-dd, hh:mm:ss", Locale.US).format(new Date());
+//            StopDateTimeTemp=new Date(System.currentTimeMillis());
+//            sessionData.CurrentMood = currentMood;
+//            sessionData.CurrentPhysicalState=currentPhysicalState;
+//            sessionData.LatestNotification=latestNotificationTime;
+//
+//
+//
+//            int notificationFlag = 0;
+//
+//            if (latestNotificationTime != null) {
+//                long minutesPassed = TimeUnit.MINUTES.convert(StopDateTimeTemp.getTime() - latestNotificationTimeTemp.getTime(), TimeUnit.MILLISECONDS);
+////                Log.d("minutesPassed", "minutesPassed: " + minutesPassed +" with sessions:"+ sessionsCounter);
+//                if (minutesPassed >= 120 || (sessionsCounter>=20 && minutesPassed>=60)) {
+//                    notificationFlag = 1;
+//                    sessionData.CurrentMood =currentMood+" TIMEOUT";
+//                    sessionData.CurrentPhysicalState=currentPhysicalState+" TIMEOUT";
+//
+//                }else if(laterPressed && minutesPassed>=60){
+//                    sessionData.CurrentMood =currentMood+" TIMEOUT";
+//                    sessionData.CurrentPhysicalState=currentPhysicalState+" TIMEOUT";
+//                    notificationFlag = 1;
+//
+//                    laterPressed=false;
+//                }
+//            } else {
+//                notificationFlag = 1;
+//                sessionData.CurrentMood = "undefined";
+//                sessionData.CurrentPhysicalState="undefined";
+//
+//            }
+//
+//            if (notificationFlag == 1 && sessionData.DownTime.size() > 5) {
+//                String title = "TypeOfMood";
+//                String message = "Please Expand to describe your mood!";
+//                sessionsCounter=0;
+//
+//                if(isConnected()){
+//                    new HttpAsyncTask().execute("");
+//                }
+//
+//                mNotificationHelperPhysical = new NotificationHelperPhysical(this);
+//                NotificationCompat.Builder nbPhysical = mNotificationHelperPhysical.getTypeOfMoodNotification(title, message);
+//                mNotificationHelperPhysical.getManager().notify(mNotificationHelperPhysical.notification_id, nbPhysical.build());
+//
+//                mNotificationHelper = new NotificationHelper(this);
+//                NotificationCompat.Builder nb = mNotificationHelper.getTypeOfMoodNotification(title, message);
+//                mNotificationHelper.getManager().notify(mNotificationHelper.notification_id, nb.build());
+////                CreateAlertDialogWithRadioButtonGroup();
+//
+//
+//
+//            }
+//
+//
+//            if (sessionData.DownTime.size() > 5){
+////                Gson gson = new Gson();
+//                Gson gson = new GsonBuilder().serializeNulls().create();
+//                String sessionDataString = gson.toJson(sessionData, KeyboardDynamics.class);
+////                Log.d("Json", "Json string: " + sessionDataString);
+//                AddData(sessionDataString);
+//                sessionsCounter=sessionsCounter+1;
+//
+//            }
 
-
-
-            int notificationFlag = 0;
-
-            if (latestNotificationTime != null) {
-                long minutesPassed = TimeUnit.MINUTES.convert(StopDateTimeTemp.getTime() - latestNotificationTimeTemp.getTime(), TimeUnit.MILLISECONDS);
-//                Log.d("minutesPassed", "minutesPassed: " + minutesPassed +" with sessions:"+ sessionsCounter);
-                if (minutesPassed >= 120 || (sessionsCounter>=20 && minutesPassed>=60)) {
-                    notificationFlag = 1;
-                    sessionData.CurrentMood =currentMood+" TIMEOUT";
-                    sessionData.CurrentPhysicalState=currentPhysicalState+" TIMEOUT";
-
-                }else if(laterPressed && minutesPassed>=60){
-                    sessionData.CurrentMood =currentMood+" TIMEOUT";
-                    sessionData.CurrentPhysicalState=currentPhysicalState+" TIMEOUT";
-                    notificationFlag = 1;
-
-                    laterPressed=false;
-                }
-            } else {
-                notificationFlag = 1;
-                sessionData.CurrentMood = "undefined";
-                sessionData.CurrentPhysicalState="undefined";
-
-            }
-
-            if (notificationFlag == 1 && sessionData.DownTime.size() > 5) {
-                String title = "TypeOfMood";
-                String message = "Please Expand to describe your mood!";
-                sessionsCounter=0;
-
-                if(isConnected()){
-                    new HttpAsyncTask().execute("");
-                }
-
-                mNotificationHelperPhysical = new NotificationHelperPhysical(this);
-                NotificationCompat.Builder nbPhysical = mNotificationHelperPhysical.getTypeOfMoodNotification(title, message);
-                mNotificationHelperPhysical.getManager().notify(mNotificationHelperPhysical.notification_id, nbPhysical.build());
-
-                mNotificationHelper = new NotificationHelper(this);
-                NotificationCompat.Builder nb = mNotificationHelper.getTypeOfMoodNotification(title, message);
-                mNotificationHelper.getManager().notify(mNotificationHelper.notification_id, nb.build());
-//                CreateAlertDialogWithRadioButtonGroup();
-
-
-
-            }
-
-
-            if (sessionData.DownTime.size() > 5){
-//                Gson gson = new Gson();
-                Gson gson = new GsonBuilder().serializeNulls().create();
-                String sessionDataString = gson.toJson(sessionData, KeyboardDynamics.class);
-//                Log.d("Json", "Json string: " + sessionDataString);
-                AddData(sessionDataString);
-                sessionsCounter=sessionsCounter+1;
-
-            }
-
+            DataStoreAsyncTask task = new DataStoreAsyncTask(getApplicationContext());
+            task.execute(sessionData);
             sessionData= null;
 
         }
@@ -2138,20 +2146,19 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
 
     }
 
-    private void AddData(String sessionDataString) {
+    private static boolean AddData(String sessionDataString,Context context) {
         boolean insertData=myDB.addData(sessionDataString);
-        if(insertData==true){
-//            Toast.makeText(this,"Successfully entered data",Toast.LENGTH_LONG).show();
-        }else{
-            Toast.makeText(this,"Something went wrong in database",Toast.LENGTH_LONG).show();
+        if(insertData==false) {
+            Toast.makeText(context, "Something went wrong in database", Toast.LENGTH_LONG).show();
         }
+        return insertData;
     }
 
 
 
 
-    public boolean isConnected(){
-        ConnectivityManager connMgr = (ConnectivityManager) getSystemService(Activity.CONNECTIVITY_SERVICE);
+    public static boolean isConnected(Context context){
+        ConnectivityManager connMgr = (ConnectivityManager) context.getSystemService(Activity.CONNECTIVITY_SERVICE);
         try {
             NetworkInfo networkInfo = null;
             if (connMgr != null) {
@@ -2169,24 +2176,31 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
 
     }
 
-    public class HttpAsyncTask extends AsyncTask<String, Void, String> {
+    public static class HttpAsyncTask extends AsyncTask<String, Void, String> {
+        String result="";
         @Override
         protected String doInBackground(String... urls) {
             ArrayList<KeyboardPayload> notSendData = new ArrayList<>();
             Cursor data = myDB.getNotSendContents();
-            if (data.getCount() != 0) {
-                while (data.moveToNext()) {
-                    KeyboardPayload payload=new KeyboardPayload();
-                    payload.DocID=data.getString(0);//DocID
-                    payload.DateData=data.getString(1); //DateTime
+            try {
+                if (data.getCount() != 0) {
+                    while (data.moveToNext()) {
+                        KeyboardPayload payload=new KeyboardPayload();
+                        payload.DocID=data.getString(0);//DocID
+                        payload.DateData=data.getString(1); //DateTime
 //                    payload.UserID=data.getString(2); //UserID
-                    payload.SessionData= data.getString(2); //SessionData
-                    notSendData.add(payload);
+                        payload.SessionData= data.getString(2); //SessionData
+                        notSendData.add(payload);
+                    }
+                    result=upload(notSendData);//POST(urls[0],notSendData);
+                }else{
+                    Log.d("SQL","I'm in do in background 0 data");
                 }
-            }else{
-                Log.d("SQL","I'm in do in background 0 data");
+            } finally {
+                data.close();
             }
-            String result=upload(notSendData);//POST(urls[0],notSendData);
+
+
 
             return result;
         }
@@ -2280,7 +2294,7 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
         return result;
     }
 
-    protected String upload(ArrayList<KeyboardPayload> payload){
+    protected static String upload(ArrayList<KeyboardPayload> payload){
         String result = "";
         try
         {
@@ -2399,6 +2413,100 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
         }
 
         return null;
+    }
+
+    private static class DataStoreAsyncTask extends AsyncTask<KeyboardDynamics, Void, String> {
+        WeakReference<Context> weakContext;
+
+        private DataStoreAsyncTask (Context context){
+            weakContext = new WeakReference<Context>(context);
+        }
+
+        @Override
+        protected String doInBackground(KeyboardDynamics... args) {
+            Boolean result=false;
+            KeyboardDynamics sessionDataTemp;
+            sessionDataTemp=args[0];
+
+            if (sessionDataTemp != null) {
+                sessionDataTemp.StopDateTime = new SimpleDateFormat("yyyy-MM-dd, hh:mm:ss", Locale.US).format(new Date());
+                StopDateTimeTemp=new Date(System.currentTimeMillis());
+                sessionDataTemp.CurrentMood = currentMood;
+                sessionDataTemp.CurrentPhysicalState=currentPhysicalState;
+                sessionDataTemp.LatestNotification=latestNotificationTime;
+
+
+
+                int notificationFlag = 0;
+
+                if (latestNotificationTime != null) {
+                    long minutesPassed = TimeUnit.MINUTES.convert(StopDateTimeTemp.getTime() - latestNotificationTimeTemp.getTime(), TimeUnit.MILLISECONDS);
+//                Log.d("minutesPassed", "minutesPassed: " + minutesPassed +" with sessions:"+ sessionsCounter);
+                    if (minutesPassed >= 120 || (sessionsCounter>=20 && minutesPassed>=60)) {
+                        notificationFlag = 1;
+                        sessionDataTemp.CurrentMood =currentMood+" TIMEOUT";
+                        sessionDataTemp.CurrentPhysicalState=currentPhysicalState+" TIMEOUT";
+
+                    }else if(laterPressed && minutesPassed>=60){
+                        sessionDataTemp.CurrentMood =currentMood+" TIMEOUT";
+                        sessionDataTemp.CurrentPhysicalState=currentPhysicalState+" TIMEOUT";
+                        notificationFlag = 1;
+
+                        laterPressed=false;
+                    }
+                } else {
+                    notificationFlag = 1;
+                    sessionDataTemp.CurrentMood = "undefined";
+                    sessionDataTemp.CurrentPhysicalState="undefined";
+
+                }
+
+                if (notificationFlag == 1 && sessionDataTemp.DownTime.size() > 5) {
+                    String title = "TypeOfMood";
+                    String message = "Please Expand to describe your mood!";
+                    sessionsCounter=0;
+
+                    if(isConnected(weakContext.get())){
+                        new HttpAsyncTask().execute("");
+                    }
+
+                    mNotificationHelperPhysical = new NotificationHelperPhysical(weakContext.get());
+                    NotificationCompat.Builder nbPhysical = mNotificationHelperPhysical.getTypeOfMoodNotification(title, message);
+                    mNotificationHelperPhysical.getManager().notify(mNotificationHelperPhysical.notification_id, nbPhysical.build());
+
+                    mNotificationHelper = new NotificationHelper(weakContext.get());
+                    NotificationCompat.Builder nb = mNotificationHelper.getTypeOfMoodNotification(title, message);
+                    mNotificationHelper.getManager().notify(mNotificationHelper.notification_id, nb.build());
+//                CreateAlertDialogWithRadioButtonGroup();
+
+
+
+                }
+
+
+                if (sessionDataTemp.DownTime.size() > 5){
+
+                    Gson gson = new GsonBuilder().serializeNulls().create();
+                    String sessionDataString = gson.toJson(sessionDataTemp, KeyboardDynamics.class);
+//                Log.d("Json", "Json string: " + sessionDataString);
+                    result=AddData(sessionDataString,weakContext.get());
+                    sessionsCounter=sessionsCounter+1;
+                }
+
+            }
+            if(result){
+                return "success";
+            }else{
+                return "failure";
+            }
+
+        }
+        // onPostExecute displays the results of the AsyncTask.
+        @Override
+        protected void onPostExecute(String result) {
+            Log.d("SQL","Tried to save data with result: "+result);
+//            Toast.makeText(getBaseContext(), "Data Sent!", Toast.LENGTH_LONG).show();
+        }
     }
 
 

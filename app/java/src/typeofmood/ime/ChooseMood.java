@@ -128,6 +128,7 @@ public class ChooseMood extends AppCompatActivity {
         LatinIME.laterPressed=true;
         Toast.makeText(getApplicationContext(),"Later", Toast.LENGTH_SHORT).show();
         super.onBackPressed();
+        mydb.close();
         finish();
     }
 

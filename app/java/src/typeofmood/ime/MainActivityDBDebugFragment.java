@@ -102,29 +102,32 @@ public class MainActivityDBDebugFragment extends Fragment {
         userInfoText.setText(UserInfo);
 
         if(listView != null) {
-            DatabaseHelper myDB;
-            myDB=new DatabaseHelper(getActivity().getApplicationContext());
             ArrayList<String> theList = new ArrayList<>();
             Cursor data = myDB.getNotSendContents();
             String text="Number of sessions: "+data.getCount();
             t.setText(text);
-            if (data.getCount() == 0) {
-                Toast.makeText(getActivity(), "Database was empty", Toast.LENGTH_SHORT).show();
-                theList.clear();
-                ListAdapter listAdapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_list_item_1, theList);
-                listView.setAdapter(listAdapter);
-            } else {
-                while (data.moveToNext()) {
-                    theList.add("DOC_ID="+data.getString(0)+
-                            "\n\nDATETIME_DATA="+data.getString(1)+
-                            "\n\nSEND_TIME="+data.getString(3)+
-                            "\n\nSESSION_DATA="+data.getString(2)
-                            );
+            try {
+                if (data.getCount() == 0) {
+                    Toast.makeText(getActivity(), "Database was empty", Toast.LENGTH_SHORT).show();
+                    theList.clear();
                     ListAdapter listAdapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_list_item_1, theList);
                     listView.setAdapter(listAdapter);
-                }
+                } else {
+                    while (data.moveToNext()) {
+                        theList.add("DOC_ID="+data.getString(0)+
+                                "\n\nDATETIME_DATA="+data.getString(1)+
+                                "\n\nSEND_TIME="+data.getString(3)+
+                                "\n\nSESSION_DATA="+data.getString(2)
+                        );
+                        ListAdapter listAdapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_list_item_1, theList);
+                        listView.setAdapter(listAdapter);
+                    }
 
+                }
+            } finally {
+                data.close();
             }
+
 
             listView.post(new Runnable() {
                 @Override
@@ -243,24 +246,30 @@ public class MainActivityDBDebugFragment extends Fragment {
 
     }
 
-    public class HttpAsyncTask extends AsyncTask<String, Void, String> {
+    public static class HttpAsyncTask extends AsyncTask<String, Void, String> {
+        String result="";
         @Override
         protected String doInBackground(String... urls) {
             ArrayList<KeyboardPayload> notSendData = new ArrayList<>();
             Cursor data = myDB.getNotSendContents();
-            if (data.getCount() != 0) {
-                while (data.moveToNext()) {
-                    KeyboardPayload payload=new KeyboardPayload();
-                    payload.DocID=data.getString(0);//DocID
-                    payload.DateData=data.getString(1); //DateTime
+            try {
+                if (data.getCount() != 0) {
+                    while (data.moveToNext()) {
+                        KeyboardPayload payload=new KeyboardPayload();
+                        payload.DocID=data.getString(0);//DocID
+                        payload.DateData=data.getString(1); //DateTime
 //                    payload.UserID=data.getString(2); //UserID
-                    payload.SessionData= data.getString(2); //SessionData
-                    notSendData.add(payload);
+                        payload.SessionData= data.getString(2); //SessionData
+                        notSendData.add(payload);
+                    }
+                }else{
+                    Log.d("SQL","I'm in do in background 0 data");
                 }
-            }else{
-                Log.d("SQL","I'm in do in background 0 data");
+            } finally {
+                data.close();
             }
-            String result=upload(notSendData);//POST(urls[0],notSendData);
+
+            result=upload(notSendData);//POST(urls[0],notSendData);
 
             return result;
         }
@@ -272,7 +281,7 @@ public class MainActivityDBDebugFragment extends Fragment {
         }
     }
 
-    protected String upload(ArrayList<KeyboardPayload> payload){
+    protected static String upload(ArrayList<KeyboardPayload> payload){
         String result = "";
         try
         {
@@ -377,7 +386,13 @@ public class MainActivityDBDebugFragment extends Fragment {
         return null;
     }
 
-
+    @Override
+    public void onDestroy(){
+        super.onDestroy();
+        if(myDB!=null){
+            myDB.close();
+        }
+    }
 
 
 }

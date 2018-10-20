@@ -99,10 +99,12 @@ public class MoodDatabaseHelper extends SQLiteOpenHelper {
         Cursor data = db.rawQuery("SELECT ID FROM "+TABLE_NAME+" WHERE (DATE_DATA >= ? AND  DATE_DATA <= ?) AND MOOD_DATA = ?",new String[] { Start, End , mood});
         if (data.getCount()==0){
             data = db.rawQuery("SELECT ID FROM "+TABLE_NAME+" WHERE (DATE_DATA >= ? AND  DATE_DATA <= ?) AND MOOD_DATA = ?",new String[] { End, Start , mood});
-            return data.getCount();
-        }else{
-            return data.getCount();
+
         }
+        int count= data.getCount();
+        data.close();
+
+        return count;
 
     }
 
@@ -111,28 +113,33 @@ public class MoodDatabaseHelper extends SQLiteOpenHelper {
         Cursor data = db.rawQuery("SELECT ID FROM "+TABLE_NAME+" WHERE (DATE_DATA >= ? AND  DATE_DATA <= ?) AND PHYSICAL_STATE_DATA = ?",new String[] { Start, End , state});
         if (data.getCount()==0){
             data = db.rawQuery("SELECT ID FROM "+TABLE_NAME+" WHERE (DATE_DATA >= ? AND  DATE_DATA <= ?) AND PHYSICAL_STATE_DATA = ?",new String[] { End, Start , state});
-            return data.getCount();
-        }else{
-            return data.getCount();
+
         }
+        int count= data.getCount();
+        data.close();
+
+        return count;
 
     }
 
     public Cursor getListMoodContents(String mood){
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor data = db.rawQuery("SELECT * FROM " + TABLE_NAME +" WHERE MOOD_DATA = ?", new String[] { mood});
+
         return data;
     }
 
     public Cursor getListPhysicalContents(String physical){
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor data = db.rawQuery("SELECT * FROM " + TABLE_NAME +" WHERE PHYSICAL_STATE_DATA = ?", new String[] { physical});
+
         return data;
     }
 
     public Cursor getNotSendContents(){
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor data = db.rawQuery("SELECT * FROM " + TABLE_NAME +" WHERE SEND_TIME IS NULL", null);
+
         return data;
     }
 

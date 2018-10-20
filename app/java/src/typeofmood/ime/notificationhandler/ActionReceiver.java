@@ -42,6 +42,7 @@ public class ActionReceiver extends BroadcastReceiver {
         NotificationHelper mNotificationHelper;
         mNotificationHelper= new NotificationHelper(context);
         mNotificationHelper.getManager().cancel(mNotificationHelper.notification_id);
+        mydb.close();
 
 //        mNotificationHelper.getManager().cancel(action,intent.getExtras().getInt("action"));
         //This is used to close the notification tray
@@ -79,5 +80,7 @@ public class ActionReceiver extends BroadcastReceiver {
         LatinIME.currentMood="Stressed";
 
     }
+
+
 
 }
