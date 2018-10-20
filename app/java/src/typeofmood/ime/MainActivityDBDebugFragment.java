@@ -86,7 +86,7 @@ public class MainActivityDBDebugFragment extends Fragment {
         buttonSend.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 if(isConnected()){
-                    new HttpAsyncTask().execute("");
+                    new HttpAsyncTask().execute(" ");
                 }
             }
         });
