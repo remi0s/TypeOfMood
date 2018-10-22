@@ -37,7 +37,7 @@ public class ActionReceiver extends BroadcastReceiver {
 
         }
         LatinIME.latestNotificationTimeTemp=new Date(System.currentTimeMillis());
-        LatinIME.latestNotificationTime=new SimpleDateFormat("yyyy-MM-dd, hh:mm:ss", Locale.US).format(new Date());
+        LatinIME.latestNotificationTime= System.currentTimeMillis();
 
         NotificationHelper mNotificationHelper;
         mNotificationHelper= new NotificationHelper(context);

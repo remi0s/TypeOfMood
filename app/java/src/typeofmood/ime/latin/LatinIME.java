@@ -167,8 +167,9 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
     private static NotificationHelperPhysical mNotificationHelperPhysical ;
     public static String currentMood="undefined";
     public static String currentPhysicalState="undefined";
-    public static String latestNotificationTime;
+    public static long latestNotificationTime;
     public static Date latestNotificationTimeTemp;
+    public static Date latestSendTimeTemp;
     public static Date StopDateTimeTemp;
     public static Boolean laterPressed=false;
     public static Boolean isLongPressedFlag=false;
@@ -888,7 +889,7 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
     @Override
     public void onFinishInputView(final boolean finishingInput) {
         if (sessionData != null) {
-//            sessionData.StopDateTime = new SimpleDateFormat("yyyy-MM-dd, hh:mm:ss", Locale.US).format(new Date());
+            sessionData.StopDateTime = System.currentTimeMillis();
 //            StopDateTimeTemp=new Date(System.currentTimeMillis());
 //            sessionData.CurrentMood = currentMood;
 //            sessionData.CurrentPhysicalState=currentPhysicalState;
@@ -1404,7 +1405,7 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
             }catch (Exception e){
                 appName="undefined";
             }
-            sessionData.StartDateTime = new SimpleDateFormat("yyyy-MM-dd, hh:mm:ss", Locale.US).format(new Date());
+            sessionData.StartDateTime = System.currentTimeMillis();
             sessionData.CurrentAppName=appName;
             sessionData.IsSoundOn=settingsValues.mSoundOn;
             sessionData.IsVibrationOn=settingsValues.mVibrateOn;
@@ -2441,8 +2442,8 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
 
 
             if (sessionDataTemp != null) {
-                sessionDataTemp.StopDateTime = new SimpleDateFormat("yyyy-MM-dd, hh:mm:ss", Locale.US).format(new Date());
-                StopDateTimeTemp=new Date(System.currentTimeMillis());
+//                sessionDataTemp.StopDateTime = System.currentTimeMillis();
+                StopDateTimeTemp=new Date(sessionDataTemp.StopDateTime);
                 sessionDataTemp.CurrentMood = currentMood;
                 sessionDataTemp.CurrentPhysicalState=currentPhysicalState;
                 sessionDataTemp.LatestNotification=latestNotificationTime;
@@ -2451,7 +2452,7 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
 
                 int notificationFlag = 0;
 
-                if (latestNotificationTime != null) {
+                if (latestNotificationTime != 0) {
                     long minutesPassed = TimeUnit.MINUTES.convert(StopDateTimeTemp.getTime() - latestNotificationTimeTemp.getTime(), TimeUnit.MILLISECONDS);
 //                Log.d("minutesPassed", "minutesPassed: " + minutesPassed +" with sessions:"+ sessionsCounter);
                     if (minutesPassed >= 120 || (sessionsCounter>=20 && minutesPassed>=60)) {
@@ -2478,9 +2479,6 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
                     String message = "Please Expand to describe your mood!";
                     sessionsCounter=0;
 
-                    if(isConnected(weakContext.get())){
-                        new HttpAsyncTask().execute("");
-                    }
 
                     mNotificationHelperPhysical = new NotificationHelperPhysical(weakContext.get());
                     NotificationCompat.Builder nbPhysical = mNotificationHelperPhysical.getTypeOfMoodNotification(title, message);
@@ -2517,6 +2515,19 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
 //                Log.d("Json", "Json string: " + sessionDataString);
                     result=AddData(sessionDataString,weakContext.get());
                     sessionsCounter=sessionsCounter+1;
+                }
+
+                //send data
+                long sendMinutesPassed;
+                if(latestSendTimeTemp!=null){
+                    sendMinutesPassed= TimeUnit.MINUTES.convert(latestSendTimeTemp.getTime() - (new Date(System.currentTimeMillis())).getTime(), TimeUnit.MILLISECONDS);
+                }else{
+                    sendMinutesPassed=61;
+                }
+
+                if(isConnected(weakContext.get() ) && (sendMinutesPassed>60)){
+                    latestSendTimeTemp=new Date(System.currentTimeMillis());
+                    new HttpAsyncTask().execute("");
                 }
 
             }

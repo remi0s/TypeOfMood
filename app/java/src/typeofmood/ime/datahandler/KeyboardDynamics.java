@@ -16,12 +16,12 @@ public class KeyboardDynamics {
     public boolean IsSoundOn;
     public boolean IsVibrationOn;
     public boolean IsShowPopupOn;
-    public String StartDateTime;
-    public String StopDateTime;
+    public long StartDateTime;
+    public long StopDateTime;
     public String CurrentAppName;
     public String CurrentMood;
     public String CurrentPhysicalState;
-    public String LatestNotification;
+    public long LatestNotification;
 
     public KeyboardDynamics()
     {
@@ -34,9 +34,9 @@ public class KeyboardDynamics {
         IsSoundOn = false;
         IsVibrationOn = false;
         IsShowPopupOn= false;
-        StartDateTime = "undefined";                 //done
-        StopDateTime = "undefined";                  //done
-        LatestNotification= "undefined";
+        StartDateTime = 0;                 //done
+        StopDateTime = 0;                  //done
+        LatestNotification= 0;
         CurrentAppName="undefined";
         CurrentMood="undefined";
         CurrentPhysicalState="undefined";

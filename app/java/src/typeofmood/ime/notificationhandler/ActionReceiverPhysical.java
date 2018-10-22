@@ -39,7 +39,7 @@ public class ActionReceiverPhysical extends BroadcastReceiver {
         }
 
         LatinIME.latestNotificationTimeTemp=new Date(System.currentTimeMillis());
-        LatinIME.latestNotificationTime=new SimpleDateFormat("yyyy-MM-dd, hh:mm:ss", Locale.US).format(new Date());
+        LatinIME.latestNotificationTime= System.currentTimeMillis();
 
         NotificationHelperPhysical mNotificationHelperPhysical;
         mNotificationHelperPhysical= new NotificationHelperPhysical(context);
