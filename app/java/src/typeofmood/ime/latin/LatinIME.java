@@ -71,6 +71,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.lang.ref.WeakReference;
+import java.net.Inet4Address;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -173,6 +174,10 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
     public static Boolean isLongPressedFlag=false;
     public static DatabaseHelper myDB;
     public static String userID;
+    public static ArrayList<Double>rawX=new ArrayList<Double>();
+    public static ArrayList<Double>rawY=new ArrayList<Double>();
+    public static double densX;
+    public static double densY;
 
     public static String pref_age="";
     public static String pref_ID="";
@@ -647,6 +652,8 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
         editor.apply();
         storageContainer=getConfigValue(this, "storageContainer");
         storageConnectionString=getConfigValue(this, "storageConnectionString");
+        densX=getResources().getDisplayMetrics().xdpi;
+        densY=getResources().getDisplayMetrics().ydpi;
 
         myDB = new DatabaseHelper(this); //remi0s
         userID=android.provider.Settings.System.getString(this.getContentResolver(), android.provider.Settings.Secure.ANDROID_ID);//remi0s
@@ -945,9 +952,11 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
 //                sessionsCounter=sessionsCounter+1;
 //
 //            }
-
+            DataStoreAsyncTaskParams params = new DataStoreAsyncTaskParams(sessionData,rawX,rawY);
             DataStoreAsyncTask task = new DataStoreAsyncTask(getApplicationContext());
-            task.execute(sessionData);
+            task.execute(params);
+            rawX.clear();
+            rawY.clear();
             sessionData= null;
 
         }
@@ -2415,7 +2424,7 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
         return null;
     }
 
-    private static class DataStoreAsyncTask extends AsyncTask<KeyboardDynamics, Void, String> {
+    private static class DataStoreAsyncTask extends AsyncTask<DataStoreAsyncTaskParams, Void, String> {
         WeakReference<Context> weakContext;
 
         private DataStoreAsyncTask (Context context){
@@ -2423,10 +2432,13 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
         }
 
         @Override
-        protected String doInBackground(KeyboardDynamics... args) {
+        protected String doInBackground(DataStoreAsyncTaskParams... args) {
             Boolean result=false;
             KeyboardDynamics sessionDataTemp;
-            sessionDataTemp=args[0];
+            sessionDataTemp=args[0].data;
+            ArrayList<Double> xTemp=new ArrayList<Double>(args[0].x);
+            ArrayList<Double> yTemp=new ArrayList<Double>(args[0].y);
+
 
             if (sessionDataTemp != null) {
                 sessionDataTemp.StopDateTime = new SimpleDateFormat("yyyy-MM-dd, hh:mm:ss", Locale.US).format(new Date());
@@ -2484,7 +2496,21 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
                 }
 
 
-                if (sessionDataTemp.DownTime.size() > 5){
+                if (sessionDataTemp.DownTime.size() >= 5){
+                    double dist=0;
+                    double dx=0,dy=0;
+                    for(int i=0;i<xTemp.size()-1;i++){
+                        dx=(xTemp.get(i)-xTemp.get(i+1));
+                        dy=(yTemp.get(i)-yTemp.get(i+1));
+                        dx=dx/densX * 25.4f;
+                        dy=dy/densY * 25.4f;
+
+                        dist=Math.hypot(dx,dy);
+                        sessionDataTemp.Distance.add(dist);
+                    }
+
+
+
 
                     Gson gson = new GsonBuilder().serializeNulls().create();
                     String sessionDataString = gson.toJson(sessionDataTemp, KeyboardDynamics.class);
@@ -2504,8 +2530,20 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
         // onPostExecute displays the results of the AsyncTask.
         @Override
         protected void onPostExecute(String result) {
-            Log.d("SQL","Tried to save data with result: "+result);
+//            Log.d("SQL","Tried to save data with result: "+result);
 //            Toast.makeText(getBaseContext(), "Data Sent!", Toast.LENGTH_LONG).show();
+        }
+    }
+
+    private static class DataStoreAsyncTaskParams {
+        KeyboardDynamics data;
+        ArrayList<Double> x;
+        ArrayList<Double> y;
+
+        DataStoreAsyncTaskParams(KeyboardDynamics data,  ArrayList<Double> x, ArrayList<Double> y) {
+            this.data = data;
+            this.x = new ArrayList<Double>(x);
+            this.y = new ArrayList<Double>(y);
         }
     }
 

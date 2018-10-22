@@ -177,7 +177,7 @@ public class MainActivityDBDebugFragment extends Fragment {
                 // 4. convert JSONObject to JSON to String
                 json = jsonObject.toString();
 
-                Log.d("server","Json to be sent:\n"+json);
+//                Log.d("server","Json to be sent:\n"+json);
 
 
                 // ** Alternative way to convert Person object to JSON string usin Jackson Lib
@@ -208,9 +208,9 @@ public class MainActivityDBDebugFragment extends Fragment {
                 // 10. convert inputstream to string
                 if(inputStream != null) {
                     result = convertInputStreamToString(inputStream);
-                    Log.d("SQL","I'm at inputstream");
+//                    Log.d("SQL","I'm at inputstream");
                     myDB.setSend(payload.get(i).DocID);
-                    Log.d("SQL","Data Sent!");
+//                    Log.d("SQL","Data Sent!");
                 }
                 else {
                     result = "Did not work!";
@@ -263,7 +263,7 @@ public class MainActivityDBDebugFragment extends Fragment {
                         notSendData.add(payload);
                     }
                 }else{
-                    Log.d("SQL","I'm in do in background 0 data");
+//                    Log.d("SQL","I'm in do in background 0 data");
                 }
             } finally {
                 data.close();

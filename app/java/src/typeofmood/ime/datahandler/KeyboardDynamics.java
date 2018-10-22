@@ -11,6 +11,7 @@ public class KeyboardDynamics {
     public ArrayList<Long> UpTime;
     public ArrayList<Float> PressureValue;
     public ArrayList<Integer> IsLongPress;
+    public ArrayList<Double> Distance;
     public int NumDels;
     public boolean IsSoundOn;
     public boolean IsVibrationOn;
@@ -28,6 +29,7 @@ public class KeyboardDynamics {
         UpTime = new ArrayList<Long>();             //done
         PressureValue = new ArrayList<Float>();     //done
         IsLongPress = new ArrayList<Integer>();     //done
+        Distance = new ArrayList<Double>();
         NumDels = 0;                                //done
         IsSoundOn = false;
         IsVibrationOn = false;

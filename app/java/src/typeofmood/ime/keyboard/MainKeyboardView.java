@@ -696,24 +696,31 @@ public final class MainKeyboardView extends KeyboardView implements DrawingProxy
         //remi0s
         final int action = event.getActionMasked();
         final long eventTime = event.getEventTime();
-        int rawX = (int)event.getRawX();
-        int rawY = (int)event.getRawY();
         final int index = event.getActionIndex();
         final int id = event.getPointerId(index);
+        //remi0s
         switch (action) {
             case MotionEvent.ACTION_DOWN:
             case MotionEvent.ACTION_POINTER_DOWN:
                 if(mLatinIme.sessionData!=null){
                     mLatinIme.sessionData.DownTime.add(eventTime);
-//                    Log.d("xy","x: "+rawX+" y: "+rawY);
+
+                    final int pointerCount = event.getPointerCount();
+                    mLatinIme.rawX.add((double)event.getX(pointerCount-1));
+                    mLatinIme.rawY.add((double)event.getY(pointerCount-1));
 
                     try {
                         mLatinIme.sessionData.PressureValue.add(event.getPressure(id)); //alternative could be getSize()
+//                        Log.d("preassure","size"+event.getSize(id));
+//                        Log.d("preassure","preasure"+event.getPressure(id));
                     }catch (Exception e){
-                        Log.d("preassure","exception");
-                        e.printStackTrace();
+//                        Log.d("preassure","exception");
+//                        e.printStackTrace();
                         mLatinIme.sessionData.PressureValue.add(event.getPressure());
                     }
+
+
+
                 }
 
 
@@ -722,6 +729,8 @@ public final class MainKeyboardView extends KeyboardView implements DrawingProxy
             case MotionEvent.ACTION_POINTER_UP:
                 if(mLatinIme.sessionData!=null) {
                     mLatinIme.sessionData.UpTime.add(eventTime);
+
+
 
                     if (mLatinIme.isLongPressedFlag == true) {
                         mLatinIme.sessionData.IsLongPress.add(1);
@@ -740,10 +749,12 @@ public final class MainKeyboardView extends KeyboardView implements DrawingProxy
         }
         //remi0s
 
+
         if (getKeyboard() == null) {
             return false;
         }
         if (mNonDistinctMultitouchHelper != null) {
+
             if (event.getPointerCount() > 1 && mTimerHandler.isInKeyRepeat()) {
                 // Key repeating timer will be canceled if 2 or more keys are in action.
                 mTimerHandler.cancelKeyRepeatTimers();
@@ -752,6 +763,8 @@ public final class MainKeyboardView extends KeyboardView implements DrawingProxy
             mNonDistinctMultitouchHelper.processMotionEvent(event, mKeyDetector);
             return true;
         }
+
+
         return processMotionEvent(event);
     }
 
