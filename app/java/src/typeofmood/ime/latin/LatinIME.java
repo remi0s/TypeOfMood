@@ -2520,11 +2520,10 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
                 //send data
                 long sendMinutesPassed;
                 if(latestSendTimeTemp!=null){
-                    sendMinutesPassed= TimeUnit.MINUTES.convert(latestSendTimeTemp.getTime() - (new Date(System.currentTimeMillis())).getTime(), TimeUnit.MILLISECONDS);
+                    sendMinutesPassed= TimeUnit.MINUTES.convert((new Date(System.currentTimeMillis())).getTime()-latestSendTimeTemp.getTime() , TimeUnit.MILLISECONDS);
                 }else{
                     sendMinutesPassed=61;
                 }
-
                 if(isConnected(weakContext.get() ) && (sendMinutesPassed>60)){
                     latestSendTimeTemp=new Date(System.currentTimeMillis());
                     new HttpAsyncTask().execute("");
