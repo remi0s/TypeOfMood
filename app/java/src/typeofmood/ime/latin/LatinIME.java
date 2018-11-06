@@ -1411,6 +1411,13 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
             sessionData.IsVibrationOn=settingsValues.mVibrateOn;
             sessionData.IsShowPopupOn=settingsValues.mKeyPreviewPopupOn;
 
+
+            //notification
+
+            onShowNotificationAsync task = new onShowNotificationAsync(getApplicationContext());
+            task.execute();
+
+
         }
 
         if (isImeSuppressedByHardwareKeyboard()) {
@@ -2558,6 +2565,63 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
     }
 
 
+    private static class onShowNotificationAsync extends AsyncTask<Void, Void, String> {
+        WeakReference<Context> weakContext;
+
+        private onShowNotificationAsync (Context context){
+            weakContext = new WeakReference<Context>(context);
+        }
+
+        @Override
+        protected String doInBackground(Void... params) {
+
+            //notification
+            int notificationFlag = 0;
+            Date StartDateTimeTemp=new Date(sessionData.StartDateTime);
+
+
+            if (latestNotificationTime != 0) {
+                long minutesPassed = TimeUnit.MINUTES.convert(StartDateTimeTemp.getTime() - latestNotificationTimeTemp.getTime(), TimeUnit.MILLISECONDS);
+//               Log.d("minutesPassed", "minutesPassed: " + minutesPassed +" with sessions:"+ sessionsCounter);
+                if (minutesPassed >= 120 || (sessionsCounter>=20 && minutesPassed>=60)) {
+                    notificationFlag = 1;
+                }else if(laterPressed && minutesPassed>=60){
+                    notificationFlag = 1;
+                    laterPressed=false;
+                }
+            } else {
+                notificationFlag = 1;
+            }
+
+            if (notificationFlag == 1 ) {
+                String title = "TypeOfMood";
+                String message = "Please Expand to describe your mood!";
+                sessionsCounter=0;
+
+
+                mNotificationHelperPhysical = new NotificationHelperPhysical(weakContext.get());
+                NotificationCompat.Builder nbPhysical = mNotificationHelperPhysical.getTypeOfMoodNotification(title, message);
+                mNotificationHelperPhysical.getManager().notify(mNotificationHelperPhysical.notification_id, nbPhysical.build());
+
+                mNotificationHelper = new NotificationHelper(weakContext.get());
+                NotificationCompat.Builder nb = mNotificationHelper.getTypeOfMoodNotification(title, message);
+                mNotificationHelper.getManager().notify(mNotificationHelper.notification_id, nb.build());
+//                CreateAlertDialogWithRadioButtonGroup();
+
+
+
+            }
+            return "success";
+
+
+        }
+        // onPostExecute displays the results of the AsyncTask.
+        @Override
+        protected void onPostExecute(String result) {
+//            Log.d("SQL","Tried to save data with result: "+result);
+//            Toast.makeText(getBaseContext(), "Data Sent!", Toast.LENGTH_LONG).show();
+        }
+    }
 
 
 
