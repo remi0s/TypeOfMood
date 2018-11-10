@@ -111,6 +111,7 @@ public class UserInfoConfiguration extends AppCompatActivity implements DatePick
         Boolean pref_terms_agree = pref.getBoolean("TermsAgreement", false);
         if (pref_ID.isEmpty()) {
             editor.putString("ID", mMEI);
+            editor.apply();
             mUserID.setHint(mMEI);
 
         }else if(!pref_ID.equals(mMEI)) {
@@ -122,7 +123,7 @@ public class UserInfoConfiguration extends AppCompatActivity implements DatePick
             mPassword.setText(pref_password);
         }
         checkPassword(pref_password);
-        editor.apply();
+
 
         if(pref_terms_agree){
             mAgreeTerms.setChecked(true);
@@ -231,54 +232,8 @@ public class UserInfoConfiguration extends AppCompatActivity implements DatePick
         mActionFinish.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String BirthDate = mAge.getText().toString();
-                String ID = mUserID.getText().toString();
-                String password = mPassword.getText().toString();
-                String gender="";
-                String health=mEditTextScore.getText().toString();
-                int selectedGender = mRadioGroupGender.getCheckedRadioButtonId();
-                if(selectedGender == rMale.getId()) {
-                    gender="Male";
-                } else if(selectedGender == rFemale.getId()) {
-                    gender="Female";
-                }
 
-
-                SharedPreferences prefUser = getApplicationContext().getSharedPreferences("user_info", MODE_PRIVATE);
-                SharedPreferences.Editor editor = prefUser.edit();
-                String pref_ID= prefUser.getString("ID", "");
-                if(health.isEmpty()){
-                    health= prefUser.getString("Health", "");
-                }else{
-                    editor.putString("Health", health);
-                }
-
-                editor.apply();
-
-                if(!BirthDate.isEmpty() && (!ID.isEmpty() || !pref_ID.isEmpty())  && !gender.isEmpty() && !health.isEmpty()) {
-                    editor = prefUser.edit();
-                    editor.putString("BirthDate", BirthDate);
-                    if(!ID.isEmpty() ){
-                        editor.putString("ID", ID);
-                    }else{
-                        editor.putString("ID", mMEI);
-                    }
-                    editor.putString("Gender", gender);
-                    editor.putString("Health", health);
-                    editor.putString("Password", password);
-                    editor.apply();
-
-                    SharedPreferences prefFinished = getApplicationContext().getSharedPreferences("user_info_finished_clicked", MODE_PRIVATE);
-                    editor = prefFinished.edit();
-                    editor.putBoolean("isClicked", true);
-                    editor.apply();
-//                    SystemBroadcastReceiver.toggleAppIcon(getApplicationContext());
-
-
-                    finish();
-                }else{
-                    Toast.makeText(getApplicationContext(),"You need to provide the above information!",Toast.LENGTH_SHORT).show();
-                }
+                onFinishChecker();
 
             }
         });
@@ -289,6 +244,63 @@ public class UserInfoConfiguration extends AppCompatActivity implements DatePick
 
 
     }
+
+    private void onFinishChecker() {
+        String BirthDate = mAge.getText().toString();
+        String ID = mUserID.getText().toString();
+        String password = mPassword.getText().toString();
+        String gender="";
+        String health=mEditTextScore.getText().toString();
+        int selectedGender = mRadioGroupGender.getCheckedRadioButtonId();
+        if(selectedGender == rMale.getId()) {
+            gender="Male";
+        } else if(selectedGender == rFemale.getId()) {
+            gender="Female";
+        }
+
+
+        SharedPreferences prefUser = getApplicationContext().getSharedPreferences("user_info", MODE_PRIVATE);
+        SharedPreferences.Editor editor = prefUser.edit();
+        String pref_ID= prefUser.getString("ID", "");
+        if(health.isEmpty()){
+            health= prefUser.getString("Health", "");
+        }else{
+            editor.putString("Health", health);
+        }
+
+        editor.apply();
+
+        if(!BirthDate.isEmpty() && (!ID.isEmpty() || !pref_ID.isEmpty())  && !gender.isEmpty() && !health.isEmpty()) {
+            editor = prefUser.edit();
+            editor.putString("BirthDate", BirthDate);
+            if(!ID.isEmpty() ){
+                editor.putString("ID", ID);
+            }else{
+                editor.putString("ID", mMEI);
+            }
+            editor.putString("Gender", gender);
+            editor.putString("Health", health);
+            editor.putString("Password", password);
+            editor.apply();
+
+            SharedPreferences prefFinished = getApplicationContext().getSharedPreferences("user_info_finished_clicked", MODE_PRIVATE);
+            editor = prefFinished.edit();
+            editor.putBoolean("isClicked", true);
+            editor.apply();
+//                    SystemBroadcastReceiver.toggleAppIcon(getApplicationContext());
+
+
+            finish();
+        }else{
+            Toast.makeText(getApplicationContext(),"You need to provide the above information!",Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    @Override
+    public void onBackPressed(){
+        onFinishChecker();
+    }
+
     public void showDatePickerDialog(View v) {
         int year=1990;
         int month =0;
@@ -425,6 +437,8 @@ public class UserInfoConfiguration extends AppCompatActivity implements DatePick
 
         return null;
     }
+
+
 
 
 

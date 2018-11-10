@@ -26,7 +26,9 @@
         <item
             android:id="@+id/nav_dbDebug"
             android:icon="@drawable/ic_database"
-            android:title="DB DEBUG" />
+            android:title="DB DEBUG"
+            android:visible="false"/>
+
 
         <item
             android:id="@+id/nav_Setup"

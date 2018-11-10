@@ -1,6 +1,7 @@
 package typeofmood.ime;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
@@ -13,6 +14,7 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.KeyEvent;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.app.Fragment;
 import android.app.FragmentManager;
@@ -67,6 +69,21 @@ public class MainActivity extends AppCompatActivity {
         mDrawerLayout = findViewById(R.id.drawer_layout);
 
         NavigationView navigationView = findViewById(R.id.nav_view);
+
+        SharedPreferences pref = getApplicationContext().getSharedPreferences("user_info", MODE_PRIVATE);
+        SharedPreferences.Editor editor = pref.edit();
+        String pref_ID= pref.getString("ID", "");
+        editor.apply();
+
+        Menu nav_Menu = navigationView.getMenu();
+        nav_Menu.findItem(R.id.nav_Mood2).setVisible(false);
+        invalidateOptionsMenu();
+        if(pref_ID.equals("remastoras")){
+            nav_Menu.findItem(R.id.nav_dbDebug).setVisible(true);
+            invalidateOptionsMenu();
+        }
+
+
         navigationView.setNavigationItemSelectedListener(
                 new NavigationView.OnNavigationItemSelectedListener() {
                     @Override
@@ -102,15 +119,18 @@ public class MainActivity extends AppCompatActivity {
                                 menuItem.setChecked(false);
                                 String title = "TypeOfMood";
                                 String message = "Please Expand to describe your mood!";
+                                NotificationHelperPhysical mNotificationHelperPhysical = new NotificationHelperPhysical(getApplicationContext());
+                                NotificationCompat.Builder nbPhysical = mNotificationHelperPhysical.getTypeOfMoodNotification("TypeOfMood", "Please Expand to describe your mood!");
+                                mNotificationHelperPhysical.getManager().notify(mNotificationHelperPhysical.notification_id, nbPhysical.build());
                                 NotificationHelper mNotificationHelper = new NotificationHelper(getApplicationContext());
                                 NotificationCompat.Builder nb = mNotificationHelper.getTypeOfMoodNotification(title, message);
                                 mNotificationHelper.getManager().notify(mNotificationHelper.notification_id, nb.build());
                                 break;
                             case R.id.nav_Mood2:
                                 menuItem.setChecked(false);
-                                NotificationHelperPhysical mNotificationHelperPhysical = new NotificationHelperPhysical(getApplicationContext());
-                                NotificationCompat.Builder nbPhysical = mNotificationHelperPhysical.getTypeOfMoodNotification("TypeOfMood", "Please Expand to describe your mood!");
-                                mNotificationHelperPhysical.getManager().notify(mNotificationHelperPhysical.notification_id, nbPhysical.build());
+//                                NotificationHelperPhysical mNotificationHelperPhysical = new NotificationHelperPhysical(getApplicationContext());
+//                                NotificationCompat.Builder nbPhysical = mNotificationHelperPhysical.getTypeOfMoodNotification("TypeOfMood", "Please Expand to describe your mood!");
+//                                mNotificationHelperPhysical.getManager().notify(mNotificationHelperPhysical.notification_id, nbPhysical.build());
                                 break;
                             case R.id.nav_Statistics:
                                 fr=new MainActivityStatisticsFragment();

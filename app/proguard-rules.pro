@@ -24,4 +24,15 @@
     public static int v(...);
     public static int d(...);
     public static int i(...);
-}
+	}
+	
+-keep class typeofmood.ime.** {*;}
+-keep class typeofmood.ime.latin.** {*;}
+-keepclassmembers  class typeofmood.ime.** {*;}
+-keepclassmembers  class typeofmood.ime.latin.** {*;}
+
+-dontwarn org.apache.commons.**
+-dontwarn com.microsoft.azure.**
+
+-dontwarn android.net.http.**
+-dontwarn org.apache.**

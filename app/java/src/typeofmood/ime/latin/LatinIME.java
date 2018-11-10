@@ -180,10 +180,10 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
     public static double densX;
     public static double densY;
 
-    public static String pref_age="";
-    public static String pref_ID="";
-    public static String pref_gender="";
-    public static String pref_health="";
+    private static String pref_age="";
+    private static String pref_ID="";
+    private static String pref_gender="";
+    private static String pref_health="";
     public static int sessionsCounter=0;
 
 
@@ -953,9 +953,22 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
 //                sessionsCounter=sessionsCounter+1;
 //
 //            }
+            //store data
             DataStoreAsyncTaskParams params = new DataStoreAsyncTaskParams(sessionData,rawX,rawY);
             DataStoreAsyncTask task = new DataStoreAsyncTask(getApplicationContext());
             task.execute(params);
+//            //send data
+//
+//            long sendMinutesPassed;
+//            if(latestSendTimeTemp!=null){
+//                sendMinutesPassed= TimeUnit.MINUTES.convert((new Date(System.currentTimeMillis())).getTime()-latestSendTimeTemp.getTime() , TimeUnit.MILLISECONDS);
+//            }else{
+//                sendMinutesPassed=61;
+//            }
+//            if(isConnected(getApplicationContext() ) && (sendMinutesPassed>60)){
+//                latestSendTimeTemp=new Date(System.currentTimeMillis());
+//                new HttpAsyncTask().execute("");
+//            }
             rawX.clear();
             rawY.clear();
             sessionData= null;
@@ -2196,7 +2209,11 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
     public static class HttpAsyncTask extends AsyncTask<String, Void, String> {
         String result="";
         @Override
-        protected String doInBackground(String... urls) {
+        protected String doInBackground(String... params) {
+            String prefs_id=params[0];
+            String prefs_age=params[1];
+            String prefs_gender=params[2];
+            String prefs_health=params[3];
             ArrayList<KeyboardPayload> notSendData = new ArrayList<>();
             Cursor data = myDB.getNotSendContents();
             try {
@@ -2209,7 +2226,7 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
                         payload.SessionData= data.getString(2); //SessionData
                         notSendData.add(payload);
                     }
-                    result=upload(notSendData);//POST(urls[0],notSendData);
+                    result=upload(notSendData,prefs_id,prefs_age,prefs_gender,prefs_health);//POST(urls[0],notSendData);
                 }else{
                     Log.d("SQL","I'm in do in background 0 data");
                 }
@@ -2229,152 +2246,163 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
         }
     }
 
-    public static String oldPOST(String url,ArrayList<KeyboardPayload> payload){
-        InputStream inputStream = null;
-        String result = "";
 
+//    public static String oldPOST(String url,ArrayList<KeyboardPayload> payload){
+//        InputStream inputStream = null;
+//        String result = "";
+//
+//
+//        try {
+//            // 1. create HttpClient
+//            HttpClient httpclient = new DefaultHttpClient();
+//
+//            // 2. make POST request to the given URL
+//            HttpPost httpPost = new HttpPost(url);
+//
+//            String json = "";
+//
+//            if((!pref_ID.isEmpty() && !pref_age.isEmpty() && !pref_gender.isEmpty() && !pref_health.isEmpty())){
+//
+//                for(int i = 0; i < payload.size(); i++) { //payload.size()
+//
+//                    // 3. build jsonObject
+//
+//
+//
+//
+//                    JSONObject jsonObject = new JSONObject();
+//                    jsonObject.accumulate("DOC_ID", payload.get(i).DocID);
+//                    jsonObject.accumulate("USER_ID",pref_ID);
+//                    jsonObject.accumulate("USER_AGE", pref_age);
+//                    jsonObject.accumulate("USER_GENDER", pref_gender);
+//                    jsonObject.accumulate("USER_PHQ9", pref_health);
+//                    jsonObject.accumulate("DATE_DATA", payload.get(i).DateData);
+//                    jsonObject.accumulate("SESSION_DATA", payload.get(i).SessionData);
+//
+//
+//                    // 4. convert JSONObject to JSON to String
+//                    json = jsonObject.toString();
+//
+//                    Log.d("server","Json to be sent:\n"+json);
+//
+//
+//                    // ** Alternative way to convert Person object to JSON string usin Jackson Lib
+//                    // ObjectMapper mapper = new ObjectMapper();
+//                    // json = mapper.writeValueAsString(person);
+////                Gson gson = new Gson();
+////                json = gson.toJson(payload.get(i), KeyboardPayload.class);
+//
+//                    // 5. set json to StringEntity
+//                    StringEntity se = new StringEntity(json);
+//
+//                    // 6. set httpPost Entity
+//                    httpPost.setEntity(se);
+//
+//                    // 7. Set some headers to inform server about the type of the content
+//                    httpPost.setHeader("Accept", "application/json");
+//                    httpPost.setHeader("Content-type", "application/json");
+//
+//                    // 8. Execute POST request to the given URL
+//                    HttpResponse httpResponse = httpclient.execute(httpPost);
+//
+//                    // 9. receive response as inputStream
+//                    inputStream = httpResponse.getEntity().getContent();
+//
+//
+//
+//
+//                    // 10. convert inputstream to string
+//                    if(inputStream != null) {
+//                        result = convertInputStreamToString(inputStream);
+//                        Log.d("SQL","I'm at inputstream");
+//                        myDB.setSend(payload.get(i).DocID);
+//                        Log.d("SQL","Data Sent!");
+//                    }
+//                    else {
+//                        result = "Did not work!";
+//                    }
+//
+//                }
+//            }
+//
+//
+//
+//
+//        } catch (Exception e) {
+//            Log.d("InputStream", e.getLocalizedMessage());
+//        }
+//
+//        // 11. return result
+//        return result;
+//    }
 
-        try {
-            // 1. create HttpClient
-            HttpClient httpclient = new DefaultHttpClient();
-
-            // 2. make POST request to the given URL
-            HttpPost httpPost = new HttpPost(url);
-
-            String json = "";
-
-            for(int i = 0; i < payload.size(); i++) { //payload.size()
-
-                // 3. build jsonObject
-
-
-                JSONObject jsonObject = new JSONObject();
-                jsonObject.accumulate("DOC_ID", payload.get(i).DocID);
-                jsonObject.accumulate("USER_ID",pref_ID);
-                jsonObject.accumulate("USER_AGE", pref_age);
-                jsonObject.accumulate("USER_GENDER", pref_gender);
-                jsonObject.accumulate("USER_PHQ9", pref_health);
-                jsonObject.accumulate("DATE_DATA", payload.get(i).DateData);
-                jsonObject.accumulate("SESSION_DATA", payload.get(i).SessionData);
-
-
-                // 4. convert JSONObject to JSON to String
-                json = jsonObject.toString();
-
-                Log.d("server","Json to be sent:\n"+json);
-
-
-                // ** Alternative way to convert Person object to JSON string usin Jackson Lib
-                // ObjectMapper mapper = new ObjectMapper();
-                // json = mapper.writeValueAsString(person);
-//                Gson gson = new Gson();
-//                json = gson.toJson(payload.get(i), KeyboardPayload.class);
-
-                // 5. set json to StringEntity
-                StringEntity se = new StringEntity(json);
-
-                // 6. set httpPost Entity
-                httpPost.setEntity(se);
-
-                // 7. Set some headers to inform server about the type of the content
-                httpPost.setHeader("Accept", "application/json");
-                httpPost.setHeader("Content-type", "application/json");
-
-                // 8. Execute POST request to the given URL
-                HttpResponse httpResponse = httpclient.execute(httpPost);
-
-                // 9. receive response as inputStream
-                inputStream = httpResponse.getEntity().getContent();
-
-
-
-
-                // 10. convert inputstream to string
-                if(inputStream != null) {
-                    result = convertInputStreamToString(inputStream);
-                    Log.d("SQL","I'm at inputstream");
-                    myDB.setSend(payload.get(i).DocID);
-                    Log.d("SQL","Data Sent!");
-                }
-                else {
-                    result = "Did not work!";
-                }
-
-            }
-
-
-        } catch (Exception e) {
-            Log.d("InputStream", e.getLocalizedMessage());
-        }
-
-        // 11. return result
-        return result;
-    }
-
-    protected static String upload(ArrayList<KeyboardPayload> payload){
+    protected static String upload(ArrayList<KeyboardPayload> payload,String prefs_id, String prefs_age,String prefs_gender,String prefs_health){
         String result = "";
         try
         {
-            for(int i = 0; i < payload.size(); i++) { //payload.size()
+            if((!prefs_id.isEmpty() && !prefs_age.isEmpty() && !prefs_gender.isEmpty() && !prefs_health.isEmpty())){
+                for(int i = 0; i < payload.size(); i++) { //payload.size()
 
-                // 3. build jsonObject
+                    // 3. build jsonObject
 
 
-                JSONObject jsonObject = new JSONObject();
-                jsonObject.accumulate("DOC_ID", payload.get(i).DocID);
-                jsonObject.accumulate("USER_ID", pref_ID);
-                jsonObject.accumulate("USER_AGE", pref_age);
-                jsonObject.accumulate("USER_GENDER", pref_gender);
-                jsonObject.accumulate("USER_PHQ9", pref_health);
+                    JSONObject jsonObject = new JSONObject();
+                    jsonObject.accumulate("DOC_ID", payload.get(i).DocID);
+                    jsonObject.accumulate("USER_ID", prefs_id);
+                    jsonObject.accumulate("USER_AGE", prefs_age);
+                    jsonObject.accumulate("USER_GENDER", prefs_gender);
+                    jsonObject.accumulate("USER_PHQ9", prefs_health);
 //                jsonObject.accumulate("DATE_DATA", payload.get(i).DateData);
 //                jsonObject.accumulate("SESSION_DATA", payload.get(i).SessionData);
 
 
-                // 4. convert JSONObject to JSON to String
+                    // 4. convert JSONObject to JSON to String
 
 
-                // Retrieve storage account from connection-string.
-                CloudStorageAccount storageAccount = CloudStorageAccount.parse(storageConnectionString);
+                    // Retrieve storage account from connection-string.
+                    CloudStorageAccount storageAccount = CloudStorageAccount.parse(storageConnectionString);
 
-                // Create the blob client.
-                CloudBlobClient blobClient = storageAccount.createCloudBlobClient();
+                    // Create the blob client.
+                    CloudBlobClient blobClient = storageAccount.createCloudBlobClient();
 
-                // Retrieve reference to a previously created container.
-                CloudBlobContainer container = blobClient.getContainerReference(storageContainer);
+                    // Retrieve reference to a previously created container.
+                    CloudBlobContainer container = blobClient.getContainerReference(storageContainer);
 
-                // Create or overwrite the blob (with the name "example.jpeg") with contents from a local file.
+                    // Create or overwrite the blob (with the name "example.jpeg") with contents from a local file.
 
-                String formattedDate=new SimpleDateFormat("yyyy-MM-dd", Locale.US).format(new Date());
-                String formattedDateData="";
+                    String formattedDate=new SimpleDateFormat("yyyy-MM-dd", Locale.US).format(new Date());
+                    String formattedDateData="";
 
-                try{
-                    Date date =new SimpleDateFormat("yyyy-MM-dd, hh:mm:ss", Locale.US).parse(payload.get(i).DateData);
-                    jsonObject.accumulate("DATE_DATA", payload.get(i).DateData);
-                    formattedDate = new SimpleDateFormat("yyyy-MM-dd", Locale.US).format(date);
-                }catch (Exception e)
-                {
-                    try {
-                        Date tempDate = new Date(payload.get(i).DateData);
-                        formattedDate = new SimpleDateFormat("yyyy-MM-dd", Locale.US).format(tempDate);
-                        formattedDateData= new SimpleDateFormat("yyyy-MM-dd, hh:mm:ss", Locale.US).format(tempDate);
-                        jsonObject.accumulate("DATE_DATA", formattedDateData);
-                    }catch (Exception a){
-                        Log.d("dateError", "Even that failed");
+                    try{
+                        Date date =new SimpleDateFormat("yyyy-MM-dd, hh:mm:ss", Locale.US).parse(payload.get(i).DateData);
+                        jsonObject.accumulate("DATE_DATA", payload.get(i).DateData);
+                        formattedDate = new SimpleDateFormat("yyyy-MM-dd", Locale.US).format(date);
+                    }catch (Exception e)
+                    {
+                        try {
+                            Date tempDate = new Date(payload.get(i).DateData);
+                            formattedDate = new SimpleDateFormat("yyyy-MM-dd", Locale.US).format(tempDate);
+                            formattedDateData= new SimpleDateFormat("yyyy-MM-dd, hh:mm:ss", Locale.US).format(tempDate);
+                            jsonObject.accumulate("DATE_DATA", formattedDateData);
+                        }catch (Exception a){
+                            Log.d("dateError", "Even that failed");
+                        }
                     }
+                    jsonObject.accumulate("DATE_SEND", new SimpleDateFormat("yyyy-MM-dd, hh:mm:ss", Locale.US).format(new Date()));
+                    jsonObject.accumulate("SESSION_DATA", payload.get(i).SessionData);
+
+                    String blobName=prefs_id+"/"+formattedDate+"/"+payload.get(i).DocID+".json";
+                    CloudBlockBlob blob = container.getBlockBlobReference(blobName);
+
+
+
+                    blob.uploadText(jsonObject.toString());
+                    result="success";
+
+                    myDB.setSend(payload.get(i).DocID);
                 }
-                jsonObject.accumulate("DATE_SEND", new SimpleDateFormat("yyyy-MM-dd, hh:mm:ss", Locale.US).format(new Date()));
-                jsonObject.accumulate("SESSION_DATA", payload.get(i).SessionData);
-
-                String blobName=pref_ID+"/"+formattedDate+"/"+payload.get(i).DocID+".json";
-                CloudBlockBlob blob = container.getBlockBlobReference(blobName);
-
-
-
-                blob.uploadText(jsonObject.toString());
-                result="success";
-
-                myDB.setSend(payload.get(i).DocID);
             }
+
 
         }
         catch (Exception e)
@@ -2514,6 +2542,18 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
                         sessionDataTemp.Distance.add(dist);
                     }
 
+                    //send data
+//                    long sendMinutesPassed;
+//                    if(latestSendTimeTemp!=null){
+//                        sendMinutesPassed= TimeUnit.MINUTES.convert((new Date(System.currentTimeMillis())).getTime()-latestSendTimeTemp.getTime() , TimeUnit.MILLISECONDS);
+//                    }else{
+//                        sendMinutesPassed=61;
+//                    }
+//                    if(isConnected(weakContext.get() ) && (sendMinutesPassed>60)){
+//                        latestSendTimeTemp=new Date(System.currentTimeMillis());
+//                        new HttpAsyncTask().execute("");
+//                    }
+
 
 
 
@@ -2524,17 +2564,7 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
                     sessionsCounter=sessionsCounter+1;
                 }
 
-                //send data
-                long sendMinutesPassed;
-                if(latestSendTimeTemp!=null){
-                    sendMinutesPassed= TimeUnit.MINUTES.convert((new Date(System.currentTimeMillis())).getTime()-latestSendTimeTemp.getTime() , TimeUnit.MILLISECONDS);
-                }else{
-                    sendMinutesPassed=61;
-                }
-                if(isConnected(weakContext.get() ) && (sendMinutesPassed>60)){
-                    latestSendTimeTemp=new Date(System.currentTimeMillis());
-                    new HttpAsyncTask().execute("");
-                }
+
 
             }
             if(result){
@@ -2547,6 +2577,18 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
         // onPostExecute displays the results of the AsyncTask.
         @Override
         protected void onPostExecute(String result) {
+            //send data
+
+            long sendMinutesPassed;
+            if(latestSendTimeTemp!=null){
+                sendMinutesPassed= TimeUnit.MINUTES.convert((new Date(System.currentTimeMillis())).getTime()-latestSendTimeTemp.getTime() , TimeUnit.MILLISECONDS);
+            }else{
+                sendMinutesPassed=61;
+            }
+            if(isConnected(weakContext.get() ) && (sendMinutesPassed>6)){
+                latestSendTimeTemp=new Date(System.currentTimeMillis());
+                new HttpAsyncTask().execute(pref_ID,pref_age,pref_gender,pref_health);
+            }
 //            Log.d("SQL","Tried to save data with result: "+result);
 //            Toast.makeText(getBaseContext(), "Data Sent!", Toast.LENGTH_LONG).show();
         }
@@ -2577,7 +2619,7 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
 
             //notification
             int notificationFlag = 0;
-            Date StartDateTimeTemp=new Date(sessionData.StartDateTime);
+            Date StartDateTimeTemp=new Date(System.currentTimeMillis());
 
 
             if (latestNotificationTime != 0) {

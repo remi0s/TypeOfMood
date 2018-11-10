@@ -7,8 +7,8 @@ android {
         applicationId "typeofmood.ime"
         minSdkVersion 16
         targetSdkVersion 27
-        versionCode 1
-        versionName "1.0"
+        versionCode 6
+        versionName "1.6"
     }
 
     sourceSets {
@@ -20,10 +20,24 @@ android {
     }
 
     buildTypes {
-        release {
-            minifyEnabled true
+        debug {
+            minifyEnabled true //if true it messes with the native libraries //probably fixed by excluding all typeofmood classes
+            useProguard true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
+
+        release {
+            minifyEnabled true //if true it messes with the native libraries //probably fixed by excluding all typeofmood classes
+            useProguard true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    lintOptions {
+        checkReleaseBuilds false
+        // Or, if you prefer, you can continue to check for errors in release builds,
+        // but continue the build even when errors are found:
+        abortOnError false
     }
 
 
@@ -42,7 +56,7 @@ dependencies {
     implementation 'com.google.code.gson:gson:2.8.2'
     implementation 'org.jbundle.util.osgi.wrapped:org.jbundle.util.osgi.wrapped.org.apache.http.client:4.1.2'
     implementation 'com.jjoe64:graphview:4.2.2'
-    implementation 'com.github.drawers:SpinnerDatePicker:1.0.6' //remi0s needed for good birthday picker cause latest android have a not very usefull one
+    implementation 'com.github.drawers:SpinnerDatePicker:1.0.6' //remi0s needed for good birthday picker cause latest android have a not very useful one
     implementation 'com.microsoft.azure.android:azure-storage-android:2.0.0@aar'
 }
 
