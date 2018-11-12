@@ -1,6 +1,6 @@
 1)Find an language dump file from https://archive.org/ or http://opus.nlpl.eu/OpenSubtitles2018.php or http://opus.nlpl.eu/index.php
 
-2)Edit sort.sh to match the file downloaded. For tar.gz files use "zcat", for bz2 use "bzcat" else try "cat". And run it with ./sort.sh
+2)Edit sort.sh to match the file downloaded. For tar.gz files use "zcat", for bz2 use "bzcat" else try "cat". And run it with ./sort.sh (running this command will take LONG if the file size is big)
 
 3)After the wordlist is created use the parser.pl with command perl parser.pl filename
 
