@@ -1,4 +1,4 @@
-1)Find an language dump file from https://archive.org/ or http://opus.nlpl.eu/OpenSubtitles2018.php
+1)Find an language dump file from https://archive.org/ or http://opus.nlpl.eu/OpenSubtitles2018.php or http://opus.nlpl.eu/index.php
 
 2)Edit sort.sh to match the file downloaded. For tar.gz files use "zcat", for bz2 use "bzcat" else try "cat". And run it with ./sort.sh
 
