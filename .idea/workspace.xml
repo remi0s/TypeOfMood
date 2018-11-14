@@ -38,7 +38,17 @@
     </system>
   </component>
   <component name="FileEditorManager">
-    <leaf />
+    <leaf>
+      <file leaf-file-name="build.gradle" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/build.gradle">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="153">
+              <caret line="21" selection-start-line="21" selection-end-line="21" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
@@ -2357,7 +2367,6 @@
         <option value="$PROJECT_DIR$/app/java/AndroidManifest.xml" />
         <option value="$PROJECT_DIR$/app/java/src/typeofmood/ime/UserInfoConfiguration.java" />
         <option value="$PROJECT_DIR$/app/java/src/typeofmood/ime/latin/AudioAndHapticFeedbackManager.java" />
-        <option value="$PROJECT_DIR$/app/build.gradle" />
         <option value="$PROJECT_DIR$/app/java/src/typeofmood/ime/MainActivity.java" />
         <option value="$PROJECT_DIR$/app/java/res/xml/prefs_screen_advanced.xml" />
         <option value="$PROJECT_DIR$/app/java/res/values/donottranslate-debug-settings.xml" />
@@ -2368,10 +2377,11 @@
         <option value="$PROJECT_DIR$/app/java/src/typeofmood/ime/latin/settings/CorrectionSettingsFragment.java" />
         <option value="$PROJECT_DIR$/app/java/res/values/strings.xml" />
         <option value="$PROJECT_DIR$/app/java/res/xml/prefs_screen_correction.xml" />
+        <option value="$PROJECT_DIR$/app/build.gradle" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="9" />
     <option name="y" value="6" />
     <option name="width" value="1346" />
@@ -2551,6 +2561,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info anchor="bottom" id="Android Profiler" order="7" />
       <window_info anchor="bottom" id="TODO" order="6" sideWeight="0.49924356" weight="0.32838285" />
@@ -2558,16 +2569,16 @@
       <window_info id="Image Layers" order="2" />
       <window_info id="Build Variants" order="2" sideWeight="0.5036855" side_tool="true" weight="0.24962178" />
       <window_info anchor="right" id="Capture Analysis" order="3" />
-      <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.2549168" side_tool="true" visible="true" weight="0.32838285" />
+      <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.3751891" side_tool="true" visible="true" weight="0.32838285" />
       <window_info anchor="bottom" id="Run" order="2" sideWeight="0.4977307" weight="0.32838285" />
       <window_info anchor="bottom" id="Version Control" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Terminal" order="7" sideWeight="0.4977307" weight="0.32838285" />
-      <window_info anchor="bottom" id="Logcat" order="7" sideWeight="0.7450832" visible="true" weight="0.32838285" />
+      <window_info anchor="bottom" id="Logcat" order="7" sideWeight="0.7450832" weight="0.32838285" />
       <window_info id="Captures" order="2" weight="0.25" />
       <window_info id="Capture Tool" order="2" />
       <window_info id="Designer" order="2" />
       <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.4963145" visible="true" weight="0.28895614" />
-      <window_info anchor="bottom" id="Build" order="7" sideWeight="0.6255673" weight="0.32838285" />
+      <window_info anchor="bottom" id="Build" order="7" sideWeight="0.6248109" visible="true" weight="0.32838285" />
       <window_info anchor="right" id="Gradle" order="3" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
@@ -2778,13 +2789,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/build.gradle">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="25" column="29" selection-start-line="25" selection-start-column="29" selection-end-line="25" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/java/src/typeofmood/ime/latin/Suggest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-4486">
@@ -2951,6 +2955,13 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="476">
           <caret line="51" column="9" selection-start-line="51" selection-start-column="9" selection-end-line="51" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/build.gradle">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="21" selection-start-line="21" selection-end-line="21" />
         </state>
       </provider>
     </entry>
