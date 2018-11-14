@@ -20,5 +20,7 @@ Used http://opus.nlpl.eu/OpenSubtitles2018.php in order to create the wordlists.
 
 https://github.com/linuxscout/yaraspell I used this repository for spellchecking the arabic wordlist!
 
+https://github.com/androidtweak/dictionaries/tree/f936da825c1d172e83e3b8ed8ddc9c30bc168d57/tools for the original tools used!
+
 
 
