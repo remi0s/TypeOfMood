@@ -98,6 +98,7 @@ public final class AdvancedSettingsFragment extends SubScreenFragment {
         refreshEnablingsOfKeypressSoundAndVibrationSettings();
         setupKeyboardHeight(
                 DebugSettings.PREF_KEYBOARD_HEIGHT_SCALE, SettingsValues.DEFAULT_SIZE_SCALE); //remi0s keyboard height.
+
     }
 
     @Override
@@ -367,4 +368,6 @@ public final class AdvancedSettingsFragment extends SubScreenFragment {
 
 
     }
+
+
 }

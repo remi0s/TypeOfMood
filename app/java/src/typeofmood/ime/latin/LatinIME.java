@@ -1405,11 +1405,14 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
     @Override
     public boolean onShowInputRequested(final int flags, final boolean configChange) {
         //Collect Data remi0s
+
         if (sessionData == null && isPasswordGivenCorrect() && userHaveAgreed())
         {
+
             sessionData = new KeyboardDynamics();
 
             final SettingsValues settingsValues = mSettings.getCurrent();
+
             final String packageName = getCurrentInputEditorInfo().packageName;
             String appName;
             PackageManager packageManager= getApplicationContext().getPackageManager();
@@ -1545,7 +1548,7 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
         if (isShowingOptionDialog()) return false;
         switch (requestCode) {
         case Constants.CUSTOM_CODE_SHOW_INPUT_METHOD_PICKER:
-            if (mRichImm.hasMultipleEnabledIMEsOrSubtypes(true /* include aux subtypes */)) {
+            if (mRichImm.hasMultipleEnabledIMEsOrSubtypes(false /* include aux subtypes */)) {
                 mRichImm.getInputMethodManager().showInputMethodPicker();
                 return true;
             }
@@ -1567,7 +1570,7 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
     public void switchToNextSubtype() {
         final IBinder token = getWindow().getWindow().getAttributes().token;
         if (shouldSwitchToOtherInputMethods()) {
-            mRichImm.switchToNextInputMethod(token, false /* onlyCurrentIme */);
+            mRichImm.switchToNextInputMethod(token, true /* onlyCurrentIme */); //remi0s
             return;
         }
         mSubtypeState.switchSubtype(token, mRichImm);

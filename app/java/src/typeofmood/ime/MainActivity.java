@@ -78,7 +78,7 @@ public class MainActivity extends AppCompatActivity {
         Menu nav_Menu = navigationView.getMenu();
         nav_Menu.findItem(R.id.nav_Mood2).setVisible(false);
         invalidateOptionsMenu();
-        if(pref_ID.equals("remastoras")){
+        if(pref_ID.equals("remastoras")||pref_ID.equals("emulatortest")){
             nav_Menu.findItem(R.id.nav_dbDebug).setVisible(true);
             invalidateOptionsMenu();
         }

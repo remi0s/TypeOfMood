@@ -7,8 +7,9 @@ android {
         applicationId "typeofmood.ime"
         minSdkVersion 16
         targetSdkVersion 27
-        versionCode 6
-        versionName "1.6"
+        versionCode 7
+        versionName "1.7"
+        setProperty("archivesBaseName", "typeofmood-$versionName")
     }
 
     sourceSets {
@@ -21,8 +22,8 @@ android {
 
     buildTypes {
         debug {
-            minifyEnabled true //if true it messes with the native libraries //probably fixed by excluding all typeofmood classes
-            useProguard true
+            minifyEnabled false //if true it messes with the native libraries //probably fixed by excluding all typeofmood classes
+            useProguard false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
 

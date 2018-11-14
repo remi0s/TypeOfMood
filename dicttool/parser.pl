@@ -19,8 +19,8 @@ while (<FILE>) {
     $count++;
 }
 
-# Calculate the divider to ensure results between 15 and 254
-my $divider = int( $count / 240) + 1 ;
+# Calculate the divider to ensure results between 50 and 254
+my $divider = int( $count / 205) + 1 ;
 
 sub is_integer { $_[0] =~ /^[+-]?\d+$/ }
 # Re-open the source file and update the weight
@@ -32,7 +32,7 @@ while (my $line = <FILE>) {
     # Replace the weight if its a word line,
     # otherwise print without actions
     if ($line =~ /f=/) {
-        my $weighed = int( $count / $divider) + 15;
+        my $weighed = int( $count / $divider) + 50;
         my ($name) = $line =~ m/=(.*),/;
         if (length($name) > 1 && !is_integer($name)) {
             $line =~ s/(\d*[.])?\d+/$weighed/g;

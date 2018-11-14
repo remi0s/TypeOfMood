@@ -18,6 +18,8 @@ package typeofmood.ime.latin;
 
 import android.content.Context;
 import android.media.AudioManager;
+import android.os.Build;
+import android.os.VibrationEffect;
 import android.os.Vibrator;
 import android.view.HapticFeedbackConstants;
 import android.view.View;
@@ -72,7 +74,12 @@ public final class AudioAndHapticFeedbackManager {
         if (mVibrator == null) {
             return;
         }
-        mVibrator.vibrate(milliseconds);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            mVibrator.vibrate(VibrationEffect.createOneShot(milliseconds, VibrationEffect.DEFAULT_AMPLITUDE));
+        } else {
+            //deprecated in API 26
+            mVibrator.vibrate(milliseconds);
+        }
     }
 
     private boolean reevaluateIfSoundIsOn() {

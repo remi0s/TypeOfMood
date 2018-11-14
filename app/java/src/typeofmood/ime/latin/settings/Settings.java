@@ -63,6 +63,7 @@ public final class Settings implements SharedPreferences.OnSharedPreferenceChang
     // PREF_AUTO_CORRECTION_THRESHOLD_OBSOLETE is obsolete. Use PREF_AUTO_CORRECTION instead.
     public static final String PREF_AUTO_CORRECTION_THRESHOLD_OBSOLETE =
             "auto_correction_threshold";
+    public static final String PREF_AUTO_CORRECTION_THRESHOLD = "pref_auto_correction_threshold"; //remi0s
     public static final String PREF_AUTO_CORRECTION = "pref_key_auto_correction";
     // PREF_SHOW_SUGGESTIONS_SETTING_OBSOLETE is obsolete. Use PREF_SHOW_SUGGESTIONS instead.
     public static final String PREF_SHOW_SUGGESTIONS_SETTING_OBSOLETE = "show_suggestions_setting";
@@ -353,6 +354,13 @@ public final class Settings implements SharedPreferences.OnSharedPreferenceChang
         final float percentage = prefs.getFloat(
                 DebugSettings.PREF_KEYBOARD_HEIGHT_SCALE, UNDEFINED_PREFERENCE_VALUE_FLOAT);
         return (percentage != UNDEFINED_PREFERENCE_VALUE_FLOAT) ? percentage : defaultValue;
+    }
+
+    public static String readAutoCorrectThreshold(final SharedPreferences prefs,
+                                           final String defaultValue) {
+        final int percentage = (int)prefs.getFloat(
+                Settings.PREF_AUTO_CORRECTION_THRESHOLD, UNDEFINED_PREFERENCE_VALUE_FLOAT);
+        return (percentage != UNDEFINED_PREFERENCE_VALUE_FLOAT) ? Integer.toString(percentage) : defaultValue;
     }
 
     public static boolean readUseFullscreenMode(final Resources res) {

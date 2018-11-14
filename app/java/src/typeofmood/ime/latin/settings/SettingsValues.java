@@ -54,6 +54,8 @@ public class SettingsValues {
     private static final int TIMEOUT_TO_GET_TARGET_PACKAGE = 5; // seconds
     public static final float DEFAULT_SIZE_SCALE = 1.0f; // 100%
 
+
+
     // From resources:
     public final SpacingAndPunctuations mSpacingAndPunctuations;
     public final int mDelayInMillisecondsToUpdateOldSuggestions;
@@ -87,6 +89,7 @@ public class SettingsValues {
     public final boolean mCloudSyncEnabled;
     public final boolean mEnableMetricsLogging;
     public final boolean mShouldShowLxxSuggestionUi;
+
     // Use split layout for keyboard.
     public final boolean mIsSplitKeyboardEnabled;
     public final int mScreenMetrics;
@@ -143,7 +146,7 @@ public class SettingsValues {
                 && Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN;
         mIncludesOtherImesInLanguageSwitchList =Settings.ENABLE_SHOW_LANGUAGE_SWITCH_KEY_SETTINGS
                 ? prefs.getBoolean(Settings.PREF_INCLUDE_OTHER_IMES_IN_LANGUAGE_SWITCH_LIST, false)
-                : true /* forcibly */; //remi0s false
+                : false /* forcibly */; //remi0s false
         mShowsLanguageSwitchKey = Settings.ENABLE_SHOW_LANGUAGE_SWITCH_KEY_SETTINGS
                 ? Settings.readShowsLanguageSwitchKey(prefs) : true /* forcibly */;
         mUseContactsDict = prefs.getBoolean(Settings.PREF_KEY_USE_CONTACTS_DICT, true);
@@ -173,8 +176,11 @@ public class SettingsValues {
                 Settings.PREF_ENABLE_EMOJI_ALT_PHYSICAL_KEY, true);
         mShowAppIcon = Settings.readShowSetupWizardIcon(prefs, context);
         mIsShowAppIconSettingInPreferences = prefs.contains(Settings.PREF_SHOW_SETUP_WIZARD_ICON);
+//        mAutoCorrectionThreshold = readAutoCorrectionThreshold(res,
+//                autoCorrectionThresholdRawValue);
         mAutoCorrectionThreshold = readAutoCorrectionThreshold(res,
-                autoCorrectionThresholdRawValue);
+                Settings.readAutoCorrectThreshold(prefs,
+                        res.getString(R.string.auto_correction_threshold_mode_index_modest))); //remi0s
         mPlausibilityThreshold = Settings.readPlausibilityThreshold(res);
         mGestureInputEnabled = Settings.readGestureInputEnabled(prefs, res);
         mGestureTrailEnabled = prefs.getBoolean(Settings.PREF_GESTURE_PREVIEW_TRAIL, true);
@@ -323,7 +329,7 @@ public class SettingsValues {
                 R.bool.config_default_next_word_prediction));
     }
 
-    private static float readAutoCorrectionThreshold(final Resources res,
+    public static float readAutoCorrectionThreshold(final Resources res,
             final String currentAutoCorrectionSetting) {
         final String[] autoCorrectionThresholdValues = res.getStringArray(
                 R.array.auto_correction_threshold_values);

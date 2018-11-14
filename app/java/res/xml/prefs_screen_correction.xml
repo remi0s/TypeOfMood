@@ -14,7 +14,9 @@
      limitations under the License.
 -->
 
-<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+<PreferenceScreen
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:latin="http://schemas.android.com/apk/res-auto"
     android:title="@string/settings_screen_correction"
     android:key="screen_correction">
     <PreferenceScreen
@@ -45,6 +47,16 @@
         android:summary="@string/auto_correction_summary"
         android:defaultValue="true"
         android:persistent="true" />
+
+    <!--remi0s for aggression on autocorrect -->
+    <typeofmood.ime.latin.settings.SeekBarDialogPreference
+        android:dependency="pref_key_auto_correction"
+        android:key="pref_auto_correction_threshold"
+        android:title="@string/prefs_auto_correction_threshold"
+        latin:stepValue="1"
+        latin:minValue="1"
+        latin:maxValue="3" />
+
     <CheckBoxPreference
         android:key="show_suggestions"
         android:summary="@string/prefs_show_suggestions_summary"
@@ -69,4 +81,6 @@
         android:summary="@string/bigram_prediction_summary"
         android:defaultValue="true"
         android:persistent="true" />
+
+
 </PreferenceScreen>

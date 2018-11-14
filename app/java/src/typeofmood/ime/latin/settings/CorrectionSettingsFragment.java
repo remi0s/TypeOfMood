@@ -29,6 +29,7 @@ import android.preference.Preference;
 import android.preference.SwitchPreference;
 import android.text.TextUtils;
 
+import java.util.Locale;
 import java.util.TreeSet;
 
 import typeofmood.ime.dictionarypack.DictionarySettingsActivity;
@@ -90,6 +91,9 @@ public final class CorrectionSettingsFragment extends SubScreenFragment
 
         mUseContactsPreference = (SwitchPreference) findPreference(Settings.PREF_KEY_USE_CONTACTS_DICT);
         turnOffUseContactsIfNoPermission();
+
+        setupCorrectionThreshold(
+                Settings.PREF_AUTO_CORRECTION_THRESHOLD, "1"); //remi0s CorrectionThreshold.
     }
 
     private void overwriteUserDictionaryPreference(final Preference userDictionaryPreference) {
@@ -148,5 +152,65 @@ public final class CorrectionSettingsFragment extends SubScreenFragment
                 getActivity(), Manifest.permission.READ_CONTACTS)) {
             mUseContactsPreference.setChecked(false);
         }
+    }
+    private void setupCorrectionThreshold(final String prefKey, final String defaultValue) { //remi0s for keyboard resizing
+        final SharedPreferences prefs = getSharedPreferences();
+        final SeekBarDialogPreference pref = (SeekBarDialogPreference)findPreference(prefKey);
+
+        if (pref == null) {
+            return;
+        }
+        pref.setInterface(new SeekBarDialogPreference.ValueProxy() {
+            @Override
+            public void writeValue(final int value, final String key) {
+                prefs.edit().putFloat(key, value).apply();
+
+            }
+
+            @Override
+            public void writeDefaultValue(final String key) {
+                prefs.edit().remove(key).apply();
+            }
+
+            @Override
+            public int readValue(final String key) {
+                return Integer.parseInt(Settings.readAutoCorrectThreshold(prefs,defaultValue));
+            }
+
+            @Override
+            public int readDefaultValue(final String key) {
+                return Integer.parseInt(defaultValue);
+            }
+
+            @Override
+            public String getValueText(final int value) {
+                switch(value){
+                    case 0:
+                        return "Off";
+                    case 1:
+                        return "Modest";
+                    case 2:
+                        return "Aggressive";
+                    case 3:
+                        return "Very aggressive";
+
+                    default :
+                        return String.format(Locale.ROOT, "%d%%", value);
+
+                }
+
+
+//                return String.format(Locale.ROOT, "%d%%", value);
+            }
+
+            @Override
+            public void feedbackValue(final int value) {
+
+            }
+
+        });
+
+
+
     }
 }
