@@ -14,7 +14,9 @@ Have Fun!
 
 CREDITS: 
 
-https://github.com/hermitdave/FrequencyWords for opensubtitles archive project! Used http://opus.nlpl.eu/OpenSubtitles2018.php in order to create the wordlists.
+https://github.com/hermitdave/FrequencyWords for opensubtitles archive project! 
+
+Used http://opus.nlpl.eu/OpenSubtitles2018.php in order to create the wordlists.
 
 https://github.com/linuxscout/yaraspell I used this repository for spellchecking the arabic wordlist!
 
