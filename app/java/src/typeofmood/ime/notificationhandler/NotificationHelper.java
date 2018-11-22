@@ -123,7 +123,7 @@ public class NotificationHelper extends ContextWrapper {
                 .setOngoing(true)
                 .setAutoCancel(true);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-            builder.setPriority(NotificationManager.IMPORTANCE_HIGH);
+            builder.setPriority(NotificationManager.IMPORTANCE_MAX);
         }
 
 

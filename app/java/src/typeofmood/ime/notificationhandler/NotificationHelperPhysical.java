@@ -112,12 +112,12 @@ public class NotificationHelperPhysical extends ContextWrapper {
                 .setCustomBigContentView(remoteViews)
                 .setOnlyAlertOnce(true)
                 .setWhen(System.currentTimeMillis())
-                .setDefaults(Notification.DEFAULT_ALL)
+                .setDefaults(Notification.DEFAULT_VIBRATE)
                 .setColor(Color.GREEN)
                 .setOngoing(true)
                 .setAutoCancel(true);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-            builder.setPriority(NotificationManager.IMPORTANCE_HIGH);
+            builder.setPriority(NotificationManager.IMPORTANCE_MAX);
         }
 
 

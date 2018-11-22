@@ -2518,9 +2518,9 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
                     sessionsCounter=0;
 
 
-                    mNotificationHelperPhysical = new NotificationHelperPhysical(weakContext.get());
-                    NotificationCompat.Builder nbPhysical = mNotificationHelperPhysical.getTypeOfMoodNotification(title, message);
-                    mNotificationHelperPhysical.getManager().notify(mNotificationHelperPhysical.notification_id, nbPhysical.build());
+//                    mNotificationHelperPhysical = new NotificationHelperPhysical(weakContext.get());
+//                    NotificationCompat.Builder nbPhysical = mNotificationHelperPhysical.getTypeOfMoodNotification(title, message);
+//                    mNotificationHelperPhysical.getManager().notify(mNotificationHelperPhysical.notification_id, nbPhysical.build());
 
                     mNotificationHelper = new NotificationHelper(weakContext.get());
                     NotificationCompat.Builder nb = mNotificationHelper.getTypeOfMoodNotification(title, message);
@@ -2545,26 +2545,53 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
                         sessionDataTemp.Distance.add(dist);
                     }
 
-                    //send data
-//                    long sendMinutesPassed;
-//                    if(latestSendTimeTemp!=null){
-//                        sendMinutesPassed= TimeUnit.MINUTES.convert((new Date(System.currentTimeMillis())).getTime()-latestSendTimeTemp.getTime() , TimeUnit.MILLISECONDS);
-//                    }else{
-//                        sendMinutesPassed=61;
-//                    }
-//                    if(isConnected(weakContext.get() ) && (sendMinutesPassed>60)){
-//                        latestSendTimeTemp=new Date(System.currentTimeMillis());
-//                        new HttpAsyncTask().execute("");
-//                    }
-
-
-
+                    //save data
 
                     Gson gson = new GsonBuilder().serializeNulls().create();
                     String sessionDataString = gson.toJson(sessionDataTemp, KeyboardDynamics.class);
 //                Log.d("Json", "Json string: " + sessionDataString);
                     result=AddData(sessionDataString,weakContext.get());
                     sessionsCounter=sessionsCounter+1;
+
+
+
+
+                    //send data
+                    String send_result="";
+                    long sendMinutesPassed;
+                    if(latestSendTimeTemp!=null){
+                        sendMinutesPassed= TimeUnit.MINUTES.convert((new Date(System.currentTimeMillis())).getTime()-latestSendTimeTemp.getTime() , TimeUnit.MILLISECONDS);
+                    }else{
+                        sendMinutesPassed=61;
+                    }
+                    if(isConnected(weakContext.get() ) && (sendMinutesPassed>=60)){
+                        latestSendTimeTemp=new Date(System.currentTimeMillis());
+                        ArrayList<KeyboardPayload> notSendData = new ArrayList<>();
+                        Cursor data = myDB.getNotSendContents();
+                        try {
+                            if (data.getCount() != 0) {
+                                while (data.moveToNext()) {
+                                    KeyboardPayload payload=new KeyboardPayload();
+                                    payload.DocID=data.getString(0);//DocID
+                                    payload.DateData=data.getString(1); //DateTime
+//                    payload.UserID=data.getString(2); //UserID
+                                    payload.SessionData= data.getString(2); //SessionData
+                                    notSendData.add(payload);
+                                }
+                                send_result=upload(notSendData,pref_ID,pref_age,pref_gender,pref_health);//POST(urls[0],notSendData);
+                            }else{
+                                Log.d("SQL","I'm in do in background 0 data");
+                            }
+                        } finally {
+                            data.close();
+                        }
+                    }
+                    Log.d("SQL","Tried to send data with result: "+result);
+
+
+
+
+
                 }
 
 
@@ -2580,18 +2607,7 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
         // onPostExecute displays the results of the AsyncTask.
         @Override
         protected void onPostExecute(String result) {
-            //send data
 
-            long sendMinutesPassed;
-            if(latestSendTimeTemp!=null){
-                sendMinutesPassed= TimeUnit.MINUTES.convert((new Date(System.currentTimeMillis())).getTime()-latestSendTimeTemp.getTime() , TimeUnit.MILLISECONDS);
-            }else{
-                sendMinutesPassed=61;
-            }
-            if(isConnected(weakContext.get() ) && (sendMinutesPassed>6)){
-                latestSendTimeTemp=new Date(System.currentTimeMillis());
-                new HttpAsyncTask().execute(pref_ID,pref_age,pref_gender,pref_health);
-            }
 //            Log.d("SQL","Tried to save data with result: "+result);
 //            Toast.makeText(getBaseContext(), "Data Sent!", Toast.LENGTH_LONG).show();
         }
@@ -2644,9 +2660,9 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
                 sessionsCounter=0;
 
 
-                mNotificationHelperPhysical = new NotificationHelperPhysical(weakContext.get());
-                NotificationCompat.Builder nbPhysical = mNotificationHelperPhysical.getTypeOfMoodNotification(title, message);
-                mNotificationHelperPhysical.getManager().notify(mNotificationHelperPhysical.notification_id, nbPhysical.build());
+//                mNotificationHelperPhysical = new NotificationHelperPhysical(weakContext.get());
+//                NotificationCompat.Builder nbPhysical = mNotificationHelperPhysical.getTypeOfMoodNotification(title, message);
+//                mNotificationHelperPhysical.getManager().notify(mNotificationHelperPhysical.notification_id, nbPhysical.build());
 
                 mNotificationHelper = new NotificationHelper(weakContext.get());
                 NotificationCompat.Builder nb = mNotificationHelper.getTypeOfMoodNotification(title, message);

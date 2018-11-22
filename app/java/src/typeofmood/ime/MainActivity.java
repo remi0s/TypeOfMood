@@ -119,9 +119,7 @@ public class MainActivity extends AppCompatActivity {
                                 menuItem.setChecked(false);
                                 String title = "TypeOfMood";
                                 String message = "Please Expand to describe your mood!";
-                                NotificationHelperPhysical mNotificationHelperPhysical = new NotificationHelperPhysical(getApplicationContext());
-                                NotificationCompat.Builder nbPhysical = mNotificationHelperPhysical.getTypeOfMoodNotification("TypeOfMood", "Please Expand to describe your mood!");
-                                mNotificationHelperPhysical.getManager().notify(mNotificationHelperPhysical.notification_id, nbPhysical.build());
+
                                 NotificationHelper mNotificationHelper = new NotificationHelper(getApplicationContext());
                                 NotificationCompat.Builder nb = mNotificationHelper.getTypeOfMoodNotification(title, message);
                                 mNotificationHelper.getManager().notify(mNotificationHelper.notification_id, nb.build());

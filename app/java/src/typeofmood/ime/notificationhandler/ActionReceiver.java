@@ -3,6 +3,7 @@ package typeofmood.ime.notificationhandler;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.support.v4.app.NotificationCompat;
 import android.widget.Toast;
 
 import typeofmood.ime.datahandler.MoodDatabaseHelper;
@@ -44,7 +45,10 @@ public class ActionReceiver extends BroadcastReceiver {
         mNotificationHelper.getManager().cancel(mNotificationHelper.notification_id);
         mydb.close();
 
-//        mNotificationHelper.getManager().cancel(action,intent.getExtras().getInt("action"));
+        NotificationHelperPhysical mNotificationHelperPhysical = new NotificationHelperPhysical(context);
+        NotificationCompat.Builder nbPhysical = mNotificationHelperPhysical.getTypeOfMoodNotification("TypeOfMood", "Please Expand to describe your mood!");
+        mNotificationHelperPhysical.getManager().notify(mNotificationHelperPhysical.notification_id, nbPhysical.build());
+        //        mNotificationHelper.getManager().cancel(action,intent.getExtras().getInt("action"));
         //This is used to close the notification tray
 //        Intent it = new Intent(Intent.ACTION_CLOSE_SYSTEM_DIALOGS);
 //        context.sendBroadcast(it);
