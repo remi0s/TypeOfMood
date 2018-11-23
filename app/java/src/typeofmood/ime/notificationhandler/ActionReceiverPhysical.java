@@ -46,10 +46,6 @@ public class ActionReceiverPhysical extends BroadcastReceiver {
         mNotificationHelperPhysical.getManager().cancel(mNotificationHelperPhysical.notification_id);
         mydb.close();
 
-//        mNotificationHelper.getManager().cancel(action,intent.getExtras().getInt("action"));
-        //This is used to close the notification tray
-//        Intent it = new Intent(Intent.ACTION_CLOSE_SYSTEM_DIALOGS);
-//        context.sendBroadcast(it);
     }
 
     public void performLater(Context context){
@@ -62,24 +58,28 @@ public class ActionReceiverPhysical extends BroadcastReceiver {
     public void performRelaxation(Context context){
         Toast.makeText(context,"Relaxation", Toast.LENGTH_SHORT).show();
         LatinIME.currentPhysicalState="Relaxation";
+        LatinIME.laterPressed=false;
 
     }
 
     public void performNeutral(Context context){
         Toast.makeText(context,"Neutral", Toast.LENGTH_SHORT).show();
         LatinIME.currentPhysicalState="Neutral";
+        LatinIME.laterPressed=false;
 
     }
 
     public void performTiredness(Context context){
         Toast.makeText(context,"Tiredness", Toast.LENGTH_SHORT).show();
         LatinIME.currentPhysicalState="Tiredness";
+        LatinIME.laterPressed=false;
 
     }
 
     public void performSickness(Context context){
         Toast.makeText(context,"Sickness", Toast.LENGTH_SHORT).show();
         LatinIME.currentPhysicalState="Sickness";
+        LatinIME.laterPressed=false;
 
     }
 

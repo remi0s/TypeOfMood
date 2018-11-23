@@ -164,7 +164,8 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
 
     public static KeyboardDynamics sessionData=null; //remi0s
     private static NotificationHelper mNotificationHelper;
-    private static NotificationHelperPhysical mNotificationHelperPhysical ;
+    private static NotificationCompat.Builder nb;
+//    private static NotificationHelperPhysical mNotificationHelperPhysical ;
     public static String currentMood="undefined";
     public static String currentPhysicalState="undefined";
     public static long latestNotificationTime;
@@ -657,6 +658,8 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
         densY=getResources().getDisplayMetrics().ydpi;
 
         myDB = new DatabaseHelper(this); //remi0s
+        mNotificationHelper=new NotificationHelper(this);
+        nb=new NotificationCompat.Builder(getApplicationContext(),"TypeOfMoodChannelID");
         userID=android.provider.Settings.System.getString(this.getContentResolver(), android.provider.Settings.Secure.ANDROID_ID);//remi0s
 
         Settings.init(this);
@@ -890,85 +893,13 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
     public void onFinishInputView(final boolean finishingInput) {
         if (sessionData != null) {
             sessionData.StopDateTime = System.currentTimeMillis();
-//            StopDateTimeTemp=new Date(System.currentTimeMillis());
-//            sessionData.CurrentMood = currentMood;
-//            sessionData.CurrentPhysicalState=currentPhysicalState;
-//            sessionData.LatestNotification=latestNotificationTime;
-//
-//
-//
-//            int notificationFlag = 0;
-//
-//            if (latestNotificationTime != null) {
-//                long minutesPassed = TimeUnit.MINUTES.convert(StopDateTimeTemp.getTime() - latestNotificationTimeTemp.getTime(), TimeUnit.MILLISECONDS);
-////                Log.d("minutesPassed", "minutesPassed: " + minutesPassed +" with sessions:"+ sessionsCounter);
-//                if (minutesPassed >= 120 || (sessionsCounter>=20 && minutesPassed>=60)) {
-//                    notificationFlag = 1;
-//                    sessionData.CurrentMood =currentMood+" TIMEOUT";
-//                    sessionData.CurrentPhysicalState=currentPhysicalState+" TIMEOUT";
-//
-//                }else if(laterPressed && minutesPassed>=60){
-//                    sessionData.CurrentMood =currentMood+" TIMEOUT";
-//                    sessionData.CurrentPhysicalState=currentPhysicalState+" TIMEOUT";
-//                    notificationFlag = 1;
-//
-//                    laterPressed=false;
-//                }
-//            } else {
-//                notificationFlag = 1;
-//                sessionData.CurrentMood = "undefined";
-//                sessionData.CurrentPhysicalState="undefined";
-//
-//            }
-//
-//            if (notificationFlag == 1 && sessionData.DownTime.size() > 5) {
-//                String title = "TypeOfMood";
-//                String message = "Please Expand to describe your mood!";
-//                sessionsCounter=0;
-//
-//                if(isConnected()){
-//                    new HttpAsyncTask().execute("");
-//                }
-//
-//                mNotificationHelperPhysical = new NotificationHelperPhysical(this);
-//                NotificationCompat.Builder nbPhysical = mNotificationHelperPhysical.getTypeOfMoodNotification(title, message);
-//                mNotificationHelperPhysical.getManager().notify(mNotificationHelperPhysical.notification_id, nbPhysical.build());
-//
-//                mNotificationHelper = new NotificationHelper(this);
-//                NotificationCompat.Builder nb = mNotificationHelper.getTypeOfMoodNotification(title, message);
-//                mNotificationHelper.getManager().notify(mNotificationHelper.notification_id, nb.build());
-////                CreateAlertDialogWithRadioButtonGroup();
-//
-//
-//
-//            }
-//
-//
-//            if (sessionData.DownTime.size() > 5){
-////                Gson gson = new Gson();
-//                Gson gson = new GsonBuilder().serializeNulls().create();
-//                String sessionDataString = gson.toJson(sessionData, KeyboardDynamics.class);
-////                Log.d("Json", "Json string: " + sessionDataString);
-//                AddData(sessionDataString);
-//                sessionsCounter=sessionsCounter+1;
-//
+
 //            }
             //store data
             DataStoreAsyncTaskParams params = new DataStoreAsyncTaskParams(sessionData,rawX,rawY);
             DataStoreAsyncTask task = new DataStoreAsyncTask(getApplicationContext());
             task.execute(params);
-//            //send data
-//
-//            long sendMinutesPassed;
-//            if(latestSendTimeTemp!=null){
-//                sendMinutesPassed= TimeUnit.MINUTES.convert((new Date(System.currentTimeMillis())).getTime()-latestSendTimeTemp.getTime() , TimeUnit.MILLISECONDS);
-//            }else{
-//                sendMinutesPassed=61;
-//            }
-//            if(isConnected(getApplicationContext() ) && (sendMinutesPassed>60)){
-//                latestSendTimeTemp=new Date(System.currentTimeMillis());
-//                new HttpAsyncTask().execute("");
-//            }
+
             rawX.clear();
             rawY.clear();
             sessionData= null;
@@ -2492,18 +2423,18 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
 
                 if (latestNotificationTime != 0) {
                     long minutesPassed = TimeUnit.MINUTES.convert(StopDateTimeTemp.getTime() - latestNotificationTimeTemp.getTime(), TimeUnit.MILLISECONDS);
-//                Log.d("minutesPassed", "minutesPassed: " + minutesPassed +" with sessions:"+ sessionsCounter);
-                    if (minutesPassed >= 120 || (sessionsCounter>=20 && minutesPassed>=60)) {
-                        notificationFlag = 1;
-                        sessionDataTemp.CurrentMood =currentMood+" TIMEOUT";
-                        sessionDataTemp.CurrentPhysicalState=currentPhysicalState+" TIMEOUT";
 
-                    }else if(laterPressed && minutesPassed>=60){
+                    if(laterPressed && minutesPassed>=120){
                         sessionDataTemp.CurrentMood =currentMood+" TIMEOUT";
                         sessionDataTemp.CurrentPhysicalState=currentPhysicalState+" TIMEOUT";
                         notificationFlag = 1;
-
                         laterPressed=false;
+                    }else if (minutesPassed >= 120 || (sessionsCounter>=30 && minutesPassed>=90)) {
+                        notificationFlag = 1;
+                        sessionDataTemp.CurrentMood = currentMood + " TIMEOUT";
+                        sessionDataTemp.CurrentPhysicalState = currentPhysicalState + " TIMEOUT";
+                    }else{
+                        notificationFlag = 0;
                     }
                 } else {
                     notificationFlag = 1;
@@ -2522,8 +2453,9 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
 //                    NotificationCompat.Builder nbPhysical = mNotificationHelperPhysical.getTypeOfMoodNotification(title, message);
 //                    mNotificationHelperPhysical.getManager().notify(mNotificationHelperPhysical.notification_id, nbPhysical.build());
 
-                    mNotificationHelper = new NotificationHelper(weakContext.get());
-                    NotificationCompat.Builder nb = mNotificationHelper.getTypeOfMoodNotification(title, message);
+//                    mNotificationHelper = new NotificationHelper(weakContext.get());
+
+                    nb = mNotificationHelper.getTypeOfMoodNotification(title, message,nb);
                     mNotificationHelper.getManager().notify(mNotificationHelper.notification_id, nb.build());
 //                CreateAlertDialogWithRadioButtonGroup();
 
@@ -2643,15 +2575,24 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
 
             if (latestNotificationTime != 0) {
                 long minutesPassed = TimeUnit.MINUTES.convert(StartDateTimeTemp.getTime() - latestNotificationTimeTemp.getTime(), TimeUnit.MILLISECONDS);
-//               Log.d("minutesPassed", "minutesPassed: " + minutesPassed +" with sessions:"+ sessionsCounter);
-                if (minutesPassed >= 120 || (sessionsCounter>=20 && minutesPassed>=60)) {
-                    notificationFlag = 1;
-                }else if(laterPressed && minutesPassed>=60){
+
+                if(laterPressed && minutesPassed>=120){
+                    sessionData.CurrentMood =currentMood+" TIMEOUT";
+                    sessionData.CurrentPhysicalState=currentPhysicalState+" TIMEOUT";
                     notificationFlag = 1;
                     laterPressed=false;
+                }else if(minutesPassed >= 120 || (sessionsCounter>=30 && minutesPassed>=90)){
+                    notificationFlag = 1;
+                    sessionData.CurrentMood = currentMood + " TIMEOUT";
+                    sessionData.CurrentPhysicalState = currentPhysicalState + " TIMEOUT";
+                }else{
+                    notificationFlag = 0;
                 }
             } else {
                 notificationFlag = 1;
+                sessionData.CurrentMood = "undefined";
+                sessionData.CurrentPhysicalState="undefined";
+
             }
 
             if (notificationFlag == 1 ) {
@@ -2664,8 +2605,8 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
 //                NotificationCompat.Builder nbPhysical = mNotificationHelperPhysical.getTypeOfMoodNotification(title, message);
 //                mNotificationHelperPhysical.getManager().notify(mNotificationHelperPhysical.notification_id, nbPhysical.build());
 
-                mNotificationHelper = new NotificationHelper(weakContext.get());
-                NotificationCompat.Builder nb = mNotificationHelper.getTypeOfMoodNotification(title, message);
+
+                nb = mNotificationHelper.getTypeOfMoodNotification(title, message,nb);
                 mNotificationHelper.getManager().notify(mNotificationHelper.notification_id, nb.build());
 //                CreateAlertDialogWithRadioButtonGroup();
 

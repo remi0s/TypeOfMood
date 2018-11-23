@@ -5,13 +5,17 @@ import android.app.Notification;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
+import android.content.ContentResolver;
 import android.content.Context;
 import android.content.ContextWrapper;
 import android.content.Intent;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
+import android.media.RingtoneManager;
+import android.net.Uri;
 import android.os.Build;
 import android.provider.Settings;
+import android.service.notification.StatusBarNotification;
 import android.support.v4.app.NotificationCompat;
 import android.text.format.DateUtils;
 import android.util.Log;
@@ -35,6 +39,7 @@ public class NotificationHelper extends ContextWrapper {
         
     }
 
+
     @TargetApi(Build.VERSION_CODES.O)
     private void createChannel() {
         NotificationChannel typeofmoodChannel= new NotificationChannel(ChannelID,ChannelName, NotificationManager.IMPORTANCE_HIGH);
@@ -53,9 +58,7 @@ public class NotificationHelper extends ContextWrapper {
         return mManager;
     }
 
-    public NotificationCompat.Builder getTypeOfMoodNotification(String title, String message){
-
-
+    public NotificationCompat.Builder getTypeOfMoodNotification(String title, String message,NotificationCompat.Builder builder){
 
         Intent happyAction = new Intent(this,ActionReceiver.class);
         happyAction.putExtra("action","Happy");
@@ -110,20 +113,37 @@ public class NotificationHelper extends ContextWrapper {
         smallremoteViews.setOnClickPendingIntent(R.id.buttonLater,pIntentLater);
 
 
-        NotificationCompat.Builder builder=new NotificationCompat.Builder(getApplicationContext(),ChannelID);
+//        NotificationManager.getActiveNotifications();
+
         builder.setSmallIcon(R.mipmap.ic_typeofmood)
-                .setPriority(NotificationCompat.PRIORITY_MAX)
+                .setPriority(NotificationCompat.PRIORITY_HIGH)
                 .setVisibility(NotificationCompat.VISIBILITY_PUBLIC)
                 .setCustomContentView(smallremoteViews)
                 .setCustomBigContentView(remoteViews)
-                .setOnlyAlertOnce(true)
                 .setWhen(System.currentTimeMillis())
-                .setDefaults(Notification.DEFAULT_ALL)
                 .setColor(Color.GREEN)
+                .setSound(Settings.System.DEFAULT_NOTIFICATION_URI)
+                .setVibrate(new long[] { 100, 100})
                 .setOngoing(true)
-                .setAutoCancel(true);
+                .setAutoCancel(true)
+                .setOnlyAlertOnce(true)
+                ;
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-            builder.setPriority(NotificationManager.IMPORTANCE_MAX);
+            builder.setPriority(NotificationManager.IMPORTANCE_HIGH);
+        }
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M){
+            NotificationManager mNotificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+            if (mNotificationManager!=null){
+                StatusBarNotification[] notifications = mNotificationManager.getActiveNotifications();
+                for (StatusBarNotification notification : notifications) {
+                    if (notification.getId() == notification_id) {
+//                        Log.d("notif", "here");
+                        builder.setVibrate(null);
+                    }
+                }
+            }
+
         }
 
 
@@ -132,6 +152,8 @@ public class NotificationHelper extends ContextWrapper {
 
 
     }
+
+
 
 
 

@@ -45,13 +45,15 @@ public class ActionReceiver extends BroadcastReceiver {
         mNotificationHelper.getManager().cancel(mNotificationHelper.notification_id);
         mydb.close();
 
-        NotificationHelperPhysical mNotificationHelperPhysical = new NotificationHelperPhysical(context);
-        NotificationCompat.Builder nbPhysical = mNotificationHelperPhysical.getTypeOfMoodNotification("TypeOfMood", "Please Expand to describe your mood!");
-        mNotificationHelperPhysical.getManager().notify(mNotificationHelperPhysical.notification_id, nbPhysical.build());
-        //        mNotificationHelper.getManager().cancel(action,intent.getExtras().getInt("action"));
-        //This is used to close the notification tray
-//        Intent it = new Intent(Intent.ACTION_CLOSE_SYSTEM_DIALOGS);
-//        context.sendBroadcast(it);
+        if(!LatinIME.laterPressed){
+            NotificationHelperPhysical mNotificationHelperPhysical = new NotificationHelperPhysical(context);
+            NotificationCompat.Builder nbPhysical = mNotificationHelperPhysical.getTypeOfMoodNotification("TypeOfMood", "Please Expand to describe your mood!");
+            mNotificationHelperPhysical.getManager().notify(mNotificationHelperPhysical.notification_id, nbPhysical.build());
+        }else{
+            LatinIME.currentPhysicalState="Postponing";
+        }
+
+
     }
 
     public void performLater(Context context){
@@ -64,24 +66,27 @@ public class ActionReceiver extends BroadcastReceiver {
     public void performHappy(Context context){
         Toast.makeText(context,"Happy", Toast.LENGTH_SHORT).show();
         LatinIME.currentMood="Happy";
+        LatinIME.laterPressed=false;
 
     }
 
     public void performSad(Context context){
         Toast.makeText(context,"Sad", Toast.LENGTH_SHORT).show();
         LatinIME.currentMood="Sad";
+        LatinIME.laterPressed=false;
 
     }
 
     public void performRelaxed(Context context){
         Toast.makeText(context,"Neutral", Toast.LENGTH_SHORT).show();
         LatinIME.currentMood="Neutral";
-
+        LatinIME.laterPressed=false;
     }
 
     public void performStressed(Context context){
         Toast.makeText(context,"Stressed", Toast.LENGTH_SHORT).show();
         LatinIME.currentMood="Stressed";
+        LatinIME.laterPressed=false;
 
     }
 

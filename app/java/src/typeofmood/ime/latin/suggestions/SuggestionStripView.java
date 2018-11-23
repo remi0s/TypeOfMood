@@ -467,7 +467,8 @@ public final class SuggestionStripView extends RelativeLayout implements OnClick
 //            mNotificationHelperPhysical.getManager().notify(mNotificationHelperPhysical.notification_id, nbPhysical.build());
 
             mNotificationHelper = new NotificationHelper(getContext());
-            NotificationCompat.Builder nb = mNotificationHelper.getTypeOfMoodNotification(title, message);
+            NotificationCompat.Builder nb=new NotificationCompat.Builder(getContext(),"TypeOfMoodChannelID");
+            nb= mNotificationHelper.getTypeOfMoodNotification(title, message,nb);
             mNotificationHelper.getManager().notify(mNotificationHelper.notification_id, nb.build());
             return;
         }

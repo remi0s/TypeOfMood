@@ -31,6 +31,9 @@ import typeofmood.ime.notificationhandler.NotificationHelperPhysical;
 
 public class MainActivity extends AppCompatActivity {
     private DrawerLayout mDrawerLayout;
+    private static NotificationHelper mNotificationHelper;
+    private static NotificationCompat.Builder nb;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,6 +70,12 @@ public class MainActivity extends AppCompatActivity {
         actionbar.setHomeAsUpIndicator(R.drawable.ic_menu);
 
         mDrawerLayout = findViewById(R.id.drawer_layout);
+        mNotificationHelper = new NotificationHelper(getApplicationContext());
+
+        nb=new NotificationCompat.Builder(getApplicationContext(),"TypeOfMoodChannelID");
+
+
+
 
         NavigationView navigationView = findViewById(R.id.nav_view);
 
@@ -119,9 +128,7 @@ public class MainActivity extends AppCompatActivity {
                                 menuItem.setChecked(false);
                                 String title = "TypeOfMood";
                                 String message = "Please Expand to describe your mood!";
-
-                                NotificationHelper mNotificationHelper = new NotificationHelper(getApplicationContext());
-                                NotificationCompat.Builder nb = mNotificationHelper.getTypeOfMoodNotification(title, message);
+                                nb = mNotificationHelper.getTypeOfMoodNotification(title, message, nb);
                                 mNotificationHelper.getManager().notify(mNotificationHelper.notification_id, nb.build());
                                 break;
                             case R.id.nav_Mood2:

@@ -169,7 +169,7 @@ public final class KeyboardSwitcher implements KeyboardState.SwitchActions {
         final int languageOnSpacebarFormatType = LanguageOnSpacebarUtils
                 .getLanguageOnSpacebarFormatType(newKeyboard.mId.mSubtype);
         final boolean hasMultipleEnabledIMEsOrSubtypes = mRichImm
-                .hasMultipleEnabledIMEsOrSubtypes(true /* shouldIncludeAuxiliarySubtypes */);
+                .hasMultipleEnabledIMEsOrSubtypes(false /* shouldIncludeAuxiliarySubtypes */); //remi0s false
         keyboardView.startDisplayLanguageOnSpacebar(subtypeChanged, languageOnSpacebarFormatType,
                 hasMultipleEnabledIMEsOrSubtypes);
     }

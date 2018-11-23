@@ -106,18 +106,18 @@ public class NotificationHelperPhysical extends ContextWrapper {
 
         NotificationCompat.Builder builder=new NotificationCompat.Builder(getApplicationContext(),ChannelID);
         builder.setSmallIcon(R.mipmap.ic_typeofmood)
-                .setPriority(NotificationCompat.PRIORITY_MAX)
+                .setPriority(NotificationCompat.PRIORITY_HIGH)
                 .setVisibility(NotificationCompat.VISIBILITY_PUBLIC)
                 .setCustomContentView(smallremoteViews)
                 .setCustomBigContentView(remoteViews)
-                .setOnlyAlertOnce(true)
                 .setWhen(System.currentTimeMillis())
-                .setDefaults(Notification.DEFAULT_VIBRATE)
+                .setVibrate(new long[] { 100, 100})
                 .setColor(Color.GREEN)
                 .setOngoing(true)
-                .setAutoCancel(true);
+                .setAutoCancel(true)
+                ;
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-            builder.setPriority(NotificationManager.IMPORTANCE_MAX);
+            builder.setPriority(NotificationManager.IMPORTANCE_HIGH);
         }
 
 
