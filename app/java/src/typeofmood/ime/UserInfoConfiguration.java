@@ -52,7 +52,7 @@ public class UserInfoConfiguration extends AppCompatActivity implements DatePick
     private RadioButton rMale, rFemale;
     private EditText mAge,mEditTextPHQ9,mEditTextScore;
     private EditText mUserID;
-    private EditText mPassword;
+//    private EditText mPassword;
     private SimpleDateFormat simpleDateFormat;
     private LinearLayout mLayout3,mLayout4,mLayout5,mLayout6,mLayout7,mLayout2,mLayout1;
     private String mMEI;
@@ -86,11 +86,11 @@ public class UserInfoConfiguration extends AppCompatActivity implements DatePick
         mMEI = android.provider.Settings.System.getString(this.getContentResolver(), android.provider.Settings.Secure.ANDROID_ID);
 
         mUserID = findViewById(R.id.editTextUserID);
-        mPassword = findViewById(R.id.editTextPassword);
+//        mPassword = findViewById(R.id.editTextPassword);
 
         mAge.setImeOptions(EditorInfo.IME_ACTION_DONE);
         mUserID.setImeOptions(EditorInfo.IME_ACTION_DONE);
-        mPassword.setImeOptions(EditorInfo.IME_ACTION_DONE);
+//        mPassword.setImeOptions(EditorInfo.IME_ACTION_DONE);
         mEditTextScore.setImeOptions(EditorInfo.IME_ACTION_DONE);
 
         mRadioGroupGender = findViewById(R.id.radioGroupGender);
@@ -107,7 +107,7 @@ public class UserInfoConfiguration extends AppCompatActivity implements DatePick
         String pref_ID = pref.getString("ID", "");
         String pref_gender = pref.getString("Gender", "");
         String pref_health = pref.getString("Health", "");
-        String pref_password = pref.getString("Password", "");
+//        String pref_password = pref.getString("Password", "");
         Boolean pref_terms_agree = pref.getBoolean("TermsAgreement", false);
         if (pref_ID.isEmpty()) {
             editor.putString("ID", mMEI);
@@ -119,10 +119,10 @@ public class UserInfoConfiguration extends AppCompatActivity implements DatePick
         }
         mUserID.setHint(mMEI);
 
-        if(!pref_password.isEmpty()) {
-            mPassword.setText(pref_password);
-        }
-        checkPassword(pref_password);
+//        if(!pref_password.isEmpty()) {
+//            mPassword.setText(pref_password);
+//        }
+//        checkPassword(pref_password);
 
 
         if(pref_terms_agree){
@@ -194,28 +194,28 @@ public class UserInfoConfiguration extends AppCompatActivity implements DatePick
             }
         );
 
-        mPassword.setOnFocusChangeListener(new View.OnFocusChangeListener() {
-            @Override
-            public void onFocusChange(View v, boolean hasFocus) {
-                if(hasFocus){
-                }else {
-                    checkPassword(mPassword.getText().toString());
-                    InputMethodManager imm = (InputMethodManager) v.getContext().getSystemService(getApplicationContext().INPUT_METHOD_SERVICE);
-                    imm.hideSoftInputFromWindow(mPassword.getWindowToken(), 0);
-                }
-            }
-        });
+//        mPassword.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+//            @Override
+//            public void onFocusChange(View v, boolean hasFocus) {
+//                if(hasFocus){
+//                }else {
+//                    checkPassword(mPassword.getText().toString());
+//                    InputMethodManager imm = (InputMethodManager) v.getContext().getSystemService(getApplicationContext().INPUT_METHOD_SERVICE);
+//                    imm.hideSoftInputFromWindow(mPassword.getWindowToken(), 0);
+//                }
+//            }
+//        });
 
-        mPassword.setOnEditorActionListener(new EditText.OnEditorActionListener() {
-            @Override
-            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
-                if(actionId==EditorInfo.IME_ACTION_DONE){
-                    //Clear focus here from edittext
-                    mPassword.clearFocus();
-                }
-                return false;
-            }
-        });
+//        mPassword.setOnEditorActionListener(new EditText.OnEditorActionListener() {
+//            @Override
+//            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+//                if(actionId==EditorInfo.IME_ACTION_DONE){
+//                    //Clear focus here from edittext
+//                    mPassword.clearFocus();
+//                }
+//                return false;
+//            }
+//        });
 
 
 // setOnFocusChangeListener(new View.OnFocusChangeListener() {
@@ -248,7 +248,7 @@ public class UserInfoConfiguration extends AppCompatActivity implements DatePick
     private void onFinishChecker() {
         String BirthDate = mAge.getText().toString();
         String ID = mUserID.getText().toString();
-        String password = mPassword.getText().toString();
+//        String password = mPassword.getText().toString();
         String gender="";
         String health=mEditTextScore.getText().toString();
         int selectedGender = mRadioGroupGender.getCheckedRadioButtonId();
@@ -280,7 +280,7 @@ public class UserInfoConfiguration extends AppCompatActivity implements DatePick
             }
             editor.putString("Gender", gender);
             editor.putString("Health", health);
-            editor.putString("Password", password);
+//            editor.putString("Password", password);
             editor.apply();
 
             SharedPreferences prefFinished = getApplicationContext().getSharedPreferences("user_info_finished_clicked", MODE_PRIVATE);
@@ -376,32 +376,32 @@ public class UserInfoConfiguration extends AppCompatActivity implements DatePick
         reloadNeed = false; // do not reload anymore, unless I tell you so...
     }
 
-    private void checkPassword(String pref_password){
-        if(!pref_password.isEmpty()){
-            if(!pref_password.equals(getConfigValue(getApplicationContext(), "password"))){
-                mLayout2.setVisibility(View.GONE);
-                mLayout3.setVisibility(View.GONE);
-                mLayout4.setVisibility(View.GONE);
-                mLayout5.setVisibility(View.GONE);
-                mLayout6.setVisibility(View.GONE);
-
-            }else{
-                mLayout2.setVisibility(View.VISIBLE);
-                mLayout3.setVisibility(View.VISIBLE);
-                mLayout4.setVisibility(View.VISIBLE);
-                mLayout5.setVisibility(View.VISIBLE);
-                mLayout6.setVisibility(View.VISIBLE);
-//                mLayout1.setVisibility(View.GONE);
-            }
-
-        }else{
-            mLayout3.setVisibility(View.GONE);
-            mLayout4.setVisibility(View.GONE);
-            mLayout5.setVisibility(View.GONE);
-            mLayout6.setVisibility(View.GONE);
-
-        }
-    }
+//    private void checkPassword(String pref_password){
+//        if(!pref_password.isEmpty()){
+//            if(!pref_password.equals(getConfigValue(getApplicationContext(), "password"))){
+//                mLayout2.setVisibility(View.GONE);
+//                mLayout3.setVisibility(View.GONE);
+//                mLayout4.setVisibility(View.GONE);
+//                mLayout5.setVisibility(View.GONE);
+//                mLayout6.setVisibility(View.GONE);
+//
+//            }else{
+//                mLayout2.setVisibility(View.VISIBLE);
+//                mLayout3.setVisibility(View.VISIBLE);
+//                mLayout4.setVisibility(View.VISIBLE);
+//                mLayout5.setVisibility(View.VISIBLE);
+//                mLayout6.setVisibility(View.VISIBLE);
+////                mLayout1.setVisibility(View.GONE);
+//            }
+//
+//        }else{
+//            mLayout3.setVisibility(View.GONE);
+//            mLayout4.setVisibility(View.GONE);
+//            mLayout5.setVisibility(View.GONE);
+//            mLayout6.setVisibility(View.GONE);
+//
+//        }
+//    }
 
 
 //    @Override

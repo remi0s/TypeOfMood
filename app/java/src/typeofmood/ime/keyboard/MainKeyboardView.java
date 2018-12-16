@@ -704,7 +704,6 @@ public final class MainKeyboardView extends KeyboardView implements DrawingProxy
             case MotionEvent.ACTION_POINTER_DOWN:
                 if(mLatinIme.sessionData!=null){
                     mLatinIme.sessionData.DownTime.add(eventTime);
-
                     final int pointerCount = event.getPointerCount();
                     mLatinIme.rawX.add((double)event.getX(pointerCount-1));
                     mLatinIme.rawY.add((double)event.getY(pointerCount-1));

@@ -44,6 +44,7 @@ import android.os.IBinder;
 import android.os.Message;
 import android.preference.PreferenceManager;
 import android.support.v4.app.NotificationCompat;
+import android.telephony.TelephonyManager;
 import android.text.InputType;
 import android.util.Log;
 import android.util.PrintWriterPrinter;
@@ -159,8 +160,8 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
         PermissionsManager.PermissionsResultCallback {
 
     //azure info
-    private static String storageContainer = "";
-    private static String storageConnectionString = "";
+    public static String storageContainer = "";
+    public static String storageConnectionString = "";
 
     public static KeyboardDynamics sessionData=null; //remi0s
     private static NotificationHelper mNotificationHelper;
@@ -181,10 +182,17 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
     public static double densX;
     public static double densY;
 
-    private static String pref_age="";
-    private static String pref_ID="";
-    private static String pref_gender="";
-    private static String pref_health="";
+    public static String pref_age="";
+    public static String pref_ID="";
+    public static String pref_gender="";
+    public static String pref_health="";
+    public static int user_sessions=1;
+    public static long user_min_flight=3000;
+    public static long user_max_flight=0;
+    public static float user_mean_flight=0;
+    public static long user_min_hold=3000;
+    public static long user_max_hold=0;
+    public static float user_mean_hold=0;
     public static int sessionsCounter=0;
 
 
@@ -645,13 +653,8 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
 
     @Override
     public void onCreate() {
-        SharedPreferences pref =getSharedPreferences("user_info", Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor = pref.edit();
-        pref_age= pref.getString("Age", "");
-        pref_ID= pref.getString("ID", "");
-        pref_gender= pref.getString("Gender", "");
-        pref_health= pref.getString("Health", "");
-        editor.apply();
+
+
         storageContainer=getConfigValue(this, "storageContainer");
         storageConnectionString=getConfigValue(this, "storageConnectionString");
         densX=getResources().getDisplayMetrics().xdpi;
@@ -895,6 +898,7 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
             sessionData.StopDateTime = System.currentTimeMillis();
 
 //            }
+
             //store data
             DataStoreAsyncTaskParams params = new DataStoreAsyncTaskParams(sessionData,rawX,rawY);
             DataStoreAsyncTask task = new DataStoreAsyncTask(getApplicationContext());
@@ -1337,7 +1341,7 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
     public boolean onShowInputRequested(final int flags, final boolean configChange) {
         //Collect Data remi0s
 
-        if (sessionData == null && isPasswordGivenCorrect() && userHaveAgreed())
+        if (sessionData == null && userHaveAgreed())
         {
 
             sessionData = new KeyboardDynamics();
@@ -2140,45 +2144,45 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
 
     }
 
-    public static class HttpAsyncTask extends AsyncTask<String, Void, String> {
-        String result="";
-        @Override
-        protected String doInBackground(String... params) {
-            String prefs_id=params[0];
-            String prefs_age=params[1];
-            String prefs_gender=params[2];
-            String prefs_health=params[3];
-            ArrayList<KeyboardPayload> notSendData = new ArrayList<>();
-            Cursor data = myDB.getNotSendContents();
-            try {
-                if (data.getCount() != 0) {
-                    while (data.moveToNext()) {
-                        KeyboardPayload payload=new KeyboardPayload();
-                        payload.DocID=data.getString(0);//DocID
-                        payload.DateData=data.getString(1); //DateTime
-//                    payload.UserID=data.getString(2); //UserID
-                        payload.SessionData= data.getString(2); //SessionData
-                        notSendData.add(payload);
-                    }
-                    result=upload(notSendData,prefs_id,prefs_age,prefs_gender,prefs_health);//POST(urls[0],notSendData);
-                }else{
-                    Log.d("SQL","I'm in do in background 0 data");
-                }
-            } finally {
-                data.close();
-            }
-
-
-
-            return result;
-        }
-        // onPostExecute displays the results of the AsyncTask.
-        @Override
-        protected void onPostExecute(String result) {
-            Log.d("SQL","Tried to send data with result: "+result);
-//            Toast.makeText(getBaseContext(), "Data Sent!", Toast.LENGTH_LONG).show();
-        }
-    }
+//    public static class HttpAsyncTask extends AsyncTask<String, Void, String> {
+//        String result="";
+//        @Override
+//        protected String doInBackground(String... params) {
+//            String prefs_id=params[0];
+//            String prefs_age=params[1];
+//            String prefs_gender=params[2];
+//            String prefs_health=params[3];
+//            ArrayList<KeyboardPayload> notSendData = new ArrayList<>();
+//            Cursor data = myDB.getNotSendContents();
+//            try {
+//                if (data.getCount() != 0) {
+//                    while (data.moveToNext()) {
+//                        KeyboardPayload payload=new KeyboardPayload();
+//                        payload.DocID=data.getString(0);//DocID
+//                        payload.DateData=data.getString(1); //DateTime
+////                    payload.UserID=data.getString(2); //UserID
+//                        payload.SessionData= data.getString(2); //SessionData
+//                        notSendData.add(payload);
+//                    }
+//                    result=upload(notSendData,prefs_id,prefs_age,prefs_gender,prefs_health, storageConnectionString, storageContainer);//POST(urls[0],notSendData);
+//                }else{
+//                    Log.d("SQL","I'm in do in background 0 data");
+//                }
+//            } finally {
+//                data.close();
+//            }
+//
+//
+//
+//            return result;
+//        }
+//        // onPostExecute displays the results of the AsyncTask.
+//        @Override
+//        protected void onPostExecute(String result) {
+//            Log.d("SQL","Tried to send data with result: "+result);
+////            Toast.makeText(getBaseContext(), "Data Sent!", Toast.LENGTH_LONG).show();
+//        }
+//    }
 
 
 //    public static String oldPOST(String url,ArrayList<KeyboardPayload> payload){
@@ -2270,8 +2274,25 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
 //        return result;
 //    }
 
-    protected static String upload(ArrayList<KeyboardPayload> payload,String prefs_id, String prefs_age,String prefs_gender,String prefs_health){
+    protected static String upload(ArrayList<KeyboardPayload> payload,Context context){
         String result = "";
+        SharedPreferences pref =context.getSharedPreferences("user_info", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = pref.edit();
+        String prefs_age= pref.getString("Age", "");
+        String prefs_id= pref.getString("ID", "");
+        String prefs_gender= pref.getString("Gender", "");
+        String prefs_health= pref.getString("Health", "");
+        long users_max_flight= pref.getLong("MaxFlight", 0);
+        long users_min_flight= pref.getLong("MinFlight", 3000);
+        float users_mean_flight= pref.getFloat("MeanFlight", 0);
+        long users_max_hold= pref.getLong("MaxHold", 0);
+        long users_min_hold= pref.getLong("MinHold", 3000);
+        float users_mean_hold= pref.getFloat("MeanHold", 0);
+        editor.apply();
+        String storagesContainer=getConfigValue(context, "storageContainer");
+        String storagesConnectionString=getConfigValue(context, "storageConnectionString");
+        String country =getUserCountry(context);
+
         try
         {
             if((!prefs_id.isEmpty() && !prefs_age.isEmpty() && !prefs_gender.isEmpty() && !prefs_health.isEmpty())){
@@ -2283,9 +2304,16 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
                     JSONObject jsonObject = new JSONObject();
                     jsonObject.accumulate("DOC_ID", payload.get(i).DocID);
                     jsonObject.accumulate("USER_ID", prefs_id);
+                    jsonObject.accumulate("USER_COUNTRY", country);
                     jsonObject.accumulate("USER_AGE", prefs_age);
                     jsonObject.accumulate("USER_GENDER", prefs_gender);
                     jsonObject.accumulate("USER_PHQ9", prefs_health);
+                    jsonObject.accumulate("USER_MAX_FLIGHT", users_max_flight);
+                    jsonObject.accumulate("USER_MIN_FLIGHT", users_min_flight);
+                    jsonObject.accumulate("USER_MEAN_FLIGHT", users_mean_flight);
+                    jsonObject.accumulate("USER_MAX_HOLD", users_max_hold);
+                    jsonObject.accumulate("USER_MIN_HOLD", users_min_hold);
+                    jsonObject.accumulate("USER_MEAN_HOLD", users_mean_hold);
 //                jsonObject.accumulate("DATE_DATA", payload.get(i).DateData);
 //                jsonObject.accumulate("SESSION_DATA", payload.get(i).SessionData);
 
@@ -2294,13 +2322,13 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
 
 
                     // Retrieve storage account from connection-string.
-                    CloudStorageAccount storageAccount = CloudStorageAccount.parse(storageConnectionString);
+                    CloudStorageAccount storageAccount = CloudStorageAccount.parse(storagesConnectionString);
 
                     // Create the blob client.
                     CloudBlobClient blobClient = storageAccount.createCloudBlobClient();
 
                     // Retrieve reference to a previously created container.
-                    CloudBlobContainer container = blobClient.getContainerReference(storageContainer);
+                    CloudBlobContainer container = blobClient.getContainerReference(storagesContainer);
 
                     // Create or overwrite the blob (with the name "example.jpeg") with contents from a local file.
 
@@ -2361,13 +2389,14 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
 
     }
 
-    private Boolean isPasswordGivenCorrect () {
-        SharedPreferences pref =getSharedPreferences("user_info", Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor = pref.edit();
-        String pref_password= pref.getString("Password", "");
-        editor.apply();
-        return (pref_password.equals(getConfigValue(getApplicationContext(), "password")));
-    }
+//    private Boolean isPasswordGivenCorrect () {
+////        SharedPreferences pref =getSharedPreferences("user_info", Context.MODE_PRIVATE);
+////        SharedPreferences.Editor editor = pref.edit();
+////        String pref_password= pref.getString("Password", "");
+////        editor.apply();
+////        //return (pref_password.equals(getConfigValue(getApplicationContext(), "password")));
+////        return true;
+////    }
 
     private Boolean userHaveAgreed(){
         SharedPreferences pref =getSharedPreferences("user_info", Context.MODE_PRIVATE);
@@ -2408,7 +2437,6 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
             sessionDataTemp=args[0].data;
             ArrayList<Double> xTemp=new ArrayList<Double>(args[0].x);
             ArrayList<Double> yTemp=new ArrayList<Double>(args[0].y);
-
 
             if (sessionDataTemp != null) {
 //                sessionDataTemp.StopDateTime = System.currentTimeMillis();
@@ -2463,10 +2491,19 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
 
                 }
 
-
                 if (sessionDataTemp.DownTime.size() >= 5){
+                    long min_flight=3000;
+                    long max_flight=0;
+                    float average_flight=0;
+                    ArrayList<Long>flight_time=new ArrayList<Long>();
+                    long min_hold=3000;
+                    long max_hold=0;
+                    float average_hold=0;
+                    ArrayList<Long>hold_time=new ArrayList<Long>();
                     double dist=0;
                     double dx=0,dy=0;
+
+
                     for(int i=0;i<xTemp.size()-1;i++){
                         dx=(xTemp.get(i)-xTemp.get(i+1));
                         dy=(yTemp.get(i)-yTemp.get(i+1));
@@ -2475,6 +2512,72 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
 
                         dist=Math.hypot(dx,dy);
                         sessionDataTemp.Distance.add(dist);
+                        flight_time.add(sessionDataTemp.DownTime.get(i+1)-sessionDataTemp.UpTime.get(i));
+
+                        //flight time
+                        long temp=flight_time.get(flight_time.size()-1);
+                        if (temp<min_flight && temp>0){
+                            min_flight=temp;
+                        }
+                        if (temp>max_flight && temp<3000){
+                            max_flight=temp;
+                        }
+                        if (temp>0 && temp<3000){
+                            average_flight=(average_flight+temp);
+                        }
+                        //hold time
+                        if(sessionDataTemp.IsLongPress.get(i)!=1){
+                            hold_time.add(sessionDataTemp.UpTime.get(i)-sessionDataTemp.DownTime.get(i));
+                            long temp2=hold_time.get(hold_time.size()-1);
+                            if (temp2<min_hold){
+                                min_hold=temp2;
+                            }
+                            if (temp2>max_hold){
+                                max_hold=temp2;
+                            }
+                            average_hold=(average_hold+temp2);
+
+                        }
+                        average_hold=average_hold/hold_time.size();
+                        average_flight=average_flight/(flight_time.size());
+
+
+
+                        SharedPreferences pref =weakContext.get().getSharedPreferences("user_info", Context.MODE_PRIVATE);
+                        SharedPreferences.Editor editor = pref.edit();
+                        user_sessions= pref.getInt("Sessions", 1);
+                        user_max_flight= pref.getLong("MaxFlight", 0);
+                        user_min_flight= pref.getLong("MinFlight", 3000);
+                        user_mean_flight= pref.getFloat("MeanFlight", 0);
+                        user_max_hold= pref.getLong("MaxHold", 0);
+                        user_min_hold= pref.getLong("MinHold", 3000);
+                        user_mean_hold= pref.getFloat("MeanHold", 0);
+                        //flight time
+                        if (min_flight<user_min_flight){
+                            editor.putLong("MinFlight",min_flight );
+                        }
+
+                        if (max_flight>user_max_flight){
+                            editor.putLong("MaxFlight",max_flight );
+                        }
+                        float temp_average=(user_mean_flight*user_sessions+average_flight)/(user_sessions+1);
+                        editor.putFloat("MeanFlight", temp_average);
+                        //hold time
+                        if (min_hold<user_min_hold){
+                            editor.putLong("MinHold",min_hold );
+                        }
+
+                        if (max_hold>user_max_hold){
+                            editor.putLong("MaxHold",max_hold );
+                        }
+                        //if not all was longpressed
+                        if(average_hold>0){
+                            temp_average=(user_mean_hold*user_sessions+average_hold)/(user_sessions+1);
+                            editor.putFloat("MeanHold",temp_average );
+                        }
+                        editor.putInt("Sessions",user_sessions+1 );
+                        editor.apply();
+
                     }
 
                     //save data
@@ -2489,14 +2592,15 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
 
 
                     //send data
-                    String send_result="";
+
                     long sendMinutesPassed;
                     if(latestSendTimeTemp!=null){
                         sendMinutesPassed= TimeUnit.MINUTES.convert((new Date(System.currentTimeMillis())).getTime()-latestSendTimeTemp.getTime() , TimeUnit.MILLISECONDS);
                     }else{
                         sendMinutesPassed=61;
                     }
-                    if(isConnected(weakContext.get() ) && (sendMinutesPassed>=60)){
+                    String send_result="not yet "+sendMinutesPassed;
+                    if(isConnected(weakContext.get() ) && (sendMinutesPassed>=15)){
                         latestSendTimeTemp=new Date(System.currentTimeMillis());
                         ArrayList<KeyboardPayload> notSendData = new ArrayList<>();
                         Cursor data = myDB.getNotSendContents();
@@ -2510,15 +2614,17 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
                                     payload.SessionData= data.getString(2); //SessionData
                                     notSendData.add(payload);
                                 }
-                                send_result=upload(notSendData,pref_ID,pref_age,pref_gender,pref_health);//POST(urls[0],notSendData);
+                                String locale =getUserCountry(weakContext.get());
+                                Log.d("country",locale);
+                                send_result=upload(notSendData,weakContext.get());//POST(urls[0],notSendData);
                             }else{
-                                Log.d("SQL","I'm in do in background 0 data");
+                                Log.d("Upload","I'm in do in background 0 data");
                             }
                         } finally {
                             data.close();
                         }
                     }
-                    Log.d("SQL","Tried to send data with result: "+result);
+                    Log.w("Upload","Tried to send data with result: "+send_result);
 
 
 
@@ -2549,11 +2655,23 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
         KeyboardDynamics data;
         ArrayList<Double> x;
         ArrayList<Double> y;
+//        String prefs_id;
+//        String prefs_age;
+//        String prefs_gender;
+//        String prefs_health;
+//        String storageConnectionString;
+//        String storageContainer;
 
         DataStoreAsyncTaskParams(KeyboardDynamics data,  ArrayList<Double> x, ArrayList<Double> y) {
             this.data = data;
             this.x = new ArrayList<Double>(x);
             this.y = new ArrayList<Double>(y);
+//            this.prefs_id=prefs_id;
+//            this.prefs_age=prefs_age;
+//            this.prefs_gender=prefs_gender;
+//            this.prefs_health=prefs_health;
+//            this.storageConnectionString=storageConnectionString;
+//            this.storageContainer=storageContainer;
         }
     }
 
@@ -2577,21 +2695,21 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
                 long minutesPassed = TimeUnit.MINUTES.convert(StartDateTimeTemp.getTime() - latestNotificationTimeTemp.getTime(), TimeUnit.MILLISECONDS);
 
                 if(laterPressed && minutesPassed>=120){
-                    sessionData.CurrentMood =currentMood+" TIMEOUT";
-                    sessionData.CurrentPhysicalState=currentPhysicalState+" TIMEOUT";
+//                    sessionData.CurrentMood =currentMood+" TIMEOUT";
+//                    sessionData.CurrentPhysicalState=currentPhysicalState+" TIMEOUT";
                     notificationFlag = 1;
                     laterPressed=false;
                 }else if(minutesPassed >= 120 || (sessionsCounter>=30 && minutesPassed>=90)){
                     notificationFlag = 1;
-                    sessionData.CurrentMood = currentMood + " TIMEOUT";
-                    sessionData.CurrentPhysicalState = currentPhysicalState + " TIMEOUT";
+//                    sessionData.CurrentMood = currentMood + " TIMEOUT";
+//                    sessionData.CurrentPhysicalState = currentPhysicalState + " TIMEOUT";
                 }else{
                     notificationFlag = 0;
                 }
             } else {
                 notificationFlag = 1;
-                sessionData.CurrentMood = "undefined";
-                sessionData.CurrentPhysicalState="undefined";
+//                sessionData.CurrentMood = "undefined";
+//                sessionData.CurrentPhysicalState="undefined";
 
             }
 
@@ -2623,6 +2741,24 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
 //            Log.d("SQL","Tried to save data with result: "+result);
 //            Toast.makeText(getBaseContext(), "Data Sent!", Toast.LENGTH_LONG).show();
         }
+    }
+
+    public static String getUserCountry(Context context) {
+        try {
+            final TelephonyManager tm = (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE);
+            final String simCountry = tm.getSimCountryIso();
+            if (simCountry != null && simCountry.length() == 2) { // SIM country code is available
+                return simCountry.toUpperCase(Locale.US);
+            }
+            else if (tm.getPhoneType() != TelephonyManager.PHONE_TYPE_CDMA) { // device is not 3G (would be unreliable)
+                String networkCountry = tm.getNetworkCountryIso();
+                if (networkCountry != null && networkCountry.length() == 2) { // network country code is available
+                    return networkCountry.toUpperCase(Locale.US);
+                }
+            }
+        }
+        catch (Exception e) { }
+        return "undefined";
     }
 
 

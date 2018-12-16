@@ -8,7 +8,6 @@
   <component name="AndroidLogFilters">
     <option name="TOOL_WINDOW_LOG_LEVEL" value="verbose" />
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
-    <option name="TOOL_WINDOW_REGEXP_FILTER" value="false" />
   </component>
   <component name="CMakeSettings">
     <configurations>
@@ -16,7 +15,7 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8ccb8381-cff0-48e6-9de5-443c7a49f0bb" name="Default" comment="" />
+    <list default="true" id="c2716acf-c3af-4691-b8a2-dfe06e789f0f" name="Default" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -38,55 +37,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="NotificationHelper.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/java/src/typeofmood/ime/notificationhandler/NotificationHelper.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1309">
-              <caret line="40" selection-start-line="40" selection-end-line="40" />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="build.gradle" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/build.gradle">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="425">
-              <caret line="25" column="29" selection-start-line="25" selection-start-column="29" selection-end-line="25" selection-end-column="29" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="SetupWizardActivity.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/java/src/typeofmood/ime/latin/setup/SetupWizardActivity.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="263">
-              <caret line="332" column="54" selection-start-line="332" selection-start-column="33" selection-end-line="332" selection-end-column="54" />
-              <folding>
-                <element signature="e#7281#7308#0" expanded="true" />
-                <element signature="e#7904#8047#0" expanded="true" />
-                <element signature="e#8046#8047#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="AndroidManifest.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/java/AndroidManifest.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3611">
-              <caret line="225" column="19" selection-start-line="225" selection-start-column="19" selection-end-line="225" selection-end-column="19" />
-            </state>
-          </provider>
-          <provider editor-type-id="android-manifest">
-            <state />
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="NotificationHelperPhysical.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/java/src/typeofmood/ime/notificationhandler/NotificationHelperPhysical.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="257">
-              <caret line="120" column="9" selection-start-line="118" selection-start-column="8" selection-end-line="120" selection-end-column="9" />
+            <state relative-caret-position="34">
+              <caret line="11" column="42" selection-start-line="11" selection-start-column="42" selection-end-line="11" selection-end-column="42" />
             </state>
           </provider>
         </entry>
@@ -94,35 +49,17 @@
       <file leaf-file-name="LatinIME.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/java/src/typeofmood/ime/latin/LatinIME.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="110">
-              <caret line="224" column="34" selection-start-line="224" selection-start-column="12" selection-end-line="224" selection-end-column="34" />
+            <state relative-caret-position="66">
+              <caret line="2547" column="66" selection-start-line="2547" selection-start-column="24" selection-end-line="2547" selection-end-column="66" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MainKeyboardView.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/java/src/typeofmood/ime/keyboard/MainKeyboardView.java">
+      <file leaf-file-name="MainActivityDBDebugFragment.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/java/src/typeofmood/ime/MainActivityDBDebugFragment.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="141">
-              <caret line="734" column="51" selection-start-line="734" selection-start-column="34" selection-end-line="734" selection-end-column="51" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="PointerTracker.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/java/src/typeofmood/ime/keyboard/PointerTracker.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="144">
-              <caret line="1043" column="88" selection-start-line="1043" selection-start-column="52" selection-end-line="1043" selection-end-column="88" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="RichInputMethodManager.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/java/src/typeofmood/ime/latin/RichInputMethodManager.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1547">
-              <caret line="239" column="44" selection-start-line="239" selection-start-column="30" selection-end-line="239" selection-end-column="44" />
+            <state relative-caret-position="187">
+              <caret line="118" column="91" lean-forward="true" selection-start-line="118" selection-start-column="91" selection-end-line="118" selection-end-column="91" />
             </state>
           </provider>
         </entry>
@@ -131,43 +68,44 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>getInputLanguageSelectionIntent</find>
-      <find>longp</find>
-      <find>long</find>
-      <find>keycode</find>
-      <find>LongPress</find>
-      <find>results</find>
-      <find>getSuggestedWords</find>
-      <find>longpress</find>
-      <find>Long</find>
-      <find>invokeSubtypeEnablerOfThisIme</find>
-      <find>nb</find>
-      <find>sessionData</find>
-      <find>isLongPressedFlag</find>
-      <find>getInputMethodManager</find>
-      <find>hasMultipleEnabledIMEsOrSubtypes</find>
-      <find>mImmWrapper</find>
-      <find>getEnabledInputMethodList</find>
-      <find>TypeOfMood</find>
-      <find>CUSTOM_CODE_SHOW_INPUT_METHOD_PICKER</find>
-      <find>showInputMethodPicker</find>
-      <find>mRichImm</find>
-      <find>RichInputMethodManager</find>
-      <find>onKeyLongPress</find>
-      <find>InputMethodManagerCompatWrapper</find>
-      <find>setAdditionalInputMethodSubtypes</find>
-      <find>switchToNextInputMethod</find>
-      <find>getRawSubtype</find>
-      <find>HashMap</find>
-      <find>InputMethodInfo</find>
-      <find>mImePackageName</find>
+      <find>getPreferenceManager</find>
+      <find>getSharedPreferences</find>
+      <find>readKeyLongpressTimeout</find>
+      <find>mSett</find>
+      <find>mSettings</find>
+      <find>hold_tim</find>
+      <find>Settings</find>
+      <find>hold_time</find>
+      <find>storageConnectionString</find>
+      <find>getConfigValue</find>
+      <find>storageContainer</find>
+      <find>countr</find>
+      <find>Country</find>
+      <find>textViewTerms</find>
+      <find>terms_and_conditions</find>
+      <find>onTo</find>
+      <find>getPreferenceManager()</find>
+      <find>onTouch</find>
+      <find>KeyboardActionListener</find>
+      <find>onTouchEvent</find>
+      <find>mLatinIme</find>
+      <find>strip</find>
+      <find>upload</find>
+      <find>pref_keyboard_height_scale</find>
+      <find>SeekBarDialogPreference</find>
+      <find>step_value_seekbar_height</find>
+      <find>getUserCountry</find>
+      <find>user_max_flight</find>
+      <find>user_min_flight</find>
+      <find>user_sessions</find>
     </findStrings>
     <replaceStrings>
       <replace />
+      <replace>4A6572</replace>
+      <replace>6a8d9e</replace>
     </replaceStrings>
   </component>
   <component name="GenerateSignedApkSettings">
-    <option name="EXPORT_PRIVATE_KEY" value="false" />
     <option name="KEY_STORE_PATH" value="C:\Users\remio\Desktop\typeofmoodkey.jks" />
     <option name="KEY_ALIAS" value="typeofmoodKey" />
     <option name="REMEMBER_PASSWORDS" value="true" />
@@ -419,6 +357,10 @@
                 <option name="name" value="compileReleaseUnitTestSources" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="transformClassesAndResourcesWithProguardForDebug" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
                 <option name="description" value="Installs the android (on device) tests for the Debug build." />
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
                 <option name="name" value="installDebugAndroidTest" />
@@ -638,10 +580,6 @@
               <ExternalTaskPojo>
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
                 <option name="name" value="generateDebugBuildConfig" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
-                <option name="name" value="transformDexArchiveWithExternalLibsDexMergerForDebug" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="description" value="Assembles all Release builds." />
@@ -878,6 +816,10 @@
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="transformClassesAndResourcesWithProguardForDebugAndroidTest" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
                 <option name="name" value="transformDexArchiveWithDexMergerForDebug" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
@@ -923,10 +865,6 @@
               <ExternalTaskPojo>
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
                 <option name="name" value="generateDebugFeatureTransitiveDeps" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
-                <option name="name" value="transformDexArchiveWithExternalLibsDexMergerForDebugAndroidTest" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
@@ -1285,6 +1223,10 @@
                 <option name="name" value="compileReleaseUnitTestSources" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/app" />
+                <option name="name" value="transformClassesAndResourcesWithProguardForDebug" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
                 <option name="description" value="Installs the android (on device) tests for the Debug build." />
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/app" />
                 <option name="name" value="installDebugAndroidTest" />
@@ -1504,10 +1446,6 @@
               <ExternalTaskPojo>
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/app" />
                 <option name="name" value="generateDebugBuildConfig" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/app" />
-                <option name="name" value="transformDexArchiveWithExternalLibsDexMergerForDebug" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="description" value="Assembles all Release builds." />
@@ -1739,6 +1677,10 @@
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/app" />
+                <option name="name" value="transformClassesAndResourcesWithProguardForDebugAndroidTest" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/app" />
                 <option name="name" value="transformDexArchiveWithDexMergerForDebug" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
@@ -1779,10 +1721,6 @@
               <ExternalTaskPojo>
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/app" />
                 <option name="name" value="generateDebugFeatureTransitiveDeps" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/app" />
-                <option name="name" value="transformDexArchiveWithExternalLibsDexMergerForDebugAndroidTest" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/app" />
@@ -2438,37 +2376,24 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/app/java/src/typeofmood/ime/keyboard/MainKeyboardView.java" />
-        <option value="$PROJECT_DIR$/app/java/src/typeofmood/ime/ChooseMood.java" />
-        <option value="$PROJECT_DIR$/app/java/src/typeofmood/ime/datahandler/KeyboardDynamics.java" />
-        <option value="$PROJECT_DIR$/app/java/res/menu/drawer_view.xml" />
-        <option value="$PROJECT_DIR$/app/java/AndroidManifest.xml" />
         <option value="$PROJECT_DIR$/app/java/src/typeofmood/ime/UserInfoConfiguration.java" />
-        <option value="$PROJECT_DIR$/app/java/src/typeofmood/ime/latin/AudioAndHapticFeedbackManager.java" />
-        <option value="$PROJECT_DIR$/app/java/res/xml/prefs_screen_advanced.xml" />
-        <option value="$PROJECT_DIR$/app/java/res/values/donottranslate-debug-settings.xml" />
+        <option value="$PROJECT_DIR$/app/java/res/layout/typeofmood_user_info_config.xml" />
+        <option value="$PROJECT_DIR$/app/java/res/layout/nav_header.xml" />
+        <option value="$PROJECT_DIR$/app/java/res/layout/activity_main.xml" />
         <option value="$PROJECT_DIR$/app/java/src/typeofmood/ime/latin/settings/AdvancedSettingsFragment.java" />
-        <option value="$PROJECT_DIR$/app/java/src/typeofmood/ime/latin/settings/Settings.java" />
-        <option value="$PROJECT_DIR$/app/java/src/typeofmood/ime/latin/settings/SettingsValues.java" />
-        <option value="$PROJECT_DIR$/app/java/src/typeofmood/ime/latin/settings/CorrectionSettingsFragment.java" />
-        <option value="$PROJECT_DIR$/app/java/res/values/strings.xml" />
-        <option value="$PROJECT_DIR$/app/java/res/xml/prefs_screen_correction.xml" />
-        <option value="$PROJECT_DIR$/app/java/src/typeofmood/ime/notificationhandler/ActionReceiver.java" />
-        <option value="$PROJECT_DIR$/app/java/src/typeofmood/ime/notificationhandler/ActionReceiverPhysical.java" />
+        <option value="$PROJECT_DIR$/app/java/src/typeofmood/ime/keyboard/MoreKeysKeyboardView.java" />
+        <option value="$PROJECT_DIR$/app/java/src/typeofmood/ime/keyboard/KeyboardView.java" />
+        <option value="$PROJECT_DIR$/app/java/src/typeofmood/ime/latin/InputView.java" />
         <option value="$PROJECT_DIR$/app/java/src/typeofmood/ime/latin/suggestions/SuggestionStripView.java" />
-        <option value="$PROJECT_DIR$/app/java/src/typeofmood/ime/MainActivity.java" />
-        <option value="$PROJECT_DIR$/app/java/src/typeofmood/ime/notificationhandler/NotificationHelperPhysical.java" />
-        <option value="$PROJECT_DIR$/app/java/src/typeofmood/ime/notificationhandler/NotificationHelper.java" />
-        <option value="$PROJECT_DIR$/app/build.gradle" />
-        <option value="$PROJECT_DIR$/app/java/src/typeofmood/ime/imecommon/InputMethodSettingsImpl.java" />
-        <option value="$PROJECT_DIR$/app/java/src/typeofmood/ime/latin/utils/IntentUtils.java" />
-        <option value="$PROJECT_DIR$/app/java/src/typeofmood/ime/latin/settings/CustomInputStyleSettingsFragment.java" />
+        <option value="$PROJECT_DIR$/app/java/src/typeofmood/ime/keyboard/MainKeyboardView.java" />
+        <option value="$PROJECT_DIR$/app/java/res/layout/dbdebug_fragment.xml" />
         <option value="$PROJECT_DIR$/app/java/src/typeofmood/ime/latin/LatinIME.java" />
-        <option value="$PROJECT_DIR$/app/java/src/typeofmood/ime/latin/RichInputMethodManager.java" />
+        <option value="$PROJECT_DIR$/app/build.gradle" />
+        <option value="$PROJECT_DIR$/app/java/src/typeofmood/ime/MainActivityDBDebugFragment.java" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="9" />
     <option name="y" value="6" />
     <option name="width" value="1346" />
@@ -2480,7 +2405,6 @@
     </navigator>
     <panes>
       <pane id="PackagesPane" />
-      <pane id="Scope" />
       <pane id="AndroidView">
         <subPane>
           <expand>
@@ -2490,12 +2414,31 @@
             </path>
             <path>
               <item name="TypeOfMood" type="1abcf292:AndroidViewProjectNode" />
+              <item name="app" type="feadf853:AndroidModuleNode" />
+              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
+            </path>
+            <path>
+              <item name="TypeOfMood" type="1abcf292:AndroidViewProjectNode" />
+              <item name="app" type="feadf853:AndroidModuleNode" />
+              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
+              <item name="typeofmood" type="cbb59c9e:AndroidPsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="TypeOfMood" type="1abcf292:AndroidViewProjectNode" />
+              <item name="app" type="feadf853:AndroidModuleNode" />
+              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
+              <item name="typeofmood" type="cbb59c9e:AndroidPsiDirectoryNode" />
+              <item name="ime" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="TypeOfMood" type="1abcf292:AndroidViewProjectNode" />
               <item name="Gradle Scripts" type="ae0cef3a:AndroidBuildScriptsGroupNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
       <pane id="ProjectPane" />
     </panes>
   </component>
@@ -2505,11 +2448,9 @@
     <property name="ExportApk.Flavors" value="" />
     <property name="ExportApk.SignV1" value="true" />
     <property name="ExportApk.SignV2" value="true" />
-    <property name="android.project.structure.last.selected" value="app" />
-    <property name="android.project.structure.proportion" value="0.15" />
     <property name="android.sdk.path" value="$USER_HOME$/AppData/Local/Android/Sdk" />
-    <property name="device.picker.selection" value="0c80d8de0704" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/app/release" />
+    <property name="device.picker.selection" value="Pixel_API_27" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../typeofmoodkey.jks" />
     <property name="settings.editor.selected.configurable" value="AndroidSdkUpdater" />
   </component>
   <component name="RunDashboard">
@@ -2559,7 +2500,7 @@
       <option name="SKIP_NOOP_APK_INSTALLATIONS" value="true" />
       <option name="FORCE_STOP_RUNNING_APP" value="true" />
       <option name="TARGET_SELECTION_MODE" value="SHOW_DIALOG" />
-      <option name="USE_LAST_SELECTED_DEVICE" value="true" />
+      <option name="USE_LAST_SELECTED_DEVICE" value="false" />
       <option name="PREFERRED_AVD" value="" />
       <option name="SELECTED_CLOUD_MATRIX_CONFIGURATION_ID" value="-1" />
       <option name="SELECTED_CLOUD_MATRIX_PROJECT_ID" value="" />
@@ -2629,44 +2570,33 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="8ccb8381-cff0-48e6-9de5-443c7a49f0bb" name="Default" comment="" />
-      <created>1540206984763</created>
+      <changelist id="c2716acf-c3af-4691-b8a2-dfe06e789f0f" name="Default" comment="" />
+      <created>1542994903847</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1540206984763</updated>
+      <updated>1542994903847</updated>
     </task>
     <servers />
-  </component>
-  <component name="TodoView">
-    <todo-panel id="selected-file">
-      <is-autoscroll-to-source value="true" />
-    </todo-panel>
-    <todo-panel id="all">
-      <are-packages-shown value="true" />
-      <is-autoscroll-to-source value="true" />
-    </todo-panel>
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <layout>
       <window_info anchor="bottom" id="Android Profiler" order="7" />
-      <window_info anchor="bottom" id="TODO" order="6" sideWeight="0.49924356" weight="0.32838285" />
+      <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="right" id="Palette&#9;" order="3" />
       <window_info id="Image Layers" order="2" />
-      <window_info id="Build Variants" order="2" sideWeight="0.5036855" side_tool="true" weight="0.24962178" />
+      <window_info id="Build Variants" order="2" side_tool="true" />
       <window_info anchor="right" id="Capture Analysis" order="3" />
-      <window_info active="true" anchor="bottom" id="Event Log" order="7" sideWeight="0.5015129" side_tool="true" visible="true" weight="0.32838285" />
-      <window_info anchor="right" id="Preview" order="4" />
+      <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.5015129" side_tool="true" visible="true" weight="0.29372936" />
       <window_info anchor="bottom" id="Version Control" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.4969743" weight="0.32838285" />
-      <window_info anchor="bottom" id="Terminal" order="7" sideWeight="0.4977307" weight="0.32838285" />
-      <window_info anchor="bottom" id="Logcat" order="7" sideWeight="0.74281394" weight="0.32838285" />
+      <window_info anchor="bottom" id="Run" order="2" />
+      <window_info anchor="bottom" id="Terminal" order="7" />
+      <window_info anchor="bottom" id="Logcat" order="7" weight="0.32838285" />
       <window_info id="Captures" order="2" weight="0.25" />
       <window_info id="Capture Tool" order="2" />
       <window_info id="Designer" order="2" />
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.4963145" visible="true" weight="0.28895614" />
-      <window_info anchor="bottom" id="Build" order="7" sideWeight="0.6195159" weight="0.32838285" />
-      <window_info anchor="bottom" id="Find" order="1" sideWeight="0.49848714" weight="0.32838285" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24962178" />
+      <window_info anchor="bottom" id="Build" order="7" sideWeight="0.49848714" visible="true" weight="0.29372936" />
       <window_info anchor="right" id="Gradle" order="3" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Device File Explorer" order="3" side_tool="true" />
@@ -2674,395 +2604,393 @@
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
+      <window_info anchor="right" id="Preview" order="4" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32838285" />
     </layout>
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
   </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <option name="time" value="1" />
-    </breakpoint-manager>
-  </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/java/src/typeofmood/ime/latin/DictionaryStats.java">
+    <entry file="file://$PROJECT_DIR$/app/build.gradle">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1069">
-          <caret line="25" column="13" selection-start-line="25" selection-start-column="13" selection-end-line="25" selection-end-column="13" />
+        <state relative-caret-position="221">
+          <caret line="13" selection-start-line="13" selection-end-line="13" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/java/src/typeofmood/ime/latin/DictionaryFactory.java">
+    <entry file="file://$PROJECT_DIR$/app/java/src/typeofmood/ime/latin/LatinIME.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1919">
-          <caret line="33" column="19" selection-start-line="33" selection-start-column="19" selection-end-line="33" selection-end-column="19" />
+        <state relative-caret-position="44574">
+          <caret line="2622" column="53" selection-start-line="2622" selection-start-column="53" selection-end-line="2622" selection-end-column="53" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/java/src/typeofmood/ime/latin/DictionaryFacilitator.java">
+    <entry file="file://$PROJECT_DIR$/app/java/src/typeofmood/ime/datahandler/KeyboardDynamics.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1987">
-          <caret line="44" column="17" selection-start-line="44" selection-start-column="17" selection-end-line="44" selection-end-column="17" />
+        <state relative-caret-position="119">
+          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/java/src/typeofmood/ime/latin/InputView.java">
+    <entry file="file://$PROJECT_DIR$/app/build.gradle">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-3415">
-          <caret line="30" column="19" selection-start-line="30" selection-start-column="19" selection-end-line="30" selection-end-column="19" />
+        <state relative-caret-position="221">
+          <caret line="13" selection-start-line="13" selection-end-line="13" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/java/src/typeofmood/ime/latin/PunctuationSuggestions.java">
+    <entry file="file://$PROJECT_DIR$/app/java/src/typeofmood/ime/latin/LatinIME.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1256">
-          <caret line="33" column="19" selection-start-line="33" selection-start-column="19" selection-end-line="33" selection-end-column="19" />
+        <state relative-caret-position="44574">
+          <caret line="2622" column="53" selection-start-line="2622" selection-start-column="53" selection-end-line="2622" selection-end-column="53" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/java/src/typeofmood/ime/latin/LastComposedWord.java">
+    <entry file="file://$PROJECT_DIR$/app/java/src/typeofmood/ime/datahandler/KeyboardDynamics.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-746">
-          <caret line="30" column="19" selection-start-line="30" selection-start-column="19" selection-end-line="30" selection-end-column="19" />
+        <state relative-caret-position="119">
+          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/java/src/typeofmood/ime/latin/inputlogic/InputLogic.java">
+    <entry file="file://$PROJECT_DIR$/app/build.gradle">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="1239" column="37" selection-start-line="1239" selection-start-column="18" selection-end-line="1239" selection-end-column="37" />
+        <state relative-caret-position="221">
+          <caret line="13" lean-forward="true" selection-start-line="13" selection-end-line="13" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/java/src/typeofmood/ime/latin/userdictionary/UserDictionarySettings.java">
+    <entry file="file://$PROJECT_DIR$/app/java/src/typeofmood/ime/latin/LatinIME.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="48" column="13" selection-start-line="48" selection-start-column="13" selection-end-line="48" selection-end-column="13" />
+        <state relative-caret-position="44370">
+          <caret line="2610" column="65" selection-start-line="2610" selection-start-column="65" selection-end-line="2610" selection-end-column="65" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/java/src/typeofmood/ime/latin/Suggest.java">
+    <entry file="file://$PROJECT_DIR$/app/java/src/typeofmood/ime/datahandler/KeyboardDynamics.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-4486">
-          <caret line="79" column="42" selection-start-line="79" selection-start-column="16" selection-end-line="79" selection-end-column="42" />
+        <state relative-caret-position="119">
+          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/java/src/typeofmood/ime/latin/settings/DebugSettingsFragment.java">
+    <entry file="file://$PROJECT_DIR$/app/build.gradle">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-3772">
-          <caret line="42" column="19" selection-start-line="42" selection-start-column="19" selection-end-line="42" selection-end-column="19" />
+        <state relative-caret-position="170">
+          <caret line="10" column="25" selection-start-line="10" selection-start-column="25" selection-end-line="10" selection-end-column="25" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/java/src/typeofmood/ime/latin/settings/SettingsValuesForSuggestion.java">
+    <entry file="file://$PROJECT_DIR$/app/java/src/typeofmood/ime/latin/LatinIME.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="18" column="13" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
+        <state relative-caret-position="44370">
+          <caret line="2610" column="65" selection-start-line="2610" selection-start-column="65" selection-end-line="2610" selection-end-column="65" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/java/src/typeofmood/ime/latin/settings/DebugSettings.java">
+    <entry file="file://$PROJECT_DIR$/app/java/src/typeofmood/ime/datahandler/KeyboardDynamics.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-128">
-          <caret line="26" column="19" selection-start-line="26" selection-start-column="19" selection-end-line="26" selection-end-column="19" />
+        <state relative-caret-position="119">
+          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/java/res/xml/spell_checker_settings.xml">
+    <entry file="file://$PROJECT_DIR$/app/build.gradle">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-214" />
-      </provider>
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/java/res/layout/input_view.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-316" />
-      </provider>
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/java/res/layout/additional_subtype_dialog.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-510" />
-      </provider>
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/java/res/xml/spellchecker.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-228" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/java/res/values/donottranslate-debug-settings.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="189">
-          <caret line="47" column="64" selection-start-line="47" selection-start-column="64" selection-end-line="47" selection-end-column="64" />
+        <state relative-caret-position="170">
+          <caret line="10" column="25" selection-start-line="10" selection-start-column="25" selection-end-line="10" selection-end-column="25" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/java/res/layout/main_keyboard_frame.xml">
+    <entry file="file://$PROJECT_DIR$/app/java/src/typeofmood/ime/latin/LatinIME.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-537" />
-      </provider>
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/java/res/xml/prefs_screen_advanced.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="59" column="49" selection-start-line="59" selection-start-column="8" selection-end-line="59" selection-end-column="49" />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/java/src/typeofmood/ime/latin/utils/RunInLocale.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="144">
-          <caret line="45" selection-start-line="45" selection-end-line="45" />
+        <state relative-caret-position="44200">
+          <caret line="2600" column="44" selection-start-line="2600" selection-start-column="44" selection-end-line="2600" selection-end-column="44" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/java/res/xml/prefs_screen_correction.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="177">
-          <caret line="54" column="63" selection-start-line="54" selection-start-column="63" selection-end-line="54" selection-end-column="63" />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/java/src/typeofmood/ime/latin/settings/SettingsValues.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="127">
-          <caret line="180" column="32" selection-start-line="180" selection-start-column="8" selection-end-line="180" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/java/src/typeofmood/ime/latin/settings/Settings.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="58">
-          <caret line="358" column="49" selection-start-line="358" selection-start-column="25" selection-end-line="358" selection-end-column="49" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/java/res/values/config-auto-correction-thresholds.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="563">
-          <caret line="45" column="65" selection-start-line="45" selection-start-column="55" selection-end-line="45" selection-end-column="65" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/java/src/typeofmood/ime/latin/settings/CorrectionSettingsFragment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="216">
-          <caret line="166" selection-start-line="166" selection-end-line="166" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/java/src/typeofmood/ime/latin/settings/AdvancedSettingsFragment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-3476">
-          <caret line="99" column="56" selection-start-line="99" selection-start-column="30" selection-end-line="99" selection-end-column="56" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/java/src/typeofmood/ime/latin/settings/SettingsActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="476">
-          <caret line="51" column="9" selection-start-line="51" selection-start-column="9" selection-end-line="51" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/settings.gradle">
-      <provider selected="true" editor-type-id="text-editor">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties">
-      <provider selected="true" editor-type-id="text-editor">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/build.gradle">
-      <provider selected="true" editor-type-id="text-editor">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/java/src/typeofmood/ime/notificationhandler/ActionReceiverPhysical.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-440">
-          <caret line="47" selection-start-line="47" selection-end-line="47" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/java/src/typeofmood/ime/latin/suggestions/SuggestionStripView.java">
+    <entry file="file://$PROJECT_DIR$/app/java/src/typeofmood/ime/datahandler/KeyboardDynamics.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
-          <caret line="463" selection-start-line="463" selection-end-line="463" />
+          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/java/src/typeofmood/ime/notificationhandler/ActionReceiver.java">
+    <entry file="file://$PROJECT_DIR$/app/build.gradle">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-425">
-          <caret line="55" selection-start-line="55" selection-end-line="55" />
+        <state relative-caret-position="170">
+          <caret line="10" column="25" selection-start-line="10" selection-start-column="25" selection-end-line="10" selection-end-column="25" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/java/src/typeofmood/ime/notificationhandler/NotificationHelperPhysical.java">
+    <entry file="file://$PROJECT_DIR$/app/java/src/typeofmood/ime/latin/LatinIME.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="257">
-          <caret line="120" column="9" selection-start-line="118" selection-start-column="8" selection-end-line="120" selection-end-column="9" />
+        <state relative-caret-position="44200">
+          <caret line="2600" column="44" selection-start-line="2600" selection-start-column="44" selection-end-line="2600" selection-end-column="44" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/java/src/typeofmood/ime/notificationhandler/NotificationHelper.java">
+    <entry file="file://$PROJECT_DIR$/app/java/src/typeofmood/ime/datahandler/KeyboardDynamics.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1309">
-          <caret line="40" selection-start-line="40" selection-end-line="40" />
+        <state relative-caret-position="119">
+          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/java/res/xml/prefs.xml">
+    <entry file="file://$PROJECT_DIR$/app/build.gradle">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="143">
-          <caret line="23" column="80" selection-start-line="23" selection-start-column="56" selection-end-line="23" selection-end-column="80" />
-          <folding>
-            <element signature="e#1125#1159#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/java/src/typeofmood/ime/latin/settings/SettingsFragment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-527">
-          <caret line="50" column="46" selection-start-line="50" selection-start-column="41" selection-end-line="50" selection-end-column="46" />
-          <folding>
-            <element signature="e#1888#1912#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="170">
+          <caret line="10" column="25" selection-start-line="10" selection-start-column="25" selection-end-line="10" selection-end-column="25" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/java/src/typeofmood/ime/imecommon/InputMethodSettingsImpl.java">
+    <entry file="file://$PROJECT_DIR$/app/java/src/typeofmood/ime/latin/LatinIME.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="294">
-          <caret line="163" column="47" selection-start-line="163" selection-start-column="47" selection-end-line="163" selection-end-column="47" />
+        <state relative-caret-position="41361">
+          <caret line="2600" column="44" selection-start-line="2600" selection-start-column="44" selection-end-line="2600" selection-end-column="44" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/java/src/typeofmood/ime/datahandler/KeyboardDynamics.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/build.gradle">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="10" column="25" selection-start-line="10" selection-start-column="25" selection-end-line="10" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/java/src/typeofmood/ime/latin/LatinIME.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="44438">
+          <caret line="2614" lean-forward="true" selection-start-line="2614" selection-end-line="2614" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/build.gradle">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="578">
+          <caret line="34" column="5" selection-start-line="34" selection-start-column="5" selection-end-line="34" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/java/src/typeofmood/ime/latin/LatinIME.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="43928">
+          <caret line="2584" column="28" selection-start-line="2584" selection-start-column="28" selection-end-line="2584" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/build.gradle">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="578">
+          <caret line="34" column="5" lean-forward="true" selection-start-line="34" selection-start-column="5" selection-end-line="34" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/java/src/typeofmood/ime/latin/LatinIME.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="42755">
+          <caret line="2515" column="38" lean-forward="true" selection-start-line="2515" selection-start-column="38" selection-end-line="2515" selection-end-column="38" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/build.gradle">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="425">
-          <caret line="25" column="29" selection-start-line="25" selection-start-column="29" selection-end-line="25" selection-end-column="29" />
+          <caret line="25" column="28" selection-start-line="25" selection-start-column="28" selection-end-line="25" selection-end-column="28" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/java/res/values/strings.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="111">
-          <caret line="426" column="36" selection-start-line="426" selection-start-column="18" selection-end-line="426" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/java/src/typeofmood/ime/latin/settings/CustomInputStyleSettingsFragment.java">
+    <entry file="file://$PROJECT_DIR$/app/java/src/typeofmood/ime/datahandler/KeyboardPayload.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="51">
-          <caret line="58" column="73" selection-start-line="58" selection-start-column="73" selection-end-line="58" selection-end-column="73" />
+          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/java/res/xml/method.xml">
+    <entry file="file://$PROJECT_DIR$/app/java/src/typeofmood/ime/datahandler/KeyboardDynamics.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="637">
-          <caret line="120" column="31" selection-start-line="120" selection-start-column="31" selection-end-line="120" selection-end-column="31" />
+        <state relative-caret-position="17">
+          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/java/src/typeofmood/ime/UserInfoConfiguration.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="6460">
+          <caret line="380" column="88" selection-start-line="380" selection-start-column="80" selection-end-line="380" selection-end-column="88" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/java/res/layout/nav_header.xml">
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="26" selection-start-line="7" selection-start-column="26" selection-end-line="7" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/java/res/layout/activity_main.xml">
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="296">
+          <caret line="45" selection-start-line="45" selection-end-line="45" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/java/AndroidManifest.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3611">
-          <caret line="225" column="19" selection-start-line="225" selection-start-column="19" selection-end-line="225" selection-end-column="19" />
-        </state>
+        <state relative-caret-position="-425" />
       </provider>
       <provider editor-type-id="android-manifest">
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/java/src/typeofmood/ime/latin/utils/IntentUtils.java">
+    <entry file="file://$PROJECT_DIR$/app/java/src/typeofmood/ime/keyboard/MoreKeysKeyboard.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="31" column="56" selection-start-line="31" selection-start-column="25" selection-end-line="31" selection-end-column="56" />
+        <state relative-caret-position="-5338">
+          <caret line="31" column="19" selection-start-line="31" selection-start-column="19" selection-end-line="31" selection-end-column="19" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/java/src/typeofmood/ime/latin/setup/SetupWizardActivity.java">
+    <entry file="file://$PROJECT_DIR$/app/java/src/typeofmood/ime/keyboard/MoreKeysDetector.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="263">
-          <caret line="332" column="54" selection-start-line="332" selection-start-column="33" selection-end-line="332" selection-end-column="54" />
-          <folding>
-            <element signature="e#7281#7308#0" expanded="true" />
-            <element signature="e#7904#8047#0" expanded="true" />
-            <element signature="e#8046#8047#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="-338">
+          <caret line="18" column="19" selection-start-line="18" selection-start-column="19" selection-end-line="18" selection-end-column="19" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/java/src/typeofmood/ime/MainActivity.java">
+    <entry file="file://$PROJECT_DIR$/app/java/src/typeofmood/ime/keyboard/MoreKeysKeyboardView.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-736">
-          <caret line="129" column="88" selection-start-line="129" selection-start-column="88" selection-end-line="129" selection-end-column="88" />
+        <state relative-caret-position="187">
+          <caret line="266" column="53" lean-forward="true" selection-start-line="266" selection-start-column="53" selection-end-line="266" selection-end-column="53" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/java/src/typeofmood/ime/keyboard/KeyboardActionListener.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1596">
+          <caret line="21" column="17" selection-start-line="21" selection-start-column="17" selection-end-line="21" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/java/src/typeofmood/ime/keyboard/Keyboard.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-3177">
+          <caret line="51" column="13" selection-start-line="51" selection-start-column="13" selection-end-line="51" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/java/src/typeofmood/ime/latin/suggestions/MoreSuggestionsView.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="34" column="19" selection-start-line="34" selection-start-column="19" selection-end-line="34" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/java/src/typeofmood/ime/keyboard/KeyboardView.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="223">
+          <caret line="581" column="5" selection-start-line="581" selection-start-column="5" selection-end-line="581" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/java/src/typeofmood/ime/latin/suggestions/SuggestionStripView.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="405" column="9" lean-forward="true" selection-start-line="405" selection-start-column="9" selection-end-line="405" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/java/src/typeofmood/ime/latin/InputView.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="164">
+          <caret line="36" column="56" selection-start-line="36" selection-start-column="56" selection-end-line="36" selection-end-column="56" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/java/src/typeofmood/ime/keyboard/MainKeyboardView.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="141">
-          <caret line="734" column="51" selection-start-line="734" selection-start-column="34" selection-end-line="734" selection-end-column="51" />
+        <state relative-caret-position="-960">
+          <caret line="882" column="65" selection-start-line="882" selection-start-column="61" selection-end-line="882" selection-end-column="65" />
+          <folding>
+            <element signature="e#14910#15009#0" expanded="true" />
+            <element signature="e#26907#26941#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/java/src/typeofmood/ime/keyboard/PointerTracker.java">
+    <entry file="file://$PROJECT_DIR$/app/java/res/layout/typeofmood_user_info_config.xml">
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="144">
-          <caret line="1043" column="88" selection-start-line="1043" selection-start-column="52" selection-end-line="1043" selection-end-column="88" />
+        <state relative-caret-position="204">
+          <caret line="119" column="47" selection-start-line="119" selection-start-column="12" selection-end-line="119" selection-end-column="47" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/java/res/layout/dbdebug_fragment.xml">
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="215">
+          <caret line="25" column="44" selection-start-line="25" selection-start-column="44" selection-end-line="25" selection-end-column="44" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/java/src/typeofmood/ime/latin/settings/AdvancedSettingsFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2935">
+          <caret line="177" column="46" selection-start-line="177" selection-start-column="46" selection-end-line="177" selection-end-column="46" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/java/res/xml/prefs_screen_advanced.xml">
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="130">
+          <caret line="62" column="59" selection-start-line="62" selection-start-column="34" selection-end-line="62" selection-end-column="59" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/build.gradle">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="11" column="42" selection-start-line="11" selection-start-column="42" selection-end-line="11" selection-end-column="42" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/java/src/typeofmood/ime/latin/LatinIME.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="110">
-          <caret line="224" column="34" selection-start-line="224" selection-start-column="12" selection-end-line="224" selection-end-column="34" />
+        <state relative-caret-position="66">
+          <caret line="2547" column="66" selection-start-line="2547" selection-start-column="24" selection-end-line="2547" selection-end-column="66" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/java/src/typeofmood/ime/compat/InputMethodManagerCompatWrapper.java">
+    <entry file="file://$PROJECT_DIR$/app/java/src/typeofmood/ime/MainActivityDBDebugFragment.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="42" column="42" selection-start-line="42" selection-start-column="19" selection-end-line="42" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/java/src/typeofmood/ime/latin/RichInputMethodManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1547">
-          <caret line="239" column="44" selection-start-line="239" selection-start-column="30" selection-end-line="239" selection-end-column="44" />
+        <state relative-caret-position="187">
+          <caret line="118" column="91" lean-forward="true" selection-start-line="118" selection-start-column="91" selection-end-line="118" selection-end-column="91" />
         </state>
       </provider>
     </entry>

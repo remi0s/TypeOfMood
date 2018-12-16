@@ -10,6 +10,7 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.telephony.TelephonyManager;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -55,6 +56,14 @@ public class MainActivityDBDebugFragment extends Fragment {
     public static String pref_ID="";
     public static String pref_gender="";
     public static String pref_health="";
+    public static String country="undefined";
+    public static long user_min_flight=3000;
+    public static long user_max_flight=0;
+    public static float user_mean_flight=0;
+    public static long user_min_hold=3000;
+    public static long user_max_hold=0;
+    public static float user_mean_hold=0;
+    public static int user_sessions=1;
     private static String storageContainer = "";
     private static String storageConnectionString = "";
 
@@ -97,8 +106,18 @@ public class MainActivityDBDebugFragment extends Fragment {
         pref_ID= pref.getString("ID", "");
         pref_gender= pref.getString("Gender", "");
         pref_health= pref.getString("Health", "");
+        user_max_flight= pref.getLong("MaxFlight", 0);
+        user_min_flight= pref.getLong("MinFlight", 3000);
+        user_mean_flight= pref.getFloat("MeanFlight", 0);
+        user_max_hold= pref.getLong("MaxHold", 0);
+        user_min_hold= pref.getLong("MinHold", 3000);
+        user_mean_hold= pref.getFloat("MeanHold", 0);
+        user_sessions= pref.getInt("Sessions", 1);
         editor.apply();
-        String UserInfo="\nUSER_ID = "+pref_ID+"\nUSER_AGE = "+pref_age+"\nUSER_GENDER = "+pref_gender+"\nUSER_PHQ9 = "+pref_health;
+        country=getUserCountry(getActivity().getApplicationContext());
+        String UserInfo="\nUSER_ID = "+pref_ID+"\nUSER_SESSIONS = "+user_sessions+"\nUSER_COUNTRY = "+country+"\nUSER_AGE = "+pref_age+"\nUSER_GENDER = "+pref_gender+"\nUSER_PHQ9 = "+pref_health
+                +"\nMaxFlight = "+user_max_flight+"\nMinFlight = "+user_min_flight+"\nMeanFlight = "+user_mean_flight
+                +"\nMaxHold = "+user_max_hold+"\nMinHold = "+user_min_hold+"\nMeanHold = "+user_mean_hold;
         userInfoText.setText(UserInfo);
 
         if(listView != null) {
@@ -166,12 +185,19 @@ public class MainActivityDBDebugFragment extends Fragment {
 
                 JSONObject jsonObject = new JSONObject();
                 jsonObject.accumulate("DOC_ID", payload.get(i).DocID);
-                jsonObject.accumulate("USER_ID",pref_ID);
+                jsonObject.accumulate("USER_ID", pref_ID);
+                jsonObject.accumulate("USER_COUNTRY", country);
                 jsonObject.accumulate("USER_AGE", pref_age);
                 jsonObject.accumulate("USER_GENDER", pref_gender);
                 jsonObject.accumulate("USER_PHQ9", pref_health);
-                jsonObject.accumulate("DATE_DATA", payload.get(i).DateData);
-                jsonObject.accumulate("SESSION_DATA", payload.get(i).SessionData);
+                jsonObject.accumulate("USER_MAX_FLIGHT", user_max_flight);
+                jsonObject.accumulate("USER_MIN_FLIGHT", user_min_flight);
+                jsonObject.accumulate("USER_MEAN_FLIGHT", user_mean_flight);
+                jsonObject.accumulate("USER_MAX_HOLD", user_max_hold);
+                jsonObject.accumulate("USER_MIN_HOLD", user_min_hold);
+                jsonObject.accumulate("USER_MEAN_HOLD", user_mean_hold);
+//                jsonObject.accumulate("DATE_DATA", payload.get(i).DateData);
+//                jsonObject.accumulate("SESSION_DATA", payload.get(i).SessionData);
 
 
                 // 4. convert JSONObject to JSON to String
@@ -384,6 +410,24 @@ public class MainActivityDBDebugFragment extends Fragment {
         }
 
         return null;
+    }
+
+    public static String getUserCountry(Context context) {
+        try {
+            final TelephonyManager tm = (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE);
+            final String simCountry = tm.getSimCountryIso();
+            if (simCountry != null && simCountry.length() == 2) { // SIM country code is available
+                return simCountry.toUpperCase(Locale.US);
+            }
+            else if (tm.getPhoneType() != TelephonyManager.PHONE_TYPE_CDMA) { // device is not 3G (would be unreliable)
+                String networkCountry = tm.getNetworkCountryIso();
+                if (networkCountry != null && networkCountry.length() == 2) { // network country code is available
+                    return networkCountry.toUpperCase(Locale.US);
+                }
+            }
+        }
+        catch (Exception e) { }
+        return "undefined";
     }
 
     @Override

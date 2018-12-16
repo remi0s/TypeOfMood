@@ -21,44 +21,43 @@
         android:focusableInTouchMode="true">
         <!--android:background=" @drawable/setup_step_action_background"-->
 
-        <LinearLayout
-            android:id="@+id/layout1"
-            android:layout_width="match_parent"
-            android:background="@drawable/background_box"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
-            android:orientation="vertical">
-            <TextView
-                android:id="@+id/textViewPassword"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:gravity="center"
-                android:text="Please enter the password provided by your instructor:" />
+        <!--<LinearLayout-->
+            <!--android:id="@+id/layout1"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:background="@drawable/background_box"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_marginTop="15dp"-->
+            <!--android:orientation="vertical">-->
+            <!--<TextView-->
+                <!--android:id="@+id/textViewPassword"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_gravity="center"-->
+                <!--android:gravity="center"-->
+                <!--android:text="Please enter the password provided by your instructor:" />-->
 
-            <EditText
-                android:id="@+id/editTextPassword"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textAlignment="center"
-                android:cursorVisible="false"
-                android:imeOptions="actionDone"
-                android:inputType="textPassword"
-                />
-            <TextView
-                android:id="@+id/textViewPassword2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:gravity="center"
-                android:textColor="?android:textColorHint"
-                android:text="If you don't enter the password correctly your information won't be recorded and you won't be able to participate in the survey" />
+            <!--<EditText-->
+                <!--android:id="@+id/editTextPassword"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:textAlignment="center"-->
+                <!--android:cursorVisible="false"-->
+                <!--android:imeOptions="actionDone"-->
+                <!--android:inputType="textPassword"-->
+                <!--/>-->
+            <!--<TextView-->
+                <!--android:id="@+id/textViewPassword2"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_gravity="center"-->
+                <!--android:gravity="center"-->
+                <!--android:textColor="?android:textColorHint"-->
+                <!--android:text="If you don't enter the password correctly your information won't be recorded and you won't be able to participate in the survey" />-->
 
-        </LinearLayout>
+        <!--</LinearLayout>-->
 
         <LinearLayout
             android:id="@+id/layout2"
-            android:layout_below="@+id/layout1"
             android:layout_width="match_parent"
             android:background="@drawable/background_box"
             android:layout_height="wrap_content"

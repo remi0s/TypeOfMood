@@ -445,6 +445,7 @@ mobile devices. [CHAR LIMIT=25] -->
         <b>TypeOfMood Terms &amp; Conditions</b>\n\n
         TypeOfMood stores and uses the following information given by the User: \n\n
         "\u2022" An unique User ID that can also be your device unique ID if you are not instructed by a specific one\n
+        "\u2022" User\'s country code\n
         "\u2022" User\'s birth date\n
         "\u2022" User\'s gender\n
         "\u2022" User\'s Patient Health Questionnaire (PHQ-9) results\n\n
@@ -456,6 +457,7 @@ mobile devices. [CHAR LIMIT=25] -->
         "\u2022" Datetime of each keystroke in milliseconds\n
         "\u2022" Duration of each keystroke\n
         "\u2022" Pressure of each keystroke\n
+        "\u2022" Euclidean Distance in millimeters between consecutive keystrokes\n
         "\u2022" Current settings of TypeOfMood keyboard such as sound on keystrokes, popup on/off and vibration on keystrokes\n\n
 
         Please note that TypeOfMood does not store what the user is typing and none of the above information can result into determining the text input.
