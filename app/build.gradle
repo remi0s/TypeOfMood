@@ -1,14 +1,14 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 27
+    compileSdkVersion 28
     
     defaultConfig {
         applicationId "typeofmood.ime"
         minSdkVersion 16
-        targetSdkVersion 27
-        versionCode 20
-        versionName "1.21"
+        targetSdkVersion 28
+        versionCode 26
+        versionName "1.26"
         setProperty("archivesBaseName", "typeofmood-$versionName")
     }
 

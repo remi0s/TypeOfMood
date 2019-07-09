@@ -449,6 +449,10 @@ mobile devices. [CHAR LIMIT=25] -->
         "\u2022" User\'s country code\n
         "\u2022" User\'s birth date\n
         "\u2022" User\'s gender\n
+        "\u2022" User\'s experience with smart-phones\n
+        "\u2022" User\'s education level\n
+        "\u2022" User\'s income status\n
+        "\u2022" User\'s medication information\n
         "\u2022" User\'s Patient Health Questionnaire (PHQ-9) results\n\n
 
         Also while you are using TypeOfMood keyboard we collect data sessions (a session starts with the opening of the keyboard and ends with it\'s closing) that contain the following information:\n\n
