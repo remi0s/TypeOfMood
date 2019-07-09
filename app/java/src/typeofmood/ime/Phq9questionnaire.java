@@ -16,9 +16,11 @@ import com.tsongkha.spinnerdatepicker.DatePicker;
 import com.tsongkha.spinnerdatepicker.DatePickerDialog;
 import com.tsongkha.spinnerdatepicker.SpinnerDatePickerDialogBuilder;
 
+import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.Locale;
 
@@ -128,9 +130,22 @@ public class Phq9questionnaire extends AppCompatActivity{
                     //this form allows us to change it later for the user to be able to answer at least 7 out of 9 questions
                     //lower number than 7 answered questions should not been accepted
 
+
                     SharedPreferences prefUser = getApplicationContext().getSharedPreferences("user_info", MODE_PRIVATE);
                     SharedPreferences.Editor editor = prefUser.edit();
+
+                    for(int i=0;i<=8;i++){
+                        int answer=mRadioQuestions[i].getCheckedRadioButtonId();
+                        for(int j=0;j<=3;j++)
+                            if(answer==mAnswers[i][j].getId()){
+                                String temp="PHQ9_item_"+Integer.toString(i+1);
+                                editor.putString(temp, Integer.toString(j));
+                            }
+
+                    }
+
                     editor.putString("Health", Integer.toString(finalScore));
+                    editor.putLong("latest_phq9_date",System.currentTimeMillis());
                     editor.apply();
 
                     finish();

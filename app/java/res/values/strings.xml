@@ -355,6 +355,7 @@ mobile devices. [CHAR LIMIT=25] -->
     <string name="keyboard_theme_typeofmood_light" translatable="false">TypeOfMood Light</string>
     <string name="keyboard_theme_typeofmood_glass" translatable="false">TypeOfMood Glass Black</string>
     <string name="keyboard_theme_typeofmood_glassred" translatable="false">TypeOfMood Glass Red</string>
+    <string name="latest_sync" translatable="false">Latest sync: </string>
     <!-- The keyboard theme name, Material Dark. This is marked as translatable="false" because this is a proper name of system-wide UI Theme.  -->
     <string name="keyboard_theme_material_dark" translatable="false">Material Dark</string>
     <!-- The keyboard theme name, Material Light. This is marked as translatable="false" because this is a proper name of system-wide UI Theme.  -->
@@ -614,6 +615,7 @@ Tip: You can download and remove dictionaries by going to &lt;b>Languages&#160;&
     <string name="user_dict_fast_scroll_alphabet">\u0020ABCDEFGHIJKLMNOPQRSTUVWXYZ</string>
 
     <string name="notification_message">How would you describe your mood?</string>
+    <string name="notification_message_PHQ9">Two weeks got past after your last PHQ9 screening.\n Would you like to re-evaluate your answers?</string>
     <string name="notification_message_physical">What is your current physical state?</string>
     <string name="timer"> </string>
     <string name="btn_happy">Happy</string>
@@ -621,6 +623,7 @@ Tip: You can download and remove dictionaries by going to &lt;b>Languages&#160;&
     <string name="btn_neutral">Neutral</string>
     <string name="btn_stressed">Stressed</string>
     <string name="btn_later">Not Now</string>
+    <string name="btn_retake">Answer PHQ9</string>
     <string name="btn_relaxation">Relaxed</string>
     <string name="btn_tiredness">Tired</string>
     <string name="btn_sickness">Sick</string>

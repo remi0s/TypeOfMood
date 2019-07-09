@@ -2,6 +2,7 @@ package typeofmood.ime;
 
 import android.app.Fragment;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.graphics.Color;
 import android.graphics.Paint;
@@ -31,6 +32,9 @@ public class MainActivityHomeFragment extends Fragment {
     private static TextView mToday;
     private static TextView mWeek;
     private static TextView mMonth;
+    private static TextView latest_sync;
+
+
     private static Calendar calendar = Calendar.getInstance();
     private static SimpleDateFormat dbFormat = new SimpleDateFormat("yyyy-MM-dd",Locale.US);
 
@@ -68,6 +72,7 @@ public class MainActivityHomeFragment extends Fragment {
         mToday=rootView.findViewById(R.id.textView_today);
         mWeek=rootView.findViewById(R.id.textView_week);
         mMonth=rootView.findViewById(R.id.textView_month);
+        latest_sync=rootView.findViewById(R.id.latest_sync);
 
         return rootView;
 
@@ -100,6 +105,12 @@ public class MainActivityHomeFragment extends Fragment {
         StartDate=dbFormat.format(calendar.getTime());
         calendar.add(Calendar.DATE,-7);
         EndDate=dbFormat.format(calendar.getTime());
+
+        SharedPreferences pref =getActivity().getApplicationContext().getSharedPreferences("user_info", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = pref.edit();
+        String temp="Latest sync: "+pref.getString("latest_send_date", "");
+        latest_sync.setText(temp);
+        editor.apply();
 
         updateStatisticMood(view.getRootView(), StartDate, EndDate, context);
         updateStatisticPhysical(view.getRootView(), StartDate, EndDate, context);

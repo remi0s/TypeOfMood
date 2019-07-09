@@ -215,6 +215,13 @@
 
         </receiver>
 
+        <receiver android:name="typeofmood.ime.notificationhandler.ActionReceiverPHQ9">
+            <intent-filter>
+                <action android:name="action"/>
+            </intent-filter>
+
+        </receiver>
+
         <activity android:name="typeofmood.ime.ChooseMood"
             android:label="Select your Mood"
             android:theme="@style/Theme.AppCompat.NoActionBar"

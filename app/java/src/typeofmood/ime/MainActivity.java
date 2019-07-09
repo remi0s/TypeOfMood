@@ -26,6 +26,7 @@ import android.view.WindowManager;
 import typeofmood.ime.latin.settings.SettingsActivity;
 import typeofmood.ime.latin.setup.SetupWizardActivity;
 import typeofmood.ime.notificationhandler.NotificationHelper;
+import typeofmood.ime.notificationhandler.NotificationHelperPHQ9;
 import typeofmood.ime.notificationhandler.NotificationHelperPhysical;
 
 
@@ -33,6 +34,9 @@ public class MainActivity extends AppCompatActivity {
     private DrawerLayout mDrawerLayout;
     private static NotificationHelper mNotificationHelper;
     private static NotificationCompat.Builder nb;
+
+    private static NotificationHelperPHQ9 mNotificationHelperPHQ9;
+    private static NotificationCompat.Builder nb2;
 
 
     @Override
@@ -71,8 +75,10 @@ public class MainActivity extends AppCompatActivity {
 
         mDrawerLayout = findViewById(R.id.drawer_layout);
         mNotificationHelper = new NotificationHelper(getApplicationContext());
+        mNotificationHelperPHQ9 = new NotificationHelperPHQ9(getApplicationContext());
 
         nb=new NotificationCompat.Builder(getApplicationContext(),"TypeOfMoodChannelID");
+        nb2=new NotificationCompat.Builder(getApplicationContext(),"TypeOfMoodChannelID");
 
 
 
@@ -82,14 +88,24 @@ public class MainActivity extends AppCompatActivity {
         SharedPreferences pref = getApplicationContext().getSharedPreferences("user_info", MODE_PRIVATE);
         SharedPreferences.Editor editor = pref.edit();
         String pref_ID= pref.getString("ID", "");
+        long latest_phq9_date= pref.getLong("latest_phq9_date", 0);
         editor.apply();
 
         Menu nav_Menu = navigationView.getMenu();
         nav_Menu.findItem(R.id.nav_Mood2).setVisible(false);
         invalidateOptionsMenu();
-        if(pref_ID.equals("remastoras")||pref_ID.equals("emulatortest")){
+        if(pref_ID.equals("test")||pref_ID.equals("emulatortest")){
             nav_Menu.findItem(R.id.nav_dbDebug).setVisible(true);
             invalidateOptionsMenu();
+        }
+
+        long phq9_period=System.currentTimeMillis()-latest_phq9_date;
+        long two_weeks=(long)(1000*60*60*24*14);// 1000 millis * 60 seconds * 60 minutes * 24 hours *14 days//1000*60*60*24*14
+        if(phq9_period>two_weeks){
+            String title = "TypeOfMood";
+            String message = "Please Expand to describe your mood!";
+            nb2 = mNotificationHelperPHQ9.getTypeOfMoodNotification(title, message, nb2);
+            mNotificationHelperPHQ9.getManager().notify(mNotificationHelperPHQ9.notification_id, nb2.build());
         }
 
 

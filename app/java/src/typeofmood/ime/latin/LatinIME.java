@@ -73,6 +73,7 @@ import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.lang.ref.WeakReference;
 import java.net.Inet4Address;
+import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -182,10 +183,7 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
     public static double densX;
     public static double densY;
 
-    public static String pref_age="";
-    public static String pref_ID="";
-    public static String pref_gender="";
-    public static String pref_health="";
+
     public static int user_sessions=1;
     public static long user_min_flight=3000;
     public static long user_max_flight=0;
@@ -2282,6 +2280,28 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
         String prefs_id= pref.getString("ID", "");
         String prefs_gender= pref.getString("Gender", "");
         String prefs_health= pref.getString("Health", "");
+
+        String pref_phq9_item_1=pref.getString("PHQ9_item_1", "");
+        String pref_phq9_item_2=pref.getString("PHQ9_item_2", "");
+        String pref_phq9_item_3=pref.getString("PHQ9_item_3", "");
+        String pref_phq9_item_4=pref.getString("PHQ9_item_4", "");
+        String pref_phq9_item_5=pref.getString("PHQ9_item_5", "");
+        String pref_phq9_item_6=pref.getString("PHQ9_item_6", "");
+        String pref_phq9_item_7=pref.getString("PHQ9_item_7", "");
+        String pref_phq9_item_8=pref.getString("PHQ9_item_8", "");
+        String pref_phq9_item_9=pref.getString("PHQ9_item_9", "");
+
+        String pref_education = pref.getString("Education", "");
+        String pref_usage = pref.getString("Usage", "");
+        String pref_income = pref.getString("Income", "");
+        String pref_medication= pref.getString("Medication", "");
+
+
+
+
+
+
+
         long users_max_flight= pref.getLong("MaxFlight", 0);
         long users_min_flight= pref.getLong("MinFlight", 3000);
         float users_mean_flight= pref.getFloat("MeanFlight", 0);
@@ -2307,7 +2327,22 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
                     jsonObject.accumulate("USER_COUNTRY", country);
                     jsonObject.accumulate("USER_AGE", prefs_age);
                     jsonObject.accumulate("USER_GENDER", prefs_gender);
+
+                    jsonObject.accumulate("USER_EDUCATION", pref_education);
+                    jsonObject.accumulate("USER_PHONE_USAGE", pref_usage);
+                    jsonObject.accumulate("USER_INCOME", pref_income);
+                    jsonObject.accumulate("USER_MEDICATION", pref_medication);
+
                     jsonObject.accumulate("USER_PHQ9", prefs_health);
+                    jsonObject.accumulate("USER_PHQ9_ITEM_1", pref_phq9_item_1);
+                    jsonObject.accumulate("USER_PHQ9_ITEM_2", pref_phq9_item_2);
+                    jsonObject.accumulate("USER_PHQ9_ITEM_3", pref_phq9_item_3);
+                    jsonObject.accumulate("USER_PHQ9_ITEM_4", pref_phq9_item_4);
+                    jsonObject.accumulate("USER_PHQ9_ITEM_5", pref_phq9_item_5);
+                    jsonObject.accumulate("USER_PHQ9_ITEM_6", pref_phq9_item_6);
+                    jsonObject.accumulate("USER_PHQ9_ITEM_7", pref_phq9_item_7);
+                    jsonObject.accumulate("USER_PHQ9_ITEM_8", pref_phq9_item_8);
+                    jsonObject.accumulate("USER_PHQ9_ITEM_9", pref_phq9_item_9);
                     jsonObject.accumulate("USER_MAX_FLIGHT", users_max_flight);
                     jsonObject.accumulate("USER_MIN_FLIGHT", users_min_flight);
                     jsonObject.accumulate("USER_MEAN_FLIGHT", users_mean_flight);
@@ -2495,10 +2530,12 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
                     long min_flight=3000;
                     long max_flight=0;
                     float average_flight=0;
+                    int num_flight=0;
                     ArrayList<Long>flight_time=new ArrayList<Long>();
                     long min_hold=3000;
                     long max_hold=0;
                     float average_hold=0;
+                    int num_hold=0;
                     ArrayList<Long>hold_time=new ArrayList<Long>();
                     double dist=0;
                     double dx=0,dy=0;
@@ -2523,6 +2560,7 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
                             max_flight=temp;
                         }
                         if (temp>0 && temp<3000){
+                            num_flight=num_flight+1;
                             average_flight=(average_flight+temp);
                         }
                         //hold time
@@ -2535,50 +2573,54 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
                             if (temp2>max_hold){
                                 max_hold=temp2;
                             }
+                            num_hold=num_hold+1;
                             average_hold=(average_hold+temp2);
 
                         }
-                        average_hold=average_hold/hold_time.size();
-                        average_flight=average_flight/(flight_time.size());
+
+
+                    }//end for i size downtime
+
+                    average_hold=average_hold/num_hold;
+                    average_flight=average_flight/num_flight;
 
 
 
-                        SharedPreferences pref =weakContext.get().getSharedPreferences("user_info", Context.MODE_PRIVATE);
-                        SharedPreferences.Editor editor = pref.edit();
-                        user_sessions= pref.getInt("Sessions", 1);
-                        user_max_flight= pref.getLong("MaxFlight", 0);
-                        user_min_flight= pref.getLong("MinFlight", 3000);
-                        user_mean_flight= pref.getFloat("MeanFlight", 0);
-                        user_max_hold= pref.getLong("MaxHold", 0);
-                        user_min_hold= pref.getLong("MinHold", 3000);
-                        user_mean_hold= pref.getFloat("MeanHold", 0);
-                        //flight time
-                        if (min_flight<user_min_flight){
-                            editor.putLong("MinFlight",min_flight );
-                        }
-
-                        if (max_flight>user_max_flight){
-                            editor.putLong("MaxFlight",max_flight );
-                        }
-                        float temp_average=(user_mean_flight*user_sessions+average_flight)/(user_sessions+1);
-                        editor.putFloat("MeanFlight", temp_average);
-                        //hold time
-                        if (min_hold<user_min_hold){
-                            editor.putLong("MinHold",min_hold );
-                        }
-
-                        if (max_hold>user_max_hold){
-                            editor.putLong("MaxHold",max_hold );
-                        }
-                        //if not all was longpressed
-                        if(average_hold>0){
-                            temp_average=(user_mean_hold*user_sessions+average_hold)/(user_sessions+1);
-                            editor.putFloat("MeanHold",temp_average );
-                        }
-                        editor.putInt("Sessions",user_sessions+1 );
-                        editor.apply();
-
+                    SharedPreferences pref =weakContext.get().getSharedPreferences("user_info", Context.MODE_PRIVATE);
+                    SharedPreferences.Editor editor = pref.edit();
+                    user_sessions= pref.getInt("Sessions_counter", 1);
+                    user_max_flight= pref.getLong("MaxFlight", 0);
+                    user_min_flight= pref.getLong("MinFlight", 3000);
+                    user_mean_flight= pref.getFloat("MeanFlight", 0);
+                    user_max_hold= pref.getLong("MaxHold", 0);
+                    user_min_hold= pref.getLong("MinHold", 3000);
+                    user_mean_hold= pref.getFloat("MeanHold", 0);
+                    //flight time
+                    if (min_flight<user_min_flight){
+                        editor.putLong("MinFlight",min_flight );
                     }
+
+                    if (max_flight>user_max_flight){
+                        editor.putLong("MaxFlight",max_flight );
+                    }
+                    float temp_average=(user_mean_flight*user_sessions+average_flight)/(user_sessions+1);
+                    editor.putFloat("MeanFlight", temp_average);
+                    //hold time
+                    if (min_hold<user_min_hold){
+                        editor.putLong("MinHold",min_hold );
+                    }
+
+                    if (max_hold>user_max_hold){
+                        editor.putLong("MaxHold",max_hold );
+                    }
+                    //if not all was longpressed
+                    if(average_hold>0){
+                        temp_average=(user_mean_hold*user_sessions+average_hold)/(user_sessions+1);
+                        editor.putFloat("MeanHold",temp_average );
+                    }
+                    int temp_sessions=user_sessions+1;
+                    editor.putInt("Sessions_counter",temp_sessions );
+                    editor.apply();
 
                     //save data
 
@@ -2602,6 +2644,11 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
                     String send_result="not yet "+sendMinutesPassed;
                     if(isConnected(weakContext.get() ) && (sendMinutesPassed>=15)){
                         latestSendTimeTemp=new Date(System.currentTimeMillis());
+                        DateFormat dateFormat = new SimpleDateFormat("EEE, d MMM yyyy HH:mm:ss");
+                        editor = pref.edit();
+                        editor.putString("latest_send_date",dateFormat.format(latestSendTimeTemp));
+                        editor.apply();
+
                         ArrayList<KeyboardPayload> notSendData = new ArrayList<>();
                         Cursor data = myDB.getNotSendContents();
                         try {

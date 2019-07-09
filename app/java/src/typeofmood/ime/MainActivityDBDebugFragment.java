@@ -56,6 +56,24 @@ public class MainActivityDBDebugFragment extends Fragment {
     public static String pref_ID="";
     public static String pref_gender="";
     public static String pref_health="";
+
+    public static String pref_education="";
+    public static String pref_income="";
+    public static String pref_medication="";
+    public static String pref_usage="";
+
+    public static String pref_phq9_item_1="";
+    public static String pref_phq9_item_2="";
+    public static String pref_phq9_item_3="";
+    public static String pref_phq9_item_4="";
+    public static String pref_phq9_item_5="";
+    public static String pref_phq9_item_6="";
+    public static String pref_phq9_item_7="";
+    public static String pref_phq9_item_8="";
+    public static String pref_phq9_item_9="";
+
+
+
     public static String country="undefined";
     public static long user_min_flight=3000;
     public static long user_max_flight=0;
@@ -105,19 +123,41 @@ public class MainActivityDBDebugFragment extends Fragment {
         pref_age= pref.getString("Age", "");
         pref_ID= pref.getString("ID", "");
         pref_gender= pref.getString("Gender", "");
+
+        pref_education = pref.getString("Education", "");
+        pref_usage = pref.getString("Usage", "");
+        pref_income = pref.getString("Income", "");
+        pref_medication= pref.getString("Medication", "");
+
+
         pref_health= pref.getString("Health", "");
+        pref_phq9_item_1=pref.getString("PHQ9_item_1", "");
+        pref_phq9_item_2=pref.getString("PHQ9_item_2", "");
+        pref_phq9_item_3=pref.getString("PHQ9_item_3", "");
+        pref_phq9_item_4=pref.getString("PHQ9_item_4", "");
+        pref_phq9_item_5=pref.getString("PHQ9_item_5", "");
+        pref_phq9_item_6=pref.getString("PHQ9_item_6", "");
+        pref_phq9_item_7=pref.getString("PHQ9_item_7", "");
+        pref_phq9_item_8=pref.getString("PHQ9_item_8", "");
+        pref_phq9_item_9=pref.getString("PHQ9_item_9", "");
+
         user_max_flight= pref.getLong("MaxFlight", 0);
         user_min_flight= pref.getLong("MinFlight", 3000);
         user_mean_flight= pref.getFloat("MeanFlight", 0);
         user_max_hold= pref.getLong("MaxHold", 0);
         user_min_hold= pref.getLong("MinHold", 3000);
         user_mean_hold= pref.getFloat("MeanHold", 0);
-        user_sessions= pref.getInt("Sessions", 1);
+        user_sessions= pref.getInt("Sessions_counter", 1);
         editor.apply();
         country=getUserCountry(getActivity().getApplicationContext());
         String UserInfo="\nUSER_ID = "+pref_ID+"\nUSER_SESSIONS = "+user_sessions+"\nUSER_COUNTRY = "+country+"\nUSER_AGE = "+pref_age+"\nUSER_GENDER = "+pref_gender+"\nUSER_PHQ9 = "+pref_health
-                +"\nMaxFlight = "+user_max_flight+"\nMinFlight = "+user_min_flight+"\nMeanFlight = "+user_mean_flight
-                +"\nMaxHold = "+user_max_hold+"\nMinHold = "+user_min_hold+"\nMeanHold = "+user_mean_hold;
+//                +"\nMaxFlight = "+user_max_flight+"\nMinFlight = "+user_min_flight+"\nMeanFlight = "+user_mean_flight
+//                +"\nMaxHold = "+user_max_hold+"\nMinHold = "+user_min_hold+"\nMeanHold = "+user_mean_hold;
+                +"\nMedication = "+pref_medication+"\nUsage = "+pref_usage+"\nEducation = "+pref_education+"\nIncome = "+pref_income
+                +"\nPHQ9_item_1 = "+pref_phq9_item_1+"\nPHQ9_item_2 = "+pref_phq9_item_2+"\nPHQ9_item_3 = "+pref_phq9_item_3
+                +"\nPHQ9_item_4 = "+pref_phq9_item_4+"\nPHQ9_item_5 = "+pref_phq9_item_5+"\nPHQ9_item_6 = "+pref_phq9_item_6
+                +"\nPHQ9_item_7 = "+pref_phq9_item_7+"\nPHQ9_item_8 = "+pref_phq9_item_8+"\nPHQ9_item_9 = "+pref_phq9_item_9;
+
         userInfoText.setText(UserInfo);
 
         if(listView != null) {
@@ -166,6 +206,9 @@ public class MainActivityDBDebugFragment extends Fragment {
     }
 
     public static String POST(String url,ArrayList<KeyboardPayload> payload){
+
+        //this is not used, it was for HTTP transfer instead of azure
+
         InputStream inputStream = null;
         String result = "";
 
@@ -189,7 +232,20 @@ public class MainActivityDBDebugFragment extends Fragment {
                 jsonObject.accumulate("USER_COUNTRY", country);
                 jsonObject.accumulate("USER_AGE", pref_age);
                 jsonObject.accumulate("USER_GENDER", pref_gender);
+                jsonObject.accumulate("USER_EDUCATION", pref_education);
+                jsonObject.accumulate("USER_PHONE_USAGE", pref_usage);
+                jsonObject.accumulate("USER_INCOME", pref_income);
+                jsonObject.accumulate("USER_MEDICATION", pref_medication);
                 jsonObject.accumulate("USER_PHQ9", pref_health);
+                jsonObject.accumulate("USER_PHQ9_ITEM_1", pref_phq9_item_1);
+                jsonObject.accumulate("USER_PHQ9_ITEM_2", pref_phq9_item_2);
+                jsonObject.accumulate("USER_PHQ9_ITEM_3", pref_phq9_item_3);
+                jsonObject.accumulate("USER_PHQ9_ITEM_4", pref_phq9_item_4);
+                jsonObject.accumulate("USER_PHQ9_ITEM_5", pref_phq9_item_5);
+                jsonObject.accumulate("USER_PHQ9_ITEM_6", pref_phq9_item_6);
+                jsonObject.accumulate("USER_PHQ9_ITEM_7", pref_phq9_item_7);
+                jsonObject.accumulate("USER_PHQ9_ITEM_8", pref_phq9_item_8);
+                jsonObject.accumulate("USER_PHQ9_ITEM_9", pref_phq9_item_9);
                 jsonObject.accumulate("USER_MAX_FLIGHT", user_max_flight);
                 jsonObject.accumulate("USER_MIN_FLIGHT", user_min_flight);
                 jsonObject.accumulate("USER_MEAN_FLIGHT", user_mean_flight);
@@ -316,12 +372,34 @@ public class MainActivityDBDebugFragment extends Fragment {
                 // 3. build jsonObject
 
 
+
+
                 JSONObject jsonObject = new JSONObject();
                 jsonObject.accumulate("DOC_ID", payload.get(i).DocID);
                 jsonObject.accumulate("USER_ID", pref_ID);
+                jsonObject.accumulate("USER_COUNTRY", country);
                 jsonObject.accumulate("USER_AGE", pref_age);
                 jsonObject.accumulate("USER_GENDER", pref_gender);
+                jsonObject.accumulate("USER_EDUCATION", pref_education);
+                jsonObject.accumulate("USER_PHONE_USAGE", pref_usage);
+                jsonObject.accumulate("USER_INCOME", pref_income);
+                jsonObject.accumulate("USER_MEDICATION", pref_medication);
                 jsonObject.accumulate("USER_PHQ9", pref_health);
+                jsonObject.accumulate("USER_PHQ9_ITEM_1", pref_phq9_item_1);
+                jsonObject.accumulate("USER_PHQ9_ITEM_2", pref_phq9_item_2);
+                jsonObject.accumulate("USER_PHQ9_ITEM_3", pref_phq9_item_3);
+                jsonObject.accumulate("USER_PHQ9_ITEM_4", pref_phq9_item_4);
+                jsonObject.accumulate("USER_PHQ9_ITEM_5", pref_phq9_item_5);
+                jsonObject.accumulate("USER_PHQ9_ITEM_6", pref_phq9_item_6);
+                jsonObject.accumulate("USER_PHQ9_ITEM_7", pref_phq9_item_7);
+                jsonObject.accumulate("USER_PHQ9_ITEM_8", pref_phq9_item_8);
+                jsonObject.accumulate("USER_PHQ9_ITEM_9", pref_phq9_item_9);
+                jsonObject.accumulate("USER_MAX_FLIGHT", user_max_flight);
+                jsonObject.accumulate("USER_MIN_FLIGHT", user_min_flight);
+                jsonObject.accumulate("USER_MEAN_FLIGHT", user_mean_flight);
+                jsonObject.accumulate("USER_MAX_HOLD", user_max_hold);
+                jsonObject.accumulate("USER_MIN_HOLD", user_min_hold);
+                jsonObject.accumulate("USER_MEAN_HOLD", user_mean_hold);
 //                jsonObject.accumulate("DATE_DATA", payload.get(i).DateData);
 //                jsonObject.accumulate("SESSION_DATA", payload.get(i).SessionData);
 

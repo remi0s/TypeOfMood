@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="96dp"
+    android:background="@android:color/transparent"
+    android:orientation="horizontal"
+
+    >
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:background="@drawable/rectangle"
+        android:clipToPadding="true"
+        android:orientation="horizontal"
+        android:layout_alignParentLeft="true">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="25dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:background="@drawable/rectangle_title"
+            android:orientation="horizontal"
+            android:layout_alignParentLeft="true">
+
+            <ImageView
+                android:id="@+id/smallIcon"
+                android:layout_width="20dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginStart="10dp"
+                app:srcCompat="@mipmap/ic_typeofmood"
+                android:layout_marginLeft="10dp" />
+
+            <TextView
+                android:id="@+id/notif_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginStart="15dp"
+                android:paddingTop="1dp"
+                android:singleLine="true"
+                android:text="@string/my_english_ime_name"
+                android:layout_marginLeft="15dp"
+                style="@android:style/TextAppearance.StatusBar.EventContent"/>
+
+            <TextView
+                android:id="@+id/timestamp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:text="@string/timer"
+                android:paddingTop="1dp"
+                android:layout_marginRight="1dp"
+                android:layout_marginEnd="1dp"
+                android:gravity="end"
+                style="@android:style/TextAppearance.StatusBar.EventContent"
+                />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/notif_message"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="15dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="30dp"
+            android:paddingTop="5dp"
+            android:singleLine="true"
+            android:text="@string/notification_message_PHQ9"
+            android:textAppearance="@android:style/TextAppearance.StatusBar.EventContent"
+            />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/notif_message"
+            android:weightSum="2"
+            android:layout_alignParentLeft="true">
+
+            <Button
+                android:id="@+id/buttonRetake"
+                style="@style/Widget.AppCompat.Button.ButtonBar.AlertDialog"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@android:color/transparent"
+                android:text="@string/btn_retake"
+                android:textColor="@android:color/holo_blue_light"
+                android:textSize="12sp"
+                android:includeFontPadding="false"
+                android:padding="0dp"/>
+
+            <Button
+                android:id="@+id/buttonLater"
+                style="@style/Widget.AppCompat.Button.ButtonBar.AlertDialog"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@android:color/background_light"
+                android:text="@string/btn_later"
+                android:textColor="@android:color/holo_blue_dark"
+                android:textSize="12sp"
+                android:includeFontPadding="false"
+                android:padding="0dp"/>
+
+        </LinearLayout>
+
+
+    </RelativeLayout>
+
+
+
+</RelativeLayout>

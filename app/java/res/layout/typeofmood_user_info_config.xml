@@ -186,7 +186,194 @@
 
         <LinearLayout
             android:id="@+id/layout5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/background_box"
             android:layout_below="@+id/layout4"
+            android:layout_marginTop="15dp"
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/textViewEducation"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:text="Please select the highest level of education you have completed :" />
+
+            <RadioGroup
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/radioGroupEducation"
+                >
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/radioLowestEducation"
+                    android:text="0-8 years in school" />
+
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/radioLowEducation"
+                    android:text="8-10 years in school" />
+
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/radioMediumEducation"
+                    android:text="> 10 years in school and no other studies" />
+
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/radioHighEducation"
+                    android:text="University or college degree" />
+
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/radioHighestEducation"
+                    android:text="Post graduate degree (master, PhD)" />
+            </RadioGroup>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/layout6"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/background_box"
+            android:layout_below="@+id/layout5"
+            android:layout_marginTop="15dp"
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/textViewUsage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:text="Please select how long do you use a smart-phone:" />
+
+            <RadioGroup
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/radioGroupUsage"
+                >
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/radioLowUsage"
+                    android:text="Less than 6 months" />
+
+
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/radioMediumUsage"
+                    android:text="Between 6 and 12 months" />
+
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/radioHighUsage"
+                    android:text="More than 12 months" />
+
+            </RadioGroup>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/layout7"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/background_box"
+            android:layout_below="@+id/layout6"
+            android:layout_marginTop="15dp"
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/textViewIncome"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:text="According to your country's standards how would you describe your annual household income:" />
+
+            <RadioGroup
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/radioGroupIncome"
+                >
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/radioZeroIncome"
+                    android:text="0 income" />
+
+
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/radioLowIncome"
+                    android:text="Low income" />
+
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/radioMediumIncome"
+                    android:text="Medium income" />
+
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/radioHighIncome"
+                    android:text="High income" />
+
+            </RadioGroup>
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/layout8"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/background_box"
+            android:layout_below="@+id/layout7"
+            android:layout_marginTop="15dp"
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/textViewMedication"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:text="Do you receive any medication for depression:" />
+
+            <RadioGroup
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/radioGroupMedication"
+                >
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/radioMedicationFalse"
+                    android:text="No, i do not receive any medication for depression" />
+
+
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/radioMedicationTrue"
+                    android:text="Yes, i do receive medication for depression" />
+
+            </RadioGroup>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/layout9"
+            android:layout_below="@+id/layout8"
             android:layout_width="match_parent"
             android:background="@drawable/background_box"
             android:layout_height="wrap_content"
@@ -220,8 +407,8 @@
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/layout6"
-            android:layout_below="@+id/layout5"
+            android:id="@+id/layout10"
+            android:layout_below="@+id/layout9"
             android:layout_width="match_parent"
             android:background="@drawable/background_box"
             android:layout_height="wrap_content"
@@ -269,8 +456,8 @@
 
 
         <LinearLayout
-            android:id="@+id/layout7"
-            android:layout_below="@+id/layout6"
+            android:id="@+id/layout11"
+            android:layout_below="@+id/layout10"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"

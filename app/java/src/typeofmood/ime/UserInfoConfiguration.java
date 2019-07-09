@@ -50,6 +50,20 @@ public class UserInfoConfiguration extends AppCompatActivity implements DatePick
     private CheckBox mAgreeTerms;
     private RadioGroup mRadioGroupGender;
     private RadioButton rMale, rFemale;
+
+    private RadioGroup mRadioGroupEducation;
+    private RadioButton rLowestEducation, rLowEducation, rMediumEducation, rHighEducation, rHighestEducation;
+
+    private RadioGroup mRadioGroupUsage;
+    private RadioButton rLowUsage, rMediumUsage, rHighUsage;
+
+    private RadioGroup mRadioGroupIncome;
+    private RadioButton rZeroIncome, rLowIncome, rMediumIncome, rHighIncome;
+
+    private RadioGroup mRadioGroupMedication;
+    private RadioButton rMedicationFalse, rMedicationTrue;
+
+
     private EditText mAge,mEditTextPHQ9,mEditTextScore;
     private EditText mUserID;
 //    private EditText mPassword;
@@ -94,9 +108,36 @@ public class UserInfoConfiguration extends AppCompatActivity implements DatePick
         mEditTextScore.setImeOptions(EditorInfo.IME_ACTION_DONE);
 
         mRadioGroupGender = findViewById(R.id.radioGroupGender);
-
         rMale = findViewById(R.id.radioMale);
         rFemale = findViewById(R.id.radioFemale);
+
+
+        mRadioGroupEducation = findViewById(R.id.radioGroupEducation);
+        rLowestEducation = findViewById(R.id.radioLowestEducation);
+        rLowEducation = findViewById(R.id.radioLowEducation);
+        rMediumEducation = findViewById(R.id.radioMediumEducation);
+        rHighEducation = findViewById(R.id.radioHighEducation);
+        rHighestEducation = findViewById(R.id.radioHighestEducation);
+
+
+
+        mRadioGroupUsage = findViewById(R.id.radioGroupUsage);
+        rLowUsage = findViewById(R.id.radioLowUsage);
+        rMediumUsage = findViewById(R.id.radioMediumUsage);
+        rHighUsage = findViewById(R.id.radioHighUsage);
+
+
+
+        mRadioGroupIncome = findViewById(R.id.radioGroupIncome);
+        rZeroIncome = findViewById(R.id.radioZeroIncome);
+        rLowIncome = findViewById(R.id.radioLowIncome);
+        rMediumIncome = findViewById(R.id.radioMediumIncome);
+        rHighIncome = findViewById(R.id.radioHighIncome);
+
+        mRadioGroupMedication = findViewById(R.id.radioGroupMedication);
+        rMedicationFalse = findViewById(R.id.radioMedicationFalse);
+        rMedicationTrue = findViewById(R.id.radioMedicationTrue);
+
 
 
         simpleDateFormat = new SimpleDateFormat("dd-MM-yyyy", Locale.US);
@@ -107,8 +148,16 @@ public class UserInfoConfiguration extends AppCompatActivity implements DatePick
         String pref_ID = pref.getString("ID", "");
         String pref_gender = pref.getString("Gender", "");
         String pref_health = pref.getString("Health", "");
+
+        String pref_education = pref.getString("Education", "");
+        String pref_usage = pref.getString("Usage", "");
+        String pref_income = pref.getString("Income", "");
+        String pref_medication= pref.getString("Medication", "");
 //        String pref_password = pref.getString("Password", "");
         Boolean pref_terms_agree = pref.getBoolean("TermsAgreement", false);
+
+
+
         if (pref_ID.isEmpty()) {
             editor.putString("ID", mMEI);
             editor.apply();
@@ -139,6 +188,49 @@ public class UserInfoConfiguration extends AppCompatActivity implements DatePick
         }else if(pref_gender.equals("Female")){
             rFemale.setChecked(true);
         }
+
+
+        if(pref_education.equals("0")){
+            rLowestEducation.setChecked(true);
+        }else if(pref_education.equals("1")){
+            rLowEducation.setChecked(true);
+        }else if(pref_education.equals("2")){
+            rMediumEducation.setChecked(true);
+        }else if(pref_education.equals("3")){
+            rHighEducation.setChecked(true);
+        }else if(pref_education.equals("4")){
+            rHighestEducation.setChecked(true);
+        }
+
+        if(pref_usage.equals("0")){
+            rLowUsage.setChecked(true);
+        }else if(pref_usage.equals("1")){
+            rMediumUsage.setChecked(true);
+        }else if(pref_usage.equals("2")){
+            rHighUsage.setChecked(true);
+        }
+
+
+        if(pref_income.equals("0")){
+            rZeroIncome.setChecked(true);
+        }else if(pref_income.equals("1")){
+            rLowIncome.setChecked(true);
+        }else if(pref_income.equals("2")){
+            rMediumIncome.setChecked(true);
+        }else if(pref_income.equals("3")){
+            rHighIncome.setChecked(true);
+        }
+
+        if(pref_medication.equals("0")){
+            rMedicationFalse.setChecked(true);
+        }else if(pref_medication.equals("1")){
+            rMedicationTrue.setChecked(true);
+        }
+
+
+
+
+
 
         if(!pref_health.isEmpty()){
             mEditTextScore.setHint("Your latest PHQ-9 score was : "+pref_health);
@@ -259,6 +351,54 @@ public class UserInfoConfiguration extends AppCompatActivity implements DatePick
         }
 
 
+        String education="";
+        int selectedEducation = mRadioGroupEducation.getCheckedRadioButtonId();
+        if(selectedEducation == rLowestEducation.getId()) {
+            education="0";
+        } else if(selectedEducation == rLowEducation.getId()) {
+            education="1";
+        }else if(selectedEducation == rMediumEducation.getId()) {
+            education="2";
+        }else if(selectedEducation == rHighEducation.getId()) {
+            education="3";
+        }else if(selectedEducation == rHighestEducation.getId()) {
+            education="4";
+        }
+
+        String smartphone_usage="";
+        int selectedUsage = mRadioGroupUsage.getCheckedRadioButtonId();
+        if(selectedUsage == rLowUsage.getId()) {
+            smartphone_usage="0";
+        } else if(selectedUsage == rMediumUsage.getId()) {
+            smartphone_usage="1";
+        }else if(selectedUsage == rHighUsage.getId()) {
+            smartphone_usage="2";
+        }
+
+
+        String income="";
+        int selectedIncome = mRadioGroupIncome.getCheckedRadioButtonId();
+        if(selectedIncome == rZeroIncome.getId()) {
+            income="0";
+        } else if(selectedIncome == rLowIncome.getId()) {
+            income="1";
+        }else if(selectedIncome == rMediumIncome.getId()) {
+            income="2";
+        }else if(selectedIncome == rHighIncome.getId()) {
+            income="3";
+        }
+
+        String medication="";
+        int selectedMedication = mRadioGroupMedication.getCheckedRadioButtonId();
+        if(selectedMedication == rMedicationFalse.getId()) {
+            medication="0";
+        } else if(selectedMedication == rMedicationTrue.getId()) {
+            medication="1";
+        }
+
+
+
+
         SharedPreferences prefUser = getApplicationContext().getSharedPreferences("user_info", MODE_PRIVATE);
         SharedPreferences.Editor editor = prefUser.edit();
         String pref_ID= prefUser.getString("ID", "");
@@ -270,7 +410,9 @@ public class UserInfoConfiguration extends AppCompatActivity implements DatePick
 
         editor.apply();
 
-        if(!BirthDate.isEmpty() && (!ID.isEmpty() || !pref_ID.isEmpty())  && !gender.isEmpty() && !health.isEmpty()) {
+        if(!BirthDate.isEmpty() && (!ID.isEmpty() || !pref_ID.isEmpty())  && !gender.isEmpty() && !health.isEmpty()
+                && !education.isEmpty() && !income.isEmpty() && !smartphone_usage.isEmpty() && !medication.isEmpty()
+        ) {
             editor = prefUser.edit();
             editor.putString("BirthDate", BirthDate);
             if(!ID.isEmpty() ){
@@ -280,6 +422,11 @@ public class UserInfoConfiguration extends AppCompatActivity implements DatePick
             }
             editor.putString("Gender", gender);
             editor.putString("Health", health);
+
+            editor.putString("Education", education);
+            editor.putString("Usage", smartphone_usage);
+            editor.putString("Income", income);
+            editor.putString("Medication", medication);
 //            editor.putString("Password", password);
             editor.apply();
 
