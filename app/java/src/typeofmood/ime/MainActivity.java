@@ -2,24 +2,22 @@ package typeofmood.ime;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
-import android.support.design.widget.NavigationView;
-import android.support.v4.app.NotificationCompat;
-import android.support.v4.content.ContextCompat;
-import android.support.v4.view.GravityCompat;
-import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBar;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
-import android.view.KeyEvent;
+import com.google.android.material.navigation.NavigationView;
+import androidx.core.app.NotificationCompat;
+import androidx.core.content.ContextCompat;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+
 import android.view.Menu;
 import android.view.MenuItem;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
-import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 
@@ -27,7 +25,6 @@ import typeofmood.ime.latin.settings.SettingsActivity;
 import typeofmood.ime.latin.setup.SetupWizardActivity;
 import typeofmood.ime.notificationhandler.NotificationHelper;
 import typeofmood.ime.notificationhandler.NotificationHelperPHQ9;
-import typeofmood.ime.notificationhandler.NotificationHelperPhysical;
 
 
 public class MainActivity extends AppCompatActivity {

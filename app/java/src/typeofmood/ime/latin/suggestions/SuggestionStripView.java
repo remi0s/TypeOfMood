@@ -20,9 +20,9 @@ import android.content.Context;
 import android.content.res.Resources;
 import android.content.res.TypedArray;
 import android.graphics.Color;
-import android.graphics.drawable.Drawable;
-import android.support.v4.app.NotificationCompat;
-import android.support.v4.view.ViewCompat;
+
+import androidx.core.app.NotificationCompat;
+import androidx.core.view.ViewCompat;
 import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.util.TypedValue;
@@ -55,7 +55,6 @@ import typeofmood.ime.latin.settings.SettingsValues;
 import typeofmood.ime.latin.suggestions.MoreSuggestionsView.MoreSuggestionsListener;
 import typeofmood.ime.latin.utils.ImportantNoticeUtils;
 import typeofmood.ime.notificationhandler.NotificationHelper;
-import typeofmood.ime.notificationhandler.NotificationHelperPhysical;
 
 public final class SuggestionStripView extends RelativeLayout implements OnClickListener,
         OnLongClickListener {

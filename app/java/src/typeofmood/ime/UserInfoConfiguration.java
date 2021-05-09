@@ -4,25 +4,19 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Resources;
-import android.graphics.Rect;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
-import android.text.TextWatcher;
+import androidx.appcompat.app.AppCompatActivity;
+
 import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
-import android.view.KeyEvent;
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.inputmethod.EditorInfo;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.LinearLayout;
-import android.widget.ListView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
-import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -32,17 +26,13 @@ import com.tsongkha.spinnerdatepicker.SpinnerDatePickerDialogBuilder;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.Locale;
 import java.util.Properties;
 
-import android.text.Editable;
-import android.view.inputmethod.InputMethodManager;
 import typeofmood.ime.compat.TextViewCompatUtils;
-import typeofmood.ime.latin.SystemBroadcastReceiver;
 
 
 public class UserInfoConfiguration extends AppCompatActivity implements DatePickerDialog.OnDateSetListener {

@@ -4,16 +4,11 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.support.v4.app.NotificationCompat;
+import androidx.core.app.NotificationCompat;
 import android.widget.Toast;
 
 import typeofmood.ime.Phq9questionnaire;
 import typeofmood.ime.datahandler.MoodDatabaseHelper;
-import typeofmood.ime.latin.LatinIME;
-
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.Locale;
 
 
 public class ActionReceiverPHQ9 extends BroadcastReceiver {

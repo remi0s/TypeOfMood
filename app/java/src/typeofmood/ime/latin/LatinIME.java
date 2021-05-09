@@ -19,7 +19,6 @@ package typeofmood.ime.latin;
 import android.Manifest.permission;
 import android.app.Activity;
 import android.app.AlertDialog;
-import android.app.Application;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -31,7 +30,6 @@ import android.content.pm.PackageManager;
 import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
 import android.inputmethodservice.InputMethodService;
 import android.media.AudioManager;
@@ -43,7 +41,7 @@ import android.os.Debug;
 import android.os.IBinder;
 import android.os.Message;
 import android.preference.PreferenceManager;
-import android.support.v4.app.NotificationCompat;
+import androidx.core.app.NotificationCompat;
 import android.telephony.TelephonyManager;
 import android.text.InputType;
 import android.util.Log;
@@ -59,10 +57,7 @@ import android.view.WindowManager;
 import android.view.inputmethod.CompletionInfo;
 import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodInfo;
-import android.view.inputmethod.InputMethodManager;
 import android.view.inputmethod.InputMethodSubtype;
-import android.widget.ArrayAdapter;
-import android.widget.ListAdapter;
 import android.widget.Toast;
 
 import java.io.BufferedReader;
@@ -72,9 +67,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.lang.ref.WeakReference;
-import java.net.Inet4Address;
 import java.text.DateFormat;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -85,7 +78,6 @@ import java.util.concurrent.TimeUnit;
 import javax.annotation.Nonnull;
 
 import typeofmood.ime.ChooseMood;
-import typeofmood.ime.UserInfoConfiguration;
 import typeofmood.ime.accessibility.AccessibilityUtils;
 import typeofmood.ime.annotations.UsedForTesting;
 import typeofmood.ime.compat.BuildCompatUtils;
@@ -122,7 +114,6 @@ import typeofmood.ime.latin.touchinputconsumer.GestureConsumer;
 import typeofmood.ime.latin.utils.ApplicationUtils;
 import typeofmood.ime.latin.utils.DialogUtils;
 import typeofmood.ime.latin.utils.ImportantNoticeUtils;
-import typeofmood.ime.latin.utils.IntentUtils;
 import typeofmood.ime.latin.utils.JniUtils;
 import typeofmood.ime.latin.utils.LeakGuardHandlerWrapper;
 import typeofmood.ime.latin.utils.StatsUtils;
@@ -136,20 +127,13 @@ import typeofmood.ime.notificationhandler.NotificationHelper;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
-import org.apache.http.HttpResponse;
-import org.apache.http.client.HttpClient;
-import org.apache.http.client.methods.HttpPost;
-import org.apache.http.entity.StringEntity;
-import org.apache.http.impl.client.DefaultHttpClient;
 import org.json.JSONObject;
 
 import typeofmood.ime.R;
-import typeofmood.ime.notificationhandler.NotificationHelperPhysical;
 
 import static android.content.Intent.FLAG_ACTIVITY_NEW_TASK;
 import com.microsoft.azure.storage.CloudStorageAccount;
 import com.microsoft.azure.storage.blob.*;
-import com.microsoft.azure.storage.file.FileInputStream;
 
 
 /**

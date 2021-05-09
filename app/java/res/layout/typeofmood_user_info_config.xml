@@ -1,4 +1,4 @@
-<android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/parentScrollView"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -71,7 +71,7 @@
                 android:gravity="center"
                 android:text="Please read carefully the following Terms &amp; Conditions:" />
 
-            <android.support.v4.widget.NestedScrollView
+            <androidx.core.widget.NestedScrollView
                 android:layout_height="200dp"
                 android:layout_width="match_parent"
                 android:background="@drawable/background_box"
@@ -88,7 +88,7 @@
                     android:text="@string/terms_and_conditions">
                 </TextView>
 
-            </android.support.v4.widget.NestedScrollView>
+            </androidx.core.widget.NestedScrollView>
 
 
 
@@ -475,4 +475,4 @@
         </LinearLayout>
 
     </RelativeLayout>
-</android.support.v4.widget.NestedScrollView>
+</androidx.core.widget.NestedScrollView>

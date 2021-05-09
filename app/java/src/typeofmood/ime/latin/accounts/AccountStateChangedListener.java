@@ -16,7 +16,7 @@
 
 package typeofmood.ime.latin.accounts;
 
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 
 import javax.annotation.Nullable;
 

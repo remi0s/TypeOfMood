@@ -2,30 +2,15 @@ package typeofmood.ime;
 
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
+import androidx.appcompat.app.AppCompatActivity;
+
 import android.view.View;
-import android.view.inputmethod.EditorInfo;
-import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.tsongkha.spinnerdatepicker.DatePicker;
-import com.tsongkha.spinnerdatepicker.DatePickerDialog;
-import com.tsongkha.spinnerdatepicker.SpinnerDatePickerDialogBuilder;
-
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.GregorianCalendar;
-import java.util.Locale;
-
 import typeofmood.ime.compat.TextViewCompatUtils;
-import typeofmood.ime.latin.SystemBroadcastReceiver;
 
 
 public class Phq9questionnaire extends AppCompatActivity{

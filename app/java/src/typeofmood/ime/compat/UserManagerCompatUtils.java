@@ -19,7 +19,7 @@ package typeofmood.ime.compat;
 import android.content.Context;
 import android.os.Build;
 import android.os.UserManager;
-import android.support.annotation.IntDef;
+import androidx.annotation.IntDef;
 
 import java.lang.annotation.Retention;
 import java.lang.reflect.Method;
