@@ -1,3 +1,28 @@
 /build
 /release
 /app/java/res/raw/config.properties
+
+# Java local files
+*.iml
+*.apk
+*.ap_
+*.dex
+*.class
+.gradle
+.gradle/
+/local.properties
+/.idea/
+.DS_Store
+/build
+build/
+/captures
+.externalNativeBuild
+.cxx
+obj/
+.idea.name
+.idea/
+
+#Java Generated files
+bin/
+gen/
+out/
