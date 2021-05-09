@@ -49,6 +49,7 @@ public class ActionReceiverPHQ9 extends BroadcastReceiver {
     public void performRetake(Context context){
         Toast.makeText(context,"Answer PHQ9", Toast.LENGTH_SHORT).show();
         Intent intent = new Intent(context, Phq9questionnaire.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         context.startActivity(intent);
 
 
