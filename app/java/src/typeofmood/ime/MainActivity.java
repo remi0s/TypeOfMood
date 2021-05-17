@@ -1,5 +1,7 @@
 package typeofmood.ime;
 
+import android.app.Activity;
+import android.app.Dialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Build;
@@ -13,13 +15,18 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
+import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 
 import typeofmood.ime.latin.settings.SettingsActivity;
 import typeofmood.ime.latin.setup.SetupWizardActivity;
@@ -34,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
 
     private static NotificationHelperPHQ9 mNotificationHelperPHQ9;
     private static NotificationCompat.Builder nb2;
-
+    private static CustomDialogClass cdd;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,7 +64,7 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-
+        cdd = new CustomDialogClass(this);
         Fragment fr = new MainActivityHomeFragment();
         FragmentManager fm = getFragmentManager();
         FragmentTransaction fragmentTransaction = fm.beginTransaction();
@@ -170,6 +177,9 @@ public class MainActivity extends AppCompatActivity {
                                         | Intent.FLAG_ACTIVITY_CLEAR_TOP);
                                 startActivity(intent3);
                                 break;
+                            case R.id.navTerms:
+                                cdd.show();
+                                break;
                             default:
                                 fr=null;
                                 break;
@@ -208,6 +218,76 @@ public class MainActivity extends AppCompatActivity {
         {
             finishAndRemoveTask();
         }
+    }
+
+    public class CustomDialogClass extends Dialog implements
+            android.view.View.OnClickListener {
+
+        private final String TAG = CustomDialogClass.class.getSimpleName();
+        public Activity c;
+        public Dialog d;
+        public Button done;
+        private CheckBox mAgreeTerms;
+        Boolean pref_terms_agree;
+        SharedPreferences pref;
+        SharedPreferences.Editor editor;
+        public CustomDialogClass(Activity a) {
+            super(a);
+            // TODO Auto-generated constructor stub
+            this.c = a;
+        }
+
+        @Override
+        protected void onCreate(Bundle savedInstanceState) {
+            super.onCreate(savedInstanceState);
+            requestWindowFeature(Window.FEATURE_NO_TITLE);
+            setContentView(R.layout.typeofmood_consent_dialog);
+            done = (Button) findViewById(R.id.btn_done);
+            done.setVisibility(View.VISIBLE);
+            mAgreeTerms = (CheckBox) findViewById(R.id.checkBoxAgreeTerms);
+            done.setOnClickListener(this);
+
+            pref = getApplicationContext().getSharedPreferences("user_info", MODE_PRIVATE);
+            editor = pref.edit();
+            pref_terms_agree = pref.getBoolean("TermsAgreement", false);
+
+            mAgreeTerms.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                   @Override
+                   public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                   if(mAgreeTerms.isChecked()){
+                       pref_terms_agree = true;
+                       editor.putBoolean("TermsAgreement", true);
+
+                   }else{
+                       pref_terms_agree=false;
+                       editor.putBoolean("TermsAgreement", false);
+                   }
+                   editor.apply();
+               }
+            });
+
+        }
+
+        @Override
+        protected void onStart() {
+            super.onStart();
+            mAgreeTerms.setChecked(pref_terms_agree);
+        }
+
+        @Override
+        public void onClick(View v) {
+            switch (v.getId()) {
+                case R.id.btn_done:
+                    Log.e(TAG,"Terms & Conditions state :"+pref.getBoolean("TermsAgreement", false));
+
+                    dismiss();
+                    //c.finish();
+                    break;
+                default:
+                    break;
+            }
+        }
+
     }
 
 

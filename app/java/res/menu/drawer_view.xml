@@ -41,5 +41,11 @@
             android:title="Settings"
             />
 
+        <item
+            android:id="@+id/navTerms"
+            android:icon="@drawable/ic_settings"
+            android:title="Terms &amp; Conditions"
+            />
+
     </group>
 </menu>

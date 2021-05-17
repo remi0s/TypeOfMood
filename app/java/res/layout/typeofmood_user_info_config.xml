@@ -56,64 +56,15 @@
 
         <!--</LinearLayout>-->
 
-        <LinearLayout
+        <include layout="@layout/typeofmood_consent_dialog"
             android:id="@+id/layout2"
             android:layout_width="match_parent"
             android:background="@drawable/background_box"
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
-            android:orientation="vertical">
-            <TextView
-                android:id="@+id/textViewTerms1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:gravity="center"
-                android:text="Please read carefully the following Terms &amp; Conditions:" />
-
-            <androidx.core.widget.NestedScrollView
-                android:layout_height="200dp"
-                android:layout_width="match_parent"
-                android:background="@drawable/background_box"
-                android:layout_marginTop="5dp"
-                android:layout_marginBottom="5dp"
-                android:layout_marginLeft="5dp"
-                android:layout_marginRight="5dp"
-                >
-
-                <TextView
-                    android:id="@+id/textViewTerms"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/terms_and_conditions">
-                </TextView>
-
-            </androidx.core.widget.NestedScrollView>
-
-
-
-
-
-            <CheckBox
-                android:id="@+id/checkBoxAgreeTerms"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="I have read and accept the Terms &amp; Conditions" />
-
-
-            <TextView
-                android:id="@+id/textViewTerms2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:gravity="center"
-                android:textColor="?android:textColorHint"
-                android:text="If you don't agree to those Terms &amp; Conditions your information and data won't be shared with us and you won't be able to participate in this survey " />
-
-
-        </LinearLayout>
-
-
+            android:orientation="vertical"
+            />
+        
 
         <LinearLayout
             android:id="@+id/layout3"
@@ -420,7 +371,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:gravity="center"
-                android:text="Please answer to Patient Health Questionnaire-9" />
+                android:text="Please fill in the PHQ-9 questionnaire" />
 
             <EditText
                 android:id="@+id/editTextPHQ9"
